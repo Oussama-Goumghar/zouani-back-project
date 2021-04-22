@@ -1,12 +1,12 @@
 package ma.learn.quiz.service;
 
-import ma.learn.quiz.bean.Question;
 
-import ma.learn.quiz.bean.Reponse;
-import ma.learn.quiz.dao.QuestionDao;
-import ma.learn.quiz.dao.ReponseDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import ma.learn.quiz.bean.Question;
+import ma.learn.quiz.bean.Reponse;
+import ma.learn.quiz.dao.ReponseDao;
 
 import javax.transaction.Transactional;
 import java.util.List;

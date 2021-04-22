@@ -1,8 +1,11 @@
 package ma.learn.quiz.dao;
 
-import ma.learn.quiz.bean.Quiz;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import ma.learn.quiz.bean.Quiz;
+
 
 @Repository
 public interface QuizDao extends JpaRepository<Quiz, Long> {

@@ -1,9 +1,11 @@
 package ma.learn.quiz.rest;
 
-import ma.learn.quiz.bean.Quiz;
-import ma.learn.quiz.service.QuizService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import ma.learn.quiz.bean.Quiz;
+import ma.learn.quiz.service.QuizService;
 
 import javax.transaction.Transactional;
 import java.util.List;

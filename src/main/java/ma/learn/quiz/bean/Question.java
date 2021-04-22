@@ -8,13 +8,27 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String ref;
+    private String libelle;
     private Long numero;
     private double pointReponseJuste;
     private double pointReponsefausse;
-    @OneToOne
+    
+    @ManyToOne
     private TypeDeQuestion typeDeQuestion;
+    
+    @ManyToOne
+    private Quiz quiz;
+    
+    
+    public String getLibelle() {
+		return libelle;
+	}
 
-    public TypeDeQuestion getTypeDeQuestion() {
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+
+	public TypeDeQuestion getTypeDeQuestion() {
         return typeDeQuestion;
     }
 
@@ -46,8 +60,7 @@ public class Question {
         this.pointReponsefausse = pointReponsefausse;
     }
 
-    @ManyToOne
-    private Quiz quiz;
+
 
 
     public Quiz getQuiz() {

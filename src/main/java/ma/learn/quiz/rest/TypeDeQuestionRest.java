@@ -1,10 +1,11 @@
 package ma.learn.quiz.rest;
 
-import ma.learn.quiz.bean.TypeDeQuestion;
-import ma.learn.quiz.dao.TypeDeQuestionDao;
-import ma.learn.quiz.service.TypeDeQuestionService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import ma.learn.quiz.bean.TypeDeQuestion;
+import ma.learn.quiz.service.TypeDeQuestionService;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -32,6 +33,14 @@ public class TypeDeQuestionRest {
         return typeDeQuestionService.save(typeDeQuestion);
     }
 
-    @Autowired
+
+@PutMapping("/")
+    public void update(@RequestBody TypeDeQuestion typeDeQuestion) {
+	typeDeQuestionService.update(typeDeQuestion);
+}
+
+
+
+	@Autowired
     private TypeDeQuestionService typeDeQuestionService;
 }

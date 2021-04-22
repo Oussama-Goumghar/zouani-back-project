@@ -1,10 +1,13 @@
 package ma.learn.quiz.service;
 
-import ma.learn.quiz.bean.Question;
-import ma.learn.quiz.bean.Quiz;
-import ma.learn.quiz.dao.QuestionDao;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import ma.learn.quiz.bean.Question;
+import ma.learn.quiz.bean.Quiz;
+import ma.learn.quiz.bean.TypeDeQuestion;
+import ma.learn.quiz.dao.QuestionDao;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -20,6 +23,10 @@ public class QuestionService {
     private QuestionDao questionDao;
     @Autowired
     private QuizService quizService;
+    @Autowired
+    private ReponseService reponseService;
+    @Autowired
+    private TypeDeQuestionService typeDeQuestionService;
 
     public void update(Question question){
         questionDao.save(question);
@@ -32,7 +39,9 @@ public class QuestionService {
 
     @Transactional
     public int deleteByRef(String ref) {
-        return questionDao.deleteByRef(ref);
+        int question =  questionDao.deleteByRef(ref);
+        int reponse = reponseService.deleteByQuestionRef(ref);
+        return question+reponse;
     }
 
 
@@ -45,17 +54,22 @@ public class QuestionService {
             return -1;
         }
         Quiz quiz=quizService.findByRef(question.getQuiz().getRef());
+        TypeDeQuestion typeDeQuestion = typeDeQuestionService.findByRef(question.getTypeDeQuestion().getRef());
         question.setQuiz(quiz);
+        question.setTypeDeQuestion(typeDeQuestion);
        if(quiz==null){
           return -2;
-       }else{
+       }
+       else if(typeDeQuestion==null)
+       {
+    	   return -3;
+       }
+       else{
            quizService.update(quiz);
+           typeDeQuestionService.update(typeDeQuestion);
            questionDao.save(question);
            return 1;
-
        }
-
-
 }
 @Transactional
     public int deleteByQuizRef(String ref) {

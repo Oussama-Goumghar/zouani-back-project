@@ -1,6 +1,7 @@
 package ma.learn.quiz.bean;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,6 +18,7 @@ public class Quiz {
     private Date dateDebut;
     @JsonFormat(pattern = "dd-MM-yyyy")
     private Date dateFin;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
   /* @OneToMany(mappedBy = "quiz")
     private List<Question> questions;*/
     private Long numero;

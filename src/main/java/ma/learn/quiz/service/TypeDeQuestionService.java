@@ -1,9 +1,11 @@
 package ma.learn.quiz.service;
 
-import ma.learn.quiz.bean.TypeDeQuestion;
-import ma.learn.quiz.dao.TypeDeQuestionDao;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import ma.learn.quiz.bean.TypeDeQuestion;
+import ma.learn.quiz.dao.TypeDeQuestionDao;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -12,6 +14,10 @@ import java.util.List;
 public class TypeDeQuestionService {
 
 
+	public void update(TypeDeQuestion typeDeQuestion){
+        typeDeQuestionDao.save(typeDeQuestion);
+    }
+	
     public TypeDeQuestion findByRef(String ref) {
         return typeDeQuestionDao.findByRef(ref);
     }
@@ -30,7 +36,6 @@ public class TypeDeQuestionService {
         else {
            typeDeQuestionDao.save(typeDeQuestion);
             return 1;
-
         }
     }
 

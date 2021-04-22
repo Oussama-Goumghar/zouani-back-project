@@ -1,9 +1,10 @@
 package ma.learn.quiz.dao;
 
-import ma.learn.quiz.bean.Question;
-import ma.learn.quiz.bean.Reponse;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import ma.learn.quiz.bean.Reponse;
 
 import java.util.List;
 
