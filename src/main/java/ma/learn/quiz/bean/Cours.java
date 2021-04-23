@@ -20,18 +20,17 @@ public class Cours {
     private String detail ;
     private int duree;
 
-    @JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "cours")
-    private List<CoursItem> coursItems;
+    @ManyToOne
+    private Parcours parcours;
 
 
-    public Cours(String code, String libelle, String detail, int duree, List<CoursItem> coursItems) {
+    public Cours(String code, String libelle, String detail, int duree) {
 		super();
 		this.code = code;
 		this.libelle = libelle;
 		this.detail = detail;
 		this.duree = duree;
-		this.coursItems = coursItems;
+		
 	}
 
 	public Cours() {
@@ -39,12 +38,14 @@ public class Cours {
 		// TODO Auto-generated constructor stub
 	}
 
-	public List<CoursItem> getCoursItems() {
-		return coursItems;
+	
+
+	public Parcours getParcours() {
+		return parcours;
 	}
 
-	public void setCoursItems(List<CoursItem> coursItems) {
-		this.coursItems = coursItems;
+	public void setParcours(Parcours parcours) {
+		this.parcours = parcours;
 	}
 
 	public int getDuree() {

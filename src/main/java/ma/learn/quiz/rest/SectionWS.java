@@ -45,8 +45,11 @@ public class SectionWS {
 
     
 
-    @PutMapping("/update")
+    @PutMapping("/")
     public void update(@RequestBody Section section) {
         sectionservice.update(section);
     }
+
+    
+    
 }

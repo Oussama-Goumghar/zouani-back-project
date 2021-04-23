@@ -11,12 +11,16 @@ import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.dao.ParcoursDao;
 
 @Service
-public class ParcoursService {	
-
+public class ParcoursService {
+	  @Autowired
+	    private CategorieSectionService categorieSectionService;
     @Autowired
     private ParcoursDao parcoursDao;
     @Autowired
-    private ParcoursItemService parcoursItemService;
+    private CoursService coursService;
+    @Autowired
+    private SectionService sectionService;
+    
 
 	public Parcours findByCode(String code) {
 		return parcoursDao.findByCode(code);
@@ -24,18 +28,21 @@ public class ParcoursService {
 
 	@Transactional
 	public int deleteByCode(String code) {
-		int deleteByParcoursCode=parcoursItemService.deleteByParcoursCode(code);
+		int deleteByCategorieSectionCode=categorieSectionService.deleteBySectionCode(code);
+		int deleteBySectionCode=sectionService.deleteByCoursCode(code);
+		int deleteByCoursCode=coursService.deleteByParcoursCode(code);
 		int deleteByCode=parcoursDao.deleteByCode(code);
-		return deleteByParcoursCode+deleteByCode;
+		return deleteByCategorieSectionCode+deleteBySectionCode+deleteByCoursCode+deleteByCode;
 	}
 
 	public int save(Parcours parcours) {
 		if(findByCode(parcours.getCode())!=null) {
 			return -1;
-		}else {
+		}
+		else {
 			
 			parcoursDao.save(parcours);
-			parcoursItemService.save(parcours,parcours.getParcoursItems());
+			
 			return 1;
 		}
 		
@@ -49,6 +56,11 @@ public class ParcoursService {
 
 	public void delete(Parcours entity) {
 		parcoursDao.delete(entity);
+	}
+
+	public void update(Parcours parcours) {
+		parcoursDao.save(parcours);
+		
 	}
    
 }

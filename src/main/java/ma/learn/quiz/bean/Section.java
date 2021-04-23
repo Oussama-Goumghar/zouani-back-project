@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -25,7 +26,8 @@ public class Section {
 	private String urlimage;
 	private String urlvideo;
 
-	
+	@ManyToOne
+	  private Cours cours;
 
 
 	public Section(String code, String libelle, String detail, String urlimage, String urlvideo) {
@@ -35,6 +37,16 @@ public class Section {
 		this.detail = detail;
 		this.urlimage = urlimage;
 		this.urlvideo = urlvideo;
+	}
+
+
+	public Cours getCours() {
+		return cours;
+	}
+
+
+	public void setCours(Cours cours) {
+		this.cours = cours;
 	}
 
 

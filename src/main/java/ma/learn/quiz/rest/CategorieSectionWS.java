@@ -48,6 +48,7 @@ public class CategorieSectionWS {
 	public int deleteByCode(@PathVariable String code) {
 		return categorieSectionService.deleteByCode(code);
 	}
+   
 
 
 	 

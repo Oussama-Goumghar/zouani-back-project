@@ -14,32 +14,21 @@ public class Parcours {
     private String code;
     private String libelle;
     private double duree;
-    @JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy="parcours")
-    private List<ParcoursItem> parcoursItems;
-
+   
 
 	
 
-	public Parcours(String code, String libelle, double duree, List<ParcoursItem> parcoursItems) {
+	public Parcours(String code, String libelle, double duree) {
 		super();
 		this.code = code;
 		this.libelle = libelle;
 		this.duree = duree;
-		this.parcoursItems = parcoursItems;
+		
 	}
 
 	public Parcours() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-
-	public List<ParcoursItem> getParcoursItems() {
-		return parcoursItems;
-	}
-
-	public void setParcoursItems(List<ParcoursItem> parcoursItems) {
-		this.parcoursItems = parcoursItems;
 	}
 
 	public Long getId() {
@@ -54,7 +43,7 @@ public class Parcours {
         return code;
     }
 
-    public void setCode(String ref) {
+    public void setCode(String code) {
         this.code = code;
     }
 
