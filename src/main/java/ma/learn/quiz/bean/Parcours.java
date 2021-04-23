@@ -17,8 +17,7 @@ public class Parcours {
 	    private String code;
 	    private String libelle;
 	    private String ref;
-	    @OneToOne
-	    private Centre centre;
+	   
 	  
 		public Long getId() {
 			return id;
@@ -38,12 +37,7 @@ public class Parcours {
 		public void setLibelle(String libelle) {
 			this.libelle = libelle;
 		}
-		public Centre getCentre() {
-			return centre;
-		}
-		public void setCentre(Centre centre) {
-			this.centre = centre;
-		}
+		
 		public String getRef() {
 			return ref;
 		}
