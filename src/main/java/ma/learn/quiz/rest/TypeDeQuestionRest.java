@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "anouar/TypeDeQuestion")
+@RequestMapping(value = "centre/TypeDeQuestion")
 public class TypeDeQuestionRest {
 
     @GetMapping("/ref/{ref}")
@@ -33,14 +33,11 @@ public class TypeDeQuestionRest {
         return typeDeQuestionService.save(typeDeQuestion);
     }
 
-
 @PutMapping("/")
-    public void update(@RequestBody TypeDeQuestion typeDeQuestion) {
-	typeDeQuestionService.update(typeDeQuestion);
+public void update(@RequestBody TypeDeQuestion typeDeQuestion) {
+typeDeQuestionService.update(typeDeQuestion);
 }
 
-
-
-	@Autowired
+    @Autowired
     private TypeDeQuestionService typeDeQuestionService;
 }

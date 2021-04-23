@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "anouar/quiz")
+@RequestMapping(value = "centre/quiz")
 public class QuizRest {
     @PutMapping("/")
     public void update(@RequestBody Quiz quiz) {

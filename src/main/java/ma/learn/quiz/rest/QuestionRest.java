@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "anouar/question")
+@RequestMapping(value = "centre/question")
 public class QuestionRest {
 
 @GetMapping("/ref/{ref}")
