@@ -10,12 +10,19 @@ public class Parcours {
 	  @Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    private Long id;
-	   
+	   private double duree;
 	    private String libelle;
 	    private String ref;
 	    @ManyToOne
 	    private Centre centre;
 	  
+		
+		public double getDuree() {
+			return duree;
+		}
+		public void setDuree(double duree) {
+			this.duree = duree;
+		}
 		public Long getId() {
 			return id;
 		}
