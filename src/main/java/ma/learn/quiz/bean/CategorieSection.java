@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.Entity;
 import org.springframework.data.annotation.Id;
@@ -17,8 +18,8 @@ public class CategorieSection implements Serializable{
     private String libelle;
     private int numeroOrdre;
 
- /* @ManyToOne
-  private SuperCategorieSection superCategorieSection*/
+  @ManyToOne
+  private SuperCategorieSection superCategorieSection;
 
     
    
@@ -27,15 +28,29 @@ public class CategorieSection implements Serializable{
 	// TODO Auto-generated constructor stub
 }
 
-	public CategorieSection(String ref, String libelle, int numeroOrdre, Section section) {
-	super();
-	this.ref = ref;
-	this.libelle = libelle;
-	this.numeroOrdre = numeroOrdre;
 	
-}
 
 
+
+	public CategorieSection(String ref, String libelle, int numeroOrdre, SuperCategorieSection superCategorieSection) {
+		super();
+		this.ref = ref;
+		this.libelle = libelle;
+		this.numeroOrdre = numeroOrdre;
+		this.superCategorieSection = superCategorieSection;
+	}
+
+
+
+
+
+	public SuperCategorieSection getSuperCategorieSection() {
+		return superCategorieSection;
+	}
+
+	public void setSuperCategorieSection(SuperCategorieSection superCategorieSection) {
+		this.superCategorieSection = superCategorieSection;
+	}
 
 	public Long getId() {
         return id;

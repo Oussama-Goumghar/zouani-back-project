@@ -1,14 +1,16 @@
 package ma.learn.quiz.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
+
 import org.hibernate.annotations.Entity;
 import org.springframework.data.annotation.Id;
 @Entity
-public class Parcours {
+public class Parcours implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
