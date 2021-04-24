@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Centre {
 	@Id
 	   @GeneratedValue(strategy = GenerationType.AUTO)
-	private Long Id;
+	private Long Id;//&chooomaaaa
 	private String nom;
 	private String ville;
 	private String ref;

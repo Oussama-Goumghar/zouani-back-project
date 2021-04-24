@@ -17,10 +17,6 @@ import ma.learn.quiz.dao.CategorieSectionDao;
 @Service
 public class CategorieSectionService {
 	
-	@Autowired
-	public CoursService coursService;
-	 @Autowired
-		public ParcoursService parcoursService;
 	 @Autowired
 	    private SectionService sectionService;
     @Autowired
@@ -30,20 +26,8 @@ public class CategorieSectionService {
         if (findByRef(categorieSection.getRef()) != null) {
             return -1;
         }
-       Section section = sectionService.findByRef(categorieSection.getSection().getRef());
-       categorieSection.setSection(section);
-       if(section==null) return -2;
-
-       Cours cours = coursService.findByRef(section.getCours().getRef());
-       section.setCours(cours);
-       if(cours==null) return -3;
-       Parcours parcours = parcoursService.findByRef(cours.getParcours().getRef());
-       cours.setParcours(parcours);
-       if(parcours==null) return -4;
+     
         else {
-        	parcoursService.update(parcours);
-			coursService.update(cours);
-        	sectionService.update(section);
             categorieSectionDao.save(categorieSection);
             return 1;
         }
@@ -62,26 +46,10 @@ public class CategorieSectionService {
     }
     @Transactional
 	public int deleteByRef(String ref) {
+    	int R1=sectionService.deleteByCategorieSectionRef(ref);
 		int rsultat1=categorieSectionDao.deleteByRef(ref);
-		return rsultat1;
+		return R1+rsultat1;
 	}
-
-	public List<CategorieSection> findBySectionRef(String ref) {
-		return categorieSectionDao.findBySectionRef(ref);
-	}
-
-	@Transactional
-	public int deleteBySectionRef(String ref) {
-		return categorieSectionDao.deleteBySectionRef(ref);
-	}
-
-    
-
-    
-
-   
-
-	
 
     
 }

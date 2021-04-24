@@ -19,12 +19,22 @@ public class Quiz {
     @JsonFormat(pattern = "dd-MM-yyyy")
     private Date dateFin;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-  /* @OneToMany(mappedBy = "quiz")
-    private List<Question> questions;*/
+   @OneToMany(mappedBy = "quiz")
+    private List<Question> questions;
     private Long numero;
+    private Long seuilReussite;
+
 
     public Date getDateDebut() {
         return dateDebut;
+    }
+
+    public Long getSeuilReussite() {
+        return seuilReussite;
+    }
+
+    public void setSeuilReussite(Long seuilReussite) {
+        this.seuilReussite = seuilReussite;
     }
 
     public void setDateDebut(Date dateDebut) {

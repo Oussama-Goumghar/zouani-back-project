@@ -1,6 +1,10 @@
 package ma.learn.quiz.bean;
 
+import java.util.List;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class Question {
@@ -18,6 +22,9 @@ public class Question {
     
     @ManyToOne
     private Quiz quiz;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "question")
+    private List<Reponse> reponse;
     
     
     public String getLibelle() {
@@ -70,10 +77,7 @@ public class Question {
     public void setQuiz(Quiz quiz) {
         this.quiz = quiz;
     }
-
-    @OneToMany
-    //private Reponse reponse;
-    //private TypeDeQuestion typeDeQuestion;
+   
 
     public Long getId() {
         return id;

@@ -20,7 +20,6 @@ public class QuizEtudiant {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String ref;
 	@ManyToOne
 	private Etudiant etudiant;
 	@ManyToOne
@@ -33,13 +32,7 @@ public class QuizEtudiant {
 	@JsonFormat(pattern = "hh:mm:ss")
 	private Date dateFin;
 	private Double note;
-	
-	public String getRef() {
-		return ref;
-	}
-	public void setRef(String ref) {
-		this.ref = ref;
-	}
+	private String  resultat;
 	
 	/*public List<ReponseEtudiant> getReponseEtudiant() {
 		return reponseEtudiant;
@@ -49,6 +42,12 @@ public class QuizEtudiant {
 	}*/
 	public Long getId() {
 		return id;
+	}
+	public String getResultat() {
+		return resultat;
+	}
+	public void setResultat(String resultat) {
+		this.resultat = resultat;
 	}
 	public void setId(Long id) {
 		this.id = id;

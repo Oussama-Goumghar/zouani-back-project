@@ -17,21 +17,41 @@ public class Cours {
     private Long id;
     private String ref;
     private String libelle ;
-    private String detail ;
-    private int duree;
-
+    private String description ;
+    private int nombreContenuFinalise ;
+    private int nombreContenuEnCours ;
+    private int nombreLienFinalise ;
+    private int nombreLienEnCourse;
+    private int numeroOrder;
     @ManyToOne
     private Parcours parcours;
+    @JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
+    @OneToMany
+    private List<Section> sections;
+    
+    
+   
+
+	
 
 
-    public Cours(String ref, String libelle, String detail, int duree) {
+	public Cours(String ref, String libelle, String description, int nombreContenuFinalise, int nombreContenuEnCours,
+			int nombreLienFinalise, int nombreLienEnCourse, int numeroOrder, Parcours parcours,
+			List<Section> sections) {
 		super();
 		this.ref = ref;
 		this.libelle = libelle;
-		this.detail = detail;
-		this.duree = duree;
-		
+		this.description = description;
+		this.nombreContenuFinalise = nombreContenuFinalise;
+		this.nombreContenuEnCours = nombreContenuEnCours;
+		this.nombreLienFinalise = nombreLienFinalise;
+		this.nombreLienEnCourse = nombreLienEnCourse;
+		this.numeroOrder = numeroOrder;
+		this.parcours = parcours;
+		this.sections = sections;
 	}
+
+
 
 	public Cours() {
 		super();
@@ -48,13 +68,7 @@ public class Cours {
 		this.parcours = parcours;
 	}
 
-	public int getDuree() {
-        return duree;
-    }
-
-    public void setDuree(int duree) {
-        this.duree = duree;
-    }
+	
 
     public Long getId() {
         return id;
@@ -65,13 +79,18 @@ public class Cours {
     }
 
    
+
     public String getRef() {
 		return ref;
 	}
 
+
+
 	public void setRef(String ref) {
 		this.ref = ref;
 	}
+
+
 
 	public String getLibelle() {
         return libelle;
@@ -81,13 +100,90 @@ public class Cours {
         this.libelle = libelle;
     }
 
-    public String getDetail() {
-        return detail;
-    }
 
-    public void setDetail(String detail) {
-        this.detail = detail;
-    }
+
+	public String getDescription() {
+		return description;
+	}
+
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+	public int getNombreContenuFinalise() {
+		return nombreContenuFinalise;
+	}
+
+
+
+	public void setNombreContenuFinalise(int nombreContenuFinalise) {
+		this.nombreContenuFinalise = nombreContenuFinalise;
+	}
+
+
+
+	public int getNombreContenuEnCours() {
+		return nombreContenuEnCours;
+	}
+
+
+
+	public void setNombreContenuEnCours(int nombreContenuEnCours) {
+		this.nombreContenuEnCours = nombreContenuEnCours;
+	}
+
+
+
+	public int getNombreLienFinalise() {
+		return nombreLienFinalise;
+	}
+
+
+
+	public void setNombreLienFinalise(int nombreLienFinalise) {
+		this.nombreLienFinalise = nombreLienFinalise;
+	}
+
+
+
+	public int getNombreLienEnCourse() {
+		return nombreLienEnCourse;
+	}
+
+
+
+	public void setNombreLienEnCourse(int nombreLienEnCourse) {
+		this.nombreLienEnCourse = nombreLienEnCourse;
+	}
+
+
+
+	public int getNumeroOrder() {
+		return numeroOrder;
+	}
+
+
+
+	public void setNumeroOrder(int numeroOrder) {
+		this.numeroOrder = numeroOrder;
+	}
+
+
+
+	public List<Section> getSections() {
+		return sections;
+	}
+
+
+
+	public void setSections(List<Section> sections) {
+		this.sections = sections;
+	}
+
+   
 
     
 

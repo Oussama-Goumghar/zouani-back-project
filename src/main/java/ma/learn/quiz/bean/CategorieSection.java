@@ -1,23 +1,15 @@
 package ma.learn.quiz.bean;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.io.Serializable;
 
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Spliterator;
-import java.util.function.Consumer;
-import java.util.function.IntFunction;
-import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
-import java.util.stream.Stream;
+import org.hibernate.annotations.Entity;
+import org.springframework.data.annotation.Id;
 
 @Entity
-public class CategorieSection {
+public class CategorieSection implements Serializable{
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -25,8 +17,8 @@ public class CategorieSection {
     private String libelle;
     private int numeroOrdre;
 
-  @ManyToOne
-  private Section section;
+ /* @ManyToOne
+  private SuperCategorieSection superCategorieSection*/
 
     
    
@@ -40,16 +32,10 @@ public class CategorieSection {
 	this.ref = ref;
 	this.libelle = libelle;
 	this.numeroOrdre = numeroOrdre;
-	this.section = section;
+	
 }
 
-	public Section getSection() {
-	return section;
-}
 
-public void setSection(Section section) {
-	this.section = section;
-}
 
 	public Long getId() {
         return id;
@@ -60,7 +46,6 @@ public void setSection(Section section) {
     }
 
    
-
     public String getRef() {
 		return ref;
 	}

@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ma.learn.quiz.bean.CategorieSection;
 import ma.learn.quiz.bean.Cours;
 import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.bean.Section;
@@ -38,15 +39,22 @@ public class SectionService {
 	
 	
 
-   public Section findByRef(String ref) {
+   public List<Section> findByCategorieSectionRef(String ref) {
+		return sectionDao.findByCategorieSectionRef(ref);
+	}
+
+	public int deleteByCategorieSectionRef(String ref) {
+		return sectionDao.deleteByCategorieSectionRef(ref);
+	}
+
+public Section findByRef(String ref) {
 		return sectionDao.findByRef(ref);
 	}
 
    @Transactional
-	public int deleteByRef(String ref) {
-		int rslt2 =categorieSectionService.deleteBySectionRef(ref);
+	public int deleteByRef(String ref) {	
 		int rslt1 = sectionDao.deleteByRef(ref);
-		 return  rslt2+rslt1;
+		 return  rslt1;
 	}
 
 	 public int save(Section section) {
@@ -59,8 +67,13 @@ public class SectionService {
 	       Parcours parcours = parcoursService.findByRef(cours.getParcours().getRef());
 	       cours.setParcours(parcours);
 	       if(parcours==null) return -3;
+	       CategorieSection categorieSection=categorieSectionService.findByRef(section.getCategorieSection().getRef());
+	       section.setCategorieSection(categorieSection);
+	       if(categorieSection==null) return -4;
 		else {
+			
 			parcoursService.update(parcours);
+			categorieSectionService.update(categorieSection);
 			coursService.update(cours);
 			sectionDao.save(section);
 			return  1;

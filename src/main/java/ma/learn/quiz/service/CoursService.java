@@ -13,8 +13,7 @@ import ma.learn.quiz.dao.CoursDao;
 
 @Service
 public class CoursService {
-	@Autowired
-    private CategorieSectionService categorieSectionService;
+	
     @Autowired
     private CoursDao coursDao ;
     @Autowired
@@ -26,10 +25,10 @@ public class CoursService {
 	}
     @Transactional
 	public int deleteByRef(String ref) {
-    	int deleteByCategorieSectionRef=categorieSectionService.deleteBySectionRef(ref);
+    	
 		int deleteBySectionRef=sectionService.deleteByCoursRef(ref);
 		int deleteByRef=coursDao.deleteByRef(ref);
-		return deleteByCategorieSectionRef+deleteBySectionRef+deleteByRef;
+		return deleteBySectionRef+deleteByRef;
 	}
 	public int save(Cours cours) {
 		if(findByRef(cours.getRef())!=null) {

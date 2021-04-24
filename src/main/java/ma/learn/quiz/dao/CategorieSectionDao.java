@@ -13,8 +13,7 @@ public interface CategorieSectionDao extends JpaRepository<CategorieSection,Long
 
 	CategorieSection findByRef(String ref); 
      int deleteByRef(String ref);
-     List<CategorieSection> findBySectionRef(String ref); 
-     int deleteBySectionRef(String ref); 
+     
 }
 
 

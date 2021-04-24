@@ -13,8 +13,7 @@ import ma.learn.quiz.dao.ParcoursDao;
 
 @Service
 public class ParcoursService {
-	  @Autowired
-	    private CategorieSectionService categorieSectionService;
+	  
     @Autowired
     private ParcoursDao parcoursDao;
     @Autowired
@@ -31,11 +30,11 @@ public class ParcoursService {
 
 	@Transactional
 	public int deleteByRef(String ref) {
-		int deleteByCategorieSectionRef=categorieSectionService.deleteBySectionRef(ref);
+		
 		int deleteBySectionRef=sectionService.deleteByCoursRef(ref);
 		int deleteByCoursRef=coursService.deleteByParcoursRef(ref);
 		int deleteByRef=parcoursDao.deleteByRef(ref);
-		return deleteByCategorieSectionRef+deleteBySectionRef+deleteByCoursRef+deleteByRef;
+		return deleteBySectionRef+deleteByCoursRef+deleteByRef;
 	}
 
 	 public int save(Parcours  parcours ) {
