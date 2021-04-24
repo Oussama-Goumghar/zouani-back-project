@@ -10,7 +10,7 @@ public class Parcours {
 	  @Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    private Long id;
-	    private String code;
+	   
 	    private String libelle;
 	    private String ref;
 	    @ManyToOne
@@ -22,12 +22,7 @@ public class Parcours {
 		public void setId(Long id) {
 			this.id = id;
 		}
-		public String getCode() {
-			return code;
-		}
-		public void setCode(String code) {
-			this.code = code;
-		}
+		
 		public String getLibelle() {
 			return libelle;
 		}

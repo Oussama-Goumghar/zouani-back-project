@@ -11,10 +11,10 @@ import ma.learn.quiz.bean.Cours;
 @Repository
 public interface CoursDao extends JpaRepository<Cours, Long> {
 
-     Cours findByCode(String code);
-     int deleteByCode(String code);
-     List<Cours> findByParcoursCode(String code); 
-     int deleteByParcoursCode(String code);
+     Cours findByRef(String ref);
+     int deleteByRef(String ref);
+     List<Cours> findByParcoursRef(String ref); 
+     int deleteByParcoursRef(String ref);
 
      
 

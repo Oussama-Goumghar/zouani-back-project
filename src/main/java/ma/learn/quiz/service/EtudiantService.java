@@ -25,8 +25,8 @@ public class EtudiantService {
 
 
 
-	public List<Etudiant> findByParcoursCode(String code) {
-		return etudiantDao.findByParcoursCode(code);
+	public List<Etudiant> findByParcoursRef(String ref) {
+		return etudiantDao.findByParcoursRef(ref);
 	}
 
 	public Etudiant findByRef(String ref) {
@@ -44,7 +44,7 @@ public class EtudiantService {
 		if(findByRef(etudiant.getRef())!=null) {
 			return -1;
 		}
-		Parcours parcours=parcoursService.findByCode(etudiant.getParcours().getCode());
+		Parcours parcours=parcoursService.findByRef(etudiant.getParcours().getRef());
 		etudiant.setParcours(parcours);
 		if(parcours==null) {
 			return -3;

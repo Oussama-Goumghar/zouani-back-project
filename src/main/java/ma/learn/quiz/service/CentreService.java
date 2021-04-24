@@ -58,7 +58,7 @@ public class CentreService {
 			return -2;
 		}
 		/*
-	Parcours parcours=parcoursService.findBycode(centre.getParcours().getCode());
+	Parcours parcours=parcoursService.findByRef(centre.getParcours().getRef());
 	centre.setParcours(parcours);
 	if(parcours==null) {
 		return -2;

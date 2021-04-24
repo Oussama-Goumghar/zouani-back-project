@@ -21,7 +21,7 @@ public class CategorieSection {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String code;
+    private String ref;
     private String libelle;
     private int numeroOrdre;
 
@@ -35,9 +35,9 @@ public class CategorieSection {
 	// TODO Auto-generated constructor stub
 }
 
-	public CategorieSection(String code, String libelle, int numeroOrdre, Section section) {
+	public CategorieSection(String ref, String libelle, int numeroOrdre, Section section) {
 	super();
-	this.code = code;
+	this.ref = ref;
 	this.libelle = libelle;
 	this.numeroOrdre = numeroOrdre;
 	this.section = section;
@@ -59,15 +59,17 @@ public void setSection(Section section) {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
-    }
+   
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+    public String getRef() {
+		return ref;
+	}
 
-    public String getLibelle() {
+	public void setRef(String ref) {
+		this.ref = ref;
+	}
+
+	public String getLibelle() {
         return libelle;
     }
 

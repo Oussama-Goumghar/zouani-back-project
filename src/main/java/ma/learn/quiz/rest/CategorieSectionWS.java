@@ -28,9 +28,9 @@ public class CategorieSectionWS {
         return categorieSectionService.save(categorieSection);
     }
 
-    @GetMapping("/code/{code}")
-    public CategorieSection findByCode(@PathVariable String code) {
-        return categorieSectionService.findByCode(code);
+    @GetMapping("/ref/{ref}")
+    public CategorieSection findByRef(@PathVariable String ref) {
+        return categorieSectionService.findByRef(ref);
     }
    
 
@@ -44,9 +44,9 @@ public class CategorieSectionWS {
 		categorieSectionService.update(categorieSection);
 	}
 
-    @DeleteMapping("/code/{code}")
-	public int deleteByCode(@PathVariable String code) {
-		return categorieSectionService.deleteByCode(code);
+    @DeleteMapping("/ref/{ref}")
+	public int deleteByRef(@PathVariable String ref) {
+		return categorieSectionService.deleteByRef(ref);
 	}
    
 

@@ -27,17 +27,17 @@ public class CategorieSectionService {
     private CategorieSectionDao categorieSectionDao;
 
     public int save(CategorieSection categorieSection) {
-        if (findByCode(categorieSection.getCode()) != null) {
+        if (findByRef(categorieSection.getRef()) != null) {
             return -1;
         }
-       Section section = sectionService.findByCode(categorieSection.getSection().getCode());
+       Section section = sectionService.findByRef(categorieSection.getSection().getRef());
        categorieSection.setSection(section);
        if(section==null) return -2;
 
-       Cours cours = coursService.findByCode(section.getCours().getCode());
+       Cours cours = coursService.findByRef(section.getCours().getRef());
        section.setCours(cours);
        if(cours==null) return -3;
-       Parcours parcours = parcoursService.findByCode(cours.getParcours().getCode());
+       Parcours parcours = parcoursService.findByRef(cours.getParcours().getRef());
        cours.setParcours(parcours);
        if(parcours==null) return -4;
         else {
@@ -53,26 +53,26 @@ public class CategorieSectionService {
     public void update(CategorieSection categorieSection) {
     	categorieSectionDao.save(categorieSection);
     }
-    public CategorieSection findByCode(String code) {
-        return categorieSectionDao.findByCode(code);
+    public CategorieSection findByRef(String ref) {
+        return categorieSectionDao.findByRef(ref);
     }
 
     public List<CategorieSection> findAll() {
         return categorieSectionDao.findAll();
     }
-
-	public int deleteByCode(String code) {
-		int rsultat1=categorieSectionDao.deleteByCode(code);
+    @Transactional
+	public int deleteByRef(String ref) {
+		int rsultat1=categorieSectionDao.deleteByRef(ref);
 		return rsultat1;
 	}
 
-	public List<CategorieSection> findBySectionCode(String code) {
-		return categorieSectionDao.findBySectionCode(code);
+	public List<CategorieSection> findBySectionRef(String ref) {
+		return categorieSectionDao.findBySectionRef(ref);
 	}
 
 	@Transactional
-	public int deleteBySectionCode(String code) {
-		return categorieSectionDao.deleteBySectionCode(code);
+	public int deleteBySectionRef(String ref) {
+		return categorieSectionDao.deleteBySectionRef(ref);
 	}
 
     

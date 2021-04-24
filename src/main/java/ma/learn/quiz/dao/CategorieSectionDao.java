@@ -11,10 +11,10 @@ import ma.learn.quiz.bean.CategorieSection;
 @Repository
 public interface CategorieSectionDao extends JpaRepository<CategorieSection,Long> {
 
-	CategorieSection findByCode(String code); 
-     int deleteByCode(String code);
-     List<CategorieSection> findBySectionCode(String code); 
-     int deleteBySectionCode(String code); 
+	CategorieSection findByRef(String ref); 
+     int deleteByRef(String ref);
+     List<CategorieSection> findBySectionRef(String ref); 
+     int deleteBySectionRef(String ref); 
 }
 
 

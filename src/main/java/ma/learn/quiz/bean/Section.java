@@ -19,7 +19,7 @@ public class Section {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 
 	private long id;
-	private String code;
+	private String ref;
 	private String libelle;
 	private String detail;
 	
@@ -30,9 +30,9 @@ public class Section {
 	  private Cours cours;
 
 
-	public Section(String code, String libelle, String detail, String urlimage, String urlvideo) {
+	public Section(String ref, String libelle, String detail, String urlimage, String urlvideo) {
 		super();
-		this.code = code;
+		this.ref = ref;
 		this.libelle = libelle;
 		this.detail = detail;
 		this.urlimage = urlimage;
@@ -66,13 +66,16 @@ public class Section {
 	}
 
 
-	public String getCode() {
-		return code;
+	
+
+
+	public String getRef() {
+		return ref;
 	}
 
 
-	public void setCode(String code) {
-		this.code = code;
+	public void setRef(String ref) {
+		this.ref = ref;
 	}
 
 

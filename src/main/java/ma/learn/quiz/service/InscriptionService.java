@@ -26,7 +26,7 @@ public class InscriptionService {
 			if(findByref(inscriptionetudiant.getRef())!=null) {
 				return -1;
 			}
-			Parcours parcours=parcoursService.findByCode(inscriptionetudiant.getParcours().getCode());
+			Parcours parcours=parcoursService.findByRef(inscriptionetudiant.getParcours().getRef());
 			inscriptionetudiant.setParcours(parcours);
 			if(parcours==null) {
 				return -3;
@@ -47,8 +47,8 @@ public class InscriptionService {
 
 
 
-	public List<Inscription> findByParcoursCode(String code) {
-		return inscriptionDao.findByParcoursCode(code);
+	public List<Inscription> findByParcoursRef(String ref) {
+		return inscriptionDao.findByParcoursRef(ref);
 	}
 
 

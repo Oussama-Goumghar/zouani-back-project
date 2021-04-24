@@ -21,21 +21,21 @@ public class CoursService {
 	public SectionService sectionService;
     @Autowired
 	public ParcoursService parcoursService;
-    public Cours findByCode(String code) {
-		return coursDao.findByCode(code);
+    public Cours findByRef(String ref) {
+		return coursDao.findByRef(ref);
 	}
     @Transactional
-	public int deleteByCode(String code) {
-    	int deleteByCategorieSectionCode=categorieSectionService.deleteBySectionCode(code);
-		int deleteBySectionCode=sectionService.deleteByCoursCode(code);
-		int deleteByCode=coursDao.deleteByCode(code);
-		return deleteByCategorieSectionCode+deleteBySectionCode+deleteByCode;
+	public int deleteByRef(String ref) {
+    	int deleteByCategorieSectionRef=categorieSectionService.deleteBySectionRef(ref);
+		int deleteBySectionRef=sectionService.deleteByCoursRef(ref);
+		int deleteByRef=coursDao.deleteByRef(ref);
+		return deleteByCategorieSectionRef+deleteBySectionRef+deleteByRef;
 	}
 	public int save(Cours cours) {
-		if(findByCode(cours.getCode())!=null) {
+		if(findByRef(cours.getRef())!=null) {
 			return -1;
 		}
-		Parcours parcours = parcoursService.findByCode(cours.getParcours().getCode());
+		Parcours parcours = parcoursService.findByRef(cours.getParcours().getRef());
 	       cours.setParcours(parcours);
 	       if(parcours==null) return -2;
 		else {
@@ -53,12 +53,12 @@ public class CoursService {
 	public void delete(Cours entity) {
 		coursDao.delete(entity);
 	}
-	public List<Cours> findByParcoursCode(String code) {
-		return coursDao.findByParcoursCode(code);
+	public List<Cours> findByParcoursRef(String ref) {
+		return coursDao.findByParcoursRef(ref);
 	}
 	@Transactional
-	public int deleteByParcoursCode(String code) {
-		return coursDao.deleteByParcoursCode(code);
+	public int deleteByParcoursRef(String ref) {
+		return coursDao.deleteByParcoursRef(ref);
 	}
 	public void update(Cours cours) {
 		coursDao.save(cours);

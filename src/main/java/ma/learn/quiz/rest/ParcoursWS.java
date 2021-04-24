@@ -30,9 +30,9 @@ public class ParcoursWS {
     }
 
 
-    @GetMapping("/code/{code}")
-    public Parcours findByCode(@PathVariable String code) {
-		return parcoursService.findByCode(code);
+    @GetMapping("/ref/{ref}")
+    public Parcours findByRef(@PathVariable String ref) {
+		return parcoursService.findByRef(ref);
 	}
 
 
@@ -54,9 +54,9 @@ public class ParcoursWS {
 	}
 
 
-	@DeleteMapping("/code/{code}")
-    public int deleteByCode(@PathVariable String code) {
-        return parcoursService.deleteByCode(code);
+	@DeleteMapping("/ref/{ref}")
+    public int deleteByRef(@PathVariable String ref) {
+        return parcoursService.deleteByRef(ref);
     }
 
 }

@@ -25,9 +25,9 @@ public class SectionWS {
         return sectionservice.findAll();
     }
 
-    @DeleteMapping("/code/{code}")
-    public int deleteByCode(@PathVariable String code) {
-        return sectionservice.deleteByCode(code);
+    @DeleteMapping("/ref/{ref}")
+    public int deleteByRef(@PathVariable String ref) {
+        return sectionservice.deleteByRef(ref);
     }
 
    
@@ -38,9 +38,9 @@ public class SectionWS {
     public int save(@RequestBody Section section) {
         return sectionservice.save(section);
     }
-    @GetMapping("/code/{code}")
-    public Section findByCode(@PathVariable String code) {
-        return sectionservice.findByCode(code);
+    @GetMapping("/ref/{ref}")
+    public Section findByRef(@PathVariable String ref) {
+        return sectionservice.findByRef(ref);
     }
 
     

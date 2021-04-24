@@ -25,21 +25,21 @@ public class ParcoursService {
     private CentreService centreService;
     
 
-	public Parcours findByCode(String code) {
-		return parcoursDao.findByCode(code);
+	public Parcours findByRef(String ref) {
+		return parcoursDao.findByRef(ref);
 	}
 
 	@Transactional
-	public int deleteByCode(String code) {
-		int deleteByCategorieSectionCode=categorieSectionService.deleteBySectionCode(code);
-		int deleteBySectionCode=sectionService.deleteByCoursCode(code);
-		int deleteByCoursCode=coursService.deleteByParcoursCode(code);
-		int deleteByCode=parcoursDao.deleteByCode(code);
-		return deleteByCategorieSectionCode+deleteBySectionCode+deleteByCoursCode+deleteByCode;
+	public int deleteByRef(String ref) {
+		int deleteByCategorieSectionRef=categorieSectionService.deleteBySectionRef(ref);
+		int deleteBySectionRef=sectionService.deleteByCoursRef(ref);
+		int deleteByCoursRef=coursService.deleteByParcoursRef(ref);
+		int deleteByRef=parcoursDao.deleteByRef(ref);
+		return deleteByCategorieSectionRef+deleteBySectionRef+deleteByCoursRef+deleteByRef;
 	}
 
 	 public int save(Parcours  parcours ) {
-			if(findByCode(parcours.getCode())!=null) {
+			if(findByRef(parcours.getRef())!=null) {
 				return -1;
 			}
 			Centre centre=centreService.findByref(parcours.getCentre().getRef());
@@ -55,6 +55,14 @@ public class ParcoursService {
 		}
 
 
+
+	public List<Parcours> findByCentreRef(String ref) {
+		return parcoursDao.findByCentreRef(ref);
+	}
+
+	public int deleteByCentreRef(String Ref) {
+		return parcoursDao.deleteByCentreRef(Ref);
+	}
 
 	public List<Parcours> findAll() {
 		return parcoursDao.findAll();

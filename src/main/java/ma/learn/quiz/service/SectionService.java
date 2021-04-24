@@ -23,39 +23,40 @@ public class SectionService {
 	public SectionDao sectionDao;
 	@Autowired
 	public CoursService coursService;
-	
-	public List<Section> findByCoursCode(String code) {
-		return sectionDao.findByCoursCode(code);
-	}
-
-	@Transactional
-	public int deleteByCoursCode(String code) {
-		return sectionDao.deleteByCoursCode(code);
-	}
-
 	@Autowired
 	public CategorieSectionService categorieSectionService;
 	
+	public List<Section> findByCoursRef(String ref) {
+		return sectionDao.findByCoursRef(ref);
+	}
 
-   public Section findByCode(String code) {
-		return sectionDao.findByCode(code);
+	@Transactional
+	public int deleteByCoursRef(String ref) {
+		return sectionDao.deleteByCoursRef(ref);
+	}
+
+	
+	
+
+   public Section findByRef(String ref) {
+		return sectionDao.findByRef(ref);
 	}
 
    @Transactional
-	public int deleteByCode(String code) {
-		int rslt2 =categorieSectionService.deleteBySectionCode(code);
-		int rslt1 = sectionDao.deleteByCode(code);
+	public int deleteByRef(String ref) {
+		int rslt2 =categorieSectionService.deleteBySectionRef(ref);
+		int rslt1 = sectionDao.deleteByRef(ref);
 		 return  rslt2+rslt1;
 	}
 
 	 public int save(Section section) {
-		if (findByCode(section.getCode())!=null) {
+		if (findByRef(section.getRef())!=null) {
 			return -1;
 		}
-		Cours cours = coursService.findByCode(section.getCours().getCode());
+		Cours cours = coursService.findByRef(section.getCours().getRef());
 	       section.setCours(cours);
 	       if(cours==null) return -2;
-	       Parcours parcours = parcoursService.findByCode(cours.getParcours().getCode());
+	       Parcours parcours = parcoursService.findByRef(cours.getParcours().getRef());
 	       cours.setParcours(parcours);
 	       if(parcours==null) return -3;
 		else {
@@ -67,7 +68,7 @@ public class SectionService {
 		}
 	}
 	
-@Transactional
+
 public List<Section> findAll() {
 		return sectionDao.findAll();
 	}

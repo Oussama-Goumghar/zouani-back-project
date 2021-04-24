@@ -15,7 +15,7 @@ public class Cours {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String code;
+    private String ref;
     private String libelle ;
     private String detail ;
     private int duree;
@@ -24,9 +24,9 @@ public class Cours {
     private Parcours parcours;
 
 
-    public Cours(String code, String libelle, String detail, int duree) {
+    public Cours(String ref, String libelle, String detail, int duree) {
 		super();
-		this.code = code;
+		this.ref = ref;
 		this.libelle = libelle;
 		this.detail = detail;
 		this.duree = duree;
@@ -64,15 +64,16 @@ public class Cours {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
-    }
+   
+    public String getRef() {
+		return ref;
+	}
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+	public void setRef(String ref) {
+		this.ref = ref;
+	}
 
-    public String getLibelle() {
+	public String getLibelle() {
         return libelle;
     }
 

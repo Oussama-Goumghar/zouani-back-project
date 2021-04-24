@@ -29,14 +29,14 @@ public class CoursWS {
         return coursService.save(cours);
     }
 
-    @GetMapping("/code/{code}")
-	public Cours findByCode(@PathVariable String code) {
-		return coursService.findByCode(code);
+    @GetMapping("/ref/{ref}")
+	public Cours findByRef(@PathVariable String ref) {
+		return coursService.findByRef(ref);
 	}
 
-    @DeleteMapping("/code/{code}")
-	public int deleteByCode(@PathVariable String code) {
-		return coursService.deleteByCode(code);
+    @DeleteMapping("/ref/{ref}")
+	public int deleteByRef(@PathVariable String ref) {
+		return coursService.deleteByRef(ref);
 	}
 
     @DeleteMapping("/entity/{entity}")

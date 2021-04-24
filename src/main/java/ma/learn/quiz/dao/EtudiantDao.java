@@ -14,6 +14,6 @@ public interface EtudiantDao extends JpaRepository<Etudiant, Long> {
 	Etudiant findByRef(String ref);
 	int deleteByRef(String ref);
 	
-	    List<Etudiant> findByParcoursCode(String code);
+	    List<Etudiant> findByParcoursRef(String ref);
 
 }
