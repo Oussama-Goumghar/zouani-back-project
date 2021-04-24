@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ma.learn.quiz.bean.Etudiant;
+import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.dao.EtudiantDao;
 
 
@@ -19,6 +20,14 @@ public class EtudiantService {
 	private QuizEtudiantService quizEtudiantService;
 	@Autowired
 	private ReponseEtudiantService reponseEtudiantService;
+	@Autowired
+	private ParcoursService parcoursService;
+
+
+
+	public List<Etudiant> findByParcoursCode(String code) {
+		return etudiantDao.findByParcoursCode(code);
+	}
 
 	public Etudiant findByRef(String ref) {
 		return etudiantDao.findByRef(ref);
@@ -31,18 +40,24 @@ public class EtudiantService {
 		int reponseEtudiant = reponseEtudiantService.deleteByRef(ref);
 		return etudiant+quizEtudiant+reponseEtudiant;
 	}
-
-	public int save(Etudiant etudiant) {
-		if(findByRef(etudiant.getRef())!=null)
-		{
+	public int save(Etudiant  etudiant ) {
+		if(findByRef(etudiant.getRef())!=null) {
 			return -1;
 		}
-		else
-		{
-			etudiantDao.save(etudiant);
+		Parcours parcours=parcoursService.findByCode(etudiant.getParcours().getCode());
+		etudiant.setParcours(parcours);
+		if(parcours==null) {
+			return -3;
+		}
+		else {
+			 etudiantDao.save(etudiant);
 			return 1;
 		}
+			
 	}
+ 
+
+	
 
 	public List<Etudiant> findAll() {
 		return etudiantDao.findAll();

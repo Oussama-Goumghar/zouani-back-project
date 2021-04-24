@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ma.learn.quiz.bean.Centre;
 import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.dao.ParcoursDao;
 
@@ -20,6 +21,8 @@ public class ParcoursService {
     private CoursService coursService;
     @Autowired
     private SectionService sectionService;
+    @Autowired
+    private CentreService centreService;
     
 
 	public Parcours findByCode(String code) {
@@ -35,18 +38,21 @@ public class ParcoursService {
 		return deleteByCategorieSectionCode+deleteBySectionCode+deleteByCoursCode+deleteByCode;
 	}
 
-	public int save(Parcours parcours) {
-		if(findByCode(parcours.getCode())!=null) {
-			return -1;
+	 public int save(Parcours  parcours ) {
+			if(findByCode(parcours.getCode())!=null) {
+				return -1;
+			}
+			Centre centre=centreService.findByref(parcours.getCentre().getRef());
+			parcours.setCentre(centre);
+			if(centre==null) {
+				return -3;
+			}
+			else {
+				parcoursDao.save(parcours);
+				return 1;
+			}
+				
 		}
-		else {
-			
-			parcoursDao.save(parcours);
-			
-			return 1;
-		}
-		
-	}
 
 
 

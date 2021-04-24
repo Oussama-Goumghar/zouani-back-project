@@ -1,14 +1,10 @@
 package ma.learn.quiz.bean;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.persistence.ManyToOne;
 @Entity
 public class Parcours {
 	  @Id
@@ -17,7 +13,8 @@ public class Parcours {
 	    private String code;
 	    private String libelle;
 	    private String ref;
-	   
+	    @ManyToOne
+	    private Centre centre;
 	  
 		public Long getId() {
 			return id;
@@ -43,6 +40,12 @@ public class Parcours {
 		}
 		public void setRef(String ref) {
 			this.ref = ref;
+		}
+		public Centre getCentre() {
+			return centre;
+		}
+		public void setCentre(Centre centre) {
+			this.centre = centre;
 		}
 		
 }
