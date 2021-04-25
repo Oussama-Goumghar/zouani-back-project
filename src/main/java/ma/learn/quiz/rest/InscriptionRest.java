@@ -46,11 +46,7 @@ public class InscriptionRest {
 		return inscriptionService.findByEtudiantRef(ref);
 	}
 
-	@GetMapping("/Parcours/ref/{ref}")
-	public List<Inscription> findByParcoursRef(@PathVariable String ref) {
-		return inscriptionService.findByParcoursRef(ref);
-	}
-
+	
 	
 	
 

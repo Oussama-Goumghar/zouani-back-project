@@ -11,7 +11,8 @@ public interface InscriptionDao extends JpaRepository<Inscription,Long>  {
 	
 	int deleteByNumeroInscription(String numeroInscription);
 	
-	 List<Inscription> findByParcoursRef(String ref);
+	int deleteByEtudiantRef(String ref);
+	int deleteByEtatInscriptionRef(String ref);
 	 
 	 Inscription findByEtudiantRef(String ref);
 	 Inscription findByEtatInscriptionRef(String ref);

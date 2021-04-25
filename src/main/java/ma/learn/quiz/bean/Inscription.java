@@ -23,8 +23,7 @@ import javax.persistence.TemporalType;
 		    @Temporal (TemporalType.DATE)
 			   private Date date_fin_inscription;
 		    
-		   @ManyToOne
-		   private Parcours parcours;
+		  
 		  
 		   @OneToOne
 		   private Etudiant etudiant;
@@ -66,12 +65,7 @@ import javax.persistence.TemporalType;
 			public void setEtatInscription(EtatInscription etatInscription) {
 				this.etatInscription = etatInscription;
 			}
-			public Parcours getParcours() {
-				return parcours;
-			}
-			public void setParcours(Parcours parcours) {
-				this.parcours = parcours;
-			}
+			
 			
 			public Etudiant getEtudiant() {
 				return etudiant;
