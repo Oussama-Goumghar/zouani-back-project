@@ -14,22 +14,22 @@ public class Section implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long id ;
-	  public String ref ;
-	  public String libelle ;
-	  public String contenu ;
-	  public String urlimage ;
-	  public String urlvideo ;
-	  public String urlimage2 ;
-	  public String urlimage3 ;
-	  public String questions ;
-	  public String indicationProf ;
-	  public int nombreContenuFinalise ;
-	  public int nombreContenuEnCours ;
-	  public int nombreLienFinalise ;
-	  public int nombreLienEnCourse;
+	private Long id ;
+	private String ref ;
+	  private String libelle ;
+	  private String contenu ;
+	  private String urlimage ;
+	  private String urlvideo ;
+	  private String urlimage2 ;
+	  private String urlimage3 ;
+	  private String questions ;
+	  private String indicationProf ;
+	  private int nombreContenuFinalise ;
+	  private int nombreContenuEnCours ;
+	  private int nombreLienFinalise ;
+	  private int nombreLienEnCourse;
 	  @ManyToOne
-	  public CategorieSection categorieSection;
+	  private CategorieSection categorieSection;
 	@ManyToOne
 	  private Cours cours;
 

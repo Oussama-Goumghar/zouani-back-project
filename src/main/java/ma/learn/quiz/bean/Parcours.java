@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Entity;
 import org.springframework.data.annotation.Id;
@@ -18,9 +20,9 @@ public class Parcours implements Serializable {
     private String ref;
     private String libelle;
     private String description ;
-    //@Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     private Date datePublication ;
-   // @Temporal(TemporalType.DATE)
+   @Temporal(TemporalType.DATE)
     private Date dateCreation ;
 
     private int numeroOrder;
