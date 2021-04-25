@@ -13,35 +13,36 @@ import ma.learn.quiz.dao.CentreDao;
 
 
 
+
 @Service
 public class CentreService {
 	@Autowired
 	public CentreDao centredao;
-	
 	@Autowired
 	public InscriptionService inscriptionService;
 	@Autowired
 	public ParcoursService parcoursService;
 	@Autowired
 	public EtudiantService etudiantService;
-	
-	
-
-	
-
-	
-
-	@Transactional
-	public int deleteByref(String ref) {
-	int resultinscri=	inscriptionService.deleteByref(ref);
-		
-		int resultat1= etudiantService.deleteByRef(ref);
-		int resultat= centredao.deleteByref(ref);
-		return resultinscri+resultat+resultat1;
-	}
+	@Autowired
+	public EtatInscriptionService  etatInscriptionService;
 
 	public List<Centre> findAll() {
 		return centredao.findAll();
+	}
+	@Transactional
+	public int deleteByref(String ref) {
+		int resultatetat=   etatInscriptionService.deleteByref(ref);
+		int resultatinscription= inscriptionService.deleteBynumeroInscription(ref);
+		int resultat1= etudiantService.deleteByref(ref);
+		int resultatparcours= parcoursService.deleteByRef(ref);
+		
+		int resultatcentre= centredao.deleteByref(ref);
+
+		
+	
+	
+		return resultatetat+resultatinscription+ resultatcentre+resultatparcours+resultat1;
 	}
 
 	public Centre findByref(String ref) {
@@ -58,7 +59,7 @@ public class CentreService {
 			return -2;
 		}
 		/*
-	Parcours parcours=parcoursService.findByRef(centre.getParcours().getRef());
+	Parcours parcours=parcoursService.findBycode(centre.getParcours().getCode());
 	centre.setParcours(parcours);
 	if(parcours==null) {
 		return -2;

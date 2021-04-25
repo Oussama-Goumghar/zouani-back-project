@@ -1,39 +1,31 @@
 package ma.learn.quiz.bean;
 
-import java.sql.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.OneToOne;
 
 @Entity
-public class Temps {
+public class EtatInscription {
 	 @Id
 	   @GeneratedValue(strategy = GenerationType.AUTO)
-	 private Long id;
-	private Date date_debut;
-	private Date date_fin;
-	   private String ref;
-	
+	private Long id;
+	private String libelle;
+	private String ref;
+	//@OneToOne
+	//private Inscription inscription ;
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Date getDate_debut() {
-		return date_debut;
+	public String getLibelle() {
+		return libelle;
 	}
-	public void setDate_debut(Date date_debut) {
-		this.date_debut = date_debut;
-	}
-	public Date getDate_fin() {
-		return date_fin;
-	}
-	public void setDate_fin(Date date_fin) {
-		this.date_fin = date_fin;
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
 	}
 	public String getRef() {
 		return ref;

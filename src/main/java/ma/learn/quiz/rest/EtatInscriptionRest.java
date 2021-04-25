@@ -12,30 +12,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ma.learn.quiz.bean.Centre;
-import ma.learn.quiz.service.CentreService;
+import ma.learn.quiz.bean.EtatInscription;
+import ma.learn.quiz.service.EtatInscriptionService;
+
+
 
 @RestController
-@RequestMapping("learn/centre")
-public class CentreRest {
+@RequestMapping("learn/etatInscription")
+public class EtatInscriptionRest {
 	@Autowired
-	public CentreService centreService;
-	@PostMapping("/")
-	public int save(@RequestBody Centre centre) {
-		return centreService.save(centre);
-	}
+	public EtatInscriptionService etatInscriptionService;
 	@DeleteMapping("/ref/{ref}")
 	public int deleteByref(@PathVariable String ref) {
-		return centreService.deleteByref(ref);
+		return etatInscriptionService.deleteByref(ref);
 	}
 	@GetMapping("/")
-	public List<Centre> findAll() {
-		return centreService.findAll();
+	public List<EtatInscription> findAll() {
+		return etatInscriptionService.findAll();
 	}
 	@GetMapping("/ref/{ref}")
-	public Centre findByref(@PathVariable String ref) {
-		return centreService.findByref(ref);
+	public EtatInscription findByref(@PathVariable String ref) {
+		return etatInscriptionService.findByref(ref);
 	}
-	
-	
-
+	@PostMapping("/")
+	public int save(@RequestBody  EtatInscription etatInscription) {
+		return etatInscriptionService.save(etatInscription);
+	}
 }

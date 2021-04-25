@@ -7,6 +7,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ma.learn.quiz.bean.Centre;
+import ma.learn.quiz.bean.Etudiant;
 import ma.learn.quiz.bean.Inscription;
 import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.dao.InscriptionDao;
@@ -19,20 +21,36 @@ import ma.learn.quiz.dao.InscriptionDao;
 public class InscriptionService {
 	@Autowired
 	public InscriptionDao inscriptionDao;
+	
 	@Autowired
 	public ParcoursService parcoursService;
+	@Autowired
+	public CentreService centreService;
+	@Autowired
+	public EtudiantService etudiantService;
 	
-	 public int save(Inscription  inscriptionetudiant ) {
-			if(findByref(inscriptionetudiant.getRef())!=null) {
+	 public int save(Inscription  inscription ) {
+			if(findBynumeroInscription(inscription.getNumeroInscription())!=null) {
 				return -1;
 			}
-			Parcours parcours=parcoursService.findByRef(inscriptionetudiant.getParcours().getRef());
-			inscriptionetudiant.setParcours(parcours);
+			Parcours parcours= parcoursService.findByRef(inscription.getParcours().getRef());
+			inscription.setParcours(parcours);
 			if(parcours==null) {
 				return -3;
 			}
+			Centre centre= centreService.findByref(inscription.getCentre().getRef());
+			inscription.setCentre(centre);
+			if(centre==null) {
+				return -4;
+			}
+			Etudiant etudiant = etudiantService.findByref(inscription.getEtudiant().getRef());
+			inscription.setEtudiant (etudiant );
+			if(etudiant ==null) {
+				return -5;
+			}
+			
 			else {
-				inscriptionDao.save(inscriptionetudiant);
+				inscriptionDao.save(inscription);
 				return 1;
 			}
 				
@@ -42,6 +60,17 @@ public class InscriptionService {
 	
 	
 	
+	 public List<Inscription> findByCentreRef(String ref) {
+			return inscriptionDao.findByCentreRef(ref);
+		}
+
+
+
+
+
+		public Inscription findByEtudiantRef(String ref) {
+			return inscriptionDao.findByEtudiantRef(ref);
+		}
 
 
 
@@ -53,21 +82,11 @@ public class InscriptionService {
 
 
 
-
-
-
-
-
-
-
 	@Transactional
 	public int deleteBynumeroInscription(String numeroInscription) {
 		return inscriptionDao.deleteBynumeroInscription(numeroInscription);
 	}
-	@Transactional
-	public int deleteByref(String ref) {
-	return	 inscriptionDao.deleteByref(ref);
-	}
+	
 
 	
 
@@ -76,9 +95,6 @@ public class InscriptionService {
 		return inscriptionDao.findBynumeroInscription(numeroInscription);
 	}
 
-	public Inscription findByref(String ref) {
-		return inscriptionDao.findByref(ref);
-	}
-	
+
 
 }

@@ -1,5 +1,7 @@
 package ma.learn.quiz.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ma.learn.quiz.bean.Inscription;
 import ma.learn.quiz.service.InscriptionService;
-
 
 
 
@@ -31,20 +32,29 @@ public class InscriptionRest {
 	public int deleteBynumeroInscription(@PathVariable String numeroInscription) {
 		return inscriptionService.deleteBynumeroInscription(numeroInscription);
 	}
-	@DeleteMapping("/ref/{ref}")
-	public int deleteByref(@PathVariable String ref) {
-		return inscriptionService.deleteByref(ref);
-	}
+	
 
 	@GetMapping("/numeroInscription/{numeroInscription}")
 	public Inscription findBynumeroInscription(@PathVariable String numeroInscription) {
 		return inscriptionService.findBynumeroInscription(numeroInscription);
 	}
 
-	@GetMapping("/ref/{ref}")
-	public Inscription findByref(@PathVariable String ref) {
-		return inscriptionService.findByref(ref);
+	@GetMapping("/Centre/ref/{ref}")
+	public List<Inscription> findByCentreRef(@PathVariable String ref) {
+		return inscriptionService.findByCentreRef(ref);
 	}
+
+	@GetMapping("/Etudiant/ref/{ref}")
+	public Inscription findByEtudiantRef(@PathVariable String ref) {
+		return inscriptionService.findByEtudiantRef(ref);
+	}
+
+	@GetMapping("/Parcours/ref/{ref}")
+	public List<Inscription> findByParcoursRef(@PathVariable String ref) {
+		return inscriptionService.findByParcoursRef(ref);
+	}
+
+	
 	
 
 }

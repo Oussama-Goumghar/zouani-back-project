@@ -19,7 +19,7 @@ public class Etudiant {
 	    private String nom;
 	    private String prenom;
 	    private int age;
-	    private String email;
+	    private String login;
 	    private String ville;
 	    private String password;
 	    @ManyToOne
@@ -62,11 +62,12 @@ public class Etudiant {
 			this.ville = ville;
 		}
 		
-		public String getEmail() {
-			return email;
+		
+		public String getLogin() {
+			return login;
 		}
-		public void setEmail(String email) {
-			this.email = email;
+		public void setLogin(String login) {
+			this.login = login;
 		}
 		public String getPassword() {
 			return password;
