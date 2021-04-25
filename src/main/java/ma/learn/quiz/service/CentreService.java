@@ -31,13 +31,13 @@ public class CentreService {
 		return centredao.findAll();
 	}
 	@Transactional
-	public int deleteByref(String ref) {
-		int resultatetat=   etatInscriptionService.deleteByref(ref);
+	public int deleteByRef(String ref) {
+		int resultatetat=   etatInscriptionService.deleteByRef(ref);
 		int resultatinscription= inscriptionService.deleteBynumeroInscription(ref);
-		int resultat1= etudiantService.deleteByref(ref);
+		int resultat1= etudiantService.deleteByRef(ref);
 		int resultatparcours= parcoursService.deleteByRef(ref);
 		
-		int resultatcentre= centredao.deleteByref(ref);
+		int resultatcentre= centredao.deleteByRef(ref);
 
 		
 	
@@ -45,11 +45,11 @@ public class CentreService {
 		return resultatetat+resultatinscription+ resultatcentre+resultatparcours+resultat1;
 	}
 
-	public Centre findByref(String ref) {
-		return centredao.findByref(ref);
+	public Centre findByRef(String ref) {
+		return centredao.findByRef(ref);
 	}
 	public int save(Centre centre ) {
-		if(findByref(centre.getRef())!=null) {
+		if(findByRef(centre.getRef())!=null) {
 			return -1;
 		}
 		/*

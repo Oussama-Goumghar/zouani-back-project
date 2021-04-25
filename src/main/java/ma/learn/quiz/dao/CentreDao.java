@@ -9,7 +9,7 @@ import ma.learn.quiz.bean.Centre;
 
 
 public interface CentreDao extends JpaRepository<Centre,Long> {
-	 int deleteByref(String ref);
-		Centre findByref(String ref);
+	 int deleteByRef(String ref);
+		Centre findByRef(String ref);
 		 
 }

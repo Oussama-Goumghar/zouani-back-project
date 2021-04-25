@@ -33,15 +33,22 @@ public class QuizEtudiant {
 	private Date dateFin;
 	private Double note;
 	private String  resultat;
-	
+	private String ref;
 	/*public List<ReponseEtudiant> getReponseEtudiant() {
 		return reponseEtudiant;
 	}
 	public void setReponseEtudiant(List<ReponseEtudiant> reponseEtudiant) {
 		this.reponseEtudiant = reponseEtudiant;
 	}*/
+	
 	public Long getId() {
 		return id;
+	}
+	public String getRef() {
+		return ref;
+	}
+	public void setRef(String ref) {
+		this.ref = ref;
 	}
 	public String getResultat() {
 		return resultat;

@@ -9,6 +9,6 @@ import ma.learn.quiz.bean.EtatInscription;
 
 public interface EtatInscriptionDao  extends JpaRepository<EtatInscription,Long> {
 	
-	 int deleteByref(String ref);
-	 EtatInscription findByref(String ref);
+	 int deleteByRef(String ref);
+	 EtatInscription findByRef(String ref);
 }

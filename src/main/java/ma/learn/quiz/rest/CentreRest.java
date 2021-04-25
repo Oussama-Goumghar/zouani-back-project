@@ -24,16 +24,16 @@ public class CentreRest {
 		return centreService.save(centre);
 	}
 	@DeleteMapping("/ref/{ref}")
-	public int deleteByref(@PathVariable String ref) {
-		return centreService.deleteByref(ref);
+	public int deleteByRef(@PathVariable String ref) {
+		return centreService.deleteByRef(ref);
 	}
 	@GetMapping("/")
 	public List<Centre> findAll() {
 		return centreService.findAll();
 	}
 	@GetMapping("/ref/{ref}")
-	public Centre findByref(@PathVariable String ref) {
-		return centreService.findByref(ref);
+	public Centre findByRef(@PathVariable String ref) {
+		return centreService.findByRef(ref);
 	}
 	
 	

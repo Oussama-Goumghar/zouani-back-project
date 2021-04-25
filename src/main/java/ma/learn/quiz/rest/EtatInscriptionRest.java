@@ -23,16 +23,16 @@ public class EtatInscriptionRest {
 	@Autowired
 	public EtatInscriptionService etatInscriptionService;
 	@DeleteMapping("/ref/{ref}")
-	public int deleteByref(@PathVariable String ref) {
-		return etatInscriptionService.deleteByref(ref);
+	public int deleteByRef(@PathVariable String ref) {
+		return etatInscriptionService.deleteByRef(ref);
 	}
 	@GetMapping("/")
 	public List<EtatInscription> findAll() {
 		return etatInscriptionService.findAll();
 	}
 	@GetMapping("/ref/{ref}")
-	public EtatInscription findByref(@PathVariable String ref) {
-		return etatInscriptionService.findByref(ref);
+	public EtatInscription findByRef(@PathVariable String ref) {
+		return etatInscriptionService.findByRef(ref);
 	}
 	@PostMapping("/")
 	public int save(@RequestBody  EtatInscription etatInscription) {

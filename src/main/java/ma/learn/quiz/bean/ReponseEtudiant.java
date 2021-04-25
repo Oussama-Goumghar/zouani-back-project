@@ -18,13 +18,19 @@ public class ReponseEtudiant {
 	private Question question;
 	@ManyToOne
 	private Reponse reponse;
-
+private String ref; 
 	@ManyToOne
 	private QuizEtudiant quizEtudiant;
 	
 	private Double note;
 	
 	
+	public String getRef() {
+		return ref;
+	}
+	public void setRef(String ref) {
+		this.ref = ref;
+	}
 	public QuizEtudiant getQuizEtudiant() {
 		return quizEtudiant;
 	}

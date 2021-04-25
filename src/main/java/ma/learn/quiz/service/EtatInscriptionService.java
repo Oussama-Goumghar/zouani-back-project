@@ -27,16 +27,16 @@ public class EtatInscriptionService {
 		return etatInscriptionDao.findAll();
 	}
 	@Transactional
-	public int deleteByref(String ref) {
-		return etatInscriptionDao.deleteByref(ref);
+	public int deleteByRef(String ref) {
+		return etatInscriptionDao.deleteByRef(ref);
 	}
 
 	
-	public EtatInscription findByref(String ref) {
-		return etatInscriptionDao.findByref(ref);
+	public EtatInscription findByRef(String ref) {
+		return etatInscriptionDao.findByRef(ref);
 	}
 	public int save(EtatInscription etatInscription) {
-		if(findByref(etatInscription.getRef())!=null) {
+		if(findByRef(etatInscription.getRef())!=null) {
 			return -1;
 		}
 		else {

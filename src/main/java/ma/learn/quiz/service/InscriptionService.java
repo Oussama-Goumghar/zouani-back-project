@@ -38,12 +38,12 @@ public class InscriptionService {
 			if(parcours==null) {
 				return -3;
 			}
-			Centre centre= centreService.findByref(inscription.getCentre().getRef());
+			Centre centre= centreService.findByRef(inscription.getCentre().getRef());
 			inscription.setCentre(centre);
 			if(centre==null) {
 				return -4;
 			}
-			Etudiant etudiant = etudiantService.findByref(inscription.getEtudiant().getRef());
+			Etudiant etudiant = etudiantService.findByRef(inscription.getEtudiant().getRef());
 			inscription.setEtudiant (etudiant );
 			if(etudiant ==null) {
 				return -5;

@@ -9,10 +9,10 @@ import ma.learn.quiz.bean.Etudiant;
 
 
 public interface EtudiantDao  extends JpaRepository<Etudiant,Long>  {
-	 Etudiant findByref(String ref);
-	    Etudiant findBynom(String nom);
-	    int deleteByref(String ref);
-	    int deleteBynom(String nom);
+	 Etudiant findByRef(String ref);
+	    Etudiant findByNom(String nom);
+	    int deleteByRef(String ref);
+	    int deleteByNom(String nom);
 	    List<Etudiant> findByParcoursRef(String ref);
 
 

@@ -41,7 +41,7 @@ public class ParcoursService {
 			if(findByRef(parcours.getRef())!=null) {
 				return -1;
 			}
-			Centre centre=centreService.findByref(parcours.getCentre().getRef());
+			Centre centre=centreService.findByRef(parcours.getCentre().getRef());
 			parcours.setCentre(centre);
 			if(centre==null) {
 				return -3;

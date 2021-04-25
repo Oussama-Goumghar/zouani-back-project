@@ -31,20 +31,20 @@ public class EtudiantRest {
 		return etudiantService.save(etudiant);
 	}
 	@GetMapping("/ref/{ref}")
-	public Etudiant findByref(@PathVariable String ref) {
-		return etudiantService.findByref(ref);
+	public Etudiant findByRef(@PathVariable String ref) {
+		return etudiantService.findByRef(ref);
 	}
 	@GetMapping("/nom/{nom}")
-	public Etudiant findBynom(@PathVariable String nom) {
-		return etudiantService.findBynom(nom);
+	public Etudiant findByNom(@PathVariable String nom) {
+		return etudiantService.findByNom(nom);
 	}
 	@DeleteMapping("/ref/{ref}")
-	public int deleteByref(@PathVariable String ref) {
-		return etudiantService.deleteByref(ref);
+	public int deleteByRef(@PathVariable String ref) {
+		return etudiantService.deleteByRef(ref);
 	}
 	@DeleteMapping("/nom/{nom}")
-	public int deleteBynom(@PathVariable String nom) {
-		return etudiantService.deleteBynom(nom);
+	public int deleteByNom(@PathVariable String nom) {
+		return etudiantService.deleteByNom(nom);
 	}
 	@GetMapping("/")
 	public List<Etudiant> findAll() {

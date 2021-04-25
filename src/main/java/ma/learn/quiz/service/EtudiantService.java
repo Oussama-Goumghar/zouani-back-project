@@ -28,7 +28,7 @@ public class EtudiantService {
 		return etudiantDao.findByParcoursRef(ref);
 	}
 	 public int save(Etudiant  etudiant ) {
-			if(findByref(etudiant.getRef())!=null) {
+			if(findByRef(etudiant.getRef())!=null) {
 				return -1;
 			}
 			Parcours parcours=parcoursService.findByRef(etudiant.getParcours().getRef());
@@ -57,21 +57,21 @@ public class EtudiantService {
 	    }
 	    */
 
-	public Etudiant findByref(String ref) {
-		return etudiantDao.findByref(ref);
+	public Etudiant findByRef(String ref) {
+		return etudiantDao.findByRef(ref);
 	}
 
-	public Etudiant findBynom(String nom) {
-		return etudiantDao.findBynom(nom);
+	public Etudiant findByNom(String nom) {
+		return etudiantDao.findByNom(nom);
 	}
 	
 	@Transactional
-	public int deleteByref(String ref) {
-		return centreService.deleteByref(ref);
+	public int deleteByRef(String ref) {
+		return centreService.deleteByRef(ref);
 	}
 	@Transactional
-	public int deleteBynom(String nom) {
-		return etudiantDao.deleteBynom(nom);
+	public int deleteByNom(String nom) {
+		return etudiantDao.deleteByNom(nom);
 	}
 
 	public List<Etudiant> findAll() {
