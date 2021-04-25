@@ -15,6 +15,10 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
+
+
+
+
 @Entity
 public class Cours implements Serializable {
 
@@ -31,6 +35,7 @@ public class Cours implements Serializable {
     private int numeroOrder;
     @ManyToOne
     private Parcours parcours;
+    
     @JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy="cours")
     private List<Section> sections;
