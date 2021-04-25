@@ -25,8 +25,7 @@ import javax.persistence.TemporalType;
 		    
 		   @ManyToOne
 		   private Parcours parcours;
-		   @ManyToOne
-		   private Centre centre;
+		  
 		   @OneToOne
 		   private Etudiant etudiant;
 		   @OneToOne
@@ -73,12 +72,7 @@ import javax.persistence.TemporalType;
 			public void setParcours(Parcours parcours) {
 				this.parcours = parcours;
 			}
-			public Centre getCentre() {
-				return centre;
-			}
-			public void setCentre(Centre centre) {
-				this.centre = centre;
-			}
+			
 			public Etudiant getEtudiant() {
 				return etudiant;
 			}

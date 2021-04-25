@@ -39,10 +39,7 @@ public class InscriptionRest {
 		return inscriptionService.findByNumeroInscription(numeroInscription);
 	}
 
-	@GetMapping("/Centre/ref/{ref}")
-	public List<Inscription> findByCentreRef(@PathVariable String ref) {
-		return inscriptionService.findByCentreRef(ref);
-	}
+	
 
 	@GetMapping("/Etudiant/ref/{ref}")
 	public Inscription findByEtudiantRef(@PathVariable String ref) {

@@ -33,7 +33,7 @@ public class CategorieSectionService {
         categorieSection.setSuperCategorieSection(superCategorieSection);
 	       if(superCategorieSection==null) return -2;
         else {
-        	superCategorieSectionService.update(superCategorieSection);
+        	superCategorieSectionService.save(superCategorieSection);
             categorieSectionDao.save(categorieSection);
             return 1;
         }

@@ -61,6 +61,14 @@ public class Section implements Serializable{
 	}
 
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getContenu() {
 		return contenu;
 	}
@@ -145,10 +153,7 @@ public class Section implements Serializable{
 		this.nombreLienEnCourse = nombreLienEnCourse;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
+	
 	public CategorieSection getCategorieSection() {
 		return categorieSection;
 	}
@@ -169,19 +174,6 @@ public class Section implements Serializable{
 
 	public void setCours(Cours cours) {
 		this.cours = cours;
-	}
-
-
-	
-
-
-	public long getId() {
-		return id;
-	}
-
-
-	public void setId(long id){
-		this.id = id;
 	}
 
 

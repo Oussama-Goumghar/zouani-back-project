@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import ma.learn.quiz.bean.CategorieSection;
 import ma.learn.quiz.bean.SuperCategorieSection;
@@ -20,7 +21,7 @@ private SectionService sectionService;
 public SuperCategorieSection findByRef(String ref) {
 	return superCategorieSectionDao.findByRef(ref);
 }
-
+@Transactional
 public int deleteByRef(String ref) {
 	int r1=sectionService.deleteByCategorieSectionRef(ref);
 	int r2=categorieSectionService.deleteBySuperCategorieSectionRef(ref);

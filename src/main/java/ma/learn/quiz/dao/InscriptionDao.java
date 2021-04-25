@@ -12,7 +12,7 @@ public interface InscriptionDao extends JpaRepository<Inscription,Long>  {
 	int deleteByNumeroInscription(String numeroInscription);
 	
 	 List<Inscription> findByParcoursRef(String ref);
-	 List<Inscription> findByCentreRef(String ref);
+	 
 	 Inscription findByEtudiantRef(String ref);
 	 Inscription findByEtatInscriptionRef(String ref);
 }

@@ -38,11 +38,8 @@ public class InscriptionService {
 			if(parcours==null) {
 				return -3;
 			}
-			Centre centre= centreService.findByRef(inscription.getCentre().getRef());
-			inscription.setCentre(centre);
-			if(centre==null) {
-				return -4;
-			}
+			
+			
 			Etudiant etudiant = etudiantService.findByRef(inscription.getEtudiant().getRef());
 			inscription.setEtudiant (etudiant );
 			if(etudiant ==null) {
@@ -60,11 +57,6 @@ public class InscriptionService {
 	
 	
 	
-	 public List<Inscription> findByCentreRef(String ref) {
-			return inscriptionDao.findByCentreRef(ref);
-		}
-
-
 
 
 

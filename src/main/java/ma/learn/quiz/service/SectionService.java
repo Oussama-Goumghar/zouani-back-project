@@ -72,9 +72,9 @@ public Section findByRef(String ref) {
 	       if(categorieSection==null) return -4;
 		else {
 			
-			parcoursService.update(parcours);
-			categorieSectionService.update(categorieSection);
-			coursService.update(cours);
+			parcoursService.save(parcours);
+			categorieSectionService.save(categorieSection);
+			coursService.save(cours);
 			sectionDao.save(section);
 			return  1;
 
