@@ -17,6 +17,10 @@ public class QuizEtudiantService {
 
 	@Autowired
 	private QuizEtudiantDao quizEtudiantDao;
+	public List<QuizEtudiant> findByResultat(String resultat) {
+		return quizEtudiantDao.findByResultat(resultat);
+	}
+
 	@Autowired
 	private QuizService quizService;
 	@Autowired

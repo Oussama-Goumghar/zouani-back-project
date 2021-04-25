@@ -17,6 +17,11 @@ public class QuizEtudiantRest {
 	@Autowired
 	private QuizEtudiantService quizEtudiantService;
 
+	@GetMapping("/resultat/{resultat}")
+	public List<QuizEtudiant> findByResultat(String resultat) {
+		return quizEtudiantService.findByResultat(resultat);
+	}
+
 	@GetMapping("/ref/{ref}")
 	public QuizEtudiant findByRef(@PathVariable String ref) {
 		return quizEtudiantService.findByRef(ref);
