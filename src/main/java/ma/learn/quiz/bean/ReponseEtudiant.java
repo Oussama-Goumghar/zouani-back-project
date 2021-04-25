@@ -21,10 +21,17 @@ public class ReponseEtudiant {
 private String ref; 
 	@ManyToOne
 	private QuizEtudiant quizEtudiant;
-	
+	@ManyToOne
+	private Etudiant etudiant;
 	private Double note;
 	
 	
+	public Etudiant getEtudiant() {
+		return etudiant;
+	}
+	public void setEtudiant(Etudiant etudiant) {
+		this.etudiant = etudiant;
+	}
 	public String getRef() {
 		return ref;
 	}
