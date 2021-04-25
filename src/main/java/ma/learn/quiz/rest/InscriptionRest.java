@@ -29,14 +29,14 @@ public class InscriptionRest {
 	
 	
 	@DeleteMapping("/numeroInscription/{numeroInscription}")
-	public int deleteBynumeroInscription(@PathVariable String numeroInscription) {
-		return inscriptionService.deleteBynumeroInscription(numeroInscription);
+	public int deleteByNumeroInscription(@PathVariable String numeroInscription) {
+		return inscriptionService.deleteByNumeroInscription(numeroInscription);
 	}
 	
 
 	@GetMapping("/numeroInscription/{numeroInscription}")
-	public Inscription findBynumeroInscription(@PathVariable String numeroInscription) {
-		return inscriptionService.findBynumeroInscription(numeroInscription);
+	public Inscription findByNumeroInscription(@PathVariable String numeroInscription) {
+		return inscriptionService.findByNumeroInscription(numeroInscription);
 	}
 
 	@GetMapping("/Centre/ref/{ref}")

@@ -30,7 +30,7 @@ public class InscriptionService {
 	public EtudiantService etudiantService;
 	
 	 public int save(Inscription  inscription ) {
-			if(findBynumeroInscription(inscription.getNumeroInscription())!=null) {
+			if(findByNumeroInscription(inscription.getNumeroInscription())!=null) {
 				return -1;
 			}
 			Parcours parcours= parcoursService.findByRef(inscription.getParcours().getRef());
@@ -83,16 +83,16 @@ public class InscriptionService {
 
 
 	@Transactional
-	public int deleteBynumeroInscription(String numeroInscription) {
-		return inscriptionDao.deleteBynumeroInscription(numeroInscription);
+	public int deleteByNumeroInscription(String numeroInscription) {
+		return inscriptionDao.deleteByNumeroInscription(numeroInscription);
 	}
 	
 
 	
 
 	
-	public Inscription findBynumeroInscription(String numeroInscription) {
-		return inscriptionDao.findBynumeroInscription(numeroInscription);
+	public Inscription findByNumeroInscription(String numeroInscription) {
+		return inscriptionDao.findByNumeroInscription(numeroInscription);
 	}
 
 

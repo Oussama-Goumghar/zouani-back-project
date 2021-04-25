@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import ma.learn.quiz.bean.Inscription;
 
 public interface InscriptionDao extends JpaRepository<Inscription,Long>  {
-	Inscription findBynumeroInscription(String numeroInscription);
+	Inscription findByNumeroInscription(String numeroInscription);
 	
-	int deleteBynumeroInscription(String numeroInscription);
+	int deleteByNumeroInscription(String numeroInscription);
 	
 	 List<Inscription> findByParcoursRef(String ref);
 	 List<Inscription> findByCentreRef(String ref);
