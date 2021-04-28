@@ -46,4 +46,9 @@ public class ReponseRest {
     @Autowired
     private ReponseService reponseService;
 
+    @GetMapping("/question/numero/{numero}")
+	public List<Reponse> findByQuestionNumero(Long numero) {
+		return reponseService.findByQuestionNumero(numero);
+	}
+
 }

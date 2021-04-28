@@ -20,7 +20,13 @@ public class ReponseService {
 
     @Autowired
     private ReponseDao reponseDao;
-    @Autowired
+    
+    
+    public List<Reponse> findByQuestionNumero(Long numero) {
+		return reponseDao.findByQuestionNumero(numero);
+	}
+
+	@Autowired
     private QuestionService questionService;
 
     public Reponse findByRef(String ref) {
@@ -56,6 +62,8 @@ public class ReponseService {
 
     }
 
+    
+    
     @Transactional
     public int deleteByQuestionRef(String ref) {
         return reponseDao.deleteByQuestionRef(ref);
