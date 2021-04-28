@@ -47,7 +47,7 @@ public class ReponseRest {
     private ReponseService reponseService;
 
     @GetMapping("/question/numero/{numero}")
-	public List<Reponse> findByQuestionNumero(Long numero) {
+	public List<Reponse> findByQuestionNumero(@PathVariable Long numero) {
 		return reponseService.findByQuestionNumero(numero);
 	}
 
