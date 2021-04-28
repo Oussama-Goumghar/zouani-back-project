@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ma.learn.quiz.bean.Cours;
+import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.service.CoursService;
 
 @RestController
@@ -23,18 +24,19 @@ public class CoursWS {
     @Autowired
     private CoursService coursService ;
 
-
     @PostMapping("/")
     public int save(@RequestBody Cours cours) {
-        return coursService.save(cours);
-    }
+		return coursService.save(cours);
+	}
 
     @GetMapping("/ref/{ref}")
 	public Cours findByRef(@PathVariable String ref) {
 		return coursService.findByRef(ref);
 	}
 
-    @DeleteMapping("/ref/{ref}")
+   
+
+	@DeleteMapping("/ref/{ref}")
 	public int deleteByRef(@PathVariable String ref) {
 		return coursService.deleteByRef(ref);
 	}
@@ -53,6 +55,16 @@ public class CoursWS {
 	@PutMapping("/")
 	public void update(@RequestBody Cours cours) {
 		coursService.update(cours);
+	}
+	
+	
+	@DeleteMapping("/parcours/ref")
+	public int deleteByParcoursRef(@PathVariable String ref) {
+		return coursService.deleteByParcoursRef(ref);
+	}
+@GetMapping("/parcours")
+	public List<Cours> findCoursByParcours(Parcours parcours) {
+		return coursService.findCoursByParcours(parcours);
 	}
 
   

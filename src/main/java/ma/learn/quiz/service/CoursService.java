@@ -38,13 +38,21 @@ public class CoursService {
 	       cours.setParcours(parcours);
 	       if(parcours==null) return -2;
 		else {
-			parcoursService.update(parcours);
 			coursDao.save(cours);
+			sectionService.save(cours, cours.getSections());
 			
 			return 1;
 		}
 		
 	}
+	public int save(Parcours parcours,List<Cours> courss) {	 
+		for(Cours cours : courss) {
+			cours.setParcours(parcours);
+			coursDao.save(cours);
+		}
+				
+			return 1;
+		}
 	public List<Cours> findAll() {
 		return coursDao.findAll();
 	}
@@ -52,9 +60,7 @@ public class CoursService {
 	public void delete(Cours entity) {
 		coursDao.delete(entity);
 	}
-	public List<Cours> findByParcoursRef(String ref) {
-		return coursDao.findByParcoursRef(ref);
-	}
+	
 	@Transactional
 	public int deleteByParcoursRef(String ref) {
 		return coursDao.deleteByParcoursRef(ref);
@@ -62,6 +68,9 @@ public class CoursService {
 	public void update(Cours cours) {
 		coursDao.save(cours);
 		
+	}
+	public List<Cours> findCoursByParcours(Parcours parcours) {
+		return coursDao.findCoursByParcours(parcours);
 	}
 	
 

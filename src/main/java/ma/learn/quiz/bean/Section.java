@@ -33,15 +33,11 @@ public class Section implements Serializable{
 	@ManyToOne
 	  private Cours cours;
 
-	public Section() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	public Section(String ref, String libelle, String contenu, String urlimage, String urlvideo, String urlimage2,
 			String urlimage3, String questions, String indicationProf, int nombreContenuFinalise,
-			int nombreContenuEnCours, int nombreLienFinalise, int nombreLienEnCourse,
-			CategorieSection categorieSection, Cours cours) {
+			int nombreContenuEnCours, int nombreLienFinalise, int nombreLienEnCourse, CategorieSection categorieSection,
+			Cours cours) {
 		super();
 		this.ref = ref;
 		this.libelle = libelle;
@@ -60,6 +56,10 @@ public class Section implements Serializable{
 		this.cours = cours;
 	}
 
+	public Section() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public Long getId() {
 		return id;
@@ -218,6 +218,31 @@ public class Section implements Serializable{
 
 	public void setUrlvideo(String urlvideo) {
 		this.urlvideo = urlvideo;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Section other = (Section) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 
 	

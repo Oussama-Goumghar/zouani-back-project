@@ -35,6 +35,7 @@ public int save(SuperCategorieSection superCategorieSection) {
     }
 	else {
 	superCategorieSectionDao.save(superCategorieSection);
+	categorieSectionService.save(superCategorieSection, superCategorieSection.getCategorieSections());
 	return 1;
 	}
 }

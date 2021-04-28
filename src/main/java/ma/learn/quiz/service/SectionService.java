@@ -27,9 +27,14 @@ public class SectionService {
 	@Autowired
 	public CategorieSectionService categorieSectionService;
 	
-	public List<Section> findByCoursRef(String ref) {
-		return sectionDao.findByCoursRef(ref);
+	
+
+	public List<Section> findByCours(Cours cours) {
+		return sectionDao.findByCours(cours);
 	}
+
+
+
 
 	@Transactional
 	public int deleteByCoursRef(String ref) {
@@ -57,6 +62,25 @@ public Section findByRef(String ref) {
 		 return  rslt1;
 	}
 
+   public int save(Cours cours,List<Section> sections) {
+		for(Section section : sections) {
+			section.setCours(cours);
+			sectionDao.save(section);
+		}
+			return  1;
+
+		}
+	
+	public int save(CategorieSection categorieSection, List<Section> sections) {
+	for(Section section : sections) {
+		section.setCategorieSection(categorieSection);
+		sectionDao.save(section);
+	}
+		return  1;
+
+	
+}
+
 	 public int save(Section section) {
 		if (findByRef(section.getRef())!=null) {
 			return -1;
@@ -71,11 +95,8 @@ public Section findByRef(String ref) {
 	       section.setCategorieSection(categorieSection);
 	       if(categorieSection==null) return -4;
 		else {
-			
-			parcoursService.save(parcours);
-			categorieSectionService.save(categorieSection);
-			coursService.save(cours);
 			sectionDao.save(section);
+			
 			return  1;
 
 		}

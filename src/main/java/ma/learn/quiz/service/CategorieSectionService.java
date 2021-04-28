@@ -10,8 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ma.learn.quiz.bean.CategorieSection;
 import ma.learn.quiz.bean.Cours;
-import ma.learn.quiz.bean.Parcours;
-import ma.learn.quiz.bean.Section;
 import ma.learn.quiz.bean.SuperCategorieSection;
 import ma.learn.quiz.dao.CategorieSectionDao;
 
@@ -25,7 +23,7 @@ public class CategorieSectionService {
     @Autowired
     private SuperCategorieSectionService superCategorieSectionService;
 
-    public int save(CategorieSection categorieSection) {
+   public int save(CategorieSection categorieSection) {
         if (findByRef(categorieSection.getRef()) != null) {
             return -1;
         }
@@ -33,8 +31,8 @@ public class CategorieSectionService {
         categorieSection.setSuperCategorieSection(superCategorieSection);
 	       if(superCategorieSection==null) return -2;
         else {
-        	superCategorieSectionService.save(superCategorieSection);
             categorieSectionDao.save(categorieSection);
+            sectionService.save(categorieSection, categorieSection.getSections());
             return 1;
         }
 
@@ -63,6 +61,14 @@ public class CategorieSectionService {
 	 @Transactional
 	public int deleteBySuperCategorieSectionRef(String ref) {
 		return categorieSectionDao.deleteBySuperCategorieSectionRef(ref);
+	}
+
+	public int save(SuperCategorieSection superCategorieSection, List<CategorieSection> categorieSections) {
+		for(CategorieSection categorieSection : categorieSections) {
+			categorieSection.setSuperCategorieSection(superCategorieSection);
+			categorieSectionDao.save(categorieSection);
+		}
+		return 1;
 	}
 
     

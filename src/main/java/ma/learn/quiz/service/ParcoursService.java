@@ -38,16 +38,18 @@ public class ParcoursService {
 	}
 
 	 public int save(Parcours  parcours ) {
-			if(findByRef(parcours.getRef())!=null) {
+		 Parcours loadedParcours = findByRef(parcours.getRef());
+			if(loadedParcours !=null) {
 				return -1;
 			}
 			Centre centre=centreService.findByRef(parcours.getCentre().getRef());
 			parcours.setCentre(centre);
 			if(centre==null) {
-				return -3;
+				return -2;
 			}
 			else {
-				parcoursDao.save(parcours);
+				parcoursDao.save(parcours);	
+				coursService.save(parcours, parcours.getCourss());
 				return 1;
 			}
 				

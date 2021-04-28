@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import ma.learn.quiz.bean.Cours;
+import ma.learn.quiz.bean.Parcours;
 
 @Repository
 public interface CoursDao extends JpaRepository<Cours, Long> {
@@ -15,7 +16,7 @@ public interface CoursDao extends JpaRepository<Cours, Long> {
      int deleteByRef(String ref);
      List<Cours> findByParcoursRef(String ref); 
      int deleteByParcoursRef(String ref);
-
+     List<Cours> findCoursByParcours(Parcours parcours);
      
 
 }
