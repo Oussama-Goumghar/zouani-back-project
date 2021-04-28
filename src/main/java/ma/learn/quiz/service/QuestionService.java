@@ -72,8 +72,7 @@ public class QuestionService {
        }
 }
     
-    //aaaaaaaaa
-    
+
     public Question findByNumero(Long numero) {
 		return questionDao.findByNumero(numero);
 	}
