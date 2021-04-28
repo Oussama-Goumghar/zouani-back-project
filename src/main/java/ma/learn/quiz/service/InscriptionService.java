@@ -1,16 +1,13 @@
 package ma.learn.quiz.service;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ma.learn.quiz.bean.Centre;
+import ma.learn.quiz.bean.EtatInscription;
 import ma.learn.quiz.bean.Etudiant;
 import ma.learn.quiz.bean.Inscription;
-import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.dao.InscriptionDao;
 
 
@@ -21,7 +18,8 @@ import ma.learn.quiz.dao.InscriptionDao;
 public class InscriptionService {
 	@Autowired
 	public InscriptionDao inscriptionDao;
-	
+	@Autowired
+	public EtatInscriptionService etatInscriptionService;
 	@Autowired
 	public ParcoursService parcoursService;
 	@Autowired
@@ -33,23 +31,22 @@ public class InscriptionService {
 			if(findByNumeroInscription(inscription.getNumeroInscription())!=null) {
 				return -1;
 			}
-			Parcours parcours= parcoursService.findByRef(inscription.getParcours().getRef());
-			inscription.setParcours(parcours);
-			if(parcours==null) {
-				return -3;
-			}
-			Centre centre= centreService.findByRef(inscription.getCentre().getRef());
-			inscription.setCentre(centre);
-			if(centre==null) {
-				return -4;
-			}
+			
+			
+			
 			Etudiant etudiant = etudiantService.findByRef(inscription.getEtudiant().getRef());
 			inscription.setEtudiant (etudiant );
 			if(etudiant ==null) {
-				return -5;
+				return -2;
 			}
-			
+			EtatInscription etatInscription = etatInscriptionService.findByRef(inscription.getEtatInscription().getRef());
+			inscription.setEtatInscription(etatInscription);
+			if(etatInscription ==null) {
+				return -2;
+			}
 			else {
+				etatInscriptionService.save(etatInscription);
+				etudiantService.save(etudiant);
 				inscriptionDao.save(inscription);
 				return 1;
 			}
@@ -60,11 +57,6 @@ public class InscriptionService {
 	
 	
 	
-	 public List<Inscription> findByCentreRef(String ref) {
-			return inscriptionDao.findByCentreRef(ref);
-		}
-
-
 
 
 
@@ -76,9 +68,28 @@ public class InscriptionService {
 
 
 
-	public List<Inscription> findByParcoursRef(String ref) {
-		return inscriptionDao.findByParcoursRef(ref);
-	}
+	
+
+
+	public int deleteByEtudiantRef(String ref) {
+			return inscriptionDao.deleteByEtudiantRef(ref);
+		}
+
+
+
+
+
+
+
+
+		public int deleteByEtatInscriptionRef(String ref) {
+			return inscriptionDao.deleteByEtatInscriptionRef(ref);
+		}
+
+
+
+
+
 
 
 

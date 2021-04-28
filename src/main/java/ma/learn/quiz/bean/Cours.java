@@ -16,9 +16,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 
-
-
-
 @Entity
 public class Cours implements Serializable {
 
@@ -36,16 +33,10 @@ public class Cours implements Serializable {
     @ManyToOne
     private Parcours parcours;
     
-    @JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
+   @JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy="cours")
     private List<Section> sections;
-    
-    
    
-
-	
-
-
 	public Cours(String ref, String libelle, String description, int nombreContenuFinalise, int nombreContenuEnCours,
 			int nombreLienFinalise, int nombreLienEnCourse, int numeroOrder, Parcours parcours,
 			List<Section> sections) {
@@ -62,14 +53,10 @@ public class Cours implements Serializable {
 		this.sections = sections;
 	}
 
-
-
 	public Cours() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	
 
 	public Parcours getParcours() {
 		return parcours;
@@ -192,6 +179,31 @@ public class Cours implements Serializable {
 
 	public void setSections(List<Section> sections) {
 		this.sections = sections;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cours other = (Cours) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 
    

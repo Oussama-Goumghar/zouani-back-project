@@ -43,9 +43,12 @@ public class SectionWS {
         return sectionservice.findByRef(ref);
     }
 
-    
+    @DeleteMapping("/cours/ref")
+	public int deleteByCoursRef(@PathVariable String ref) {
+		return sectionservice.deleteByCoursRef(ref);
+	}
 
-    @PutMapping("/")
+	@PutMapping("/")
     public void update(@RequestBody Section section) {
         sectionservice.update(section);
     }

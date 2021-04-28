@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,17 @@ public class Centre {
 	private String password;
 	private String ref;
 	
-	
+	 @JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
+	    @OneToMany(mappedBy="centre")
+	    private List<Parcours> parcourss;
 	   
 	
+	public List<Parcours> getParcourss() {
+		return parcourss;
+	}
+	public void setParcourss(List<Parcours> parcourss) {
+		this.parcourss = parcourss;
+	}
 	public String getLibelle() {
 		return libelle;
 	}

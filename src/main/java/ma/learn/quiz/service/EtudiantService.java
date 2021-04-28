@@ -37,6 +37,7 @@ public class EtudiantService {
 				return -3;
 			}
 			else {
+				parcoursService.update(parcours);
 				 etudiantDao.save(etudiant);
 				return 1;
 			}
@@ -76,6 +77,9 @@ public class EtudiantService {
 
 	public List<Etudiant> findAll() {
 		return etudiantDao.findAll();
+	}
+	public int deleteByParcoursRef(String ref) {
+		return etudiantDao.deleteByParcoursRef(ref);
 	}
 	
 

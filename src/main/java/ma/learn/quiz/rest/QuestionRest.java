@@ -43,7 +43,18 @@ public class QuestionRest {
         return questionService.deleteByQuizRef(ref);
     }
 
-    @Autowired
+    @PutMapping("/")
+    public void update(@RequestBody Question question) {
+		questionService.update(question);
+	}
+
+    @GetMapping("/numero/{numero}")
+	public Question findByNumero(@PathVariable Long numero) {
+		return questionService.findByNumero(numero);
+	}
+
+
+	@Autowired
     private QuestionService questionService;
 
 
