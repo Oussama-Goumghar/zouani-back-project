@@ -72,12 +72,13 @@ public class QuestionService {
        }
 }
     
+    //aaaaaaaaa
     
-public Question findByNumero(Long numero) {
+    public Question findByNumero(Long numero) {
 		return questionDao.findByNumero(numero);
 	}
 
-@Transactional
+    @Transactional
     public int deleteByQuizRef(String ref) {
         return questionDao.deleteByQuizRef(ref);
     }
