@@ -8,6 +8,7 @@ import ma.learn.quiz.bean.Question;
 import ma.learn.quiz.bean.Reponse;
 import ma.learn.quiz.dao.ReponseDao;
 
+import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -20,7 +21,14 @@ public class ReponseService {
 
     @Autowired
     private ReponseDao reponseDao;
-    
+
+
+	public List<Reponse> findByEtatReponse(String etatReponse) {
+		return reponseDao.findByEtatReponse(etatReponse);
+	}
+
+	@Autowired
+    private EntityManager entityManager;
     
     public List<Reponse> findByQuestionNumero(Long numero) {
 		return reponseDao.findByQuestionNumero(numero);
@@ -62,7 +70,11 @@ public class ReponseService {
 
     }
 
-    
+    public List<Reponse> findByCriterial(Long numero)
+    {
+    	String query= "Select r FROM Reponse r WHERE r.question.numero LIKE '%"+numero+"%' And r.etatReponse = 'true'";
+    	return entityManager.createQuery(query).getResultList();
+    }
     
     @Transactional
     public int deleteByQuestionRef(String ref) {
