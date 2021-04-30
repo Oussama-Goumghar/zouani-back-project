@@ -13,6 +13,7 @@ import ma.learn.quiz.bean.Cours;
 public interface CategorieSectionDao extends JpaRepository<CategorieSection,Long> {
 
 	CategorieSection findByRef(String ref); 
+	List<CategorieSection> findByLibelle(String libelle);
      int deleteByRef(String ref);
      List<Cours> findBySuperCategorieSectionRef(String ref); 
      int deleteBySuperCategorieSectionRef(String ref);

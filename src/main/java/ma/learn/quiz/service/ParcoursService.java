@@ -27,6 +27,12 @@ public class ParcoursService {
 	public Parcours findByRef(String ref) {
 		return parcoursDao.findByRef(ref);
 	}
+	
+
+	public List<Parcours> findByLibelle(String libelle) {
+		return parcoursDao.findByLibelle(libelle);
+	}
+
 
 	@Transactional
 	public int deleteByRef(String ref) {

@@ -53,6 +53,11 @@ public class ParcoursWS {
 		parcoursService.update(parcours);
 	}
 
+@GetMapping("/libelle/{libelle}")
+	public List<Parcours> findByLibelle(@PathVariable String libelle) {
+	return parcoursService.findByLibelle(libelle);
+}
+
 
 	@DeleteMapping("/ref/{ref}")
     public int deleteByRef(@PathVariable String ref) {

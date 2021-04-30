@@ -38,7 +38,11 @@ public class CategorieSectionService {
 
     }
     
-    public void update(CategorieSection categorieSection) {
+    public List<CategorieSection> findByLibelle(String libelle) {
+	return categorieSectionDao.findByLibelle(libelle);
+}
+
+	public void update(CategorieSection categorieSection) {
     	categorieSectionDao.save(categorieSection);
     }
     public CategorieSection findByRef(String ref) {

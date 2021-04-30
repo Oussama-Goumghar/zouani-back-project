@@ -48,6 +48,10 @@ public class CategorieSectionWS {
 	public int deleteByRef(@PathVariable String ref) {
 		return categorieSectionService.deleteByRef(ref);
 	}
+	@GetMapping("/libelle/{libelle}")
+	public List<CategorieSection> findByLibelle(String libelle) {
+		return categorieSectionService.findByLibelle(libelle);
+	}
    
 
 

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ma.learn.quiz.bean.CategorieSection;
+import ma.learn.quiz.bean.Cours;
 import ma.learn.quiz.bean.SuperCategorieSection;
 import ma.learn.quiz.dao.SuperCategorieSectionDao;
 @Service
@@ -18,6 +19,13 @@ private CategorieSectionService categorieSectionService;
 @Autowired
 private SectionService sectionService;
 
+
+public List<SuperCategorieSection> findByLibelle(String libelle) {
+	return superCategorieSectionDao.findByLibelle(libelle);
+}
+public List<Cours> findBySuperCategorieSectionRef(String ref) {
+	return categorieSectionService.findBySuperCategorieSectionRef(ref);
+}
 public SuperCategorieSection findByRef(String ref) {
 	return superCategorieSectionDao.findByRef(ref);
 }

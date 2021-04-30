@@ -13,7 +13,8 @@ public interface ParcoursDao extends JpaRepository<Parcours,Long> {
 
     Parcours findByRef(String ref);
     int deleteByRef(String ref);
-   
+    List<Parcours> findByLibelle(String libelle);
+
     List<Parcours> findByCentreRef(String ref);
     int deleteByCentreRef(String Ref);
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ma.learn.quiz.bean.Cours;
 import ma.learn.quiz.bean.SuperCategorieSection;
 import ma.learn.quiz.service.SuperCategorieSectionService;
 
@@ -44,7 +45,11 @@ public class SuperCategorieSectionWS {
 	public void deleteAll() {
 		superCategorieSectionService.deleteAll();
 	}
-
+	
+	@GetMapping("/libelle/{libelle}")
+public List<SuperCategorieSection> findByLibelle(@PathVariable String libelle) {
+		return superCategorieSectionService.findByLibelle(libelle);
+	}
 	
 	
 
