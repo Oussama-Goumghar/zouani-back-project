@@ -16,7 +16,12 @@ public interface ReponseDao extends JpaRepository<Reponse, Long> {
     
     List<Reponse> findByQuestionNumero(Long numero);
 
+    List<Reponse> findByEtatReponse(String etatReponse);
+    
+    
     int deleteByQuestionRef(String ref);
 
     int deleteByRef(String ref);
+    
+    
 }

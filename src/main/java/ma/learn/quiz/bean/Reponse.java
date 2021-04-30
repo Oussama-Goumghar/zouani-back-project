@@ -9,9 +9,19 @@ public class Reponse {
     private Long id;
     private String ref;
     private String lib;
-    private Long numero;
+    private String etatReponse;
     @ManyToOne
     private Question question;
+
+	public String getEtatReponse() {
+		return etatReponse;
+	}
+
+	public void setEtatReponse(String etatReponse) {
+		this.etatReponse = etatReponse;
+	}
+
+	
 
     public Long getId() {
         return id;

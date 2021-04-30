@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import ma.learn.quiz.bean.Reponse;
 import ma.learn.quiz.service.ReponseService;
+import ma.learn.quiz.vo.ReponseVo;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -46,9 +47,20 @@ public class ReponseRest {
     @Autowired
     private ReponseService reponseService;
 
-    @GetMapping("/question/numero/{numero}")
+    
+    @GetMapping("/etatReponse/{etatReponse}")
+	public List<Reponse> findByEtatReponse(@PathVariable String etatReponse) {
+		return reponseService.findByEtatReponse(etatReponse);
+	}
+    
+	@GetMapping("/question/numero/{numero}")
 	public List<Reponse> findByQuestionNumero(@PathVariable Long numero) {
 		return reponseService.findByQuestionNumero(numero);
+	}
+	
+	@GetMapping("/criteria/numero/{numero}")
+	public List<Reponse> findByCriterial(@PathVariable Long numero) {
+		return reponseService.findByCriterial(numero);
 	}
 
 }
