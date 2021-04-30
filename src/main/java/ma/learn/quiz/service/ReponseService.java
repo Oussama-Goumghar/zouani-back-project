@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import ma.learn.quiz.bean.Question;
 import ma.learn.quiz.bean.Reponse;
 import ma.learn.quiz.dao.ReponseDao;
-import ma.learn.quiz.vo.ReponseVo;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;

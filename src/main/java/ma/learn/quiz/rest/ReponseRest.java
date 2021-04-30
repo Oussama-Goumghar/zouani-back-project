@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 
 import ma.learn.quiz.bean.Reponse;
 import ma.learn.quiz.service.ReponseService;
-import ma.learn.quiz.vo.ReponseVo;
 
 import javax.transaction.Transactional;
 import java.util.List;
