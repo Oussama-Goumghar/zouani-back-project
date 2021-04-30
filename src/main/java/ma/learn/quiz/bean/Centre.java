@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Centre {
 	@Id
 	   @GeneratedValue(strategy = GenerationType.AUTO)
-	private Long Id;
+	private Long id;
 	private String libelle;
 	private String description ;
 	private String log;
@@ -59,10 +59,10 @@ public class Centre {
 		this.password = password;
 	}
 	public Long getId() {
-		return Id;
+		return id;
 	}
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 	
 	

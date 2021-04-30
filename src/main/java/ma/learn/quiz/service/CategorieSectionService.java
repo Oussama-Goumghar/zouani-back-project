@@ -28,11 +28,11 @@ public class CategorieSectionService {
             return -1;
         }
         SuperCategorieSection superCategorieSection = superCategorieSectionService.findByRef(categorieSection.getSuperCategorieSection().getRef());
-        categorieSection.setSuperCategorieSection(superCategorieSection);
+        
 	       if(superCategorieSection==null) return -2;
         else {
+        	categorieSection.setSuperCategorieSection(superCategorieSection);
             categorieSectionDao.save(categorieSection);
-            sectionService.save(categorieSection, categorieSection.getSections());
             return 1;
         }
 
@@ -63,13 +63,6 @@ public class CategorieSectionService {
 		return categorieSectionDao.deleteBySuperCategorieSectionRef(ref);
 	}
 
-	public int save(SuperCategorieSection superCategorieSection, List<CategorieSection> categorieSections) {
-		for(CategorieSection categorieSection : categorieSections) {
-			categorieSection.setSuperCategorieSection(superCategorieSection);
-			categorieSectionDao.save(categorieSection);
-		}
-		return 1;
-	}
-
+	
     
 }

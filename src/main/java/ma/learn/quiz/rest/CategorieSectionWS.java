@@ -17,7 +17,7 @@ import ma.learn.quiz.bean.CategorieSection;
 import ma.learn.quiz.service.CategorieSectionService;
 
 @RestController
-@RequestMapping("E-learning/categorieSection")
+@RequestMapping("E-learning/categoriesection")
 public class CategorieSectionWS {
 
     @Autowired

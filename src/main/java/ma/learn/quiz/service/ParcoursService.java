@@ -49,7 +49,7 @@ public class ParcoursService {
 			}
 			else {
 				parcoursDao.save(parcours);	
-				coursService.save(parcours, parcours.getCourss());
+				
 				return 1;
 			}
 				

@@ -20,7 +20,14 @@ public class CoursService {
 	public SectionService sectionService;
     @Autowired
 	public ParcoursService parcoursService;
-    public Cours findByRef(String ref) {
+    
+    public List<Cours> findByLibelle(String libelle) {
+		return coursDao.findByLibelle(libelle);
+	}
+	public List<Cours> findByParcoursRef(String ref) {
+		return coursDao.findByParcoursRef(ref);
+	}
+	public Cours findByRef(String ref) {
 		return coursDao.findByRef(ref);
 	}
     @Transactional
@@ -35,24 +42,17 @@ public class CoursService {
 			return -1;
 		}
 		Parcours parcours = parcoursService.findByRef(cours.getParcours().getRef());
-	       cours.setParcours(parcours);
+	       
 	       if(parcours==null) return -2;
 		else {
+			cours.setParcours(parcours);
 			coursDao.save(cours);
-			sectionService.save(cours, cours.getSections());
 			
 			return 1;
 		}
 		
 	}
-	public int save(Parcours parcours,List<Cours> courss) {	 
-		for(Cours cours : courss) {
-			cours.setParcours(parcours);
-			coursDao.save(cours);
-		}
-				
-			return 1;
-		}
+	
 	public List<Cours> findAll() {
 		return coursDao.findAll();
 	}

@@ -36,6 +36,20 @@ public class SectionService {
 
 
 
+	public List<Section> findByLibelle(String libelle) {
+		return sectionDao.findByLibelle(libelle);
+	}
+
+
+
+
+	public List<Section> findByCategorieSectionLibelle(String libelle) {
+		return sectionDao.findByCategorieSectionLibelle(libelle);
+	}
+
+
+
+
 	@Transactional
 	public int deleteByCoursRef(String ref) {
 		return sectionDao.deleteByCoursRef(ref);
@@ -44,7 +58,14 @@ public class SectionService {
 	
 	
 
-   public List<Section> findByCategorieSectionRef(String ref) {
+   public List<Section> findByCoursRef(String ref) {
+		return sectionDao.findByCoursRef(ref);
+	}
+
+
+
+
+public List<Section> findByCategorieSectionRef(String ref) {
 		return sectionDao.findByCategorieSectionRef(ref);
 	}
 
@@ -61,27 +82,7 @@ public Section findByRef(String ref) {
 		int rslt1 = sectionDao.deleteByRef(ref);
 		 return  rslt1;
 	}
-
-   public int save(Cours cours,List<Section> sections) {
-		for(Section section : sections) {
-			section.setCours(cours);
-			sectionDao.save(section);
-		}
-			return  1;
-
-		}
-	
-	public int save(CategorieSection categorieSection, List<Section> sections) {
-	for(Section section : sections) {
-		section.setCategorieSection(categorieSection);
-		sectionDao.save(section);
-	}
-		return  1;
-
-	
-}
-
-	 public int save(Section section) {
+ public int save(Section section) {
 		if (findByRef(section.getRef())!=null) {
 			return -1;
 		}
@@ -89,18 +90,22 @@ public Section findByRef(String ref) {
 	       section.setCours(cours);
 	       if(cours==null) return -2;
 	       Parcours parcours = parcoursService.findByRef(cours.getParcours().getRef());
-	       cours.setParcours(parcours);
+	      
 	       if(parcours==null) return -3;
 	       CategorieSection categorieSection=categorieSectionService.findByRef(section.getCategorieSection().getRef());
-	       section.setCategorieSection(categorieSection);
+	       
 	       if(categorieSection==null) return -4;
 		else {
+			cours.setParcours(parcours);
+			section.setCategorieSection(categorieSection);
 			sectionDao.save(section);
 			
 			return  1;
 
 		}
 	}
+   
+	
 	
 
 public List<Section> findAll() {

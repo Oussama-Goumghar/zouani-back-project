@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ma.learn.quiz.bean.Cours;
 import ma.learn.quiz.bean.Section;
 import ma.learn.quiz.service.SectionService;
 
@@ -43,7 +44,7 @@ public class SectionWS {
         return sectionservice.findByRef(ref);
     }
 
-    @DeleteMapping("/cours/ref")
+    @DeleteMapping("/cours/ref/{ref}")
 	public int deleteByCoursRef(@PathVariable String ref) {
 		return sectionservice.deleteByCoursRef(ref);
 	}
@@ -52,6 +53,16 @@ public class SectionWS {
     public void update(@RequestBody Section section) {
         sectionservice.update(section);
     }
+
+	@GetMapping("/cours/ref/{ref}")
+	public List<Section> findByCoursRef(@PathVariable String ref) {
+		return sectionservice.findByCoursRef(ref);
+	}
+	@GetMapping("/libelle/{libelle}")
+	public List<Section> findByLibelle(@PathVariable String libelle) {
+		return sectionservice.findByLibelle(libelle);
+	}
+	
 
     
     

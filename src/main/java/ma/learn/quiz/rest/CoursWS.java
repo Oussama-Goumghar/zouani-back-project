@@ -33,8 +33,11 @@ public class CoursWS {
 	public Cours findByRef(@PathVariable String ref) {
 		return coursService.findByRef(ref);
 	}
-
    
+    @GetMapping("/libelle/{libelle}")
+	public List<Cours> findByLibelle(@PathVariable String libelle) {
+		return coursService.findByLibelle(libelle);
+	}
 
 	@DeleteMapping("/ref/{ref}")
 	public int deleteByRef(@PathVariable String ref) {
@@ -58,14 +61,17 @@ public class CoursWS {
 	}
 	
 	
-	@DeleteMapping("/parcours/ref")
+	@DeleteMapping("/parcours/ref/{ref}")
 	public int deleteByParcoursRef(@PathVariable String ref) {
 		return coursService.deleteByParcoursRef(ref);
 	}
-@GetMapping("/parcours")
-	public List<Cours> findCoursByParcours(Parcours parcours) {
-		return coursService.findCoursByParcours(parcours);
+
+	@GetMapping("/parcours/ref/{ref}")
+	public List<Cours> findByParcoursRef(@PathVariable String ref) {
+		return coursService.findByParcoursRef(ref);
 	}
+
+	
 
   
 }

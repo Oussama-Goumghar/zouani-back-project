@@ -11,7 +11,7 @@ import ma.learn.quiz.bean.Section;
 
 @Repository
 public interface SectionDao extends JpaRepository<Section,Long>{
-	
+	List<Section> findByLibelle(String libelle);
 	 Section findByRef(String ref); 
      int deleteByRef(String ref);
      List<Section> findByCoursRef(String ref);
@@ -19,6 +19,8 @@ public interface SectionDao extends JpaRepository<Section,Long>{
      int deleteByCoursRef(String ref);
      List<Section> findByCategorieSectionRef(String ref); 
      int deleteByCategorieSectionRef(String ref);
+     List<Section> findByCategorieSectionLibelle(String libelle); 
+
 	}
  
 

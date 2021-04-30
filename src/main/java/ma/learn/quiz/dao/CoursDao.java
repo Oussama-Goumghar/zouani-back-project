@@ -11,7 +11,7 @@ import ma.learn.quiz.bean.Parcours;
 
 @Repository
 public interface CoursDao extends JpaRepository<Cours, Long> {
-
+	List<Cours> findByLibelle(String libelle);
      Cours findByRef(String ref);
      int deleteByRef(String ref);
      List<Cours> findByParcoursRef(String ref); 
