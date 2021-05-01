@@ -68,6 +68,7 @@ public class QuestionService {
            quizService.update(quiz);
            typeDeQuestionService.update(typeDeQuestion);
            questionDao.save(question);
+           reponseService.save(question , question.getReponses());
            return 1;
        }
 }

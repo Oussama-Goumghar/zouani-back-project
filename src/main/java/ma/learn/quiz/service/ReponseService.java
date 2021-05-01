@@ -80,4 +80,12 @@ public class ReponseService {
     public int deleteByQuestionRef(String ref) {
         return reponseDao.deleteByQuestionRef(ref);
     }
+
+
+	public void save(Question question, List<Reponse> reponses) {
+        for (Reponse reponse : reponses) {
+            reponse.setQuestion(question);
+            reponseDao.save(reponse);
+        }
+	}
 }

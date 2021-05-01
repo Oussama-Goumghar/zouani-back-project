@@ -24,9 +24,17 @@ public class Question {
     private Quiz quiz;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "question")
-    private List<Reponse> reponse;
+    private List<Reponse> reponses;
     
     
+    public List<Reponse> getReponses() {
+        return reponses;
+    }
+
+    public void setReponses(List<Reponse> reponses) {
+        this.reponses = reponses;
+    }
+
     public String getLibelle() {
 		return libelle;
 	}
