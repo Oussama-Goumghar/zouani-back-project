@@ -28,7 +28,7 @@ public class Cours implements Serializable {
     private int nombreContenuFinalise ;
     private int nombreContenuEnCours ;
     private int nombreLienFinalise ;
-    private int nombreLienEnCourse;
+    private int nombreLienEnCours;
     private int numeroOrder;
     @ManyToOne
     private Parcours parcours;
@@ -47,7 +47,7 @@ public class Cours implements Serializable {
 		this.nombreContenuFinalise = nombreContenuFinalise;
 		this.nombreContenuEnCours = nombreContenuEnCours;
 		this.nombreLienFinalise = nombreLienFinalise;
-		this.nombreLienEnCourse = nombreLienEnCourse;
+		this.nombreLienEnCours = nombreLienEnCours;
 		this.numeroOrder = numeroOrder;
 		this.parcours = parcours;
 		this.sections = sections;
@@ -147,14 +147,14 @@ public class Cours implements Serializable {
 
 
 
-	public int getNombreLienEnCourse() {
-		return nombreLienEnCourse;
+	public int getNombreLienEnCours() {
+		return nombreLienEnCours;
 	}
 
 
 
-	public void setNombreLienEnCourse(int nombreLienEnCourse) {
-		this.nombreLienEnCourse = nombreLienEnCourse;
+	public void setNombreLienEnCours(int nombreLienEnCours) {
+		this.nombreLienEnCours = nombreLienEnCours;
 	}
 
 

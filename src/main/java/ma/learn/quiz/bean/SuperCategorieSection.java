@@ -16,7 +16,7 @@ public class SuperCategorieSection implements Serializable{
     private Long id;
     private String ref;
     private String libelle;
-    private int numeroOrdre;
+    private int numeroOrder;
     @JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy="superCategorieSection")
     private List<CategorieSection> categorieSections;
@@ -24,12 +24,12 @@ public class SuperCategorieSection implements Serializable{
     
     
 	
-	public SuperCategorieSection(String ref, String libelle, int numeroOrdre,
+	public SuperCategorieSection(String ref, String libelle, int numeroOrder,
 			List<CategorieSection> categorieSections) {
 		super();
 		this.ref = ref;
 		this.libelle = libelle;
-		this.numeroOrdre = numeroOrdre;
+		this.numeroOrder = numeroOrder;
 		this.categorieSections = categorieSections;
 	}
 
@@ -56,11 +56,11 @@ public class SuperCategorieSection implements Serializable{
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	public int getNumeroOrdre() {
-		return numeroOrdre;
+	public int getNumeroOrder() {
+		return numeroOrder;
 	}
-	public void setNumeroOrdre(int numeroOrdre) {
-		this.numeroOrdre = numeroOrdre;
+	public void setNumeroOrder(int numeroOrder) {
+		this.numeroOrder = numeroOrder;
 	}
 
 	public List<CategorieSection> getCategorieSections() {

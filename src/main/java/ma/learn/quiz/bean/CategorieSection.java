@@ -19,7 +19,7 @@ public class CategorieSection implements Serializable{
     private Long id;
     private String ref;
     private String libelle;
-    private int numeroOrdre;
+    private int numeroOrder;
 
   @ManyToOne
   private SuperCategorieSection superCategorieSection;
@@ -54,12 +54,12 @@ public void setSections(List<Section> sections) {
 
 
 
-	public CategorieSection(String ref, String libelle, int numeroOrdre, SuperCategorieSection superCategorieSection,
+	public CategorieSection(String ref, String libelle, int numeroOrder, SuperCategorieSection superCategorieSection,
 			List<Section> sections) {
 		super();
 		this.ref = ref;
 		this.libelle = libelle;
-		this.numeroOrdre = numeroOrdre;
+		this.numeroOrder = numeroOrder;
 		this.superCategorieSection = superCategorieSection;
 		this.sections = sections;
 	}
@@ -101,12 +101,12 @@ public void setSections(List<Section> sections) {
         this.libelle = libelle;
     }
 
-    public int getNumeroOrdre() {
-        return numeroOrdre;
+    public int getNumeroOrder() {
+        return numeroOrder;
     }
 
-    public void setNumeroOrdre(int numeroOrdre) {
-        this.numeroOrdre = numeroOrdre;
+    public void setNumeroOrder(int numeroOrder) {
+        this.numeroOrder = numeroOrder;
     }
 
 

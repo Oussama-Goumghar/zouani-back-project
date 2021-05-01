@@ -27,7 +27,7 @@ public class Section implements Serializable{
 	  private int nombreContenuFinalise ;
 	  private int nombreContenuEnCours ;
 	  private int nombreLienFinalise ;
-	  private int nombreLienEnCourse;
+	  private int nombreLienEnCours;
 	  @ManyToOne
 	  private CategorieSection categorieSection;
 	@ManyToOne
@@ -51,7 +51,7 @@ public class Section implements Serializable{
 		this.nombreContenuFinalise = nombreContenuFinalise;
 		this.nombreContenuEnCours = nombreContenuEnCours;
 		this.nombreLienFinalise = nombreLienFinalise;
-		this.nombreLienEnCourse = nombreLienEnCourse;
+		this.nombreLienEnCours = nombreLienEnCours;
 		this.categorieSection = categorieSection;
 		this.cours = cours;
 	}
@@ -145,12 +145,12 @@ public class Section implements Serializable{
 		this.nombreLienFinalise = nombreLienFinalise;
 	}
 
-	public int getNombreLienEnCourse() {
-		return nombreLienEnCourse;
+	public int getNombreLienEnCours() {
+		return nombreLienEnCours;
 	}
 
-	public void setNombreLienEnCourse(int nombreLienEnCourse) {
-		this.nombreLienEnCourse = nombreLienEnCourse;
+	public void setNombreLienEnCours(int nombreLienEnCours) {
+		this.nombreLienEnCours = nombreLienEnCours;
 	}
 
 	

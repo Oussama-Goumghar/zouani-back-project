@@ -17,7 +17,7 @@ import ma.learn.quiz.bean.SuperCategorieSection;
 import ma.learn.quiz.service.SuperCategorieSectionService;
 
 @RestController
-@RequestMapping("E-learning/superCategorieSection")
+@RequestMapping("E-learning/supercategoriesection")
 public class SuperCategorieSectionWS {
 	@Autowired
 	private SuperCategorieSectionService superCategorieSectionService;

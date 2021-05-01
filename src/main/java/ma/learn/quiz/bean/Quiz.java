@@ -21,11 +21,30 @@ public class Quiz {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
    @OneToMany(mappedBy = "quiz")
     private List<Question> questions;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "quiz")
+     private List<QuizEtudiant> quizEtudiant;
     private Long numero;
     private Long seuilReussite;
 
 
-    public Date getDateDebut() {
+    public List<Question> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(List<Question> questions) {
+		this.questions = questions;
+	}
+
+	public List<QuizEtudiant> getQuizEtudiant() {
+		return quizEtudiant;
+	}
+
+	public void setQuizEtudiant(List<QuizEtudiant> quizEtudiant) {
+		this.quizEtudiant = quizEtudiant;
+	}
+
+	public Date getDateDebut() {
         return dateDebut;
     }
 

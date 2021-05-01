@@ -83,19 +83,35 @@ public Section findByRef(String ref) {
 		 return  rslt1;
 	}
  public int save(Section section) {
-		if (findByRef(section.getRef())!=null) {
-			return -1;
+	 Cours cours = coursService.findByRef(section.getCours().getRef());
+	 CategorieSection categorieSection=categorieSectionService.findByRef(section.getCategorieSection().getRef());
+		if (findByRef(section.getRef())!=null && cours!= null && categorieSection !=null) {
+			Section st = new Section();
+			st.setCategorieSection(section.getCategorieSection());
+			st.setRef(section.getRef());
+			st.setLibelle(section.getLibelle());
+			st.setContenu(section.getContenu());
+			st.setIndicationProf(section.getIndicationProf());
+			st.setUrlimage(section.getUrlimage());
+			st.setUrlimage2(section.getUrlimage2());
+			st.setUrlimage3(section.getUrlimage3());
+			st.setUrlvideo(section.getUrlvideo());
+			st.setQuestions(section.getQuestions());
+			st.setCours(section.getCours());
+			st.setNombreContenuEnCours(section.getNombreContenuEnCours());
+			st.setNombreContenuFinalise(section.getNombreContenuFinalise());
+			st.setNombreLienEnCours(section.getNombreLienEnCours());
+			st.setNombreLienFinalise(section.getNombreLienFinalise());
 		}
-		Cours cours = coursService.findByRef(section.getCours().getRef());
-	       section.setCours(cours);
+		
 	       if(cours==null) return -2;
 	       Parcours parcours = parcoursService.findByRef(cours.getParcours().getRef());
 	      
 	       if(parcours==null) return -3;
-	       CategorieSection categorieSection=categorieSectionService.findByRef(section.getCategorieSection().getRef());
 	       
 	       if(categorieSection==null) return -4;
 		else {
+			section.setCours(cours);
 			cours.setParcours(parcours);
 			section.setCategorieSection(categorieSection);
 			sectionDao.save(section);

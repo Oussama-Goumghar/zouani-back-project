@@ -31,6 +31,10 @@ public class CentreService {
 		return centredao.findAll();
 	}
 	
+	public Centre findByLibelle(String libelle) {
+		return centredao.findByLibelle(libelle);
+	}
+
 	@Transactional
 	public int deleteByRef(String ref) {
 		int resultatetat=   etatInscriptionService.deleteByRef(ref);

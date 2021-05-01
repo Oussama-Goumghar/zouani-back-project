@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -24,7 +25,9 @@ public class Etudiant {
 	    private String password;
 	    @ManyToOne
 	    private Parcours parcours;
-	   
+	    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	    @OneToMany(mappedBy = "etudiant")
+	     private List<QuizEtudiant> quizEtudiant;
 		public Long getId() {
 			return id;
 		}

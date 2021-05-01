@@ -46,7 +46,14 @@ public class ParcoursService {
 	 public int save(Parcours  parcours ) {
 		 Parcours loadedParcours = findByRef(parcours.getRef());
 			if(loadedParcours !=null) {
-				return -1;
+				Parcours par = new Parcours();
+				par.setCentre(parcours.getCentre());
+				par.setRef(parcours.getRef());
+				par.setLibelle(parcours.getLibelle());
+				par.setDateCreation(parcours.getDateCreation());
+				par.setDescription(parcours.getDescription());
+				par.setDatePublication(parcours.getDatePublication());
+				par.setCourss(parcours.getCourss());
 			}
 			Centre centre=centreService.findByRef(parcours.getCentre().getRef());
 			parcours.setCentre(centre);

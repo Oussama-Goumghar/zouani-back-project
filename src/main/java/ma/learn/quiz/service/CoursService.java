@@ -39,7 +39,17 @@ public class CoursService {
 	}
 	public int save(Cours cours) {
 		if(findByRef(cours.getRef())!=null) {
-			return -1;
+			Cours cr = new Cours();
+			cr.setParcours(cours.getParcours());
+			cr.setRef(cours.getRef());
+			cr.setLibelle(cours.getLibelle());
+			cr.setSections(cours.getSections());
+			cr.setDescription(cours.getDescription());
+			cr.setNumeroOrder(cours.getNumeroOrder());
+			cr.setNombreContenuEnCours(cours.getNombreContenuEnCours());
+			cr.setNombreContenuFinalise(cours.getNombreContenuFinalise());
+			cr.setNombreLienEnCours(cours.getNombreLienEnCours());
+			cr.setNombreLienFinalise(cours.getNombreLienFinalise());
 		}
 		Parcours parcours = parcoursService.findByRef(cours.getParcours().getRef());
 	       
