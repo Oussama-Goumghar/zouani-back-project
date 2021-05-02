@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 		 @Id
 		    @GeneratedValue(strategy = GenerationType.AUTO)
 		    private Long id ;
-		    private String numeroInscription;
+		    private int numeroInscription;
 		    @Temporal (TemporalType.DATE)
 		   private Date date_debut_inscription;
 		    @Temporal (TemporalType.DATE)
@@ -40,13 +40,14 @@ import javax.persistence.TemporalType;
 			}
 			
 			
-			public String getNumeroInscription() {
+			
+			
+			public int getNumeroInscription() {
 				return numeroInscription;
 			}
-			public void setNumeroInscription(String numeroInscription) {
+			public void setNumeroInscription(int numeroInscription) {
 				this.numeroInscription = numeroInscription;
 			}
-			
 			public Date getDate_debut_inscription() {
 				return date_debut_inscription;
 			}

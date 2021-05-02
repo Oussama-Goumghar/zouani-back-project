@@ -46,14 +46,8 @@ public class ParcoursService {
 	 public int save(Parcours  parcours ) {
 		 Parcours loadedParcours = findByRef(parcours.getRef());
 			if(loadedParcours !=null) {
-				Parcours par = new Parcours();
-				par.setCentre(parcours.getCentre());
-				par.setRef(parcours.getRef());
-				par.setLibelle(parcours.getLibelle());
-				par.setDateCreation(parcours.getDateCreation());
-				par.setDescription(parcours.getDescription());
-				par.setDatePublication(parcours.getDatePublication());
-				par.setCourss(parcours.getCourss());
+
+				return -1;
 			}
 			Centre centre=centreService.findByRef(parcours.getCentre().getRef());
 			parcours.setCentre(centre);
@@ -87,6 +81,12 @@ public class ParcoursService {
 	}
 
 	public void update(Parcours parcours) {
+		parcours.setCentre(parcours.getCentre());
+		parcours.setLibelle(parcours.getLibelle());
+		parcours.setDateCreation(parcours.getDateCreation());
+		parcours.setDescription(parcours.getDescription());
+		parcours.setDatePublication(parcours.getDatePublication());
+		parcours.setCourss(parcours.getCourss());
 		parcoursDao.save(parcours);
 		
 	}

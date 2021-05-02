@@ -39,17 +39,7 @@ public class CoursService {
 	}
 	public int save(Cours cours) {
 		if(findByRef(cours.getRef())!=null) {
-			Cours cr = new Cours();
-			cr.setParcours(cours.getParcours());
-			cr.setRef(cours.getRef());
-			cr.setLibelle(cours.getLibelle());
-			cr.setSections(cours.getSections());
-			cr.setDescription(cours.getDescription());
-			cr.setNumeroOrder(cours.getNumeroOrder());
-			cr.setNombreContenuEnCours(cours.getNombreContenuEnCours());
-			cr.setNombreContenuFinalise(cours.getNombreContenuFinalise());
-			cr.setNombreLienEnCours(cours.getNombreLienEnCours());
-			cr.setNombreLienFinalise(cours.getNombreLienFinalise());
+			return-1;
 		}
 		Parcours parcours = parcoursService.findByRef(cours.getParcours().getRef());
 	       
@@ -76,6 +66,15 @@ public class CoursService {
 		return coursDao.deleteByParcoursRef(ref);
 	}
 	public void update(Cours cours) {
+		cours.setParcours(cours.getParcours());
+		cours.setLibelle(cours.getLibelle());
+		cours.setSections(cours.getSections());
+		cours.setDescription(cours.getDescription());
+		cours.setNumeroOrder(cours.getNumeroOrder());
+		cours.setNombreContenuEnCours(cours.getNombreContenuEnCours());
+		cours.setNombreContenuFinalise(cours.getNombreContenuFinalise());
+		cours.setNombreLienEnCours(cours.getNombreLienEnCours());
+		cours.setNombreLienFinalise(cours.getNombreLienFinalise());
 		coursDao.save(cours);
 		
 	}

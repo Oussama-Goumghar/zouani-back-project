@@ -94,7 +94,7 @@ public class InscriptionService {
 
 
 	@Transactional
-	public int deleteByNumeroInscription(String numeroInscription) {
+	public int deleteByNumeroInscription(int numeroInscription) {
 		return inscriptionDao.deleteByNumeroInscription(numeroInscription);
 	}
 	
@@ -102,7 +102,7 @@ public class InscriptionService {
 	
 
 	
-	public Inscription findByNumeroInscription(String numeroInscription) {
+	public Inscription findByNumeroInscription(int numeroInscription) {
 		return inscriptionDao.findByNumeroInscription(numeroInscription);
 	}
 

@@ -83,36 +83,14 @@ public Section findByRef(String ref) {
 		 return  rslt1;
 	}
  public int save(Section section) {
-	 Cours cours = coursService.findByRef(section.getCours().getRef());
-	 CategorieSection categorieSection=categorieSectionService.findByRef(section.getCategorieSection().getRef());
-		if (findByRef(section.getRef())!=null && cours!= null && categorieSection !=null) {
-			Section st = new Section();
-			st.setCategorieSection(section.getCategorieSection());
-			st.setRef(section.getRef());
-			st.setLibelle(section.getLibelle());
-			st.setContenu(section.getContenu());
-			st.setIndicationProf(section.getIndicationProf());
-			st.setUrlimage(section.getUrlimage());
-			st.setUrlimage2(section.getUrlimage2());
-			st.setUrlimage3(section.getUrlimage3());
-			st.setUrlvideo(section.getUrlvideo());
-			st.setQuestions(section.getQuestions());
-			st.setCours(section.getCours());
-			st.setNombreContenuEnCours(section.getNombreContenuEnCours());
-			st.setNombreContenuFinalise(section.getNombreContenuFinalise());
-			st.setNombreLienEnCours(section.getNombreLienEnCours());
-			st.setNombreLienFinalise(section.getNombreLienFinalise());
+	 
+		if (findByRef(section.getRef())!=null) {
+			return -1;
 		}
-		
-	       if(cours==null) return -2;
-	       Parcours parcours = parcoursService.findByRef(cours.getParcours().getRef());
-	      
-	       if(parcours==null) return -3;
-	       
-	       if(categorieSection==null) return -4;
+		Cours cours = coursService.findByRef(section.getCours().getRef()); if(cours==null) return -2;
+	    CategorieSection categorieSection=categorieSectionService.findByRef(section.getCategorieSection().getRef()); if(categorieSection==null) return -4;
 		else {
 			section.setCours(cours);
-			cours.setParcours(parcours);
 			section.setCategorieSection(categorieSection);
 			sectionDao.save(section);
 			
@@ -129,6 +107,20 @@ public List<Section> findAll() {
 	}
 
 public void update(Section section){
+	section.setCategorieSection(section.getCategorieSection());
+	section.setLibelle(section.getLibelle());
+	section.setContenu(section.getContenu());
+	section.setIndicationProf(section.getIndicationProf());
+	section.setUrlimage(section.getUrlimage());
+	section.setUrlimage2(section.getUrlimage2());
+	section.setUrlimage3(section.getUrlimage3());
+	section.setUrlvideo(section.getUrlvideo());
+	section.setQuestions(section.getQuestions());
+	section.setCours(section.getCours());
+	section.setNombreContenuEnCours(section.getNombreContenuEnCours());
+	section.setNombreContenuFinalise(section.getNombreContenuFinalise());
+	section.setNombreLienEnCours(section.getNombreLienEnCours());
+	section.setNombreLienFinalise(section.getNombreLienFinalise());
 		sectionDao.save(section);
    }
 
