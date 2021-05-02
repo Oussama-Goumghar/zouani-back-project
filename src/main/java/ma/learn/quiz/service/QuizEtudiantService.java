@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ma.learn.quiz.bean.Cours;
 import ma.learn.quiz.bean.Etudiant;
+import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.bean.Quiz;
 import ma.learn.quiz.bean.QuizEtudiant;
 import ma.learn.quiz.dao.QuizEtudiantDao;
@@ -84,5 +86,12 @@ public class QuizEtudiantService {
 		return quizEtudiantDao.findAll();
 	}
 
+	public void update(QuizEtudiant quizEtudiant) {
+		quizEtudiant.setNote(quizEtudiant.getNote());
+		quizEtudiant.setDateFin(quizEtudiant.getDateFin());
+		quizEtudiant.setResultat(quizEtudiant.getResultat());
+		quizEtudiantDao.save(quizEtudiant);
+		
+	}
 	
 }

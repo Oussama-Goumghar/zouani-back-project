@@ -54,5 +54,11 @@ public class QuizEtudiantRest {
 		return quizEtudiantService.findAll();
 	}
 
+	@PutMapping("/")
+	public void update(@RequestBody QuizEtudiant quizEtudiant) {
+		quizEtudiantService.update(quizEtudiant);
+	}
+
+	
 
 }
