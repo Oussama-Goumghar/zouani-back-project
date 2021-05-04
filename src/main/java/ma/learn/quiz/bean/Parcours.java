@@ -31,6 +31,7 @@ public class Parcours implements Serializable {
    @Temporal(TemporalType.DATE)
     private Date dateCreation ;
     private int numeroOrder;
+    private int nombreCours;
     @JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy="parcours")
     private List<Cours> courss;
@@ -47,8 +48,9 @@ public class Parcours implements Serializable {
 
 	
 
+
 	public Parcours(String ref, String libelle, String description, Date datePublication, Date dateCreation,
-			int numeroOrder, List<Cours> courss, Centre centre, List<Etudiant> etudiant) {
+			int numeroOrder, int nombreCours, List<Cours> courss, Centre centre, List<Etudiant> etudiant) {
 		super();
 		this.ref = ref;
 		this.libelle = libelle;
@@ -56,9 +58,18 @@ public class Parcours implements Serializable {
 		this.datePublication = datePublication;
 		this.dateCreation = dateCreation;
 		this.numeroOrder = numeroOrder;
+		this.nombreCours = nombreCours;
 		this.courss = courss;
 		this.centre = centre;
 		this.etudiant = etudiant;
+	}
+
+	public int getNombreCours() {
+		return nombreCours;
+	}
+
+	public void setNombreCours(int nombreCours) {
+		this.nombreCours = nombreCours;
 	}
 
 	public List<Etudiant> getEtudiant() {

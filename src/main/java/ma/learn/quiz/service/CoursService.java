@@ -7,13 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ma.learn.quiz.bean.CategorieSection;
 import ma.learn.quiz.bean.Cours;
 import ma.learn.quiz.bean.Parcours;
+import ma.learn.quiz.bean.Section;
 import ma.learn.quiz.dao.CoursDao;
 
 @Service
 public class CoursService {
-	
+	int i;
+	@Autowired
+	public CategorieSectionService categorieSectionService;
     @Autowired
     private CoursDao coursDao ;
     @Autowired
@@ -37,22 +41,26 @@ public class CoursService {
 		int deleteByRef=coursDao.deleteByRef(ref);
 		return deleteBySectionRef+deleteByRef;
 	}
-	public int save(Cours cours) {
-		if(findByRef(cours.getRef())!=null) {
-			return-1;
+    public int init (Cours cours) {
+		List<CategorieSection> categorieSectionList = categorieSectionService.findAll();
+		for(CategorieSection categorieSection: categorieSectionList) {
+			Section section = new Section();
+			section.setCours(cours);
+			section.setRef("sect"+categorieSection.getRef());
+			section.setCategorieSection(categorieSection);
+			sectionService.save(section);
 		}
-		Parcours parcours = parcoursService.findByRef(cours.getParcours().getRef());
-	       
-	       if(parcours==null) return -2;
-		else {
-			cours.setParcours(parcours);
-			coursDao.save(cours);
-			
-			return 1;
+		return 1;
+	}
+	public void save(Parcours parcours, List<Cours> courss) {
+		for (Cours cours:courss) {
+			for(i=0;i<parcours.getNombreCours();i++) {
+				cours.setRef("ref"+Integer.toString(i));
+				coursDao.save(cours);
+			}
 		}
 		
 	}
-	
 	public List<Cours> findAll() {
 		return coursDao.findAll();
 	}

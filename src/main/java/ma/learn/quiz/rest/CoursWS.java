@@ -25,8 +25,8 @@ public class CoursWS {
     private CoursService coursService ;
 
     @PostMapping("/")
-    public int save(@RequestBody Cours cours) {
-		return coursService.save(cours);
+    public int init(@RequestBody Cours cours) {
+		return coursService.init(cours);
 	}
 
     @GetMapping("/ref/{ref}")
