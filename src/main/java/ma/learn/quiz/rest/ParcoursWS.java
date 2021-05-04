@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ma.learn.quiz.bean.Cours;
 import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.service.ParcoursService;
 
@@ -30,23 +31,24 @@ public class ParcoursWS {
     }
 
 
-    @GetMapping("/ref/{ref}")
-    public Parcours findByRef(@PathVariable String ref) {
-		return parcoursService.findByRef(ref);
+    @GetMapping("/code/{code}")
+    public Parcours findByCode(@PathVariable String code) {
+		return parcoursService.findByCode(code);
 	}
 
 
-    @PostMapping("/")
-	public int save(@RequestBody Parcours parcours) {
-		return parcoursService.save(parcours);
-	}
-
+    
+	
 
 	@DeleteMapping("/entity/{entity}")
 	public void delete(@PathVariable Parcours entity) {
 		parcoursService.delete(entity);
 	}
 
+@PostMapping("/")
+public void save(@RequestBody Parcours parcours) {
+		parcoursService.save(parcours);
+	}
 
 @PutMapping("/")
 	public void update(@RequestBody Parcours parcours) {
@@ -59,9 +61,9 @@ public class ParcoursWS {
 }
 
 
-	@DeleteMapping("/ref/{ref}")
-    public int deleteByRef(@PathVariable String ref) {
-        return parcoursService.deleteByRef(ref);
+	@DeleteMapping("/code/{code}")
+    public int deleteByCode(@PathVariable String code) {
+        return parcoursService.deleteByCode(code);
     }
 
 }

@@ -11,8 +11,8 @@ import ma.learn.quiz.bean.Parcours;
 @Repository
 public interface ParcoursDao extends JpaRepository<Parcours,Long> {
 
-    Parcours findByRef(String ref);
-    int deleteByRef(String ref);
+    Parcours findByCode(String code);
+    int deleteByCode(String code);
     List<Parcours> findByLibelle(String libelle);
     List<Parcours> findByCentreRef(String ref);
     int deleteByCentreRef(String Ref);

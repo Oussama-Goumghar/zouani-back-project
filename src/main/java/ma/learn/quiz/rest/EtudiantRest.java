@@ -23,8 +23,8 @@ public class EtudiantRest {
 	public EtudiantService  etudiantService;
 	
 	@GetMapping("/parcours/code/{code}")
-	public List<Etudiant> findByParcoursRef(@PathVariable String ref) {
-		return etudiantService.findByParcoursRef(ref);
+	public List<Etudiant> findByParcoursCode(@PathVariable String code) {
+		return etudiantService.findByParcoursCode(code);
 	}
 	@PostMapping("/")
 	public int save(@RequestBody Etudiant etudiant) {

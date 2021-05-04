@@ -12,13 +12,13 @@ import ma.learn.quiz.bean.Section;
 @Repository
 public interface SectionDao extends JpaRepository<Section,Long>{
 	List<Section> findByLibelle(String libelle);
-	 Section findByRef(String ref); 
-     int deleteByRef(String ref);
-     List<Section> findByCoursRef(String ref);
+	 Section findByCode(String code); 
+     int deleteByCode(String code);
+     List<Section> findByCoursCode(String code);
      List<Section> findByCours(Cours cours);
-     int deleteByCoursRef(String ref);
-     List<Section> findByCategorieSectionRef(String ref); 
-     int deleteByCategorieSectionRef(String ref);
+     int deleteByCoursCode(String code);
+     List<Section> findByCategorieSectionCode(String code); 
+     int deleteByCategorieSectionCode(String code);
      List<Section> findByCategorieSectionLibelle(String libelle); 
 
 	}

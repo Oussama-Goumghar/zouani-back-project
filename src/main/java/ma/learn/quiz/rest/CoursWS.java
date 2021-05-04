@@ -23,15 +23,16 @@ public class CoursWS {
 
     @Autowired
     private CoursService coursService ;
+    
 
     @PostMapping("/")
     public int init(@RequestBody Cours cours) {
 		return coursService.init(cours);
 	}
 
-    @GetMapping("/ref/{ref}")
-	public Cours findByRef(@PathVariable String ref) {
-		return coursService.findByRef(ref);
+    @GetMapping("/code/{code}")
+	public Cours findByCode(@PathVariable String code) {
+		return coursService.findByCode(code);
 	}
    
     @GetMapping("/libelle/{libelle}")
@@ -39,9 +40,9 @@ public class CoursWS {
 		return coursService.findByLibelle(libelle);
 	}
 
-	@DeleteMapping("/ref/{ref}")
-	public int deleteByRef(@PathVariable String ref) {
-		return coursService.deleteByRef(ref);
+	@DeleteMapping("/code/{code}")
+	public int deleteByCode(@PathVariable String code) {
+		return coursService.deleteByCode(code);
 	}
 
     @DeleteMapping("/entity/{entity}")
@@ -61,14 +62,14 @@ public class CoursWS {
 	}
 	
 	
-	@DeleteMapping("/parcours/ref/{ref}")
-	public int deleteByParcoursRef(@PathVariable String ref) {
-		return coursService.deleteByParcoursRef(ref);
+	@DeleteMapping("/parcours/code/{code}")
+	public int deleteByParcoursCode(@PathVariable String code) {
+		return coursService.deleteByParcoursCode(code);
 	}
 
-	@GetMapping("/parcours/ref/{ref}")
-	public List<Cours> findByParcoursRef(@PathVariable String ref) {
-		return coursService.findByParcoursRef(ref);
+	@GetMapping("/parcours/code/{code}")
+	public List<Cours> findByParcoursCode(@PathVariable String code) {
+		return coursService.findByParcoursCode(code);
 	}
 
 	

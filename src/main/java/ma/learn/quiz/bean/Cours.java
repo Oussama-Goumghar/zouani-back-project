@@ -19,39 +19,44 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 public class Cours implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String ref;
-    private String libelle ;
-    private String description ;
-    private int nombreContenuFinalise ;
-    private int nombreContenuEnCours ;
-    private int nombreLienFinalise ;
-    private int nombreLienEnCours;
-    private int numeroOrder;
-    @ManyToOne
-    private Parcours parcours;
-    
-   @JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy="cours")
-    private List<Section> sections;
+	   @Id
+	    @GeneratedValue(strategy = GenerationType.AUTO)
+	    private Long id;
+
+	    private String description;
+	    private String image;
+	    private String libelle;
+	    private String code;
+
+	    @ManyToOne
+	    private Parcours parcours;
+	    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	    @OneToMany(mappedBy = "cours")
+	    private List<Section> sections;
+	    private int nombreSectionFinalise;
+	    private int nombreSectionEnCours;
+	    private int nombreLinkEnCours;
+	    private int nombreLinkFinalise;
+
+	    private int numeroOrder;
    
-	public Cours(String ref, String libelle, String description, int nombreContenuFinalise, int nombreContenuEnCours,
-			int nombreLienFinalise, int nombreLienEnCourse, int numeroOrder, Parcours parcours,
-			List<Section> sections) {
-		super();
-		this.ref = ref;
-		this.libelle = libelle;
-		this.description = description;
-		this.nombreContenuFinalise = nombreContenuFinalise;
-		this.nombreContenuEnCours = nombreContenuEnCours;
-		this.nombreLienFinalise = nombreLienFinalise;
-		this.nombreLienEnCours = nombreLienEnCours;
-		this.numeroOrder = numeroOrder;
-		this.parcours = parcours;
-		this.sections = sections;
-	}
+	
+	public Cours(String description, String image, String libelle, String code, Parcours parcours,
+				List<Section> sections, int nombreSectionFinalise, int nombreSectionEnCours, int nombreLinkEnCours,
+				int nombreLinkFinalise, int numeroOrder) {
+			super();
+			this.description = description;
+			this.image = image;
+			this.libelle = libelle;
+			this.code = code;
+			this.parcours = parcours;
+			this.sections = sections;
+			this.nombreSectionFinalise = nombreSectionFinalise;
+			this.nombreSectionEnCours = nombreSectionEnCours;
+			this.nombreLinkEnCours = nombreLinkEnCours;
+			this.nombreLinkFinalise = nombreLinkFinalise;
+			this.numeroOrder = numeroOrder;
+		}
 
 	public Cours() {
 		super();
@@ -77,19 +82,6 @@ public class Cours implements Serializable {
     }
 
    
-
-    public String getRef() {
-		return ref;
-	}
-
-
-
-	public void setRef(String ref) {
-		this.ref = ref;
-	}
-
-
-
 	public String getLibelle() {
         return libelle;
     }
@@ -111,53 +103,54 @@ public class Cours implements Serializable {
 	}
 
 
-	public int getNombreContenuFinalise() {
-		return nombreContenuFinalise;
+	
+	public String getImage() {
+		return image;
 	}
 
-
-
-	public void setNombreContenuFinalise(int nombreContenuFinalise) {
-		this.nombreContenuFinalise = nombreContenuFinalise;
+	public void setImage(String image) {
+		this.image = image;
 	}
 
-
-
-	public int getNombreContenuEnCours() {
-		return nombreContenuEnCours;
+	public String getCode() {
+		return code;
 	}
 
-
-
-	public void setNombreContenuEnCours(int nombreContenuEnCours) {
-		this.nombreContenuEnCours = nombreContenuEnCours;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
-
-
-	public int getNombreLienFinalise() {
-		return nombreLienFinalise;
+	public int getNombreSectionFinalise() {
+		return nombreSectionFinalise;
 	}
 
-
-
-	public void setNombreLienFinalise(int nombreLienFinalise) {
-		this.nombreLienFinalise = nombreLienFinalise;
+	public void setNombreSectionFinalise(int nombreSectionFinalise) {
+		this.nombreSectionFinalise = nombreSectionFinalise;
 	}
 
-
-
-	public int getNombreLienEnCours() {
-		return nombreLienEnCours;
+	public int getNombreSectionEnCours() {
+		return nombreSectionEnCours;
 	}
 
-
-
-	public void setNombreLienEnCours(int nombreLienEnCours) {
-		this.nombreLienEnCours = nombreLienEnCours;
+	public void setNombreSectionEnCours(int nombreSectionEnCours) {
+		this.nombreSectionEnCours = nombreSectionEnCours;
 	}
 
+	public int getNombreLinkEnCours() {
+		return nombreLinkEnCours;
+	}
 
+	public void setNombreLinkEnCours(int nombreLinkEnCours) {
+		this.nombreLinkEnCours = nombreLinkEnCours;
+	}
+
+	public int getNombreLinkFinalise() {
+		return nombreLinkFinalise;
+	}
+
+	public void setNombreLinkFinalise(int nombreLinkFinalise) {
+		this.nombreLinkFinalise = nombreLinkFinalise;
+	}
 
 	public int getNumeroOrder() {
 		return numeroOrder;

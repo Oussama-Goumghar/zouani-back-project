@@ -26,9 +26,9 @@ public class SectionWS {
         return sectionservice.findAll();
     }
 
-    @DeleteMapping("/ref/{ref}")
-    public int deleteByRef(@PathVariable String ref) {
-        return sectionservice.deleteByRef(ref);
+    @DeleteMapping("/code/{code}")
+    public int deleteByCode(@PathVariable String code) {
+        return sectionservice.deleteByCode(code);
     }
 
    
@@ -39,14 +39,14 @@ public class SectionWS {
     public int save(@RequestBody Section section) {
         return sectionservice.save(section);
     }
-    @GetMapping("/ref/{ref}")
-    public Section findByRef(@PathVariable String ref) {
-        return sectionservice.findByRef(ref);
+    @GetMapping("/code/{code}")
+    public Section findByCode(@PathVariable String code) {
+        return sectionservice.findByCode(code);
     }
 
-    @DeleteMapping("/cours/ref/{ref}")
-	public int deleteByCoursRef(@PathVariable String ref) {
-		return sectionservice.deleteByCoursRef(ref);
+    @DeleteMapping("/cours/code/{code}")
+	public int deleteByCoursCode(@PathVariable String code) {
+		return sectionservice.deleteByCoursCode(code);
 	}
 
 	@PutMapping("/")
@@ -54,9 +54,9 @@ public class SectionWS {
         sectionservice.update(section);
     }
 
-	@GetMapping("/cours/ref/{ref}")
-	public List<Section> findByCoursRef(@PathVariable String ref) {
-		return sectionservice.findByCoursRef(ref);
+	@GetMapping("/cours/code/{code}")
+	public List<Section> findByCoursCode(@PathVariable String code) {
+		return sectionservice.findByCoursCode(code);
 	}
 	@GetMapping("/libelle/{libelle}")
 	public List<Section> findByLibelle(@PathVariable String libelle) {

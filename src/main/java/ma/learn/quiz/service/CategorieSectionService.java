@@ -24,10 +24,10 @@ public class CategorieSectionService {
     private SuperCategorieSectionService superCategorieSectionService;
 
    public int save(CategorieSection categorieSection) {
-        if (findByRef(categorieSection.getRef()) != null) {
+        if (findByCode(categorieSection.getCode()) != null) {
             return -1;
         }
-        SuperCategorieSection superCategorieSection = superCategorieSectionService.findByRef(categorieSection.getSuperCategorieSection().getRef());
+        SuperCategorieSection superCategorieSection = superCategorieSectionService.findByCode(categorieSection.getSuperCategorieSection().getCode());
         
 	       if(superCategorieSection==null) return -2;
         else {
@@ -45,26 +45,26 @@ public class CategorieSectionService {
 	public void update(CategorieSection categorieSection) {
     	categorieSectionDao.save(categorieSection);
     }
-    public CategorieSection findByRef(String ref) {
-        return categorieSectionDao.findByRef(ref);
+    public CategorieSection findByCode(String code) {
+        return categorieSectionDao.findByCode(code);
     }
 
     public List<CategorieSection> findAll() {
         return categorieSectionDao.findAll();
     }
     @Transactional
-	public int deleteByRef(String ref) {
-    	int R1=sectionService.deleteByCategorieSectionRef(ref);
-		int rsultat1=categorieSectionDao.deleteByRef(ref);
+	public int deleteByCode(String code) {
+    	int R1=sectionService.deleteByCategorieSectionCode(code);
+		int rsultat1=categorieSectionDao.deleteByCode(code);
 		return R1+rsultat1;
 	}
 
-	public List<Cours> findBySuperCategorieSectionRef(String ref) {
-		return categorieSectionDao.findBySuperCategorieSectionRef(ref);
+	public List<Cours> findBySuperCategorieSectionCode(String code) {
+		return categorieSectionDao.findBySuperCategorieSectionCode(code);
 	}
 	 @Transactional
-	public int deleteBySuperCategorieSectionRef(String ref) {
-		return categorieSectionDao.deleteBySuperCategorieSectionRef(ref);
+	public int deleteBySuperCategorieSectionCode(String code) {
+		return categorieSectionDao.deleteBySuperCategorieSectionCode(code);
 	}
 
 	

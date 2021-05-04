@@ -23,22 +23,22 @@ private SectionService sectionService;
 public List<SuperCategorieSection> findByLibelle(String libelle) {
 	return superCategorieSectionDao.findByLibelle(libelle);
 }
-public List<Cours> findBySuperCategorieSectionRef(String ref) {
-	return categorieSectionService.findBySuperCategorieSectionRef(ref);
+public List<Cours> findBySuperCategorieSectionCode(String code) {
+	return categorieSectionService.findBySuperCategorieSectionCode(code);
 }
-public SuperCategorieSection findByRef(String ref) {
-	return superCategorieSectionDao.findByRef(ref);
+public SuperCategorieSection findByCode(String code) {
+	return superCategorieSectionDao.findByCode(code);
 }
 @Transactional
-public int deleteByRef(String ref) {
-	int r1=sectionService.deleteByCategorieSectionRef(ref);
-	int r2=categorieSectionService.deleteBySuperCategorieSectionRef(ref);
-	int r3= superCategorieSectionDao.deleteByRef(ref);
+public int deleteByCode(String code) {
+	int r1=sectionService.deleteByCategorieSectionCode(code);
+	int r2=categorieSectionService.deleteBySuperCategorieSectionCode(code);
+	int r3= superCategorieSectionDao.deleteByCode(code);
 	return r1+r2+r3;
 }
 
 public int save(SuperCategorieSection superCategorieSection) {
-	if (findByRef(superCategorieSection.getRef()) != null) {
+	if (findByCode(superCategorieSection.getCode()) != null) {
         return -1;
     }
 	else {

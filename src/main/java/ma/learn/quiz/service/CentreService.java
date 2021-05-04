@@ -39,7 +39,7 @@ public class CentreService {
 	public int deleteByRef(String ref) {
 		int resultatetat=   etatInscriptionService.deleteByRef(ref);
 		int resultatinscription= inscriptionService.deleteByEtudiantRef(ref);
-		int resultat1= etudiantService.deleteByParcoursRef(ref);
+		int resultat1= etudiantService.deleteByParcoursCode(ref);
 		int resultatparcours= parcoursService.deleteByCentreRef(ref);
 		int resultatcentre= centredao.deleteByRef(ref);
 		return resultatetat+resultatinscription+ resultatcentre+resultatparcours+resultat1;

@@ -24,14 +24,14 @@ public class EtudiantService {
 	@Autowired
 	public ParcoursService parcoursService;
 	
-	 public List<Etudiant> findByParcoursRef(String ref) {
-		return etudiantDao.findByParcoursRef(ref);
+	 public List<Etudiant> findByParcoursCode(String code) {
+		return etudiantDao.findByParcoursCode(code);
 	}
 	 public int save(Etudiant  etudiant ) {
 			if(findByRef(etudiant.getRef())!=null) {
 				return -1;
 			}
-			Parcours parcours=parcoursService.findByRef(etudiant.getParcours().getRef());
+			Parcours parcours=parcoursService.findByCode(etudiant.getParcours().getCode());
 			etudiant.setParcours(parcours);
 			if(parcours==null) {
 				return -3;
@@ -78,8 +78,8 @@ public class EtudiantService {
 	public List<Etudiant> findAll() {
 		return etudiantDao.findAll();
 	}
-	public int deleteByParcoursRef(String ref) {
-		return etudiantDao.deleteByParcoursRef(ref);
+	public int deleteByParcoursCode(String code) {
+		return etudiantDao.deleteByParcoursCode(code);
 	}
 	
 

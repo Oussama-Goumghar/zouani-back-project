@@ -9,7 +9,7 @@ import ma.learn.quiz.bean.CategorieSection;
 import ma.learn.quiz.bean.SuperCategorieSection;
 @Repository
 public interface SuperCategorieSectionDao extends JpaRepository<SuperCategorieSection,Long> {
-	SuperCategorieSection findByRef(String ref); 
+	SuperCategorieSection findByCode(String code); 
 	List<SuperCategorieSection> findByLibelle(String libelle);
-    int deleteByRef(String ref);
+    int deleteByCode(String code);
 }

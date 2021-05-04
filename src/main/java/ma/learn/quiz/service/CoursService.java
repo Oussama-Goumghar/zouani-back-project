@@ -28,39 +28,32 @@ public class CoursService {
     public List<Cours> findByLibelle(String libelle) {
 		return coursDao.findByLibelle(libelle);
 	}
-	public List<Cours> findByParcoursRef(String ref) {
-		return coursDao.findByParcoursRef(ref);
+	public List<Cours> findByParcoursCode(String code) {
+		return coursDao.findByParcoursCode(code);
 	}
-	public Cours findByRef(String ref) {
-		return coursDao.findByRef(ref);
+	public Cours findByCode(String code) {
+		return coursDao.findByCode(code);
 	}
     @Transactional
-	public int deleteByRef(String ref) {
+	public int deleteByCode(String code) {
     	
-		int deleteBySectionRef=sectionService.deleteByCoursRef(ref);
-		int deleteByRef=coursDao.deleteByRef(ref);
-		return deleteBySectionRef+deleteByRef;
+		int deleteBySectionCode=sectionService.deleteByCoursCode(code);
+		int deleteByCode=coursDao.deleteByCode(code);
+		return deleteBySectionCode+deleteByCode;
 	}
     public int init (Cours cours) {
 		List<CategorieSection> categorieSectionList = categorieSectionService.findAll();
 		for(CategorieSection categorieSection: categorieSectionList) {
 			Section section = new Section();
 			section.setCours(cours);
-			section.setRef("sect"+categorieSection.getRef());
 			section.setCategorieSection(categorieSection);
 			sectionService.save(section);
 		}
 		return 1;
 	}
-	public void save(Parcours parcours, List<Cours> courss) {
-		for (Cours cours:courss) {
-			for(i=0;i<parcours.getNombreCours();i++) {
-				cours.setRef("ref"+Integer.toString(i));
-				coursDao.save(cours);
-			}
-		}
-		
-	}
+    public void create(Cours cours) {
+    	coursDao.save(cours);
+    }
 	public List<Cours> findAll() {
 		return coursDao.findAll();
 	}
@@ -70,8 +63,8 @@ public class CoursService {
 	}
 	
 	@Transactional
-	public int deleteByParcoursRef(String ref) {
-		return coursDao.deleteByParcoursRef(ref);
+	public int deleteByParcoursCode(String code) {
+		return coursDao.deleteByParcoursCode(code);
 	}
 	public void update(Cours cours) {
 		cours.setParcours(cours.getParcours());
@@ -79,10 +72,7 @@ public class CoursService {
 		cours.setSections(cours.getSections());
 		cours.setDescription(cours.getDescription());
 		cours.setNumeroOrder(cours.getNumeroOrder());
-		cours.setNombreContenuEnCours(cours.getNombreContenuEnCours());
-		cours.setNombreContenuFinalise(cours.getNombreContenuFinalise());
-		cours.setNombreLienEnCours(cours.getNombreLienEnCours());
-		cours.setNombreLienFinalise(cours.getNombreLienFinalise());
+		
 		coursDao.save(cours);
 		
 	}

@@ -1,6 +1,7 @@
 package ma.learn.quiz.service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ma.learn.quiz.bean.Centre;
+import ma.learn.quiz.bean.Cours;
 import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.dao.ParcoursDao;
 
@@ -24,8 +26,8 @@ public class ParcoursService {
     private CentreService centreService;
     
 
-	public Parcours findByRef(String ref) {
-		return parcoursDao.findByRef(ref);
+	public Parcours findByCode(String code) {
+		return parcoursDao.findByCode(code);
 	}
 	
 
@@ -35,35 +37,35 @@ public class ParcoursService {
 
 
 	@Transactional
-	public int deleteByRef(String ref) {
+	public int deleteByCode(String code) {
 		
-		int deleteBySectionRef=sectionService.deleteByCoursRef(ref);
-		int deleteByCoursRef=coursService.deleteByParcoursRef(ref);
-		int deleteByRef=parcoursDao.deleteByRef(ref);
-		return deleteBySectionRef+deleteByCoursRef+deleteByRef;
+		int deleteBySectionCode=sectionService.deleteByCoursCode(code);
+		int deleteByCoursCode=coursService.deleteByParcoursCode(code);
+		int deleteByCode=parcoursDao.deleteByCode(code);
+		return deleteBySectionCode+deleteByCoursCode+deleteByCode;
 	}
 
-	 public int save(Parcours  parcours ) {
-		 Parcours loadedParcours = findByRef(parcours.getRef());
-			if(loadedParcours !=null) {
-
-				return -1;
+	public void save(Parcours parcours) {
+		
+		create(parcours);
+			for(int i=0;i<parcours.getNombreCours();i++) {
+				Cours cours= new Cours();
+				cours.setParcours(parcours);
+				coursService.create(cours);
 			}
-			Centre centre=centreService.findByRef(parcours.getCentre().getRef());
+		
+		
+	}
+
+	 public int create(Parcours  parcours ) {
+		 Centre centre=centreService.findByRef(parcours.getCentre().getRef());
 			parcours.setCentre(centre);
-			if(centre==null) {
-				return -2;
-			}
-			else {
-				parcoursDao.save(parcours);	
-				coursService.save(parcours, parcours.getCourss());
-				
-				return 1;
-			}
-				
-		}
-
-
+			if(centre == null) {
+				return -1;
+			} else {
+		 parcoursDao.save(parcours);}
+			return 1;
+	 }
 
 	public List<Parcours> findByCentreRef(String ref) {
 		return parcoursDao.findByCentreRef(ref);
@@ -87,7 +89,7 @@ public class ParcoursService {
 		parcours.setDateCreation(parcours.getDateCreation());
 		parcours.setDescription(parcours.getDescription());
 		parcours.setDatePublication(parcours.getDatePublication());
-		parcours.setCourss(parcours.getCourss());
+		parcours.setCourses(parcours.getCourses());
 		parcoursDao.save(parcours);
 		
 	}

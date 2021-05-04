@@ -51,44 +51,44 @@ public class SectionService {
 
 
 	@Transactional
-	public int deleteByCoursRef(String ref) {
-		return sectionDao.deleteByCoursRef(ref);
+	public int deleteByCoursCode(String code) {
+		return sectionDao.deleteByCoursCode(code);
 	}
 
 	
 	
 
-   public List<Section> findByCoursRef(String ref) {
-		return sectionDao.findByCoursRef(ref);
+   public List<Section> findByCoursCode(String code) {
+		return sectionDao.findByCoursCode(code);
 	}
 
 
 
 
-public List<Section> findByCategorieSectionRef(String ref) {
-		return sectionDao.findByCategorieSectionRef(ref);
+public List<Section> findByCategorieSectionCode(String code) {
+		return sectionDao.findByCategorieSectionCode(code);
 	}
 
-	public int deleteByCategorieSectionRef(String ref) {
-		return sectionDao.deleteByCategorieSectionRef(ref);
+	public int deleteByCategorieSectionCode(String code) {
+		return sectionDao.deleteByCategorieSectionCode(code);
 	}
 
-public Section findByRef(String ref) {
-		return sectionDao.findByRef(ref);
+public Section findByCode(String code) {
+		return sectionDao.findByCode(code);
 	}
 
    @Transactional
-	public int deleteByRef(String ref) {	
-		int rslt1 = sectionDao.deleteByRef(ref);
+	public int deleteByCode(String code) {	
+		int rslt1 = sectionDao.deleteByCode(code);
 		 return  rslt1;
 	}
  public int save(Section section) {
 	 
-		if (findByRef(section.getRef())!=null) {
+		if (findByCode(section.getCode())!=null) {
 			return -1;
 		}
-		Cours cours = coursService.findByRef(section.getCours().getRef()); if(cours==null) return -2;
-	    CategorieSection categorieSection=categorieSectionService.findByRef(section.getCategorieSection().getRef()); if(categorieSection==null) return -4;
+		Cours cours = coursService.findByCode(section.getCours().getCode()); if(cours==null) return -2;
+	    CategorieSection categorieSection=categorieSectionService.findByCode(section.getCategorieSection().getCode()); if(categorieSection==null) return -4;
 		else {
 			section.setCours(cours);
 			section.setCategorieSection(categorieSection);
@@ -111,16 +111,10 @@ public void update(Section section){
 	section.setLibelle(section.getLibelle());
 	section.setContenu(section.getContenu());
 	section.setIndicationProf(section.getIndicationProf());
-	section.setUrlimage(section.getUrlimage());
-	section.setUrlimage2(section.getUrlimage2());
-	section.setUrlimage3(section.getUrlimage3());
-	section.setUrlvideo(section.getUrlvideo());
+
 	section.setQuestions(section.getQuestions());
 	section.setCours(section.getCours());
-	section.setNombreContenuEnCours(section.getNombreContenuEnCours());
-	section.setNombreContenuFinalise(section.getNombreContenuFinalise());
-	section.setNombreLienEnCours(section.getNombreLienEnCours());
-	section.setNombreLienFinalise(section.getNombreLienFinalise());
+
 		sectionDao.save(section);
    }
 

@@ -20,46 +20,40 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 public class Parcours implements Serializable {
 
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String ref;
-    private String libelle;
-    private String description ;
+
     @Temporal(TemporalType.DATE)
     private Date datePublication ;
-   @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     private Date dateCreation ;
+    private String description ;
+    private String libelle ;
+    private String code ;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "parcours")
+    private List<Cours> courses ;
     private int numeroOrder;
     private int nombreCours;
-    @JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy="parcours")
-    private List<Cours> courss;
 	@ManyToOne
 	private Centre centre;
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "parcours")
      private List<Etudiant> etudiant;
 
-	
 
-	
-
-
-	
-
-
-	public Parcours(String ref, String libelle, String description, Date datePublication, Date dateCreation,
-			int numeroOrder, int nombreCours, List<Cours> courss, Centre centre, List<Etudiant> etudiant) {
+	public Parcours(Date datePublication, Date dateCreation, String description, String libelle, String code,
+			List<Cours> courses, int numeroOrder, int nombreCours, Centre centre, List<Etudiant> etudiant) {
 		super();
-		this.ref = ref;
-		this.libelle = libelle;
-		this.description = description;
 		this.datePublication = datePublication;
 		this.dateCreation = dateCreation;
+		this.description = description;
+		this.libelle = libelle;
+		this.code = code;
+		this.courses = courses;
 		this.numeroOrder = numeroOrder;
 		this.nombreCours = nombreCours;
-		this.courss = courss;
 		this.centre = centre;
 		this.etudiant = etudiant;
 	}
@@ -85,12 +79,22 @@ public class Parcours implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public List<Cours> getCourss() {
-		return courss;
+	
+
+	public String getCode() {
+		return code;
 	}
 
-	public void setCourss(List<Cours> courss) {
-		this.courss = courss;
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public List<Cours> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(List<Cours> courses) {
+		this.courses = courses;
 	}
 
 	public String getDescription() {
@@ -124,15 +128,6 @@ public class Parcours implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-    
-    public String getRef() {
-		return ref;
-	}
-
-	public void setRef(String ref) {
-		this.ref = ref;
-	}
 
 	public Centre getCentre() {
 		return centre;

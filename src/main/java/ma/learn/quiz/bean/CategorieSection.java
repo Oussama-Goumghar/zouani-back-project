@@ -15,31 +15,49 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 public class CategorieSection implements Serializable{
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String ref;
-    private String libelle;
-    private int numeroOrder;
 
-  @ManyToOne
-  private SuperCategorieSection superCategorieSection;
-  
-  @JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
-  @OneToMany(mappedBy="cours")
-  private List<Section> sections;
-    
-   
+    private String libelle ;
+    private String code ;
+    private Integer numeroOrder;
+    @ManyToOne
+	private SuperCategorieSection superCategorieSection ;
+    @JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy="cours")
+    private List<Section> sections;
+
+
+
+	public CategorieSection(String libelle, String code, Integer numeroOrder,
+			SuperCategorieSection superCategorieSection, List<Section> sections) {
+		super();
+		this.libelle = libelle;
+		this.code = code;
+		this.numeroOrder = numeroOrder;
+		this.superCategorieSection = superCategorieSection;
+		this.sections = sections;
+	}
+
+
+
+
+
+
 	public List<Section> getSections() {
-	return sections;
-}
+		return sections;
+	}
 
 
 
 
 
-public void setSections(List<Section> sections) {
-	this.sections = sections;
-}
+
+	public void setSections(List<Section> sections) {
+		this.sections = sections;
+	}
+
 
 
 
@@ -54,28 +72,7 @@ public void setSections(List<Section> sections) {
 
 
 
-	public CategorieSection(String ref, String libelle, int numeroOrder, SuperCategorieSection superCategorieSection,
-			List<Section> sections) {
-		super();
-		this.ref = ref;
-		this.libelle = libelle;
-		this.numeroOrder = numeroOrder;
-		this.superCategorieSection = superCategorieSection;
-		this.sections = sections;
-	}
-
-
-
-
-
-	public SuperCategorieSection getSuperCategorieSection() {
-		return superCategorieSection;
-	}
-
-	public void setSuperCategorieSection(SuperCategorieSection superCategorieSection) {
-		this.superCategorieSection = superCategorieSection;
-	}
-
+	
 	public Long getId() {
         return id;
     }
@@ -85,13 +82,57 @@ public void setSections(List<Section> sections) {
     }
 
    
-    public String getRef() {
-		return ref;
+   
+	public String getCode() {
+		return code;
 	}
 
-	public void setRef(String ref) {
-		this.ref = ref;
+
+
+	public void setCode(String code) {
+		this.code = code;
 	}
+
+
+
+
+
+
+	public Integer getNumeroOrder() {
+		return numeroOrder;
+	}
+
+
+
+
+
+
+	public void setNumeroOrder(Integer numeroOrder) {
+		this.numeroOrder = numeroOrder;
+	}
+
+
+
+
+
+
+	public SuperCategorieSection getSuperCategorieSection() {
+		return superCategorieSection;
+	}
+
+
+
+
+
+
+	public void setSuperCategorieSection(SuperCategorieSection superCategorieSection) {
+		this.superCategorieSection = superCategorieSection;
+	}
+
+
+
+
+
 
 	public String getLibelle() {
         return libelle;
@@ -101,13 +142,5 @@ public void setSections(List<Section> sections) {
         this.libelle = libelle;
     }
 
-    public int getNumeroOrder() {
-        return numeroOrder;
-    }
-
-    public void setNumeroOrder(int numeroOrder) {
-        this.numeroOrder = numeroOrder;
-    }
-
-
+   
 }

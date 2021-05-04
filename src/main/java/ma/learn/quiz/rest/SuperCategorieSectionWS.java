@@ -21,13 +21,13 @@ import ma.learn.quiz.service.SuperCategorieSectionService;
 public class SuperCategorieSectionWS {
 	@Autowired
 	private SuperCategorieSectionService superCategorieSectionService;
-	@GetMapping("/ref/{ref}")
-	public SuperCategorieSection findByRef(@PathVariable String ref) {
-		return superCategorieSectionService.findByRef(ref);
+	@GetMapping("/code/{code}")
+	public SuperCategorieSection findByCode(@PathVariable String code) {
+		return superCategorieSectionService.findByCode(code);
 	}
-	@DeleteMapping("/ref/{ref}")
-	public int deleteByRef(@PathVariable String ref) {
-		return superCategorieSectionService.deleteByRef(ref);
+	@DeleteMapping("/code/{code}")
+	public int deleteByCode(@PathVariable String code) {
+		return superCategorieSectionService.deleteByCode(code);
 	}
 	 @PostMapping("/")
 	public int save(@RequestBody SuperCategorieSection superCategorieSection) {
