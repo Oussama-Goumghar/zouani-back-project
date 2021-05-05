@@ -13,10 +13,10 @@ import ma.learn.quiz.bean.ReponseEtudiant;
 public interface ReponseEtudiantDao extends JpaRepository<ReponseEtudiant, Long> {
 	ReponseEtudiant findByRef(String ref);
 	int deleteByRef(String Ref);
-	List<ReponseEtudiant> findByQuestionRef(String ref);
-	List<ReponseEtudiant> findByEtudiantRef(String ref);
+	List<ReponseEtudiant> findByReponseQuestionRef(String ref);
+	List<ReponseEtudiant> findByQuizEtudiantEtudiantRef(String ref);
 	List<ReponseEtudiant> findByReponseRef(String ref);
-	int deleteByQuestionRef(String ref);
-	int deleteByEtudiantRef(String ref);
+	int deleteByReponseQuestionRef(String ref);
+	int deleteByQuizEtudiantEtudiantRef(String ref);
 	int deleteByReponseRef(String ref);
 }

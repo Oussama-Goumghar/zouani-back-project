@@ -15,23 +15,13 @@ public class ReponseEtudiant {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@ManyToOne
-	private Question question;
-	@ManyToOne
 	private Reponse reponse;
-private String ref; 
+	private String ref; 
 	@ManyToOne
 	private QuizEtudiant quizEtudiant;
-	@ManyToOne
-	private Etudiant etudiant;
 	private Double note;
 	
 	
-	public Etudiant getEtudiant() {
-		return etudiant;
-	}
-	public void setEtudiant(Etudiant etudiant) {
-		this.etudiant = etudiant;
-	}
 	public String getRef() {
 		return ref;
 	}
@@ -49,12 +39,6 @@ private String ref;
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public Question getQuestion() {
-		return question;
-	}
-	public void setQuestion(Question question) {
-		this.question = question;
 	}
 	public Reponse getReponse() {
 		return reponse;

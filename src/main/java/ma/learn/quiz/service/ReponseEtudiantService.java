@@ -38,22 +38,22 @@ public class ReponseEtudiantService {
 		return reponseEtudiantDao.deleteByRef(Ref);
 	}
 
-	public List<ReponseEtudiant> findByQuestionRef(String ref) {
-		return reponseEtudiantDao.findByQuestionRef(ref);
+	public List<ReponseEtudiant> findByReponseQuestionRef(String ref) {
+		return reponseEtudiantDao.findByReponseQuestionRef(ref);
 	}
 
-	public List<ReponseEtudiant> findByEtudiantRef(String ref) {
-		return reponseEtudiantDao.findByEtudiantRef(ref);
-	}
-
-	@Transactional
-	public int deleteByQuestionRef(String ref) {
-		return reponseEtudiantDao.deleteByQuestionRef(ref);
+	public List<ReponseEtudiant> findByQuizEtudiantEtudiantRef(String ref) {
+		return reponseEtudiantDao.findByQuizEtudiantEtudiantRef(ref);
 	}
 
 	@Transactional
-	public int deleteByEtudiantRef(String ref) {
-		return reponseEtudiantDao.deleteByEtudiantRef(ref);
+	public int deleteByReponseQuestionRef(String ref) {
+		return reponseEtudiantDao.deleteByReponseQuestionRef(ref);
+	}
+
+	@Transactional
+	public int deleteByQuizEtudiantEtudiantRef(String ref) {
+		return reponseEtudiantDao.deleteByQuizEtudiantEtudiantRef(ref);
 	}
 
 	public int save(ReponseEtudiant reponseEtudiant) {
@@ -61,25 +61,16 @@ public class ReponseEtudiantService {
 		{
 			return -1;
 		}
-		Question question= questionService.findByRef(reponseEtudiant.getQuestion().getRef());
-        Etudiant etudiant = etudiantService.findByRef(reponseEtudiant.getEtudiant().getRef());
         Reponse reponse = reponseService.findByRef(reponseEtudiant.getReponse().getRef());
         QuizEtudiant quizEtudiant = quizEtudiantService.findByRef(reponseEtudiant.getQuizEtudiant().getRef());
-        reponseEtudiant.setQuestion(question);
-        reponseEtudiant.setEtudiant(etudiant);
         reponseEtudiant.setReponse(reponse);
-        if(question==null){
-            return -2;
-         }
-         if(etudiant==null){
-             return -3;
-          }
+        reponseEtudiant.setQuizEtudiant(quizEtudiant);
          if(reponse==null){
-             return -4;
+             return -2;
           }
          if(quizEtudiant==null)
          {
-        	 return -5;
+        	 return -3;
          }
          else {
         	 reponseEtudiantDao.save(reponseEtudiant);

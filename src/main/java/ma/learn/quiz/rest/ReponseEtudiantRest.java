@@ -27,24 +27,24 @@ public class ReponseEtudiantRest {
 		return reponseEtudiantService.deleteByRef(Ref);
 	}
 
-	@GetMapping("/question/ref/{ref}")
-	public List<ReponseEtudiant> findByQuestionRef(@PathVariable String ref) {
-		return reponseEtudiantService.findByQuestionRef(ref);
+	@GetMapping("reponse/question/ref/{ref}")
+	public List<ReponseEtudiant> findByReponseQuestionRef(@PathVariable String ref) {
+		return reponseEtudiantService.findByReponseQuestionRef(ref);
 	}
 
-	@GetMapping("/etudiant/ref/{ref}")
-	public List<ReponseEtudiant> findByEtudiantRef(@PathVariable String ref) {
-		return reponseEtudiantService.findByEtudiantRef(ref);
+	@GetMapping("quizEtudiant/etudiant/ref/{ref}")
+	public List<ReponseEtudiant> findByQuizEtudiantEtudiantRef(@PathVariable String ref) {
+		return reponseEtudiantService.findByQuizEtudiantEtudiantRef(ref);
 	}
 
-	@DeleteMapping("/question/ref/{ref}")
-	public int deleteByQuestionRef(@PathVariable String ref) {
-		return reponseEtudiantService.deleteByQuestionRef(ref);
+	@DeleteMapping("reponse/question/ref/{ref}")
+	public int deleteByReponseQuestionRef(@PathVariable String ref) {
+		return reponseEtudiantService.deleteByReponseQuestionRef(ref);
 	}
 
-	@DeleteMapping("/etudiant/ref/{ref}")
-	public int deleteByEtudiantRef(@PathVariable String ref) {
-		return reponseEtudiantService.deleteByEtudiantRef(ref);
+	@DeleteMapping("quizEtudiant/etudiant/ref/{ref}")
+	public int deleteByQuizEtudiantEtudiantRef(@PathVariable String ref) {
+		return reponseEtudiantService.deleteByQuizEtudiantEtudiantRef(ref);
 	}
 
 	@PostMapping("/")
