@@ -20,22 +20,17 @@ import ma.learn.quiz.service.SectionService;
 @RestController
 @RequestMapping("E-learning/section")
 public class SectionWS {
-
+ @Autowired
+    private SectionService sectionservice;
     @GetMapping("/")
     public List<Section> findAll( ) {
         return sectionservice.findAll();
     }
-
-    @DeleteMapping("/code/{code}")
-    public int deleteByCode(@PathVariable String code) {
-        return sectionservice.deleteByCode(code);
-    }
-
-   
-
-    @Autowired
-    private SectionService sectionservice;
-    @PostMapping("/")
+    @DeleteMapping("/id/{id}")
+    public int deleteSectionById(@PathVariable Long id) {
+		return sectionservice.deleteSectionById(id);
+	}
+	@PostMapping("/")
     public int save(@RequestBody Section section) {
         return sectionservice.save(section);
     }
@@ -65,6 +60,10 @@ public class SectionWS {
 	@GetMapping("/libelle/{libelle}")
 	public List<Section> findByLibelle(@PathVariable String libelle) {
 		return sectionservice.findByLibelle(libelle);
+	}
+	@GetMapping("/section/id/{id}")
+	public List<Section> findSectionById(@PathVariable Long id) {
+		return sectionservice.findSectionById(id);
 	}
 	
 

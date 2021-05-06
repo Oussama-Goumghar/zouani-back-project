@@ -42,10 +42,7 @@ public class EtudiantRest {
 	public int deleteByRef(@PathVariable String ref) {
 		return etudiantService.deleteByRef(ref);
 	}
-	@DeleteMapping("/nom/{nom}")
-	public int deleteByNom(@PathVariable String nom) {
-		return etudiantService.deleteByNom(nom);
-	}
+	
 	@GetMapping("/")
 	public List<Etudiant> findAll() {
 		return etudiantService.findAll();

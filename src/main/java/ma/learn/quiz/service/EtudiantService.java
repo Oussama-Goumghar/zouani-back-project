@@ -27,22 +27,7 @@ public class EtudiantService {
 	 public List<Etudiant> findByParcoursCode(String code) {
 		return etudiantDao.findByParcoursCode(code);
 	}
-	 public int save(Etudiant  etudiant ) {
-			if(findByRef(etudiant.getRef())!=null) {
-				return -1;
-			}
-			Parcours parcours=parcoursService.findByCode(etudiant.getParcours().getCode());
-			etudiant.setParcours(parcours);
-			if(parcours==null) {
-				return -3;
-			}
-			else {
-				parcoursService.update(parcours);
-				 etudiantDao.save(etudiant);
-				return 1;
-			}
-				
-		}
+	
 	 
 	
 	/*
@@ -58,6 +43,12 @@ public class EtudiantService {
 	    }
 	    */
 
+	public int deleteByParcoursCode(String code) {
+		return etudiantDao.deleteByParcoursCode(code);
+	}
+
+
+
 	public Etudiant findByRef(String ref) {
 		return etudiantDao.findByRef(ref);
 	}
@@ -65,22 +56,45 @@ public class EtudiantService {
 	public Etudiant findByNom(String nom) {
 		return etudiantDao.findByNom(nom);
 	}
-	
+	public void valider(Etudiant etudiant){
+		 etudiant.setEtat(etudiant.getEtat());
+		
+		etudiantDao.save(etudiant);
+		
+	 }
+	 public int save(Etudiant  etudiant ) {
+			if(findByNom(etudiant.getNom())!=null) {
+				return -1;
+			}
+			Parcours parcours =parcoursService.findParcoursByLibelle(etudiant.getParcours().getLibelle());
+			etudiant.setParcours(parcours);
+			if(parcours==null) {
+				return -3;
+			}
+			
+			else {
+				
+				etudiant.setEtat("non validé");
+				 etudiantDao.save(etudiant);
+				 
+				return 1;}
+			}
 	@Transactional
 	public int deleteByRef(String ref) {
 		return etudiantDao.deleteByRef(ref);
 	}
-	@Transactional
-	public int deleteByNom(String nom) {
-		return etudiantDao.deleteByNom(nom);
-	}
+	
 
 	public List<Etudiant> findAll() {
 		return etudiantDao.findAll();
 	}
-	public int deleteByParcoursCode(String code) {
-		return etudiantDao.deleteByParcoursCode(code);
+
+
+
+	public int deleteByParcoursId(Long id) {
+		return etudiantDao.deleteByParcoursId(id);
 	}
+	
 	
 
 }

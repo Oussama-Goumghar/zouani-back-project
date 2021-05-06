@@ -61,9 +61,9 @@ public void save(@RequestBody Parcours parcours) {
 }
 
 
-	@DeleteMapping("/code/{code}")
-    public int deleteByCode(@PathVariable String code) {
-        return parcoursService.deleteByCode(code);
+	@DeleteMapping("/id/{id}")
+    public int deleteParcoursById(@PathVariable Long id) {
+        return parcoursService.deleteParcoursById(id);
     }
 
 }

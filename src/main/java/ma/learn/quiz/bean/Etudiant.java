@@ -23,11 +23,26 @@ public class Etudiant {
 	    private String login;
 	    private String ville;
 	    private String password;
+	    private String Etat;
 	    @ManyToOne
 	    private Parcours parcours;
+	    
 	    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	    @OneToMany(mappedBy = "etudiant")
 	     private List<QuizEtudiant> quizEtudiant;
+	    
+		public String getEtat() {
+			return Etat;
+		}
+		public void setEtat(String etat) {
+			Etat = etat;
+		}
+		public List<QuizEtudiant> getQuizEtudiant() {
+			return quizEtudiant;
+		}
+		public void setQuizEtudiant(List<QuizEtudiant> quizEtudiant) {
+			this.quizEtudiant = quizEtudiant;
+		}
 		public Long getId() {
 			return id;
 		}

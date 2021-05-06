@@ -84,30 +84,19 @@ public Section findByCode(String code) {
 		return sectionDao.findByCode(code);
 	}
 
-   @Transactional
-	public int deleteByCode(String code) {	
-		int rslt1 = sectionDao.deleteByCode(code);
-		 return  rslt1;
-	}
- public int save(Section section) {
-	 
-		if (findByCode(section.getCode())!=null) {
-			return -1;
-		}
-		Cours cours = coursService.findByCode(section.getCours().getCode()); if(cours==null) return -2;
-	    CategorieSection categorieSection=categorieSectionService.findByCode(section.getCategorieSection().getCode()); if(categorieSection==null) return -4;
-		else {
-			section.setCours(cours);
-			section.setCategorieSection(categorieSection);
+  
+ public int save(Section section) {		
 			sectionDao.save(section);
 			
 			return  1;
-
-		}
 	}
    
 	
 	
+ 
+
+
+
 
 public List<Section> findAll() {
 		return sectionDao.findAll();
@@ -124,6 +113,27 @@ public void update(Section section){
 
 		sectionDao.save(section);
    }
+
+
+
+
+public int deleteByCoursId(Long id) {
+	return sectionDao.deleteByCoursId(id);
+}
+
+
+
+@Transactional
+public int deleteSectionById(Long id) {
+	return sectionDao.deleteSectionById(id);
+}
+
+
+
+
+public List<Section> findSectionById(Long id) {
+	return sectionDao.findSectionById(id);
+}
 
 
   

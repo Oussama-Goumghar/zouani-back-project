@@ -43,17 +43,18 @@ public class CoursWS {
 		return coursService.findByLibelle(libelle);
 	}
 
-	@DeleteMapping("/code/{code}")
-	public int deleteByCode(@PathVariable String code) {
-		return coursService.deleteByCode(code);
-	}
+	
+	
 
     @DeleteMapping("/entity/{entity}")
 	public void delete(Cours entity) {
 		coursService.delete(entity);
 	}
-
-    @GetMapping("/")
+    @DeleteMapping("/id/{id}")
+    public int deleteCoursById(@PathVariable Long id) {
+		return coursService.deleteCoursById(id);
+	}
+	@GetMapping("/")
 	public List<Cours> findAll() {
 		return coursService.findAll();
 	}

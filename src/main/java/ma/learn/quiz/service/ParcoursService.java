@@ -15,7 +15,8 @@ import ma.learn.quiz.dao.ParcoursDao;
 
 @Service
 public class ParcoursService {
-	  
+	@Autowired
+    private EtudiantService etudiantService; 
     @Autowired
     private ParcoursDao parcoursDao;
     @Autowired
@@ -37,13 +38,19 @@ public class ParcoursService {
 
 
 	@Transactional
-	public int deleteByCode(String code) {
+	public int deleteParcoursById(Long id) {
 		
-		int deleteBySectionCode=sectionService.deleteByCoursCode(code);
-		int deleteByCoursCode=coursService.deleteByParcoursCode(code);
-		int deleteByCode=parcoursDao.deleteByCode(code);
-		return deleteBySectionCode+deleteByCoursCode+deleteByCode;
+		int deleteBySectionCode=sectionService.deleteByCoursId(id);
+		int deleteByCoursCode=coursService.deleteByParcoursId(id);
+		int deleteByEtudiantCode= etudiantService.deleteByParcoursId(id);
+		int deleteByCode=parcoursDao.deleteParcoursById(id);
+		return deleteBySectionCode+deleteByEtudiantCode+deleteByCoursCode+deleteByCode;
 	}
+
+	public Parcours findParcoursByLibelle(String libelle) {
+		return parcoursDao.findParcoursByLibelle(libelle);
+	}
+
 
 	public void save(Parcours parcours) {
 		

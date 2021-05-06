@@ -37,15 +37,19 @@ public class CoursService {
 	public Cours findByCode(String code) {
 		return coursDao.findByCode(code);
 	}
-    @Transactional
-	public int deleteByCode(String code) {
-    	
-		int deleteBySectionCode=sectionService.deleteByCoursCode(code);
-		int deleteByCode=coursDao.deleteByCode(code);
+	@Transactional
+    public int deleteCoursById(Long id) {
+    	int deleteBySectionCode=sectionService.deleteByCoursId(id);
+		int deleteByCode=coursDao.deleteCoursById(id);
 		return deleteBySectionCode+deleteByCode;
 	}
+	
+	
     
-    public int init (Long id) {
+    public int deleteByParcoursId(Long id) {
+		return coursDao.deleteByParcoursId(id);
+	}
+	public int init (Long id) {
     	Cours cours=coursService.findCoursById(id);
 		List<CategorieSection> categorieSections = categorieSectionService.findAll();
 		for (CategorieSection categorieSection : categorieSections) {
@@ -56,7 +60,7 @@ public class CoursService {
 			sectionService.save(section);
 			System.out.println("saved");
 			}
-		return 1;
+		return 2;
 	}
     public void create(Cours cours) {
     	coursDao.save(cours);

@@ -16,12 +16,14 @@ public interface SectionDao extends JpaRepository<Section,Long>{
      int deleteByCode(String code);
      List<Section> findByCoursCode(String code);
      List<Section> findByCoursId(Long id);
+     List<Section> findSectionById(Long id);
      List<Section> findByCours(Cours cours);
      int deleteByCoursCode(String code);
+     int deleteByCoursId(Long id);
      List<Section> findByCategorieSectionCode(String code); 
      int deleteByCategorieSectionCode(String code);
      List<Section> findByCategorieSectionLibelle(String libelle); 
-
+     int deleteSectionById(Long id);
 	}
  
 
