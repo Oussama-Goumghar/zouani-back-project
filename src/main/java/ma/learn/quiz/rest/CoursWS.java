@@ -1,6 +1,7 @@
 package ma.learn.quiz.rest;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,17 +26,19 @@ public class CoursWS {
     private CoursService coursService ;
     
 
-    @PostMapping("/")
-    public int init(@RequestBody Cours cours) {
-		return coursService.init(cours);
-	}
+   
+  
 
     @GetMapping("/code/{code}")
 	public Cours findByCode(@PathVariable String code) {
 		return coursService.findByCode(code);
 	}
-   
-    @GetMapping("/libelle/{libelle}")
+    @GetMapping("/id/{id}")
+    public int init(@PathVariable Long id) {
+		return coursService.init(id);
+	}
+
+	@GetMapping("/libelle/{libelle}")
 	public List<Cours> findByLibelle(@PathVariable String libelle) {
 		return coursService.findByLibelle(libelle);
 	}
@@ -71,7 +74,7 @@ public class CoursWS {
 	public List<Cours> findByParcoursCode(@PathVariable String code) {
 		return coursService.findByParcoursCode(code);
 	}
-
+	
 	
 
   

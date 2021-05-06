@@ -65,6 +65,13 @@ public class SectionService {
 
 
 
+public List<Section> findByCoursId(Long id) {
+	return sectionDao.findByCoursId(id);
+}
+
+
+
+
 public List<Section> findByCategorieSectionCode(String code) {
 		return sectionDao.findByCategorieSectionCode(code);
 	}

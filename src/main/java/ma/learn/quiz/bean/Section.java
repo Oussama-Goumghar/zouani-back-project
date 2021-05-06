@@ -24,6 +24,7 @@ public class Section implements Serializable{
 	    private String contenu;
 	    private String questions;
 	    private String indicationProf;
+	    private Integer numeroOrder;
 	    @ManyToOne
 	    private CategorieSection categorieSection;
 	    @ManyToOne
@@ -34,7 +35,7 @@ public class Section implements Serializable{
 	
 
 	public Section(String code, String libelle, String urlImage, String urlImage2, String urlImage3,
-				String urlVideo, String contenu, String questions, String indicationProf,
+				String urlVideo, String contenu, String questions, String indicationProf, Integer numeroOrder,
 				CategorieSection categorieSection, Cours cours, int content, int url) {
 			super();
 			this.code = code;
@@ -46,10 +47,19 @@ public class Section implements Serializable{
 			this.contenu = contenu;
 			this.questions = questions;
 			this.indicationProf = indicationProf;
+			this.numeroOrder = numeroOrder;
 			this.categorieSection = categorieSection;
 			this.cours = cours;
 			this.content = content;
 			this.url = url;
+		}
+
+	public Integer getNumeroOrder() {
+			return numeroOrder;
+		}
+
+		public void setNumeroOrder(Integer numeroOrder) {
+			this.numeroOrder = numeroOrder;
 		}
 
 	public Section() {

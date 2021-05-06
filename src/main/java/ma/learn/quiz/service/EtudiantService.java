@@ -68,7 +68,7 @@ public class EtudiantService {
 	
 	@Transactional
 	public int deleteByRef(String ref) {
-		return centreService.deleteByRef(ref);
+		return etudiantDao.deleteByRef(ref);
 	}
 	@Transactional
 	public int deleteByNom(String nom) {

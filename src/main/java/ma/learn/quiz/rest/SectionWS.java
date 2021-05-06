@@ -58,6 +58,10 @@ public class SectionWS {
 	public List<Section> findByCoursCode(@PathVariable String code) {
 		return sectionservice.findByCoursCode(code);
 	}
+	@GetMapping("/cours/id/{id}")
+	public List<Section> findByCoursId(@PathVariable Long id) {
+		return sectionservice.findByCoursId(id);
+	}
 	@GetMapping("/libelle/{libelle}")
 	public List<Section> findByLibelle(@PathVariable String libelle) {
 		return sectionservice.findByLibelle(libelle);

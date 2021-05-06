@@ -15,6 +15,7 @@ public interface SectionDao extends JpaRepository<Section,Long>{
 	 Section findByCode(String code); 
      int deleteByCode(String code);
      List<Section> findByCoursCode(String code);
+     List<Section> findByCoursId(Long id);
      List<Section> findByCours(Cours cours);
      int deleteByCoursCode(String code);
      List<Section> findByCategorieSectionCode(String code); 

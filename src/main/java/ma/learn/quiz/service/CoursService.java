@@ -2,6 +2,7 @@ package ma.learn.quiz.service;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,8 @@ public class CoursService {
 	public CategorieSectionService categorieSectionService;
     @Autowired
     private CoursDao coursDao ;
+    @Autowired
+    private CoursService coursService ;
     @Autowired
 	public SectionService sectionService;
     @Autowired
@@ -41,14 +44,18 @@ public class CoursService {
 		int deleteByCode=coursDao.deleteByCode(code);
 		return deleteBySectionCode+deleteByCode;
 	}
-    public int init (Cours cours) {
-		List<CategorieSection> categorieSectionList = categorieSectionService.findAll();
-		for(CategorieSection categorieSection: categorieSectionList) {
-			Section section = new Section();
-			section.setCours(cours);
-			section.setCategorieSection(categorieSection);
+    
+    public int init (Long id) {
+    	Cours cours=coursService.findCoursById(id);
+		List<CategorieSection> categorieSections = categorieSectionService.findAll();
+		for (CategorieSection categorieSection : categorieSections) {
+            Section section = new Section();
+            section.setCategorieSection(categorieSection);
+            section.setLibelle(categorieSection.getCode());
+            section.setCours(cours);  
 			sectionService.save(section);
-		}
+			System.out.println("saved");
+			}
 		return 1;
 	}
     public void create(Cours cours) {
@@ -71,13 +78,22 @@ public class CoursService {
 		cours.setLibelle(cours.getLibelle());
 		cours.setSections(cours.getSections());
 		cours.setDescription(cours.getDescription());
+		cours.setImage(cours.getImage());
+		cours.setSections(cours.getSections());
 		cours.setNumeroOrder(cours.getNumeroOrder());
-		
+		cours.setNombreLinkEnCours(cours.getNombreLinkEnCours());
+		cours.setNombreLinkFinalise(cours.getNombreLinkFinalise());
+		cours.setNombreSectionEnCours(cours.getNombreSectionEnCours());
+		cours.setNombreSectionFinalise(cours.getNombreSectionFinalise());
 		coursDao.save(cours);
 		
 	}
 	public List<Cours> findCoursByParcours(Parcours parcours) {
 		return coursDao.findCoursByParcours(parcours);
+	}
+	
+	public Cours findCoursById(Long id) {
+		return coursDao.findCoursById(id);
 	}
 	
 
