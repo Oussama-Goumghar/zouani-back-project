@@ -57,7 +57,7 @@ public class CoursService {
             section.setCategorieSection(categorieSection);
             section.setLibelle(categorieSection.getCode());
             section.setCours(cours);  
-			sectionService.save(section);
+			sectionService.create(section);
 			System.out.println("saved");
 			}
 		return 2;
@@ -80,7 +80,6 @@ public class CoursService {
 	public void update(Cours cours) {
 		cours.setParcours(cours.getParcours());
 		cours.setLibelle(cours.getLibelle());
-		cours.setSections(cours.getSections());
 		cours.setDescription(cours.getDescription());
 		cours.setImage(cours.getImage());
 		cours.setSections(cours.getSections());

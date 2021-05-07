@@ -30,10 +30,7 @@ public class SectionWS {
     public int deleteSectionById(@PathVariable Long id) {
 		return sectionservice.deleteSectionById(id);
 	}
-	@PostMapping("/")
-    public int save(@RequestBody Section section) {
-        return sectionservice.save(section);
-    }
+	
     @GetMapping("/code/{code}")
     public Section findByCode(@PathVariable String code) {
         return sectionservice.findByCode(code);
@@ -62,7 +59,7 @@ public class SectionWS {
 		return sectionservice.findByLibelle(libelle);
 	}
 	@GetMapping("/section/id/{id}")
-	public List<Section> findSectionById(@PathVariable Long id) {
+	public Section findSectionById(@PathVariable Long id) {
 		return sectionservice.findSectionById(id);
 	}
 	

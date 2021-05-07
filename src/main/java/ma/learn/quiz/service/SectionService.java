@@ -85,7 +85,7 @@ public Section findByCode(String code) {
 	}
 
   
- public int save(Section section) {		
+ public int create(Section section) {		
 			sectionDao.save(section);
 			
 			return  1;
@@ -104,13 +104,18 @@ public List<Section> findAll() {
 
 public void update(Section section){
 	section.setCategorieSection(section.getCategorieSection());
+	section.setCours(section.getCours());
 	section.setLibelle(section.getLibelle());
 	section.setContenu(section.getContenu());
 	section.setIndicationProf(section.getIndicationProf());
-
 	section.setQuestions(section.getQuestions());
-	section.setCours(section.getCours());
-
+	section.setNumeroOrder(section.getNumeroOrder());
+	section.setQuestions(section.getQuestions());
+	section.setUrlVideo(section.getUrlVideo());
+	section.setUrlImage(section.getUrlImage());
+	section.setUrlImage2(section.getUrlImage2());
+	section.setUrlImage3(section.getUrlImage3());
+	section.setCode(section.getCode());
 		sectionDao.save(section);
    }
 
@@ -131,7 +136,7 @@ public int deleteSectionById(Long id) {
 
 
 
-public List<Section> findSectionById(Long id) {
+public Section findSectionById(Long id) {
 	return sectionDao.findSectionById(id);
 }
 

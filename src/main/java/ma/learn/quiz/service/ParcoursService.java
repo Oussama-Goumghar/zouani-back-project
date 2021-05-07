@@ -39,7 +39,6 @@ public class ParcoursService {
 
 	@Transactional
 	public int deleteParcoursById(Long id) {
-		
 		int deleteBySectionCode=sectionService.deleteByCoursId(id);
 		int deleteByCoursCode=coursService.deleteByParcoursId(id);
 		int deleteByEtudiantCode= etudiantService.deleteByParcoursId(id);

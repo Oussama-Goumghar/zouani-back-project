@@ -29,14 +29,17 @@ public class Section implements Serializable{
 	    private CategorieSection categorieSection;
 	    @ManyToOne
 	    private Cours cours;
-	    private int content;
 	    private int url;
+	    private int content;
 
 	
 
+	
+	
+ 
 	public Section(String code, String libelle, String urlImage, String urlImage2, String urlImage3,
 				String urlVideo, String contenu, String questions, String indicationProf, Integer numeroOrder,
-				CategorieSection categorieSection, Cours cours, int content, int url) {
+				CategorieSection categorieSection, Cours cours, int url, int content) {
 			super();
 			this.code = code;
 			this.libelle = libelle;
@@ -50,9 +53,25 @@ public class Section implements Serializable{
 			this.numeroOrder = numeroOrder;
 			this.categorieSection = categorieSection;
 			this.cours = cours;
-			this.content = content;
 			this.url = url;
+			this.content = content;
 		}
+
+	public int getUrl() {
+		return url;
+	}
+
+	public void setUrl(int url) {
+		this.url = url;
+	}
+
+	public int getContent() {
+		return content;
+	}
+
+	public void setContent(int content) {
+		this.content = content;
+	}
 
 	public Integer getNumeroOrder() {
 			return numeroOrder;
@@ -187,21 +206,7 @@ public class Section implements Serializable{
 		this.urlVideo = urlVideo;
 	}
 
-	public int getContent() {
-		return content;
-	}
 
-	public void setContent(int content) {
-		this.content = content;
-	}
-
-	public int getUrl() {
-		return url;
-	}
-
-	public void setUrl(int url) {
-		this.url = url;
-	}
 
 	@Override
 	public int hashCode() {
