@@ -15,7 +15,7 @@ import ma.learn.quiz.dao.CoursDao;
 
 @Service
 public class CoursService {
-	int i;
+	
 	@Autowired
 	public CategorieSectionService categorieSectionService;
     @Autowired
@@ -33,9 +33,7 @@ public class CoursService {
 	public List<Cours> findByParcoursId(Long id) {
 		return coursDao.findByParcoursId(id);
 	}
-	public Cours findByCode(String code) {
-		return coursDao.findByCode(code);
-	}
+	
 	@Transactional
     public int deleteCoursById(Long id) {
     	int deleteBySectionCode=sectionService.deleteByCoursId(id);
@@ -62,13 +60,16 @@ public class CoursService {
 			
 		return 2;
 	}
+	
 	 public int save(Cours cours) {
-		 Parcours parcours = parcoursService.findParcoursById(cours.getParcours().getId());
+		 Parcours parcours = parcoursService.findByCode(cours.getParcours().getCode());
 		 if(parcours==null) return-1;
 			cours.setParcours(parcours);
 	    	coursDao.save(cours);
 	    	return 1;
 	    }
+	 
+	 
     public void create(Cours cours) {
     	coursDao.save(cours);
     }
@@ -114,9 +115,6 @@ public class CoursService {
 		cours.setNombreSectionFinalise(nbFinalise);
 		coursDao.save(cours);
 		
-	}
-	public List<Cours> findCoursByParcours(Parcours parcours) {
-		return coursDao.findCoursByParcours(parcours);
 	}
 	
 	public Cours findCoursById(Long id) {

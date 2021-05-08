@@ -19,9 +19,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 public class Cours implements Serializable {
 
-	   @Id
-	    @GeneratedValue(strategy = GenerationType.AUTO)
-	    private Long id;
+
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+	
+
 	    private String description;
 	    private String image;
 	    private String libelle;
