@@ -1,7 +1,6 @@
 package ma.learn.quiz.service;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ma.learn.quiz.bean.Centre;
 import ma.learn.quiz.bean.Cours;
 import ma.learn.quiz.bean.Parcours;
+import ma.learn.quiz.bean.Section;
 import ma.learn.quiz.dao.ParcoursDao;
 
 @Service
@@ -27,6 +27,11 @@ public class ParcoursService {
     private CentreService centreService;
     
 
+	public Parcours findParcoursById(Long id) {
+		return parcoursDao.findParcoursById(id);
+	}
+
+
 	public Parcours findByCode(String code) {
 		return parcoursDao.findByCode(code);
 	}
@@ -39,11 +44,18 @@ public class ParcoursService {
 
 	@Transactional
 	public int deleteParcoursById(Long id) {
-		int deleteBySectionCode=sectionService.deleteByCoursId(id);
-		int deleteByCoursCode=coursService.deleteByParcoursId(id);
-		int deleteByEtudiantCode= etudiantService.deleteByParcoursId(id);
-		int deleteByCode=parcoursDao.deleteParcoursById(id);
-		return deleteBySectionCode+deleteByEtudiantCode+deleteByCoursCode+deleteByCode;
+		int deleteByEtudiantID= etudiantService.deleteByParcoursId(id);
+		List<Cours> cours = coursService.findByParcoursId(id);
+        for (Cours c:cours) {
+            List<Section> sections = sectionService.findByCours(c);
+            int sectionDeleted=0;
+            for (Section section: sections) {
+
+                sectionDeleted+= sectionService.deleteByCours(c);
+            }}
+		int deleteByCoursID=coursService.deleteByParcoursId(id);
+		int deleteByID=parcoursDao.deleteParcoursById(id);
+		return deleteByEtudiantID+deleteByCoursID+deleteByID;
 	}
 
 	public Parcours findParcoursByLibelle(String libelle) {

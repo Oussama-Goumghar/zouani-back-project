@@ -2,7 +2,6 @@ package ma.learn.quiz.service;
 
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,8 +30,8 @@ public class CoursService {
     public List<Cours> findByLibelle(String libelle) {
 		return coursDao.findByLibelle(libelle);
 	}
-	public List<Cours> findByParcoursCode(String code) {
-		return coursDao.findByParcoursCode(code);
+	public List<Cours> findByParcoursId(Long id) {
+		return coursDao.findByParcoursId(id);
 	}
 	public Cours findByCode(String code) {
 		return coursDao.findByCode(code);
@@ -50,18 +49,26 @@ public class CoursService {
 		return coursDao.deleteByParcoursId(id);
 	}
 	public int init (Long id) {
-    	Cours cours=coursService.findCoursById(id);
+    	Cours cours=coursService.findCoursById(id);  
 		List<CategorieSection> categorieSections = categorieSectionService.findAll();
 		for (CategorieSection categorieSection : categorieSections) {
-            Section section = new Section();
+			if(cours.getSections().isEmpty()) {
+			Section section = new Section();
             section.setCategorieSection(categorieSection);
             section.setLibelle(categorieSection.getCode());
             section.setCours(cours);  
 			sectionService.create(section);
-			System.out.println("saved");
-			}
+			System.out.println("saved");}}
+			
 		return 2;
 	}
+	 public int save(Cours cours) {
+		 Parcours parcours = parcoursService.findParcoursById(cours.getParcours().getId());
+		 if(parcours==null) return-1;
+			cours.setParcours(parcours);
+	    	coursDao.save(cours);
+	    	return 1;
+	    }
     public void create(Cours cours) {
     	coursDao.save(cours);
     }
@@ -78,16 +85,33 @@ public class CoursService {
 		return coursDao.deleteByParcoursCode(code);
 	}
 	public void update(Cours cours) {
+		 List<Section> sections = sectionService.findByCours(cours);
+		 int nbFinalise = 0, nbEncours = 0, nbrLinkFinalise = 0, nbrLinkEncours = 0;
+	        for (Section section : sections) {
+	            if (section.getContenu() != null) {
+	                nbFinalise++;
+	                
+	            } else {
+	                nbEncours++;
+	               
+	            }
+	            if (section.getUrlImage() != null || section.getUrlVideo()!= null) {
+	                nbrLinkFinalise++;
+	                
+	            } else {
+	                nbrLinkEncours++;
+	               
+	            }}
 		cours.setParcours(cours.getParcours());
 		cours.setLibelle(cours.getLibelle());
 		cours.setDescription(cours.getDescription());
 		cours.setImage(cours.getImage());
 		cours.setSections(cours.getSections());
 		cours.setNumeroOrder(cours.getNumeroOrder());
-		cours.setNombreLinkEnCours(cours.getNombreLinkEnCours());
-		cours.setNombreLinkFinalise(cours.getNombreLinkFinalise());
-		cours.setNombreSectionEnCours(cours.getNombreSectionEnCours());
-		cours.setNombreSectionFinalise(cours.getNombreSectionFinalise());
+		cours.setNombreLinkEnCours(nbrLinkEncours);
+		cours.setNombreLinkFinalise(nbrLinkFinalise);
+		cours.setNombreSectionEnCours(nbEncours);
+		cours.setNombreSectionFinalise(nbFinalise);
 		coursDao.save(cours);
 		
 	}

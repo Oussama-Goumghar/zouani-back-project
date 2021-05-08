@@ -71,9 +71,13 @@ public class CoursWS {
 		return coursService.deleteByParcoursCode(code);
 	}
 
-	@GetMapping("/parcours/code/{code}")
-	public List<Cours> findByParcoursCode(@PathVariable String code) {
-		return coursService.findByParcoursCode(code);
+	@GetMapping("/parcours/id/{id}")
+	public List<Cours> findByParcoursId(@PathVariable Long id) {
+		return coursService.findByParcoursId(id);
+	}
+	@PostMapping("/")
+	public void save(@RequestBody Cours cours) {
+		coursService.save(cours);
 	}
 	
 	

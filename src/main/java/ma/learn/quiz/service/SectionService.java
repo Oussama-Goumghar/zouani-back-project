@@ -2,7 +2,9 @@ package ma.learn.quiz.service;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.transaction.Transactional;
 
@@ -27,7 +29,14 @@ public class SectionService {
 	@Autowired
 	public CategorieSectionService categorieSectionService;
 	
+	 
+
+	public int deleteByCours(Cours cours) {
+		return sectionDao.deleteByCours(cours);
+	}
+
 	
+
 
 	public List<Section> findByCours(Cours cours) {
 		return sectionDao.findByCours(cours);
@@ -93,7 +102,19 @@ public Section findByCode(String code) {
    
 	
 	
- 
+ public int save(Section section) {	
+	 Cours cours = coursService.findCoursById(section.getCours().getId());
+	 if(cours==null) return-1;
+	 CategorieSection categorieSection = categorieSectionService.findByCode(section.getCategorieSection().getCode());
+	 if(categorieSection==null) return-2;
+	 else {
+	 section.setCategorieSection(categorieSection);
+	 section.setCours(cours);
+		sectionDao.save(section);
+		
+		return  1;}
+}
+
 
 
 
@@ -103,20 +124,29 @@ public List<Section> findAll() {
 	}
 
 public void update(Section section){
-	section.setCategorieSection(section.getCategorieSection());
-	section.setCours(section.getCours());
-	section.setLibelle(section.getLibelle());
-	section.setContenu(section.getContenu());
-	section.setIndicationProf(section.getIndicationProf());
-	section.setQuestions(section.getQuestions());
-	section.setNumeroOrder(section.getNumeroOrder());
-	section.setQuestions(section.getQuestions());
-	section.setUrlVideo(section.getUrlVideo());
-	section.setUrlImage(section.getUrlImage());
-	section.setUrlImage2(section.getUrlImage2());
-	section.setUrlImage3(section.getUrlImage3());
-	section.setCode(section.getCode());
-		sectionDao.save(section);
+
+	Section LoadedSection= sectionDao.findSectionByCoursAndCategorieSection(section.getCours(), section.getCategorieSection());
+	LoadedSection.setCategorieSection(section.getCategorieSection());
+	LoadedSection.setCours(section.getCours());
+	LoadedSection.setLibelle(section.getLibelle());
+	LoadedSection.setContenu(section.getContenu());
+	LoadedSection.setIndicationProf(section.getIndicationProf());
+	LoadedSection.setQuestions(section.getQuestions());
+	LoadedSection.setNumeroOrder(section.getNumeroOrder());
+	LoadedSection.setQuestions(section.getQuestions());
+	LoadedSection.setUrlVideo(section.getUrlVideo());
+	LoadedSection.setUrlImage(section.getUrlImage());
+	LoadedSection.setUrlImage2(section.getUrlImage2());
+	LoadedSection.setUrlImage3(section.getUrlImage3());
+	LoadedSection.setCode(section.getCode());
+	if(section.getUrlImage() != null || section.getUrlVideo() != null) {
+		LoadedSection.setUrl(1);
+	}
+	if(section.getContenu() != null) {
+		LoadedSection.setContent(1);
+	}coursService.update(section.getCours());
+		sectionDao.save(LoadedSection);
+		
    }
 
 
@@ -139,6 +169,25 @@ public int deleteSectionById(Long id) {
 public Section findSectionById(Long id) {
 	return sectionDao.findSectionById(id);
 }
+
+
+
+
+public Section findSectionByCours(Cours cours) {
+	return sectionDao.findSectionByCours(cours);
+}
+
+
+
+
+public Section findSectionByCoursAndCategorieSection(Cours cours, CategorieSection categorieSection) {
+	return sectionDao.findSectionByCoursAndCategorieSection(cours, categorieSection);
+}
+
+
+
+
+
 
 
   

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import ma.learn.quiz.bean.CategorieSection;
 import ma.learn.quiz.bean.Cours;
 import ma.learn.quiz.bean.Section;
 
@@ -18,9 +19,13 @@ public interface SectionDao extends JpaRepository<Section,Long>{
      List<Section> findByCoursId(Long id);
      Section findSectionById(Long id);
      List<Section> findByCours(Cours cours);
+     Section findSectionByCoursAndCategorieSection(Cours cours,CategorieSection categorieSection);
+     Section findSectionByCours(Cours cours);
      int deleteByCoursCode(String code);
      int deleteByCoursId(Long id);
+     int deleteByCours(Cours cours);
      List<Section> findByCategorieSectionCode(String code); 
+     Section findSectionByCategorieSectionCode(String code); 
      int deleteByCategorieSectionCode(String code);
      List<Section> findByCategorieSectionLibelle(String libelle); 
      int deleteSectionById(Long id);
