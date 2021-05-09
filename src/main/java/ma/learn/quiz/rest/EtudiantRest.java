@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import ma.learn.quiz.bean.Etudiant;
 import ma.learn.quiz.service.EtudiantService;
 
-
-
 @RestController
 @RequestMapping("learn/etudiant")
 public class EtudiantRest {
@@ -45,6 +43,7 @@ public class EtudiantRest {
 	public List<Etudiant> findAll() {
 		return etudiantService.findAll();
 	}
+
 	@DeleteMapping("/ref/{ref}")
 	public int deleteByRef(String ref) {
 		return etudiantService.deleteByRef(ref);
@@ -53,6 +52,9 @@ public class EtudiantRest {
 	public void valider(@RequestBody Etudiant etudiant) {
 		etudiantService.valider(etudiant);
 	}
+	@GetMapping("/login/{login}/password/{password}")
+	public Object findByCritere(@PathVariable String login,@PathVariable String password) {
+		return etudiantService.findByCritere(login,password);
+	}
 	
-
 }

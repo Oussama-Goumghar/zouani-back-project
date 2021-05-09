@@ -2,6 +2,7 @@ package ma.learn.quiz.service;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,6 @@ import ma.learn.quiz.dao.EtudiantDao;
 
 
 
-
 @Service
 public class EtudiantService {
 	@Autowired
@@ -24,6 +24,9 @@ public class EtudiantService {
 	public CentreService centreService;
 	@Autowired
 	public ParcoursService parcoursService;
+	
+	@Autowired 
+	public EntityManager entityManager;
 	
 	 public List<Etudiant> findByParcoursCode(String code) {
 		return etudiantDao.findByParcoursCode(code);
@@ -103,6 +106,10 @@ public class EtudiantService {
 		return etudiantDao.deleteByParcoursId(id);
 	}
 	
-	
+	public Object findByCritere(String login, String password)
+	{
+		String query = "SELECT e FROM Etudiant e WHERE e.login= '"+login+"' and e.password='"+password+"'";
+		return entityManager.createQuery(query).getSingleResult();
+	}
 
 }
