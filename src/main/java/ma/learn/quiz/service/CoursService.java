@@ -95,14 +95,11 @@ public class CoursService {
 	            } else {
 	                nbEncours++;
 	               
-	            }
-	            if (section.getUrlImage() != null || section.getUrlVideo()!= null) {
+	            }if (section.getUrlImage() != null || section.getUrlVideo()!= null) {
 	                nbrLinkFinalise++;
 	                
 	            } else {
-	                nbrLinkEncours++;
-	               
-	            }}
+	                nbrLinkEncours++; }}
 		cours.setParcours(cours.getParcours());
 		cours.setLibelle(cours.getLibelle());
 		cours.setDescription(cours.getDescription());

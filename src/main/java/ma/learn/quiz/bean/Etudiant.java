@@ -23,20 +23,27 @@ public class Etudiant {
 	    private String login;
 	    private String ville;
 	    private String password;
-	    private String Etat;
-	    @ManyToOne
+	   private String etat;
+	   
+	    public String getEtat() {
+		return etat;
+	}
+	public void setEtat(String etat) {
+		this.etat = etat;
+	}
+		@ManyToOne
 	    private Parcours parcours;
+	    @ManyToOne
+	    private Prof prof;
+	    @ManyToOne
+	    private Centre centre;
 	    
 	    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	    @OneToMany(mappedBy = "etudiant")
 	     private List<QuizEtudiant> quizEtudiant;
 	    
-		public String getEtat() {
-			return Etat;
-		}
-		public void setEtat(String etat) {
-			Etat = etat;
-		}
+		
+		
 		public List<QuizEtudiant> getQuizEtudiant() {
 			return quizEtudiant;
 		}
@@ -98,6 +105,18 @@ public class Etudiant {
 		}
 		public void setParcours(Parcours parcours) {
 			this.parcours = parcours;
+		}
+		public Prof getProf() {
+			return prof;
+		}
+		public void setProf(Prof prof) {
+			this.prof = prof;
+		}
+		public Centre getCentre() {
+			return centre;
+		}
+		public void setCentre(Centre centre) {
+			this.centre = centre;
 		}
 		
 }

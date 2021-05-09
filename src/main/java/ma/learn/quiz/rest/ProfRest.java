@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/centre/prof")
+@RequestMapping("centre/prof")
 public class ProfRest {
     @GetMapping("/numero/{numro}")
     public Prof findByNumero(@PathVariable String ref) {
@@ -19,6 +19,7 @@ public class ProfRest {
         return profService.deleteByNumero(ref);
     }
 
+@GetMapping("/")
     public List<Prof> findAll() {
         return profService.findAll();
     }

@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ma.learn.quiz.bean.Centre;
 import ma.learn.quiz.bean.Etudiant;
 import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.dao.EtudiantDao;
@@ -56,29 +57,36 @@ public class EtudiantService {
 	public Etudiant findByNom(String nom) {
 		return etudiantDao.findByNom(nom);
 	}
-	public void valider(Etudiant etudiant){
-		 etudiant.setEtat(etudiant.getEtat());
+
+	public void valider(Etudiant etudiant){	
+		System.out.println("id ::: "+etudiant.getId());
 		
+		System.out.println("statut ::: "+etudiant .getProf().getNom());
+		etudiant.setEtat("refuser");
+		etudiant.getProf().setNom(etudiant.getProf().getNom());
+
 		etudiantDao.save(etudiant);
 		
 	 }
-	 public int save(Etudiant  etudiant ) {
-			if(findByNom(etudiant.getNom())!=null) {
-				return -1;
-			}
-			Parcours parcours =parcoursService.findParcoursByLibelle(etudiant.getParcours().getLibelle());
-			etudiant.setParcours(parcours);
-			if(parcours==null) {
-				return -3;
-			}
+	public int save(Etudiant  etudiant ) {
+		if(findByNom(etudiant.getNom())!=null) {
 			
-			else {
-				
-				etudiant.setEtat("non validé");
-				 etudiantDao.save(etudiant);
-				 
-				return 1;}
-			}
+
+			return -1;
+		}
+		Parcours parcours =parcoursService.findParcoursByLibelle(etudiant.getParcours().getLibelle());
+		etudiant.setParcours(parcours);
+		if(parcours==null) {
+			return -3;
+		}
+		
+		else {
+			
+			etudiant.setEtat("non validé");
+			
+			 etudiantDao.save(etudiant);
+			return 1;}
+		}
 	@Transactional
 	public int deleteByRef(String ref) {
 		return etudiantDao.deleteByRef(ref);
