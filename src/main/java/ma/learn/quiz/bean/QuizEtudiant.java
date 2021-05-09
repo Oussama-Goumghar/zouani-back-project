@@ -26,9 +26,9 @@ public class QuizEtudiant {
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@OneToMany(mappedBy = "quizEtudiant")
 	private List<ReponseEtudiant> reponseEtudiant;
-	@JsonFormat(pattern = "hh:mm:ss")
+	@JsonFormat(pattern = "MM/dd/yyyy hh:mm:ss")
 	private Date dateDebut;
-	@JsonFormat(pattern = "hh:mm:ss")
+	@JsonFormat(pattern = "MM/dd/yyyy hh:mm:ss")
 	private Date dateFin;
 	private Double note;
 	private String  resultat;
