@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import ma.learn.quiz.bean.Centre;
 import ma.learn.quiz.bean.Etudiant;
 import ma.learn.quiz.bean.Parcours;
+import ma.learn.quiz.bean.Prof;
 import ma.learn.quiz.dao.EtudiantDao;
 
 
@@ -62,12 +63,7 @@ public class EtudiantService {
 	}
 
 	public void valider(Etudiant etudiant){	
-		System.out.println("id ::: "+etudiant.getId());
-		
-		System.out.println("statut ::: "+etudiant .getProf().getNom());
-		etudiant.setEtat("refuser");
-		etudiant.getProf().setNom(etudiant.getProf().getNom());
-
+		etudiant.setEtat(etudiant.getEtat());
 		etudiantDao.save(etudiant);
 		
 	 }
@@ -78,15 +74,15 @@ public class EtudiantService {
 			return -1;
 		}
 		Parcours parcours =parcoursService.findParcoursByLibelle(etudiant.getParcours().getLibelle());
-		etudiant.setParcours(parcours);
+		
 		if(parcours==null) {
 			return -3;
 		}
 		
+		
 		else {
-			
-			etudiant.setEtat("non validé");
-			
+			etudiant.setParcours(parcours);
+		
 			 etudiantDao.save(etudiant);
 			return 1;}
 		}

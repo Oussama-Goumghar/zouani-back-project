@@ -1,9 +1,14 @@
 package ma.learn.quiz.bean;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class Prof {
@@ -13,8 +18,30 @@ public class Prof {
     private long numero;
     private String nom;
     private String prenom;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "responsable")
+    private List<ClassRoom> classRooms ;
+    
+    
+    
+    public List<ClassRoom> getClassRooms() {
+		return classRooms;
+	}
 
-    public Long getId() {
+	public void setClassRooms(List<ClassRoom> classRooms) {
+		this.classRooms = classRooms;
+	}
+
+	public long getNumero() {
+		return numero;
+	}
+
+	public void setNumero(long numero) {
+		this.numero = numero;
+	}
+
+	
+	public Long getId() {
         return id;
     }
 

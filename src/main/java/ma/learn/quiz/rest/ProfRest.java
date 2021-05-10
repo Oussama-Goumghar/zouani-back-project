@@ -19,11 +19,11 @@ public class ProfRest {
         return profService.deleteByNumero(ref);
     }
 
-@GetMapping("/")
+    @GetMapping("/")
     public List<Prof> findAll() {
         return profService.findAll();
     }
-@PostMapping("/")
+    @PostMapping("/")
     public int save(@RequestBody Prof prof) {
         return profService.save(prof);
     }

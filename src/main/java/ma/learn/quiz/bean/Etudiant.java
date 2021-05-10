@@ -33,10 +33,8 @@ public class Etudiant {
 	}
 		@ManyToOne
 	    private Parcours parcours;
-	    @ManyToOne
-	    private Prof prof;
-	    @ManyToOne
-	    private Centre centre;
+	   
+	  
 	    
 	    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	    @OneToMany(mappedBy = "etudiant")
@@ -106,17 +104,7 @@ public class Etudiant {
 		public void setParcours(Parcours parcours) {
 			this.parcours = parcours;
 		}
-		public Prof getProf() {
-			return prof;
-		}
-		public void setProf(Prof prof) {
-			this.prof = prof;
-		}
-		public Centre getCentre() {
-			return centre;
-		}
-		public void setCentre(Centre centre) {
-			this.centre = centre;
-		}
+		
+		
 		
 }
