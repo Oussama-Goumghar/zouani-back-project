@@ -18,13 +18,40 @@ public class Prof {
     private long numero;
     private String nom;
     private String prenom;
+    private String login;
+	private String password;
+	private String email;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "responsable")
     private List<ClassRoom> classRooms ;
     
     
     
-    public List<ClassRoom> getClassRooms() {
+    public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public List<ClassRoom> getClassRooms() {
 		return classRooms;
 	}
 

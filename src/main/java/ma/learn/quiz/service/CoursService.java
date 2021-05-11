@@ -33,7 +33,14 @@ public class CoursService {
 	public List<Cours> findByParcoursId(Long id) {
 		return coursDao.findByParcoursId(id);
 	}
-
+	@Transactional
+	public int deleteCoursById(List<Cours> courss) {
+		int res=0;
+        for (int i = 0; i < courss.size(); i++) {
+            res+=deleteCoursById(courss.get(i).getId());
+        }
+        return res;
+	}
 	@Transactional
 	public int deleteCoursById(Long id) {
 		int deleteBySectionCode = sectionService.deleteByCoursId(id);

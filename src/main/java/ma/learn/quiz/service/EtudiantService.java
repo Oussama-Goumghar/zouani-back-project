@@ -63,8 +63,9 @@ public class EtudiantService {
 	}
 
 	public void valider(Etudiant etudiant){	
-		etudiant.setEtat(etudiant.getEtat());
-		etudiantDao.save(etudiant);
+		Etudiant loadedEtudiant = findByRef(etudiant.getRef());
+		loadedEtudiant.setEtat(etudiant.getEtat());
+		etudiantDao.save(loadedEtudiant);
 		
 	 }
 	public int save(Etudiant  etudiant ) {
