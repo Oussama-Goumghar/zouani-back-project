@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ma.learn.quiz.bean.Etudiant;
 import ma.learn.quiz.service.EtudiantService;
+import ma.learn.quiz.service.vo.EtudiantVo;
 
 @RestController
 @RequestMapping("learn/etudiant")
@@ -21,6 +22,10 @@ public class EtudiantRest {
 	@Autowired
 	public EtudiantService  etudiantService;
 	
+	@PostMapping("/search")
+	public List<Etudiant> findByCriteria(@RequestBody EtudiantVo etudiantVo) {
+		return etudiantService.findByCriteria(etudiantVo);
+	}
 	@GetMapping("/parcours/code/{code}")
 	public List<Etudiant> findByParcoursCode(@PathVariable String code) {
 		return etudiantService.findByParcoursCode(code);

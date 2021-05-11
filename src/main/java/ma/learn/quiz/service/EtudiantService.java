@@ -13,6 +13,7 @@ import ma.learn.quiz.bean.Etudiant;
 import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.bean.Prof;
 import ma.learn.quiz.dao.EtudiantDao;
+import ma.learn.quiz.service.vo.EtudiantVo;
 
 
 
@@ -35,24 +36,34 @@ public class EtudiantService {
 	
 	 
 	
-	/*
-
-	public int save(Etudiant etudiant){
-	        if(findByref(etudiant.getRef())!=null){
-	            return -1;
-	       
-	        }else{
-	        	etudiantDao.save(etudiant);
-	            return 1;
-	        }
-	    }
-	    */
-
 	public int deleteByParcoursCode(String code) {
 		return etudiantDao.deleteByParcoursCode(code);
 	}
 
-
+	public List<Etudiant> findByCriteria (EtudiantVo etudiantVo){
+		String query = "SELECT e FROM Etudiant e WHERE 1=1";
+		if (etudiantVo.getNom() != null  )
+		{
+			query += " AND  e.nom LIKE '%" + etudiantVo.getNom()+"%'";
+		}
+		if (etudiantVo.getPrenom() != null)
+		{
+			query+= "  AND  e.prenom LIKE '%" + etudiantVo.getPrenom()+"'";
+		}
+		if (etudiantVo.getId() != null)
+		{
+			query+= "  AND  e.id LIKE '%" + etudiantVo.getId()+"'";
+		}
+		if (etudiantVo.getLogin() != null)
+		{
+			query+= "  AND  e.login LIKE '%" + etudiantVo.getLogin()+"'";
+		}
+		if (etudiantVo.getPassword() != null)
+		{
+			query+= "  AND  e.password LIKE '%" + etudiantVo.getPassword()+"'";
+		}
+		return  entityManager.createQuery(query).getResultList();	
+	}
 
 	public Etudiant findByRef(String ref) {
 		return etudiantDao.findByRef(ref);
