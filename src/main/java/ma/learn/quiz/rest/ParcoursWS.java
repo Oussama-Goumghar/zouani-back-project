@@ -66,4 +66,9 @@ public void save(@RequestBody Parcours parcours) {
         return parcoursService.deleteParcoursById(id);
     }
 
+	 @PostMapping("/delete-multiple-by-id")
+	public int deleteParcoursById(@RequestBody List<Parcours> parcourss) {
+		return parcoursService.deleteParcoursById(parcourss);
+	}
+
 }

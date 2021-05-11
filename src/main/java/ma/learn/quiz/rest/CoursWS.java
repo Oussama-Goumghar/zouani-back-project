@@ -76,6 +76,10 @@ public class CoursWS {
 	public int save(@RequestBody Cours cours) {
 		return coursService.save(cours);
 	}
+	 @PostMapping("/delete-multiple-by-id")
+	public int deleteCoursById(@RequestBody List<Cours> courss) {
+		return coursService.deleteCoursById(courss);
+	}
 	
 	
 
