@@ -14,6 +14,8 @@ public interface EtudiantDao  extends JpaRepository<Etudiant,Long>  {
 	    int deleteByRef(String ref);
 	    int deleteByNom(String nom);
 	    List<Etudiant> findByParcoursCode(String code);
+	    Etudiant findEtudiantById(Long id);
+
 	    int deleteByParcoursId(Long id);
 	    int deleteByParcoursCode(String code);
 }

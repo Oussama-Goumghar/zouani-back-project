@@ -111,7 +111,8 @@ public class ParcoursService {
 	}
 
 	public void update(Parcours parcours) {
-		parcours.setCentre(parcours.getCentre());
+		 Centre centre=centreService.findByRef(parcours.getCentre().getRef());
+		parcours.setCentre(centre);
 		parcours.setLibelle(parcours.getLibelle());
 		parcours.setDateCreation(parcours.getDateCreation());
 		parcours.setDescription(parcours.getDescription());

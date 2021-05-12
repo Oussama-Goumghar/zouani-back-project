@@ -17,6 +17,7 @@ public interface CategorieSectionDao extends JpaRepository<CategorieSection,Long
      int deleteByCode(String code);
      List<Cours> findBySuperCategorieSectionCode(String code); 
      int deleteBySuperCategorieSectionCode(String code);
+     CategorieSection findCategorieSectionById(Long id);
 }
 
 

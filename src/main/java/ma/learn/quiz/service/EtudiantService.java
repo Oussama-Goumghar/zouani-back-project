@@ -1,6 +1,7 @@
 package ma.learn.quiz.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -8,12 +9,11 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ma.learn.quiz.bean.Centre;
+import ma.learn.quiz.bean.EtatInscription;
 import ma.learn.quiz.bean.Etudiant;
 import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.bean.Prof;
 import ma.learn.quiz.dao.EtudiantDao;
-import ma.learn.quiz.service.vo.EtudiantVo;
 
 
 
@@ -26,6 +26,10 @@ public class EtudiantService {
 	public CentreService centreService;
 	@Autowired
 	public ParcoursService parcoursService;
+	@Autowired
+	public ProfService profService;
+	@Autowired
+	public EtatInscriptionService etatInscriptionService;
 	
 	@Autowired 
 	public EntityManager entityManager;
@@ -40,27 +44,27 @@ public class EtudiantService {
 		return etudiantDao.deleteByParcoursCode(code);
 	}
 
-	public List<Etudiant> findByCriteria (EtudiantVo etudiantVo){
+	public List<Etudiant> findByCriteria (Etudiant etudiant){
 		String query = "SELECT e FROM Etudiant e WHERE 1=1";
-		if (etudiantVo.getNom() != null  )
+		if (etudiant.getNom() != null  )
 		{
-			query += " AND  e.nom LIKE '%" + etudiantVo.getNom()+"%'";
+			query += " AND  e.nom LIKE '%" + etudiant.getNom()+"%'";
 		}
-		if (etudiantVo.getPrenom() != null)
+		if (etudiant.getPrenom() != null)
 		{
-			query+= "  AND  e.prenom LIKE '%" + etudiantVo.getPrenom()+"'";
+			query+= "  AND  e.prenom LIKE '%" + etudiant.getPrenom()+"'";
 		}
-		if (etudiantVo.getId() != null)
+		if (etudiant.getId() != null)
 		{
-			query+= "  AND  e.id LIKE '%" + etudiantVo.getId()+"'";
+			query+= "  AND  e.id LIKE '%" + etudiant.getId()+"'";
 		}
-		if (etudiantVo.getLogin() != null)
+		if (etudiant.getLogin() != null)
 		{
-			query+= "  AND  e.login LIKE '%" + etudiantVo.getLogin()+"'";
+			query+= "  AND  e.login LIKE '%" + etudiant.getLogin()+"'";
 		}
-		if (etudiantVo.getPassword() != null)
+		if (etudiant.getPassword() != null)
 		{
-			query+= "  AND  e.password LIKE '%" + etudiantVo.getPassword()+"'";
+			query+= "  AND  e.password LIKE '%" + etudiant.getPassword()+"'";
 		}
 		return  entityManager.createQuery(query).getResultList();	
 	}
@@ -73,11 +77,21 @@ public class EtudiantService {
 		return etudiantDao.findByNom(nom);
 	}
 
-	public void valider(Etudiant etudiant){	
-		Etudiant loadedEtudiant = findByRef(etudiant.getRef());
-		loadedEtudiant.setEtat(etudiant.getEtat());
+	public Optional<Etudiant> findById(Long id) {
+		return etudiantDao.findById(id);
+	}
+
+
+
+	public int valider(Etudiant etudiant){	
+		Optional<Etudiant> Etudiant = findById(etudiant.getId());
+		Etudiant loadedEtudiant= Etudiant.get();
+		EtatInscription etatInscription=etatInscriptionService.findByRef(etudiant.getEtatInscription().getRef());
+		loadedEtudiant.setEtatInscription(etatInscription);
+		Prof prof=profService.findProfById(etudiant.getProf().getId());
+		loadedEtudiant.setProf(prof);
 		etudiantDao.save(loadedEtudiant);
-		
+		return 1;
 	 }
 	public int save(Etudiant  etudiant ) {
 		if(findByNom(etudiant.getNom())!=null) {

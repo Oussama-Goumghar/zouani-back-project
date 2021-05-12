@@ -5,6 +5,7 @@ package ma.learn.quiz.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -125,9 +126,12 @@ public List<Section> findAll() {
 
 public void update(Section section){
 
-	Section LoadedSection= sectionDao.findSectionByCoursAndCategorieSection(section.getCours(), section.getCategorieSection());
-	LoadedSection.setCategorieSection(section.getCategorieSection());
-	LoadedSection.setCours(section.getCours());
+	Optional<Section> sections= sectionDao.findById(section.getId());
+	Section LoadedSection=sections.get();
+	Cours cours=coursService.findCoursById(section.getCours().getId());
+	LoadedSection.setCours(cours);
+	CategorieSection categorieSection=categorieSectionService.findCategorieSectionById(section.getCategorieSection().getId());
+	LoadedSection.setCategorieSection(categorieSection);
 	LoadedSection.setLibelle(section.getLibelle());
 	LoadedSection.setContenu(section.getContenu());
 	LoadedSection.setIndicationProf(section.getIndicationProf());

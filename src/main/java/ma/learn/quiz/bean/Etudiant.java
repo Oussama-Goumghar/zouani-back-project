@@ -23,18 +23,13 @@ public class Etudiant {
 	    private String login;
 	    private String ville;
 	    private String password;
-	   private String etat;
 	   
-	    public String getEtat() {
-		return etat;
-	}
-	public void setEtat(String etat) {
-		this.etat = etat;
-	}
 		@ManyToOne
 	    private Parcours parcours;
-	   
-	  
+		@ManyToOne
+	    private Prof prof;
+		@ManyToOne
+	    private EtatInscription etatInscription;
 	    
 	    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	    @OneToMany(mappedBy = "etudiant")
@@ -42,6 +37,37 @@ public class Etudiant {
 	    
 		
 		
+		public Etudiant() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+		public Etudiant(String ref, String nom, String prenom, int age, String login, String ville, String password,
+				Parcours parcours, Prof prof, EtatInscription etatInscription, List<QuizEtudiant> quizEtudiant) {
+			super();
+			this.ref = ref;
+			this.nom = nom;
+			this.prenom = prenom;
+			this.age = age;
+			this.login = login;
+			this.ville = ville;
+			this.password = password;
+			this.parcours = parcours;
+			this.prof = prof;
+			this.etatInscription = etatInscription;
+			this.quizEtudiant = quizEtudiant;
+		}
+		public Prof getProf() {
+			return prof;
+		}
+		public void setProf(Prof prof) {
+			this.prof = prof;
+		}
+		public EtatInscription getEtatInscription() {
+			return etatInscription;
+		}
+		public void setEtatInscription(EtatInscription etatInscription) {
+			this.etatInscription = etatInscription;
+		}
 		public List<QuizEtudiant> getQuizEtudiant() {
 			return quizEtudiant;
 		}

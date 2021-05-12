@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ma.learn.quiz.bean.CategorieSection;
+import ma.learn.quiz.bean.Centre;
 import ma.learn.quiz.bean.Cours;
 import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.bean.Section;
@@ -130,7 +131,8 @@ public class CoursService {
 				nbrLinkEncours++;
 			}
 		}
-		cours.setParcours(cours.getParcours());
+		 Parcours parcours=parcoursService.findParcoursById(cours.getParcours().getId());
+		 cours.setParcours(parcours);
 		cours.setLibelle(cours.getLibelle());
 		cours.setDescription(cours.getDescription());
 		cours.setImage(cours.getImage());

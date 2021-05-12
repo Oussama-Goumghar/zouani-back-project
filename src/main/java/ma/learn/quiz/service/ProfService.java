@@ -18,7 +18,11 @@ public class ProfService {
         return profDao.deleteByNumero(ref);
     }
 
-    public List<Prof> findAll() {
+    public Prof findProfById(Long id) {
+		return profDao.findProfById(id);
+	}
+
+	public List<Prof> findAll() {
         return profDao.findAll();
     }
     public int save(Prof prof){

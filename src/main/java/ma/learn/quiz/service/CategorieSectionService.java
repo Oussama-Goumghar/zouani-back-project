@@ -23,7 +23,11 @@ public class CategorieSectionService {
     @Autowired
     private SuperCategorieSectionService superCategorieSectionService;
 
-   public int save(CategorieSection categorieSection) {
+   public CategorieSection findCategorieSectionById(Long id) {
+		return categorieSectionDao.findCategorieSectionById(id);
+	}
+
+public int save(CategorieSection categorieSection) {
         if (findByCode(categorieSection.getCode()) != null) {
             return -1;
         }
