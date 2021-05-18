@@ -109,8 +109,17 @@ public class ParcoursService {
 	public void delete(Parcours entity) {
 		parcoursDao.delete(entity);
 	}
-
-	public void update(Parcours parcours) {
+	
+	 
+	public Parcours update(Parcours parcours) {
+		List<Cours> cours = coursService.findByParcoursId(parcours.getId());
+		int nbCours = 0;
+        for (Cours c:cours) {
+        	if(c.getId() !=null) {
+        	nbCours++;}
+           
+        }
+        	parcours.setNombreCours(nbCours);
 		 Centre centre=centreService.findByRef(parcours.getCentre().getRef());
 		parcours.setCentre(centre);
 		parcours.setLibelle(parcours.getLibelle());
@@ -118,7 +127,7 @@ public class ParcoursService {
 		parcours.setDescription(parcours.getDescription());
 		parcours.setDatePublication(parcours.getDatePublication());
 		parcours.setCourses(parcours.getCourses());
-		parcoursDao.save(parcours);
+		return parcoursDao.save(parcours);
 		
 	}
 	

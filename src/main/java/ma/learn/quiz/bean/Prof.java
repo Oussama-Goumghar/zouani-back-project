@@ -1,11 +1,13 @@
 package ma.learn.quiz.bean;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -21,6 +23,12 @@ public class Prof {
     private String login;
 	private String password;
 	private String email;
+
+	private int lessonComplete;
+	private BigDecimal salary;
+
+	@ManyToOne
+	private CategorieProf categorieProf;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "responsable")
     private List<ClassRoom> classRooms ;
@@ -102,4 +110,29 @@ public class Prof {
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
+
+	public int getLessonComplete() {
+		return lessonComplete;
+	}
+
+	public void setLessonComplete(int lessonComplete) {
+		this.lessonComplete = lessonComplete;
+	}
+
+	public BigDecimal getSalary() {
+		return salary;
+	}
+
+	public void setSalary(BigDecimal salary) {
+		this.salary = salary;
+	}
+
+	public CategorieProf getCategorieProf() {
+		return categorieProf;
+	}
+
+	public void setCategorieProf(CategorieProf categorieProf) {
+		this.categorieProf = categorieProf;
+	}
+    
 }

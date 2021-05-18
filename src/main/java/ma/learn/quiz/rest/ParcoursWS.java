@@ -51,8 +51,8 @@ public void save(@RequestBody Parcours parcours) {
 	}
 
 @PutMapping("/")
-	public void update(@RequestBody Parcours parcours) {
-		parcoursService.update(parcours);
+	public Parcours update(@RequestBody Parcours parcours) {
+		return parcoursService.update(parcours);
 	}
 
 @GetMapping("/libelle/{libelle}")

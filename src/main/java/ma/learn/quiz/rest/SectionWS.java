@@ -22,7 +22,11 @@ import ma.learn.quiz.service.SectionService;
 public class SectionWS {
  @Autowired
     private SectionService sectionservice;
-    @GetMapping("/")
+ @PostMapping("/delete-multiple-by-id")
+    public int deleteSectionById(@RequestBody List<Section> sections) {
+	return sectionservice.deleteSectionById(sections);
+}
+	@GetMapping("/")
     public List<Section> findAll( ) {
         return sectionservice.findAll();
     }
@@ -42,8 +46,8 @@ public class SectionWS {
 	}
 
 	@PutMapping("/")
-    public void update(@RequestBody Section section) {
-        sectionservice.update(section);
+    public Section update(@RequestBody Section section) {
+        return sectionservice.update(section);
     }
 
 	@GetMapping("/cours/code/{code}")

@@ -48,7 +48,7 @@ public class CoursService {
 		int deleteByCode = coursDao.deleteCoursById(id);
 		return deleteBySectionCode + deleteByCode;
 	}
-
+	
 	public int deleteByParcoursId(Long id) {
 		return coursDao.deleteByParcoursId(id);
 	}
@@ -113,7 +113,7 @@ public class CoursService {
 		return coursDao.deleteByParcoursCode(code);
 	}
 
-	public void update(Cours cours) {
+	public Cours update(Cours cours) {
 		List<Section> sections = sectionService.findByCours(cours);
 		int nbFinalise = 0, nbEncours = 0, nbrLinkFinalise = 0, nbrLinkEncours = 0;
 		for (Section section : sections) {
@@ -142,7 +142,7 @@ public class CoursService {
 		cours.setNombreLinkFinalise(nbrLinkFinalise);
 		cours.setNombreSectionEnCours(nbEncours);
 		cours.setNombreSectionFinalise(nbFinalise);
-		coursDao.save(cours);
+		return coursDao.save(cours);
 
 	}
 

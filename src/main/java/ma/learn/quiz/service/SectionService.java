@@ -57,7 +57,14 @@ public class SectionService {
 		return sectionDao.findByCategorieSectionLibelle(libelle);
 	}
 
-
+	@Transactional
+	public int deleteSectionById(List<Section> sections) {
+		int res=0;
+        for (int i = 0; i < sections.size(); i++) {
+            res+=deleteSectionById(sections.get(i).getId());
+        }
+        return res;
+	}
 
 
 	@Transactional
@@ -124,7 +131,7 @@ public List<Section> findAll() {
 		return sectionDao.findAll();
 	}
 
-public void update(Section section){
+public Section update(Section section){
 
 	Optional<Section> sections= sectionDao.findById(section.getId());
 	Section LoadedSection=sections.get();
@@ -149,7 +156,7 @@ public void update(Section section){
 	if(section.getContenu() != null) {
 		LoadedSection.setContent(1);
 	}coursService.update(section.getCours());
-		sectionDao.save(LoadedSection);
+		return sectionDao.save(LoadedSection);
 		
    }
 

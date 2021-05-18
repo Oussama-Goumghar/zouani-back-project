@@ -57,8 +57,8 @@ public class CoursWS {
 
     
 	@PutMapping("/")
-	public void update(@RequestBody Cours cours) {
-		coursService.update(cours);
+	public Cours update(@RequestBody Cours cours) {
+		return coursService.update(cours);
 	}
 	
 	
