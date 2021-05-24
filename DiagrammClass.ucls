@@ -93,7 +93,7 @@
   </class>  
   <class id="11" language="java" name="ma.learn.quiz.bean.EtudiantClassRoom" project="demo" 
     file="/demo/src/main/java/ma/learn/quiz/bean/EtudiantClassRoom.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="233" width="288" x="732" y="-168"/>    
+    <position height="-1" width="-1" x="912" y="-62"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
