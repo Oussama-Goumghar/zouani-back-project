@@ -35,6 +35,19 @@ public class ProfRest {
 		return profService.calcStatistique(salaryVo);
 	}
 
+    @GetMapping("/ref/{ref}")
+    public Prof findByRef(@PathVariable String ref) {
+        return profService.findByRef(ref);
+    }
+@DeleteMapping("/ref/{ref}")
+    public int deleteByRef(@PathVariable String ref) {
+        return profService.deleteByRef(ref);
+    }
+
+@GetMapping("/login/{login}/password/{password}")
+public Object findByCritere(@PathVariable String login,@PathVariable String password) {
+	return profService.findByCritere(login,password);
+}
 	@Autowired
     private ProfService profService;
 }

@@ -42,6 +42,20 @@ public class ProfService {
     	String query = "SELECT Count(s.id) From SessionCours s where s.dateDebut = '"+ salaryVo.getAnnee()+"/"+ salaryVo.getMois()+"/01'";
     	return entityManager.createQuery(query).getResultList();
     }
+    
+    public Prof findByRef(String ref) {
+        return profDao.findByRef(ref);
+    }
+
+    public int deleteByRef(String ref) {
+        return profDao.deleteByRef(ref);
+    }
+
+    public Object findByCritere(String login, String password)
+	{
+		String query = "SELECT p FROM Prof p WHERE p.login= '"+login+"' and p.password='"+password+"'";
+		return entityManager.createQuery(query).getSingleResult();
+	}
     @Autowired 
 	public EntityManager entityManager;
     @Autowired

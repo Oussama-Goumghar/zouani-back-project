@@ -23,7 +23,7 @@ public class Prof {
     private String login;
 	private String password;
 	private String email;
-
+	private String ref;
 	private int lessonComplete;
 	private BigDecimal salary;
 
@@ -36,6 +36,14 @@ public class Prof {
     
     
     
+	public String getRef() {
+		return ref;
+	}
+
+	public void setRef(String ref) {
+		this.ref = ref;
+	}
+
 	public String getLogin() {
 		return login;
 	}

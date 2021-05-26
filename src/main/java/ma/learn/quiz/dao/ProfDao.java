@@ -9,4 +9,7 @@ public interface ProfDao extends JpaRepository<Prof, Long> {
     Prof findByNumero(String ref);
     Prof findProfById(Long id);
     int deleteByNumero(String ref);
+    
+    Prof findByRef(String ref);
+    int deleteByRef(String ref);
 }
