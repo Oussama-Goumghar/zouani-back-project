@@ -33,19 +33,9 @@ public class Prof {
     @OneToMany(mappedBy = "responsable")
     private List<ClassRoom> classRooms ;
     
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "prof")
-     private List<Etudiant> etudiant;
     
     
-    public List<Etudiant> getEtudiant() {
-		return etudiant;
-	}
-
-	public void setEtudiant(List<Etudiant> etudiant) {
-		this.etudiant = etudiant;
-	}
-
+    
 	public String getLogin() {
 		return login;
 	}

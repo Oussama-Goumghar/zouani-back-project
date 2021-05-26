@@ -20,6 +20,7 @@ public class SessionCours {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date dateFin;
 
+    
     public Long getId() {
         return id;
     }

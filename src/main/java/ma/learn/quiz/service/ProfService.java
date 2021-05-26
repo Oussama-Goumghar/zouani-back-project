@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ma.learn.quiz.bean.Prof;
+import ma.learn.quiz.bean.SessionCours;
 import ma.learn.quiz.dao.ProfDao;
 import ma.learn.quiz.vo.SalaryVo;
 
@@ -32,13 +33,14 @@ public class ProfService {
         this.profDao.save(prof);
         return 1;
     }
-    public List<SalaryVo> calcStatistique(SalaryVo salaryVo) {
-    	String query = "SELECT NEW ma.clc.vo.SalaryVo(COUNT(s.id)) FROM SessionCours s WHERE s.mois = ? and s.anne.=?";
+    public List<SessionCours> calcStatistique(SalaryVo salaryVo) {
+    	/*String query = "SELECT NEW ma.learn.quiz.vo.SalaryVo(COUNT(s.id)) FROM SessionCours s WHERE s.mois = ? and s.annee=?";
     	System.out.println("query = " + query); 
-    	List<SalaryVo> res = entityManager.createQuery(query).getResultList(); 
+    	int res = entityManager.createQuery(query).getResultList(); 
     	System.out.println("res = " + res); 
-    	return res; 
-
+    	return res; */
+    	String query = "SELECT Count(s.id) From SessionCours s where s.dateDebut = '"+ salaryVo.getAnnee()+"/"+ salaryVo.getMois()+"/01'";
+    	return entityManager.createQuery(query).getResultList();
     }
     @Autowired 
 	public EntityManager entityManager;

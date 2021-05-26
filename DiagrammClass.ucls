@@ -327,149 +327,149 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="73">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="74" name="etudiant"/>      
-      <multiplicity id="75" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="76">    
     <bendpoint x="-63" y="486"/>    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="77" name="reponse"/>      
-      <multiplicity id="78" minimum="0" maximum="1"/>    
+      <attribute id="74" name="reponse"/>      
+      <multiplicity id="75" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="16" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="79">    
+  <association id="76">    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="80" name="parcours"/>      
-      <multiplicity id="81" minimum="0" maximum="1"/>    
+      <attribute id="77" name="parcours"/>      
+      <multiplicity id="78" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="82">    
+  <association id="79">    
     <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="83" name="superCategorieSection"/>      
-      <multiplicity id="84" minimum="0" maximum="1"/>    
+      <attribute id="80" name="superCategorieSection"/>      
+      <multiplicity id="81" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="85">    
+  <association id="82">    
     <bendpoint x="87" y="105"/>    
     <bendpoint x="87" y="486"/>    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="86" name="quiz"/>      
-      <multiplicity id="87" minimum="0" maximum="1"/>    
+      <attribute id="83" name="quiz"/>      
+      <multiplicity id="84" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="88">    
+  <association id="85">    
     <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="89" name="categorieProf"/>      
-      <multiplicity id="90" minimum="0" maximum="1"/>    
+      <attribute id="86" name="categorieProf"/>      
+      <multiplicity id="87" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="91">    
+  <association id="88">    
     <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="92" name="sections"/>      
-      <multiplicity id="93" minimum="0" maximum="2147483647"/>    
+      <attribute id="89" name="sections"/>      
+      <multiplicity id="90" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="20" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="94">    
+  <association id="91">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="95" name="courses"/>      
-      <multiplicity id="96" minimum="0" maximum="2147483647"/>    
+      <attribute id="92" name="courses"/>      
+      <multiplicity id="93" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="97">    
+  <association id="94">    
     <bendpoint x="869" y="486"/>    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="98" name="etudiant"/>      
-      <multiplicity id="99" minimum="0" maximum="1"/>    
+      <attribute id="95" name="etudiant"/>      
+      <multiplicity id="96" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="100">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="101" name="etatInscription"/>      
-      <multiplicity id="102" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="103">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="104" name="etudiant"/>      
-      <multiplicity id="105" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="106">    
+  <association id="97">    
     <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="107" name="quiz"/>      
-      <multiplicity id="108" minimum="0" maximum="1"/>    
+      <attribute id="98" name="quiz"/>      
+      <multiplicity id="99" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="109">    
+  <association id="100">    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="110" name="quizEtudiant"/>      
-      <multiplicity id="111" minimum="0" maximum="2147483647"/>    
+      <attribute id="101" name="quizEtudiant"/>      
+      <multiplicity id="102" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="112">    
+  <association id="103">    
     <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="113" name="quizClassRooms"/>      
-      <multiplicity id="114" minimum="0" maximum="2147483647"/>    
+      <attribute id="104" name="quizClassRooms"/>      
+      <multiplicity id="105" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="115">    
+  <association id="106">    
     <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="116" name="profs"/>      
-      <multiplicity id="117" minimum="0" maximum="2147483647"/>    
+      <attribute id="107" name="profs"/>      
+      <multiplicity id="108" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="17" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="118">    
+  <association id="109">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="119" name="typeDeQuestion"/>      
-      <multiplicity id="120" minimum="0" maximum="1"/>    
+      <attribute id="110" name="typeDeQuestion"/>      
+      <multiplicity id="111" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="21" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="121">    
+  <association id="112">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="122" name="quizEtudiant"/>      
-      <multiplicity id="123" minimum="0" maximum="2147483647"/>    
+      <attribute id="113" name="quizEtudiant"/>      
+      <multiplicity id="114" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="124">    
+  <association id="115">    
     <bendpoint x="974" y="105"/>    
     <bendpoint x="974" y="486"/>    
     <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="116" name="etudiant"/>      
+      <multiplicity id="117" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="118">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="119" name="sections"/>      
+      <multiplicity id="120" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="121">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="122" name="responsable"/>      
+      <multiplicity id="123" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="124">    
+    <end type="SOURCE" refId="14" navigable="false">      
       <attribute id="125" name="etudiant"/>      
       <multiplicity id="126" minimum="0" maximum="1"/>    
     </end>    
@@ -477,7 +477,7 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="127">    
-    <end type="SOURCE" refId="7" navigable="false">      
+    <end type="SOURCE" refId="8" navigable="false">      
       <attribute id="128" name="prof"/>      
       <multiplicity id="129" minimum="0" maximum="1"/>    
     </end>    
@@ -485,50 +485,18 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="130">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="131" name="sections"/>      
-      <multiplicity id="132" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="20" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="133">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="134" name="responsable"/>      
-      <multiplicity id="135" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="136">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="137" name="etudiant"/>      
-      <multiplicity id="138" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="139">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="140" name="prof"/>      
-      <multiplicity id="141" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="142">    
     <bendpoint x="1650" y="1209"/>    
     <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="143" name="etatInscription"/>      
-      <multiplicity id="144" minimum="0" maximum="1"/>    
+      <attribute id="131" name="etatInscription"/>      
+      <multiplicity id="132" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="145">    
+  <association id="133">    
     <end type="SOURCE" refId="20" navigable="false">      
-      <attribute id="146" name="cours"/>      
-      <multiplicity id="147" minimum="0" maximum="1"/>    
+      <attribute id="134" name="cours"/>      
+      <multiplicity id="135" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  

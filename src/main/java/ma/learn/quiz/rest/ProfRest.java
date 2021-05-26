@@ -1,7 +1,10 @@
 package ma.learn.quiz.rest;
 
 import ma.learn.quiz.bean.Prof;
+import ma.learn.quiz.bean.SessionCours;
 import ma.learn.quiz.service.ProfService;
+import ma.learn.quiz.vo.SalaryVo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +30,11 @@ public class ProfRest {
     public int save(@RequestBody Prof prof) {
         return profService.save(prof);
     }
+    @PostMapping("/salary/{salaryVo}")
+    public List<SessionCours> calcStatistique(@RequestBody SalaryVo salaryVo) {
+		return profService.calcStatistique(salaryVo);
+	}
 
-    @Autowired
+	@Autowired
     private ProfService profService;
 }

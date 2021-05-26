@@ -56,9 +56,6 @@ public class EtudiantRest {
 	public void valider(@RequestBody Etudiant etudiant) {
 		etudiantService.valider(etudiant);
 	}
-	@GetMapping("/login/{login}/password/{password}")
-	public Object findByCritere(@PathVariable String login,@PathVariable String password) {
-		return etudiantService.findByCritere(login,password);
-	}
+	
 	
 }

@@ -26,10 +26,7 @@ public class Etudiant {
 	   
 		@ManyToOne
 	    private Parcours parcours;
-		@ManyToOne
-	    private Prof prof;
-		@ManyToOne
-	    private EtatInscription etatInscription;
+		
 	    
 	    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	    @OneToMany(mappedBy = "etudiant")
@@ -52,22 +49,10 @@ public class Etudiant {
 			this.ville = ville;
 			this.password = password;
 			this.parcours = parcours;
-			this.prof = prof;
-			this.etatInscription = etatInscription;
 			this.quizEtudiant = quizEtudiant;
 		}
-		public Prof getProf() {
-			return prof;
-		}
-		public void setProf(Prof prof) {
-			this.prof = prof;
-		}
-		public EtatInscription getEtatInscription() {
-			return etatInscription;
-		}
-		public void setEtatInscription(EtatInscription etatInscription) {
-			this.etatInscription = etatInscription;
-		}
+		
+		
 		public List<QuizEtudiant> getQuizEtudiant() {
 			return quizEtudiant;
 		}

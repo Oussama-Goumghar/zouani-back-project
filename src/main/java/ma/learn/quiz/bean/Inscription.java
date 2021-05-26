@@ -24,7 +24,8 @@ import javax.persistence.TemporalType;
 			   private Date date_fin_inscription;
 		    
 		  
-		  
+		  @ManyToOne
+		  private Prof prof;
 		   @OneToOne
 		   private Etudiant etudiant;
 		   @OneToOne
@@ -32,6 +33,12 @@ import javax.persistence.TemporalType;
 		   
 		
 		
+			public Prof getProf() {
+			return prof;
+		}
+		public void setProf(Prof prof) {
+			this.prof = prof;
+		}
 			public Long getId() {
 				return id;
 			}

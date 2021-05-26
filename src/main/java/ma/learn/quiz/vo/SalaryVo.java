@@ -2,19 +2,21 @@ package ma.learn.quiz.vo;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.time.Month;
+import java.time.Year;
 
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import ma.learn.quiz.bean.Prof;
 
 public class SalaryVo {
 @ManyToOne
 private Prof prof;
-@Temporal(TemporalType.DATE)
+@JsonFormat(pattern = "yyyy")
 private Date annee;
-@Temporal(TemporalType.DATE)
+@JsonFormat(pattern = "MM")
 private Date mois;
 private BigDecimal nbrSessionMensuel;
 private BigDecimal nbrSessionGlobale; 
@@ -26,6 +28,8 @@ public Prof getProf() {
 public void setProf(Prof prof) {
 	this.prof = prof;
 }
+
+
 public Date getAnnee() {
 	return annee;
 }

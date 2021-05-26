@@ -86,10 +86,7 @@ public class EtudiantService {
 	public int valider(Etudiant etudiant){	
 		Optional<Etudiant> Etudiant = findById(etudiant.getId());
 		Etudiant loadedEtudiant= Etudiant.get();
-		EtatInscription etatInscription=etatInscriptionService.findByRef(etudiant.getEtatInscription().getRef());
-		loadedEtudiant.setEtatInscription(etatInscription);
-		Prof prof=profService.findProfById(etudiant.getProf().getId());
-		loadedEtudiant.setProf(prof);
+	
 		etudiantDao.save(loadedEtudiant);
 		return 1;
 	 }
@@ -128,10 +125,5 @@ public class EtudiantService {
 		return etudiantDao.deleteByParcoursId(id);
 	}
 	
-	public Object findByCritere(String login, String password)
-	{
-		String query = "SELECT e FROM Etudiant e WHERE e.login= '"+login+"' and e.password='"+password+"'";
-		return entityManager.createQuery(query).getSingleResult();
-	}
-
+	
 }
