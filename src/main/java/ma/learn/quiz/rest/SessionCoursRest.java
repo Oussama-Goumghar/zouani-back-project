@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/centre/session-cours")
+@RequestMapping("learn/session-cours")
 public class SessionCoursRest {
     @GetMapping("/numero/{numero}")
     public SessionCours findByNumero(@PathVariable String numero) {

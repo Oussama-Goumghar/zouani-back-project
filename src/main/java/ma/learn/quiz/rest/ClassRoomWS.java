@@ -13,7 +13,7 @@ import ma.learn.quiz.dao.ClassRoomDao;
 import ma.learn.quiz.service.ClassRoomService;
 
 @RestController
-@RequestMapping("E-learning/classRoom")
+@RequestMapping("learn/classRoom")
 public class ClassRoomWS {
 	@Autowired
 	private ClassRoomService classRoomService;

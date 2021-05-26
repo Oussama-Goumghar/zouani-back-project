@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "centre/reponseEtudiant")
+@RequestMapping(value = "learn/reponseEtudiant")
 public class ReponseEtudiantRest {
 	
 	@Autowired

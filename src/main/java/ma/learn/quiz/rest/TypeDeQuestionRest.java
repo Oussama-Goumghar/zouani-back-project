@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "centre/TypeDeQuestion")
+@RequestMapping(value = "learn/TypeDeQuestion")
 public class TypeDeQuestionRest {
 
     @GetMapping("/ref/{ref}")

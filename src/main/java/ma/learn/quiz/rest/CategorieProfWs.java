@@ -12,7 +12,7 @@ import ma.learn.quiz.service.CategorieProfService;
 
 
 @RestController
-@RequestMapping("E-learning/categorieprof")
+@RequestMapping("learn/categorieprof")
 public class CategorieProfWs {
 	@Autowired
 	private CategorieProfService categorieProfservice;

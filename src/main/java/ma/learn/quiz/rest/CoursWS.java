@@ -17,7 +17,7 @@ import ma.learn.quiz.bean.Cours;
 import ma.learn.quiz.service.CoursService;
 
 @RestController
-@RequestMapping("E-learning/cours")
+@RequestMapping("learn/cours")
 
 public class CoursWS {
 

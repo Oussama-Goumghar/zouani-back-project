@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ma.learn.quiz.bean.EtudiantClassRoom;
 import ma.learn.quiz.service.EtudiantClassRoomService;
 @RestController
-@RequestMapping("E-learning/etudiant-classRoom")
+@RequestMapping("learn/etudiant-classRoom")
 public class EtudiantClassRoomRest {
 	@Autowired
 	private EtudiantClassRoomService etudiantClassRoomService;
