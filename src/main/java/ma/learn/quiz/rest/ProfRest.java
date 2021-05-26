@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("centre/prof")
+@RequestMapping("learn/prof")
 public class ProfRest {
     @GetMapping("/numero/{numro}")
     public Prof findByNumero(@PathVariable String ref) {
