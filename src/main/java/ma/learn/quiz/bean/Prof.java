@@ -24,9 +24,7 @@ public class Prof {
 	private String password;
 	private String email;
 	private String ref;
-	private int lessonComplete;
-	private BigDecimal salary;
-
+	
 	@ManyToOne
 	private CategorieProf categorieProf;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -109,21 +107,7 @@ public class Prof {
         this.prenom = prenom;
     }
 
-	public int getLessonComplete() {
-		return lessonComplete;
-	}
-
-	public void setLessonComplete(int lessonComplete) {
-		this.lessonComplete = lessonComplete;
-	}
-
-	public BigDecimal getSalary() {
-		return salary;
-	}
-
-	public void setSalary(BigDecimal salary) {
-		this.salary = salary;
-	}
+	
 
 	public CategorieProf getCategorieProf() {
 		return categorieProf;
