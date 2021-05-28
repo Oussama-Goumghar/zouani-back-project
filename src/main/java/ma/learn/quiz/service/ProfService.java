@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ma.learn.quiz.bean.Prof;
+import ma.learn.quiz.bean.RecommendTeacher;
 import ma.learn.quiz.bean.SessionCours;
 import ma.learn.quiz.dao.ProfDao;
 import ma.learn.quiz.vo.SalaryVo;
@@ -18,7 +19,7 @@ public class ProfService {
         return profDao.findByNumero(ref);
     }
 
-    public int deleteByNumero(String ref) {
+	public int deleteByNumero(String ref) {
         return profDao.deleteByNumero(ref);
     }
 

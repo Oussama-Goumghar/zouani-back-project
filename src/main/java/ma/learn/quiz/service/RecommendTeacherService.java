@@ -6,14 +6,19 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ma.learn.quiz.bean.Cours;
 import ma.learn.quiz.bean.Prof;
 import ma.learn.quiz.bean.RecommendTeacher;
 import ma.learn.quiz.dao.RecommendTeacherDao;
 
 @Service
 public class RecommendTeacherService {
+
+	
 	@Autowired
 	public RecommendTeacherDao recommendTeacherDao;
+	@Autowired
+	public RecommendTeacherService recommendTeacherService;
 	@Autowired
 	public ProfService profService;
 	public RecommendTeacher findByRef(String ref) {
@@ -23,27 +28,17 @@ public class RecommendTeacherService {
 		return recommendTeacherDao.findAll();
 	}
 	public int save(RecommendTeacher  recommendTeacher ) {
-		 
-       
-		
-Prof prof =profService.findByNom(recommendTeacher .getProf().getNom());
-
+RecommendTeacher recommend =recommendTeacherDao.findRecommendTeacherByProf(recommendTeacher.getProf());
 
 		
-		if(prof==null) {
-			recommendTeacher.setProf(prof);
+		if(recommend==null) {
+			recommendTeacher.setProf(recommendTeacher.getProf());
 			recommendTeacher.setNombrevote(recommendTeacher.getNombrevote()+1);
-			
+			recommendTeacherDao.save(recommendTeacher);
 			return 4;
     
-		}
-
-		else {
-			recommendTeacher.setProf(prof);
-			recommendTeacher.setNombrevote(recommendTeacher.getNombrevote()+1);
-			
-			 recommendTeacherDao.save(recommendTeacher);
-			
+		}else {
+			recommendTeacherService.update(recommendTeacher);
 			return 1;
 			}
 		}
@@ -54,6 +49,11 @@ Prof prof =profService.findByNom(recommendTeacher .getProf().getNom());
 		return recommendTeacherDao.findById(id);
 	}
 	
+	public RecommendTeacher update(RecommendTeacher  recommendTeacher) {
+		RecommendTeacher recommend =recommendTeacherDao.findRecommendTeacherByProf(recommendTeacher.getProf());
+		recommend.setNombrevote(recommend.getNombrevote()+1);
+		return recommendTeacherDao.save(recommend);
+	}
 	
 	
 

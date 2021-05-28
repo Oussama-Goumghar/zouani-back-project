@@ -30,10 +30,8 @@ public class Prof {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "responsable")
     private List<ClassRoom> classRooms ;
-    
-    
-    
-    
+  
+
 	public String getRef() {
 		return ref;
 	}
