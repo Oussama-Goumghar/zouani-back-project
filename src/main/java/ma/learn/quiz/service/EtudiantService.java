@@ -14,6 +14,7 @@ import ma.learn.quiz.bean.Etudiant;
 import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.bean.Prof;
 import ma.learn.quiz.dao.EtudiantDao;
+import ma.learn.quiz.service.vo.EtudiantVo;
 
 
 
@@ -44,28 +45,22 @@ public class EtudiantService {
 		return etudiantDao.deleteByParcoursCode(code);
 	}
 
-	public List<Etudiant> findByCriteria (Etudiant etudiant){
+	public List<Etudiant> findByCriteria (EtudiantVo etudiantVo){
 		String query = "SELECT e FROM Etudiant e WHERE 1=1";
-		if (etudiant.getNom() != null  )
+		if (etudiantVo.getNom() != null  )
 		{
-			query += " AND  e.nom LIKE '%" + etudiant.getNom()+"%'";
+			query += " AND  e.nom LIKE '%" + etudiantVo.getNom()+"%'";
 		}
-		if (etudiant.getPrenom() != null)
+		if (etudiantVo.getPrenom() != null)
 		{
-			query+= "  AND  e.prenom LIKE '%" + etudiant.getPrenom()+"'";
+			query+= "  AND  e.prenom LIKE '%" + etudiantVo.getPrenom()+"'";
 		}
-		if (etudiant.getId() != null)
+		
+		if (etudiantVo.getLogin() != null)
 		{
-			query+= "  AND  e.id LIKE '%" + etudiant.getId()+"'";
+			query+= "  AND  e.login LIKE '%" + etudiantVo.getLogin()+"'";
 		}
-		if (etudiant.getLogin() != null)
-		{
-			query+= "  AND  e.login LIKE '%" + etudiant.getLogin()+"'";
-		}
-		if (etudiant.getPassword() != null)
-		{
-			query+= "  AND  e.password LIKE '%" + etudiant.getPassword()+"'";
-		}
+		
 		return  entityManager.createQuery(query).getResultList();	
 	}
 
@@ -77,21 +72,23 @@ public class EtudiantService {
 		return etudiantDao.findByNom(nom);
 	}
 
-	public Optional<Etudiant> findById(Long id) {
-		return etudiantDao.findById(id);
-	}
-
-
-
-	public int valider(Etudiant etudiant){	
-		Optional<Etudiant> Etudiant = findById(etudiant.getId());
-		Etudiant loadedEtudiant= Etudiant.get();
 	
-		etudiantDao.save(loadedEtudiant);
+
+
+/*
+	public int valider(Inscription inscription){	
+		Optional<Inscription> Inscription = findInscriptionById(inscription.getId());
+		Inscription loadedInscription= Inscription.get();
+		EtatInscription etatInscription=etatInscriptionService.findByRef(etudiant.getEtatInscription().getRef());
+		loadedInscription.setEtatInscription(etatInscription);
+		Prof prof=profService.findProfById(inscription.getProf().getId());
+		loadedInscription.setProf(prof);
+		inscriptionDao.save(loadedInscriptiont);
 		return 1;
 	 }
+	*/
 	public int save(Etudiant  etudiant ) {
-		if(findByNom(etudiant.getNom())!=null) {
+		if(findEtudiantById(etudiant.getId())!=null) {
 			
 
 			return -1;
@@ -126,4 +123,14 @@ public class EtudiantService {
 	}
 	
 	
+
+
+
+	public Optional<Etudiant> findEtudiantById(Long id) {
+		return etudiantDao.findEtudiantById(id);
+	}
+
+
+
+
 }

@@ -1,6 +1,7 @@
 package ma.learn.quiz.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -14,7 +15,7 @@ public interface EtudiantDao  extends JpaRepository<Etudiant,Long>  {
 	    int deleteByRef(String ref);
 	    int deleteByNom(String nom);
 	    List<Etudiant> findByParcoursCode(String code);
-	    Etudiant findEtudiantById(Long id);
+	    Optional<Etudiant> findEtudiantById(Long id);
 
 	    int deleteByParcoursId(Long id);
 	    int deleteByParcoursCode(String code);
