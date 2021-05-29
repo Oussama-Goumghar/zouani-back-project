@@ -1,6 +1,7 @@
 package ma.learn.quiz.rest;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,20 @@ import ma.learn.quiz.service.RecommendTeacherService;
 public class RecommendTeacherRest {
 	@Autowired
 	private RecommendTeacherService recommendTeacherService ;
-	 @GetMapping("/ref/{ref}")
+	
+	@GetMapping("prof/nom/{nom}")
+	 public RecommendTeacher findByProfNom(String nom) {
+		return recommendTeacherService.findByProfNom(nom);
+	}
+	
+	@GetMapping("/id/{id}")
+	public Optional<RecommendTeacher> findById(Long id) {
+		return recommendTeacherService.findById(id);
+	}
+	public RecommendTeacher update(RecommendTeacher recommendTeacher) {
+		return recommendTeacherService.update(recommendTeacher);
+	}
+	@GetMapping("/ref/{ref}")
 	public RecommendTeacher findByRef(@PathVariable String ref) {
 		return recommendTeacherService.findByRef(ref);
 	}

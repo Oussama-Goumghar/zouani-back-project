@@ -66,4 +66,5 @@ public class ProfService {
 	public EntityManager entityManager;
     @Autowired
     private ProfDao profDao;
+   
 }

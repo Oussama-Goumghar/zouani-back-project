@@ -1,10 +1,14 @@
 package ma.learn.quiz.bean;
 
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
 @Entity
 public class RecommendTeacher {
 	 @Id
@@ -12,7 +16,7 @@ public class RecommendTeacher {
 	private Long id;
 	private int nombrevote ;
 	private String ref;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Prof prof;
 	
 	public Long getId() {

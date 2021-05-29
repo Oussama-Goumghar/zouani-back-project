@@ -30,7 +30,19 @@ public class Prof {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "responsable")
     private List<ClassRoom> classRooms ;
-  
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "prof")
+    private List<RecommendTeacher> recommendTeacher ;
+    
+    
+    
+	public List<RecommendTeacher> getRecommendTeacher() {
+		return recommendTeacher;
+	}
+
+	public void setRecommendTeacher(List<RecommendTeacher> recommendTeacher) {
+		this.recommendTeacher = recommendTeacher;
+	}
 
 	public String getRef() {
 		return ref;

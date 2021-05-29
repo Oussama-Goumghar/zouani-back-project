@@ -5,13 +5,20 @@ import java.sql.Date;
 import java.time.Month;
 import java.time.Year;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import ma.learn.quiz.bean.Prof;
-
+@Entity
 public class SalaryVo {
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 @ManyToOne
 private Prof prof;
 @JsonFormat(pattern = "yyyy")
@@ -30,6 +37,12 @@ public void setProf(Prof prof) {
 }
 
 
+public Long getId() {
+	return id;
+}
+public void setId(Long id) {
+	this.id = id;
+}
 public Date getAnnee() {
 	return annee;
 }

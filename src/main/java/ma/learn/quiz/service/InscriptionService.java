@@ -1,5 +1,7 @@
 package ma.learn.quiz.service;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 import ma.learn.quiz.bean.EtatInscription;
 import ma.learn.quiz.bean.Etudiant;
 import ma.learn.quiz.bean.Inscription;
+import ma.learn.quiz.bean.Prof;
 import ma.learn.quiz.dao.InscriptionDao;
 
 
@@ -22,6 +25,8 @@ public class InscriptionService {
 	public EtatInscriptionService etatInscriptionService;
 	@Autowired
 	public ParcoursService parcoursService;
+	@Autowired
+	public ProfService profService;
 	@Autowired
 	public CentreService centreService;
 	@Autowired
@@ -54,10 +59,25 @@ public class InscriptionService {
 		}
 	
 	
-	
+	 public int valider(Inscription inscription){	
+			Optional<Inscription> Inscription = findById(inscription.getId());
+			Inscription loadedInscription= Inscription.get();
+			EtatInscription etatInscription=etatInscriptionService.findByRef(inscription.getEtatInscription().getRef());
+			loadedInscription.setEtatInscription(etatInscription);
+			Prof prof=profService.findProfById(inscription.getProf().getId());
+			loadedInscription.setProf(prof);
+			inscriptionDao.save(loadedInscription);
+			return 1;
+		 }
 	
 	
 
+
+
+		private Optional<Inscription> findById(Long id) {
+		
+		return null;
+	}
 
 
 		public Inscription findByEtudiantRef(String ref) {
