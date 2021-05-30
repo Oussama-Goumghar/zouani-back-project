@@ -41,6 +41,18 @@ public class EtudiantService {
 	
 	 
 	
+	public List<Etudiant> findEtudiantByProfId(Long id) {
+		return etudiantDao.findEtudiantByProfId(id);
+	}
+
+
+
+	public Prof findProfById(Long id) {
+		return profService.findProfById(id);
+	}
+
+
+
 	public int deleteByParcoursCode(String code) {
 		return etudiantDao.deleteByParcoursCode(code);
 	}
@@ -124,7 +136,12 @@ public class EtudiantService {
 	
 	
 
-
+	 public Object findByCritere(String login, String password)
+		{
+			String query = "SELECT a FROM Etudiant a WHERE a.login= '"+login+"' and a.password='"+password+"'";
+			return entityManager.createQuery(query).getSingleResult();
+		}
+	    
 
 	public Optional<Etudiant> findEtudiantById(Long id) {
 		return etudiantDao.findEtudiantById(id);

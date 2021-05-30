@@ -23,7 +23,9 @@ public class Etudiant {
 	    private String login;
 	    private String ville;
 	    private String password;
-	   
+	    @ManyToOne
+	    private Prof prof;
+
 		@ManyToOne
 	    private Parcours parcours;
 		
@@ -38,8 +40,20 @@ public class Etudiant {
 			super();
 			// TODO Auto-generated constructor stub
 		}
+		
+		
+		public Prof getProf() {
+			return prof;
+		}
+
+
+		public void setProf(Prof prof) {
+			this.prof = prof;
+		}
+
+
 		public Etudiant(String ref, String nom, String prenom, int age, String login, String ville, String password,
-				Parcours parcours, Prof prof, EtatInscription etatInscription, List<QuizEtudiant> quizEtudiant) {
+				Prof prof, Parcours parcours, List<QuizEtudiant> quizEtudiant) {
 			super();
 			this.ref = ref;
 			this.nom = nom;
@@ -48,11 +62,12 @@ public class Etudiant {
 			this.login = login;
 			this.ville = ville;
 			this.password = password;
+			this.prof = prof;
 			this.parcours = parcours;
 			this.quizEtudiant = quizEtudiant;
 		}
-		
-		
+
+
 		public List<QuizEtudiant> getQuizEtudiant() {
 			return quizEtudiant;
 		}

@@ -23,7 +23,10 @@ public class EtudiantRest {
 	public EtudiantService  etudiantService;
 	
 	
-
+	@GetMapping("/prof/id/{id}")
+	public List<Etudiant> findEtudiantByProfId(Long id) {
+		return etudiantService.findEtudiantByProfId(id);
+	}
 	@PostMapping("/search")
 	public List<Etudiant> findByCriteria(@RequestBody EtudiantVo etudiantVo) {
 		return etudiantService.findByCriteria(etudiantVo);
@@ -54,6 +57,10 @@ public class EtudiantRest {
 	@DeleteMapping("/ref/{ref}")
 	public int deleteByRef(String ref) {
 		return etudiantService.deleteByRef(ref);
+	}
+	@GetMapping("/login/{login}/password/{password}")
+	public Object findByCritere(@PathVariable String login,@PathVariable String password) {
+		return etudiantService.findByCritere(login, password);
 	}
 	
 	
