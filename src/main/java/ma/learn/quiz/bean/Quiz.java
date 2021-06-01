@@ -26,9 +26,7 @@ public class Quiz {
      private List<QuizEtudiant> quizEtudiant;
     private Long numero;
     private Long seuilReussite;
-    @ManyToOne
-    private QuizConfig quizConfig;
-
+   
 
     public List<Question> getQuestions() {
 		return questions;

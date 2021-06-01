@@ -36,22 +36,19 @@ public class InscriptionService {
 			if(findByNumeroInscription(inscription.getNumeroInscription())!=null) {
 				return -1;
 			}
-			
-			
-			
 			Etudiant etudiant = etudiantService.findByRef(inscription.getEtudiant().getRef());
-			inscription.setEtudiant (etudiant );
+			etudiantService.save(etudiant);
 			if(etudiant ==null) {
 				return -2;
 			}
 			EtatInscription etatInscription = etatInscriptionService.findByRef(inscription.getEtatInscription().getRef());
-			inscription.setEtatInscription(etatInscription);
+			
 			if(etatInscription ==null) {
 				return -2;
 			}
 			else {
-				etatInscriptionService.save(etatInscription);
-				etudiantService.save(etudiant);
+				inscription.setEtudiant(etudiant);
+				inscription.setEtatInscription(etatInscription);
 				inscriptionDao.save(inscription);
 				return 1;
 			}
