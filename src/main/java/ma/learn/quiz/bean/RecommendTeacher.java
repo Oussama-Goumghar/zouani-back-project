@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class RecommendTeacher {
 	 @Id
+	 
 	   @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private int nombrevote ;

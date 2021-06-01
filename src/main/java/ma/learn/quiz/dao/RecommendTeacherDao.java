@@ -13,8 +13,8 @@ public interface RecommendTeacherDao extends JpaRepository<RecommendTeacher,Long
 	RecommendTeacher findByProfNom(String nom);
 	RecommendTeacher findRecommendTeacherByProfId(Long id);
 	RecommendTeacher findRecommendTeacherByProf(Prof prof);
-	RecommendTeacher findRecommendTeacherById(Long id) ;
 	
+	RecommendTeacher findRecommendTeacherById(Long id) ;
 	
 
 }

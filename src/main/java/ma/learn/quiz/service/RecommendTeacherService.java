@@ -17,6 +17,7 @@ public class RecommendTeacherService {
 	
 	@Autowired
 	public RecommendTeacherDao recommendTeacherDao;
+	
 	@Autowired
 	public RecommendTeacherService recommendTeacherService;
 	@Autowired
