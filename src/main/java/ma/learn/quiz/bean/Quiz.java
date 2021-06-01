@@ -14,9 +14,9 @@ public class Quiz {
     private Long id;
     private String ref;
     private String lib;
-    @JsonFormat(pattern = "MM/dd/yyyy hh:mm:ss")
+   // @JsonFormat(pattern = "MM/dd/yyyy hh:mm:ss")
     private Date dateDebut;
-    @JsonFormat(pattern = "MM/dd/yyyy hh:mm:ss")
+   // @JsonFormat(pattern = "MM/dd/yyyy hh:mm:ss")
     private Date dateFin;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
    @OneToMany(mappedBy = "quiz")
@@ -26,6 +26,8 @@ public class Quiz {
      private List<QuizEtudiant> quizEtudiant;
     private Long numero;
     private Long seuilReussite;
+    @ManyToOne
+    private QuizConfig quizConfig;
 
 
     public List<Question> getQuestions() {

@@ -50,9 +50,9 @@ public class QuestionService {
     }
 
     public int save(Question question) {
-        if (findByRef(question.getRef()) != null) {
+       /* if (findByRef(question.getRef()) != null) {
             return -1;
-        }
+        }*/
         Quiz quiz=quizService.findByRef(question.getQuiz().getRef());
         TypeDeQuestion typeDeQuestion = typeDeQuestionService.findByRef(question.getTypeDeQuestion().getRef());
         question.setQuiz(quiz);

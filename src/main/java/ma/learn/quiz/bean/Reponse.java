@@ -4,12 +4,15 @@ import javax.persistence.*;
 
 @Entity
 public class Reponse {
-    @Id
+
+
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String ref;
     private String lib;
     private String etatReponse;
+    private Long numero;
     @ManyToOne
     private Question question;
 
@@ -54,4 +57,11 @@ public class Reponse {
     public void setQuestion(Question question) {
         this.question = question;
     }
+    public Long getNumero() {
+		return numero;
+	}
+
+	public void setNumero(Long numero) {
+		this.numero = numero;
+	}
 }
