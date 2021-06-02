@@ -91,7 +91,6 @@ public class QuizEtudiantService {
 		quizEtudiant.setDateFin(quizEtudiant.getDateFin());
 		quizEtudiant.setResultat(quizEtudiant.getResultat());
 		quizEtudiantDao.save(quizEtudiant);
-		
 	}
 	
 }

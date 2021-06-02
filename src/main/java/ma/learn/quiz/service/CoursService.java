@@ -56,14 +56,16 @@ public class CoursService {
 	public int init(Long id) {
 		Cours cours = coursService.findCoursById(id);
 		List<Section> sectionCours = sectionService.findByCoursId(id);
-
+int i=0;
 		List<CategorieSection> categorieSections = categorieSectionService.findAll();
 		for (CategorieSection categorieSection : categorieSections) {
 			if (findByCategorieSection(categorieSection, sectionCours) == null) {
 				Section section = new Section();
+				i=i+1;
 				section.setCategorieSection(categorieSection);
 				section.setLibelle(categorieSection.getCode());
 				section.setCours(cours);
+				section.setNumeroOrder(i);
 				sectionService.create(section);
 				System.out.println("saved");
 			}

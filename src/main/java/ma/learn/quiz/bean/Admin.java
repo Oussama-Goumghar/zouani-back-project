@@ -15,7 +15,7 @@ public class Admin {
     private String prenom;
     private String login;
     private String password;
-
+    public String addresse;
     public Long getId() {
         return id;
     }

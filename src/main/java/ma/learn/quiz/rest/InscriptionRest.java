@@ -28,7 +28,12 @@ public class InscriptionRest {
 		return inscriptionService.save(inscriptionetudiant);
 	}
 	
-	
+	@GetMapping("/")
+	public List<Inscription> findAll() {
+		return inscriptionService.findAll();
+	}
+
+
 	@DeleteMapping("/numeroInscription/{numeroInscription}")
 	public int deleteByNumeroInscription(@PathVariable int numeroInscription) {
 		return inscriptionService.deleteByNumeroInscription(numeroInscription);
@@ -54,6 +59,4 @@ public class InscriptionRest {
 
 	
 	
-	
-
 }

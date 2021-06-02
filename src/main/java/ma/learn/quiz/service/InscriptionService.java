@@ -1,5 +1,6 @@
 package ma.learn.quiz.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -33,21 +34,20 @@ public class InscriptionService {
 	public EtudiantService etudiantService;
 	
 	 public int save(Inscription  inscription ) {
-			if(findByNumeroInscription(inscription.getNumeroInscription())!=null) {
-				return -1;
-			}
-			Etudiant etudiant = etudiantService.findByRef(inscription.getEtudiant().getRef());
-			etudiantService.save(etudiant);
-			if(etudiant ==null) {
-				return -2;
-			}
-			EtatInscription etatInscription = etatInscriptionService.findByRef(inscription.getEtatInscription().getRef());
+			
+			String ref = "e1";
+			
+			EtatInscription etatInscription = etatInscriptionService.findByRef(ref);
 			
 			if(etatInscription ==null) {
 				return -2;
 			}
 			else {
+				etudiantService.save(inscription.getEtudiant());
+			Optional<Etudiant> etudiantOpt = etudiantService.findEtudiantById(inscription.getEtudiant().getId());
+			Etudiant etudiant= etudiantOpt.get();
 				inscription.setEtudiant(etudiant);
+				inscription.setProf(etudiant.getProf());
 				inscription.setEtatInscription(etatInscription);
 				inscriptionDao.save(inscription);
 				return 1;
@@ -69,6 +69,11 @@ public class InscriptionService {
 	
 	
 
+
+
+		public List<Inscription> findAll() {
+		return inscriptionDao.findAll();
+	}
 
 
 		private Optional<Inscription> findById(Long id) {

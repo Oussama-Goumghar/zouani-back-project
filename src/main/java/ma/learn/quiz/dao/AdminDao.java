@@ -8,5 +8,6 @@ import ma.learn.quiz.bean.Admin;
 @Repository
 public interface AdminDao extends JpaRepository<Admin, Long> {
     Admin findByNumero(String ref);
+    Admin findAdminById(Long id);
     int deleteByNumero(String ref);
 }

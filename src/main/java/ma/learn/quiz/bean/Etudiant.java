@@ -23,6 +23,7 @@ public class Etudiant {
 	private int age;
 	private String login;
 	private String ville;
+	private String address;
 	private String password;
 	private String etat;
 	@ManyToOne
@@ -30,7 +31,8 @@ public class Etudiant {
 
 	@ManyToOne
 	private Parcours parcours;
-
+	@ManyToOne
+	private Centre centre;
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@OneToMany(mappedBy = "etudiant")
 	private List<QuizEtudiant> quizEtudiant;
@@ -48,8 +50,10 @@ public class Etudiant {
 		this.prof = prof;
 	}
 
-	public Etudiant(String ref, String nom, String prenom, int age, String login, String ville, String password,
-			Prof prof, Parcours parcours, List<QuizEtudiant> quizEtudiant) {
+	
+	public Etudiant(String ref, String nom, String prenom, int age, String login, String ville, String address,
+			String password, String etat, Prof prof, Parcours parcours, Centre centre,
+			List<QuizEtudiant> quizEtudiant) {
 		super();
 		this.ref = ref;
 		this.nom = nom;
@@ -57,10 +61,29 @@ public class Etudiant {
 		this.age = age;
 		this.login = login;
 		this.ville = ville;
+		this.address = address;
 		this.password = password;
+		this.etat = etat;
 		this.prof = prof;
 		this.parcours = parcours;
+		this.centre = centre;
 		this.quizEtudiant = quizEtudiant;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public Centre getCentre() {
+		return centre;
+	}
+
+	public void setCentre(Centre centre) {
+		this.centre = centre;
 	}
 
 	public String getEtat() {

@@ -45,7 +45,5 @@ public class RecommendTeacherRest {
 	public int save(@RequestBody RecommendTeacher recommendTeacher) {
 		return recommendTeacherService.save(recommendTeacher);
 	}
-	
-	
 
 }

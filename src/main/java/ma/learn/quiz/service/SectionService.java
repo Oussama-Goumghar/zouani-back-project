@@ -39,6 +39,13 @@ public class SectionService {
 	
 
 
+	public Section findByCoursIdAndNumeroOrder(Long id, int numeroOrder) {
+		return sectionDao.findByCoursIdAndNumeroOrder(id, numeroOrder);
+	}
+
+
+
+
 	public List<Section> findByCours(Cours cours) {
 		return sectionDao.findByCours(cours);
 	}

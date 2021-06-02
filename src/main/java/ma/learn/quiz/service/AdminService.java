@@ -22,10 +22,21 @@ public class AdminService {
     public List<Admin> findAll() {
         return adminDao.findAll();
     }
-    public int save(Admin admin){
-        this.adminDao.save(admin);
-        return 1;
-    }
+    
+    public Admin findAdminById(Long id) {
+		return adminDao.findAdminById(id);
+	}
+
+	public int save(Admin admin ) {
+		if(findAdminById(admin.getId())!=null) {
+			return -1;
+		}
+		else {
+			adminDao.save(admin);
+			return 1;
+		}
+			
+	}
 
     public Object findByCritere(String login, String password)
 	{

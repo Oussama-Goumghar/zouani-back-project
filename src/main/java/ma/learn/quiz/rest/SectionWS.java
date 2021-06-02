@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ma.learn.quiz.bean.CategorieSection;
 import ma.learn.quiz.bean.Cours;
 import ma.learn.quiz.bean.Section;
 import ma.learn.quiz.service.SectionService;
@@ -66,6 +67,12 @@ public class SectionWS {
 	public Section findSectionById(@PathVariable Long id) {
 		return sectionservice.findSectionById(id);
 	}
+	@GetMapping("/cours/id/{id}/numeroOrder/{numeroOrder}")
+	public Section findByCoursIdAndNumeroOrder(@PathVariable Long id,@PathVariable int numeroOrder) {
+		return sectionservice.findByCoursIdAndNumeroOrder(id, numeroOrder);
+	}
+	
+	
 	
 
     

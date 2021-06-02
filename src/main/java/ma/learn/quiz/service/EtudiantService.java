@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ma.learn.quiz.bean.EtatInscription;
+import ma.learn.quiz.bean.Centre;
 import ma.learn.quiz.bean.Etudiant;
 import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.bean.Prof;
@@ -39,8 +39,8 @@ public class EtudiantService {
 		return etudiantDao.findByParcoursCode(code);
 	}
 	
-	 
 	
+
 	public List<Etudiant> findEtudiantByProfId(Long id) {
 		return etudiantDao.findEtudiantByProfId(id);
 	}
@@ -100,21 +100,17 @@ public class EtudiantService {
 	 }
 	*/
 	public int save(Etudiant  etudiant ) {
-		if(findEtudiantById(etudiant.getId())!=null) {
-			
-
-			return -1;
-		}
-		Parcours parcours =parcoursService.findParcoursByLibelle(etudiant.getParcours().getLibelle());
 		
+		Parcours parcours =parcoursService.findParcoursById(etudiant.getParcours().getId());
+		Prof prof = profService.findProfById((long) 15);
 		if(parcours==null) {
 			return -3;
 		}
 		
-		
 		else {
 			etudiant.setParcours(parcours);
-		
+			etudiant.setCentre(parcours.getCentre());
+		etudiant.setProf(prof);
 			 etudiantDao.save(etudiant);
 			return 1;}
 		}

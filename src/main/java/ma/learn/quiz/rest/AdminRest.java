@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/learn/admin")
+@RequestMapping("learn/admin")
 public class AdminRest {
     @GetMapping("/numero/{numro}")
     public Admin findByNumero(@PathVariable String ref) {
