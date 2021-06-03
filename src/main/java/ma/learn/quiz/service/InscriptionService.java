@@ -57,11 +57,12 @@ public class InscriptionService {
 	
 	
 	 public int valider(Inscription inscription){	
+		  System.out.println(inscription);
 			Optional<Inscription> Inscription = findById(inscription.getId());
 			Inscription loadedInscription= Inscription.get();
-			EtatInscription etatInscription=etatInscriptionService.findByRef(inscription.getEtatInscription().getRef());
-			loadedInscription.setEtatInscription(etatInscription);
 			Prof prof=profService.findProfById(inscription.getProf().getId());
+			EtatInscription etatInscription=etatInscriptionService.findByRef(inscription.getEtatInscription().getRef());
+			loadedInscription.setEtatInscription(etatInscription);	
 			loadedInscription.setProf(prof);
 			inscriptionDao.save(loadedInscription);
 			return 1;

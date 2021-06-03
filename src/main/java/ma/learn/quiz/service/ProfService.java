@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ma.learn.quiz.bean.Admin;
 import ma.learn.quiz.bean.Prof;
 import ma.learn.quiz.bean.RecommendTeacher;
 import ma.learn.quiz.bean.SessionCours;
@@ -30,10 +31,17 @@ public class ProfService {
 	public List<Prof> findAll() {
         return profDao.findAll();
     }
-    public int save(Prof prof){
-        this.profDao.save(prof);
-        return 1;
-    }
+	public int save(Prof prof ) {
+		if(findProfById(prof.getId())!=null) {
+			return -1;
+		}
+		else {
+			System.out.println("id::: " + prof.getId());
+			profDao.save(prof);
+			return 1;
+		}
+			
+	}
     public List<SessionCours> calcStatistique(SalaryVo salaryVo) {
     	/*String query = "SELECT NEW ma.learn.quiz.vo.SalaryVo(COUNT(s.id)) FROM SessionCours s WHERE s.mois = ? and s.annee=?";
     	System.out.println("query = " + query); 
