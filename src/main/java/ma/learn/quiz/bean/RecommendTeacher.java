@@ -16,14 +16,37 @@ public class RecommendTeacher {
 		private Long id;
 		private int nombrevote ;
 		private String nom;
+		private String ref;
 		private String prenom;
-		private String Commentaire;
+		private String commentaire;
 		private int telephone;
 		private String login;
 		@ManyToOne
 		private Prof prof;
 		
 		
+		public RecommendTeacher() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+		public RecommendTeacher(int nombrevote, String nom, String ref, String prenom, String commentaire,
+				int telephone, String login, Prof prof) {
+			super();
+			this.nombrevote = nombrevote;
+			this.nom = nom;
+			this.ref = ref;
+			this.prenom = prenom;
+			this.commentaire = commentaire;
+			this.telephone = telephone;
+			this.login = login;
+			this.prof = prof;
+		}
+		public String getRef() {
+			return ref;
+		}
+		public void setRef(String ref) {
+			this.ref = ref;
+		}
 		public Prof getProf() {
 			return prof;
 		}
@@ -57,10 +80,10 @@ public class RecommendTeacher {
 			this.prenom = prenom;
 		}
 		public String getCommentaire() {
-			return Commentaire;
+			return commentaire;
 		}
 		public void setCommentaire(String commentaire) {
-			Commentaire = commentaire;
+			commentaire = commentaire;
 		}
 		public int getTelephone() {
 			return telephone;

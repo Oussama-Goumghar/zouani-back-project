@@ -36,6 +36,26 @@ public class Prof {
     
     
     
+	public Prof() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Prof(long numero, String nom, String prenom, String login, String password, String email, String ref,
+			CategorieProf categorieProf, List<ClassRoom> classRooms, List<RecommendTeacher> recommendTeacher) {
+		super();
+		this.numero = numero;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.login = login;
+		this.password = password;
+		this.email = email;
+		this.ref = ref;
+		this.categorieProf = categorieProf;
+		this.classRooms = classRooms;
+		this.recommendTeacher = recommendTeacher;
+	}
+
 	public List<RecommendTeacher> getRecommendTeacher() {
 		return recommendTeacher;
 	}

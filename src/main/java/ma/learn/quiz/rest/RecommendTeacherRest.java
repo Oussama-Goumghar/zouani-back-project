@@ -62,6 +62,11 @@ public class RecommendTeacherRest {
 	public void update(@RequestBody RecommendTeacher recommendTeacher) {
 		recommendTeacherService.update(recommendTeacher);
 	}
+
+	  @GetMapping("/Prof/id/{id}")
+	public List<RecommendTeacher> findRecommendTeacherByProfId(@PathVariable Long id) {
+		return recommendTeacherService.findRecommendTeacherByProfId(id);
+	}
 	
 	
 
