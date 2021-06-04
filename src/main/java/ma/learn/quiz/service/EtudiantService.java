@@ -102,7 +102,15 @@ public class EtudiantService {
 	public int save(Etudiant  etudiant ) {
 		
 		Parcours parcours =parcoursService.findParcoursById(etudiant.getParcours().getId());
-		Prof prof = profService.findProfById((long) 15);
+		Prof prof = profService.findProfById(etudiant.getProf().getId());
+		if(prof == null ) {
+			Prof proftest = profService.findProfById((long) 15);
+			etudiant.setParcours(parcours);
+			etudiant.setCentre(parcours.getCentre());
+		etudiant.setProf(proftest);
+			 etudiantDao.save(etudiant);
+			return 1;
+		}
 		if(parcours==null) {
 			return -3;
 		}
