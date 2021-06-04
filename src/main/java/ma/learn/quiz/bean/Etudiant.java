@@ -25,7 +25,8 @@ public class Etudiant {
 	private String ville;
 	private String address;
 	private String password;
-	private String etat;
+	@ManyToOne
+	private EtatInscription etatInscription;
 	@ManyToOne
 	private Prof prof;
 
@@ -50,10 +51,9 @@ public class Etudiant {
 		this.prof = prof;
 	}
 
-	
 	public Etudiant(String ref, String nom, String prenom, int age, String login, String ville, String address,
-			String password, String etat, Prof prof, Parcours parcours, Centre centre,
-			List<QuizEtudiant> quizEtudiant) {
+			String password, String etat, Prof prof, Parcours parcours, Centre centre, List<QuizEtudiant> quizEtudiant,
+			EtatInscription etatInscription) {
 		super();
 		this.ref = ref;
 		this.nom = nom;
@@ -63,7 +63,7 @@ public class Etudiant {
 		this.ville = ville;
 		this.address = address;
 		this.password = password;
-		this.etat = etat;
+		this.etatInscription = etatInscription;
 		this.prof = prof;
 		this.parcours = parcours;
 		this.centre = centre;
@@ -86,12 +86,12 @@ public class Etudiant {
 		this.centre = centre;
 	}
 
-	public String getEtat() {
-		return etat;
+	public EtatInscription getEtatInscription() {
+		return etatInscription;
 	}
 
-	public void setEtat(String etat) {
-		this.etat = etat;
+	public void setEtatInscription(EtatInscription etatInscription) {
+		this.etatInscription = etatInscription;
 	}
 
 	public List<QuizEtudiant> getQuizEtudiant() {

@@ -153,5 +153,12 @@ public class EtudiantService {
 
 
 
+	public void update(Etudiant etudiant) {
+               etudiantDao.save(etudiant);
+		
+	}
+
+
+
 
 }
