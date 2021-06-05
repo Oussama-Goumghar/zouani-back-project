@@ -66,10 +66,6 @@ public class RecommendTeacherService {
 		}
 			
 	}
-	
-	public List<RecommendTeacher> findRecommendTeacherByProfId(Long id) {
-		return recommendTeacherDao.findRecommendTeacherByProfId(id);
-	}
 	/*
 	public int save(RecommendTeacher  recommendTeacher ) {
 RecommendTeacher recommend =recommendTeacherDao.findRecommendTeacherByProfId(recommendTeacher.getProf().getId());
@@ -112,6 +108,9 @@ Prof prof = profService.findProfById(recommendTeacher.getProf().getId());
 */
 	public RecommendTeacher findRecommendTeacherById(Long id) {
 		return recommendTeacherDao.findRecommendTeacherById(id);
+	}
+	public List<RecommendTeacher> findRecommendTeacherByProfId(Long id) {
+		return recommendTeacherDao.findRecommendTeacherByProfId(id);
 	}	
 	
 
