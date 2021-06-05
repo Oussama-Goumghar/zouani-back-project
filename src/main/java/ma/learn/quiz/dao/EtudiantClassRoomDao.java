@@ -12,5 +12,9 @@ import ma.learn.quiz.bean.EtudiantClassRoom;
 public interface EtudiantClassRoomDao extends JpaRepository<EtudiantClassRoom,Long> {
 
 	 List<EtudiantClassRoom> findByClassRoomId(Long id);
-	int deleteByClassRoomId(Long id);
+	 int deleteByClassRoomId(Long id);
+	 
+	 List<EtudiantClassRoom> findByEtudiantRef(String ref);
+	 int deleteByEtudiantRef(String ref);
+
 }

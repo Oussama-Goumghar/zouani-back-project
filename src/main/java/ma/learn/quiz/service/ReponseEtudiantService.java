@@ -20,6 +20,10 @@ public class ReponseEtudiantService {
 
 	@Autowired
 	private ReponseEtudiantDao reponseEtudiantDao;
+	public List<ReponseEtudiant> findByQuizEtudiantRef(String ref) {
+		return reponseEtudiantDao.findByQuizEtudiantRef(ref);
+	}
+
 	@Autowired
 	private QuizEtudiantService quizEtudiantService;
 	@Autowired

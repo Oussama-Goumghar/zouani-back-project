@@ -2,6 +2,8 @@ package ma.learn.quiz.service;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,6 +31,8 @@ public class QuizEtudiantService {
 	private EtudiantService etudiantService;
 	@Autowired
 	private ReponseEtudiantService reponseEtudiantService;
+	@Autowired 
+	public EntityManager entityManager;
 
 	public QuizEtudiant findByRef(String ref) {
 		return quizEtudiantDao.findByRef(ref);
@@ -91,6 +95,13 @@ public class QuizEtudiantService {
 		quizEtudiant.setDateFin(quizEtudiant.getDateFin());
 		quizEtudiant.setResultat(quizEtudiant.getResultat());
 		quizEtudiantDao.save(quizEtudiant);
+		
+	}
+	
+	public Object findByCritere(String refEtudiant, String refQuiz)
+	{
+		String query = "SELECT q FROM QuizEtudiant q WHERE q.etudiant.ref= '"+refEtudiant+"' and q.quiz.ref='"+refQuiz+"'";
+		return entityManager.createQuery(query).getSingleResult();
 	}
 	
 }

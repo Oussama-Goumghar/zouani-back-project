@@ -30,7 +30,7 @@ public class ScheduleProfService {
 		if (findByRef(scheduleProf.getRef()) != null) {
 			return -1;
 		} else {
-			etudiantService.update(etudiant);
+			//etudiantService.update(etudiant);
 			scheduleProfDao.save(scheduleProf);
 			return 1;
 		}

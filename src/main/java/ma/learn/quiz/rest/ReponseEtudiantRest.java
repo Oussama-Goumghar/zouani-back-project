@@ -17,6 +17,11 @@ public class ReponseEtudiantRest {
 	@Autowired
 	private ReponseEtudiantService reponseEtudiantService;
 
+	@GetMapping("/quizEtudiant/ref/{ref}")
+	public List<ReponseEtudiant> findByQuizEtudiantRef(String ref) {
+		return reponseEtudiantService.findByQuizEtudiantRef(ref);
+	}
+
 	@GetMapping("/ref/{ref}")
 	public ReponseEtudiant findByRef(@PathVariable String ref) {
 		return reponseEtudiantService.findByRef(ref);
@@ -27,22 +32,22 @@ public class ReponseEtudiantRest {
 		return reponseEtudiantService.deleteByRef(Ref);
 	}
 
-	@GetMapping("reponse/question/ref/{ref}")
+	@GetMapping("/reponse/question/ref/{ref}")
 	public List<ReponseEtudiant> findByReponseQuestionRef(@PathVariable String ref) {
 		return reponseEtudiantService.findByReponseQuestionRef(ref);
 	}
 
-	@GetMapping("quizEtudiant/etudiant/ref/{ref}")
+	@GetMapping("/quizEtudiant/etudiant/ref/{ref}")
 	public List<ReponseEtudiant> findByQuizEtudiantEtudiantRef(@PathVariable String ref) {
 		return reponseEtudiantService.findByQuizEtudiantEtudiantRef(ref);
 	}
 
-	@DeleteMapping("reponse/question/ref/{ref}")
+	@DeleteMapping("/reponse/question/ref/{ref}")
 	public int deleteByReponseQuestionRef(@PathVariable String ref) {
 		return reponseEtudiantService.deleteByReponseQuestionRef(ref);
 	}
 
-	@DeleteMapping("quizEtudiant/etudiant/ref/{ref}")
+	@DeleteMapping("/quizEtudiant/etudiant/ref/{ref}")
 	public int deleteByQuizEtudiantEtudiantRef(@PathVariable String ref) {
 		return reponseEtudiantService.deleteByQuizEtudiantEtudiantRef(ref);
 	}

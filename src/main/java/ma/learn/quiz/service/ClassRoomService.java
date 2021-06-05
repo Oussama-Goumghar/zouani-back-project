@@ -1,6 +1,7 @@
 package ma.learn.quiz.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -22,12 +23,24 @@ public class ClassRoomService {
 	@Autowired
 	private QuizClassRoomService quizClassRoomService;
 	
+	
+	public int save(ClassRoom classRoom) {
+		classRoomDao.save(classRoom);
+		return 1;
+	}
+	
+	public Optional<ClassRoom> findById(Long id) {
+		return classRoomDao.findById(id);
+	}
+	
 	public List<ClassRoom> findByResponsableId(Long id) {
 		return classRoomDao.findByResponsableId(id);
 	}
+	
 	public List<ClassRoom> findAll() {
 		return classRoomDao.findAll();
 	}
+	
 	@Transactional
 	public int deleteByResponsableId(Long id) {
 		int deleteByResponsable= classRoomDao.deleteByResponsableId(id);

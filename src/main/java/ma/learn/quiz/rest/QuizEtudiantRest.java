@@ -4,6 +4,8 @@ package ma.learn.quiz.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import ma.learn.quiz.bean.Etudiant;
+import ma.learn.quiz.bean.Quiz;
 import ma.learn.quiz.bean.QuizEtudiant;
 import ma.learn.quiz.service.QuizEtudiantService;
 
@@ -16,6 +18,11 @@ public class QuizEtudiantRest {
 	
 	@Autowired
 	private QuizEtudiantService quizEtudiantService;
+
+	@GetMapping("/etudiant/{refEtudiant}/quiz/{refQuiz}")
+	public Object findByCritere(@PathVariable String refEtudiant,@PathVariable String refQuiz) {
+		return quizEtudiantService.findByCritere(refEtudiant, refQuiz);
+	}
 
 	@GetMapping("/resultat/{resultat}")
 	public List<QuizEtudiant> findByResultat(String resultat) {
