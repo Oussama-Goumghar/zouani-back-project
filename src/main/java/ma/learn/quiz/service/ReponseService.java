@@ -72,7 +72,7 @@ public class ReponseService {
 
     public List<Reponse> findByCriterial(Long numero)
     {
-    	String query= "Select r FROM Reponse r WHERE r.question.numero LIKE '%"+numero+"%' And r.etatReponse = 'true'";
+    	String query= "Select r FROM Reponse r WHERE r.question.numero='"+numero+"' And r.etatReponse = 'true'";
     	return entityManager.createQuery(query).getResultList();
     }
     
