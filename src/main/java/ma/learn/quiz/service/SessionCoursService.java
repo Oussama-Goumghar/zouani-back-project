@@ -8,23 +8,47 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 
+
 @Service
 public class SessionCoursService {
-    public SessionCours findByNumero(String numero) {
-        return sessionCoursDao.findByNumero(numero);
+    @Autowired
+    private SessionCoursDao sessionCoursDao;
+
+
+    public SessionCours findByReference(String reference) {
+        return sessionCoursDao.findByReference(reference);
     }
-@Transactional
-    public int deleteByNumero(String numero) {
-        return sessionCoursDao.deleteByNumero(numero);
+
+
+    public SessionCours save(SessionCours sessionCours) {
+        if (findByReference(sessionCours.getReference()) == null)
+            sessionCoursDao.save(sessionCours);
+        return sessionCours;
     }
+
+
+    public SessionCours update(SessionCours sessionCours) {
+        return sessionCoursDao.save(sessionCours);
+    }
+
 
     public List<SessionCours> findAll() {
         return sessionCoursDao.findAll();
     }
-    public int save(SessionCours sessionCours){
-        this.sessionCoursDao.save(sessionCours);
-        return 1;
+
+
+    @Transactional
+    public int deleteByReference(String reference) {
+        return sessionCoursDao.deleteByReference(reference);
     }
-@Autowired
-    private SessionCoursDao sessionCoursDao;
+
+
+    @Transactional
+    public int deleteByReference(List<SessionCours> sessionCourss) {
+        int res = 0;
+        for (int i = 0; i < sessionCourss.size(); i++) {
+            res += deleteByReference(sessionCourss.get(i).getReference());
+        }
+        return res;
+    }
 }

@@ -3,24 +3,48 @@ package ma.learn.quiz.bean;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class SessionCours {
+public class SessionCours implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long numero;
-    @ManyToOne
-    private Etudiant etudiant;
+    private String reference;
     @ManyToOne
     private Prof prof;
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date dateDebut;
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date dateFin;
-/*anouar*/
-    
+    @ManyToOne
+    private Etudiant etudiant;
+    private String dateDebut;
+    private String dateFin;
+    private String duree;
+
+    public String getDuree() {
+        return duree;
+    }
+
+    public void setDuree(String duree) {
+        this.duree = duree;
+    }
+
+    public String getDateDebut() {
+        return dateDebut;
+    }
+
+    public void setDateDebut(String dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+
+    public String getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(String dateFin) {
+        this.dateFin = dateFin;
+    }
+
+
     public Long getId() {
         return id;
     }
@@ -29,12 +53,12 @@ public class SessionCours {
         this.id = id;
     }
 
-    public Etudiant getEtudiant() {
-        return etudiant;
+    public String getReference() {
+        return reference;
     }
 
-    public void setEtudiant(Etudiant etudiant) {
-        this.etudiant = etudiant;
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
     public Prof getProf() {
@@ -45,19 +69,11 @@ public class SessionCours {
         this.prof = prof;
     }
 
-    public Date getDateDebut() {
-        return dateDebut;
+    public Etudiant getEtudiant() {
+        return etudiant;
     }
 
-    public void setDateDebut(Date dateDebut) {
-        this.dateDebut = dateDebut;
-    }
-
-    public Date getDateFin() {
-        return dateFin;
-    }
-
-    public void setDateFin(Date dateFin) {
-        this.dateFin = dateFin;
+    public void setEtudiant(Etudiant etudiant) {
+        this.etudiant = etudiant;
     }
 }
