@@ -19,7 +19,7 @@ public class SessionCours {
     private Date dateDebut;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date dateFin;
-
+/*anouar*/
     
     public Long getId() {
         return id;
