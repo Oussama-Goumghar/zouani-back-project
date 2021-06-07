@@ -1,12 +1,12 @@
 package ma.learn.quiz.bean;
 
 
-import javax.persistence.CascadeType;
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -19,7 +19,7 @@ public class RecommendTeacher {
 		private String ref;
 		private String prenom;
 		private String commentaire;
-		private int telephone;
+		private BigDecimal telephone;
 		private String login;
 		@ManyToOne
 		private Prof prof;
@@ -30,7 +30,7 @@ public class RecommendTeacher {
 			// TODO Auto-generated constructor stub
 		}
 		public RecommendTeacher(int nombrevote, String nom, String ref, String prenom, String commentaire,
-				int telephone, String login, Prof prof) {
+				BigDecimal telephone, String login, Prof prof) {
 			super();
 			this.nombrevote = nombrevote;
 			this.nom = nom;
@@ -85,10 +85,10 @@ public class RecommendTeacher {
 		public void setCommentaire(String commentaire) {
 			commentaire = commentaire;
 		}
-		public int getTelephone() {
+		public BigDecimal getTelephone() {
 			return telephone;
 		}
-		public void setTelephone(int telephone) {
+		public void setTelephone(BigDecimal telephone) {
 			this.telephone = telephone;
 		}
 		public String getLogin() {

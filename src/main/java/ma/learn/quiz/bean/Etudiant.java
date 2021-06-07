@@ -25,6 +25,7 @@ public class Etudiant {
 	private String ville;
 	private String address;
 	private String password;
+	private String image;
 	@ManyToOne
 	private EtatInscription etatInscription;
 	@ManyToOne
@@ -51,9 +52,10 @@ public class Etudiant {
 		this.prof = prof;
 	}
 
+	
 	public Etudiant(String ref, String nom, String prenom, int age, String login, String ville, String address,
-			String password, String etat, Prof prof, Parcours parcours, Centre centre, List<QuizEtudiant> quizEtudiant,
-			EtatInscription etatInscription) {
+			String password, String image, EtatInscription etatInscription, Prof prof, Parcours parcours, Centre centre,
+			List<QuizEtudiant> quizEtudiant) {
 		super();
 		this.ref = ref;
 		this.nom = nom;
@@ -63,11 +65,20 @@ public class Etudiant {
 		this.ville = ville;
 		this.address = address;
 		this.password = password;
+		this.image = image;
 		this.etatInscription = etatInscription;
 		this.prof = prof;
 		this.parcours = parcours;
 		this.centre = centre;
 		this.quizEtudiant = quizEtudiant;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public String getAddress() {

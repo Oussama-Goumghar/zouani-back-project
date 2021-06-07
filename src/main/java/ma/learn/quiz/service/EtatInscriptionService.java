@@ -23,6 +23,9 @@ public class EtatInscriptionService {
 	
 	
 
+	public EtatInscription findEtatInscriptionById(Long id) {
+		return etatInscriptionDao.findEtatInscriptionById(id);
+	}
 	public List<EtatInscription> findAll() {
 		return etatInscriptionDao.findAll();
 	}

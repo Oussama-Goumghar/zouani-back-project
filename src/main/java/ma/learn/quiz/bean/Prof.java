@@ -24,7 +24,8 @@ public class Prof {
 	private String password;
 	private String email;
 	private String ref;
-	
+	private String addresse;
+	private String image;
 	@ManyToOne
 	private CategorieProf categorieProf;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -41,8 +42,12 @@ public class Prof {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	
+
 	public Prof(long numero, String nom, String prenom, String login, String password, String email, String ref,
-			CategorieProf categorieProf, List<ClassRoom> classRooms, List<RecommendTeacher> recommendTeacher) {
+			String addresse, String image, CategorieProf categorieProf, List<ClassRoom> classRooms,
+			List<RecommendTeacher> recommendTeacher) {
 		super();
 		this.numero = numero;
 		this.nom = nom;
@@ -51,10 +56,39 @@ public class Prof {
 		this.password = password;
 		this.email = email;
 		this.ref = ref;
+		this.addresse = addresse;
+		this.image = image;
 		this.categorieProf = categorieProf;
 		this.classRooms = classRooms;
 		this.recommendTeacher = recommendTeacher;
 	}
+
+
+
+
+	public String getImage() {
+		return image;
+	}
+
+
+
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+
+
+
+	public String getAddresse() {
+		return addresse;
+	}
+
+
+	public void setAddresse(String addresse) {
+		this.addresse = addresse;
+	}
+
 
 	public List<RecommendTeacher> getRecommendTeacher() {
 		return recommendTeacher;

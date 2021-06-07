@@ -14,13 +14,30 @@ public class Admin {
     private String nom;
     private String prenom;
     private String login;
+    private String image;
     private String password;
     public String addresse;
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getAddresse() {
+		return addresse;
+	}
+
+	public void setAddresse(String addresse) {
+		this.addresse = addresse;
+	}
+
+	public void setId(Long id) {
         this.id = id;
     }
 
