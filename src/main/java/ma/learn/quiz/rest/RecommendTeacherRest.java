@@ -51,7 +51,7 @@ public class RecommendTeacherRest {
 		return recommendTeacherService.findAll();
 	}
 	 @PostMapping("/search")
-	 public List<RecommendTeacher> findByCriteria(RecommendTeacherVo recommendTeacherVo) {
+	 public List<RecommendTeacher> findByCriteria(@RequestBody RecommendTeacherVo recommendTeacherVo) {
 		return recommendTeacherService.findByCriteria(recommendTeacherVo);
 	}
 	@PostMapping("/")

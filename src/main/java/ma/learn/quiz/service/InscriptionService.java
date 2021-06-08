@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import ma.learn.quiz.bean.EtatInscription;
 import ma.learn.quiz.bean.Etudiant;
 import ma.learn.quiz.bean.Inscription;
+import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.bean.Prof;
 import ma.learn.quiz.dao.InscriptionDao;
 
@@ -34,38 +35,43 @@ public class InscriptionService {
 	public EtudiantService etudiantService;
 	
 	 public int save(Inscription  inscription ) {
-			
-			String ref = "e1";
-			
-			EtatInscription etatInscription = etatInscriptionService.findByRef(ref);
-			
-			if(etatInscription ==null) {
-				return -2;
-			}
-			else {
-				etudiantService.save(inscription.getEtudiant());
-			Optional<Etudiant> etudiantOpt = etudiantService.findEtudiantById(inscription.getEtudiant().getId());
-			Etudiant etudiant= etudiantOpt.get();
-				inscription.setEtudiant(etudiant);
-				inscription.setProf(etudiant.getProf());
-				inscription.setEtatInscription(etatInscription);
-				inscriptionDao.save(inscription);
-				return 1;
-			}
-				
+		    Parcours parcours = parcoursService.findParcoursById(inscription.getParcours().getId());
+			EtatInscription etatInscription = etatInscriptionService.findEtatInscriptionById((long) 1);
+			Prof prof=profService.findProfById((long) 15);
+			inscription.setProf(prof);
+			inscription.setEtatInscription(etatInscription);
+			inscriptionDao.save(inscription);
+				return 1;		
 		}
 	
 	
 	 public int valider(Inscription inscription){	
-		  System.out.println(inscription);
-			Optional<Inscription> Inscription = findById(inscription.getId());
-			Inscription loadedInscription= Inscription.get();
-			Prof prof=profService.findProfById(inscription.getProf().getId());
-			EtatInscription etatInscription=etatInscriptionService.findByRef(inscription.getEtatInscription().getRef());
+		    System.out.println(inscription.getEtatInscription().getId());
+			Inscription loadedInscription = findInscriptionById(inscription.getId());
+			EtatInscription etatInscription=etatInscriptionService.findEtatInscriptionById(inscription.getEtatInscription().getId());
+			EtatInscription etat = etatInscriptionService.findEtatInscriptionById((long) 2);
 			loadedInscription.setEtatInscription(etatInscription);	
-			loadedInscription.setProf(prof);
-			inscriptionDao.save(loadedInscription);
-			return 1;
+			loadedInscription.setProf(inscription.getProf());
+			if (etatInscription.getId() == 2) {
+				Etudiant etudiant = new Etudiant();
+				etudiant.setAddress(loadedInscription.getAddress());
+				etudiant.setAge(loadedInscription.getAge());
+				etudiant.setEtatInscription(etatInscription);
+				etudiant.setLogin(loadedInscription.getLogin());
+				etudiant.setNom(loadedInscription.getNom());
+				etudiant.setParcours(loadedInscription.getParcours());
+				etudiant.setProf(inscription.getProf());
+				etudiant.setPassword(loadedInscription.getPassword());
+				etudiant.setPrenom(loadedInscription.getPrenom());
+				etudiant.setRef(loadedInscription.getRef());
+				etudiant.setVille(loadedInscription.getVille());
+				System.out.println(etudiant.getNom());
+				etudiantService.create(etudiant);
+				return 1;
+			}else {
+				inscriptionDao.save(loadedInscription);
+			return 2;
+			}
 		 }
 	
 	
@@ -77,32 +83,27 @@ public class InscriptionService {
 	}
 
 
-		private Optional<Inscription> findById(Long id) {
 		
-		return null;
-	}
 
 
-		public Inscription findByEtudiantRef(String ref) {
-			return inscriptionDao.findByEtudiantRef(ref);
+		@Transactional
+		public int deleteInscriptionById(List<Inscription> inscription) {
+			int res=0;
+	        for (int i = 0; i < inscription.size(); i++) {
+	            res+=deleteInscriptionById(inscription.get(i).getId());
+	        }
+	        return res;
+		}
+		
+		@Transactional
+		public int deleteInscriptionById(Long id) {
+			return inscriptionDao.deleteInscriptionById(id);
 		}
 
 
-
-
-
-	
-
-
-	public int deleteByEtudiantRef(String ref) {
-			return inscriptionDao.deleteByEtudiantRef(ref);
+		public Inscription findInscriptionById(Long id) {
+			return inscriptionDao.findInscriptionById(id);
 		}
-
-
-
-
-
-
 
 
 		public int deleteByEtatInscriptionRef(String ref) {
@@ -111,9 +112,9 @@ public class InscriptionService {
 
 
 
-
-
-
+	public int deleteByRef(String ref) {
+			return inscriptionDao.deleteByRef(ref);
+		}
 
 
 	@Transactional

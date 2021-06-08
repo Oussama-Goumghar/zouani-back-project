@@ -33,8 +33,6 @@ public class Etudiant {
 
 	@ManyToOne
 	private Parcours parcours;
-	@ManyToOne
-	private Centre centre;
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@OneToMany(mappedBy = "etudiant")
 	private List<QuizEtudiant> quizEtudiant;
@@ -54,7 +52,7 @@ public class Etudiant {
 
 	
 	public Etudiant(String ref, String nom, String prenom, int age, String login, String ville, String address,
-			String password, String image, EtatInscription etatInscription, Prof prof, Parcours parcours, Centre centre,
+			String password, String image, EtatInscription etatInscription, Prof prof, Parcours parcours, 
 			List<QuizEtudiant> quizEtudiant) {
 		super();
 		this.ref = ref;
@@ -69,7 +67,6 @@ public class Etudiant {
 		this.etatInscription = etatInscription;
 		this.prof = prof;
 		this.parcours = parcours;
-		this.centre = centre;
 		this.quizEtudiant = quizEtudiant;
 	}
 
@@ -89,13 +86,6 @@ public class Etudiant {
 		this.address = address;
 	}
 
-	public Centre getCentre() {
-		return centre;
-	}
-
-	public void setCentre(Centre centre) {
-		this.centre = centre;
-	}
 
 	public EtatInscription getEtatInscription() {
 		return etatInscription;

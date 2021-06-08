@@ -35,9 +35,7 @@ public class InscriptionRest {
 
 
 	@DeleteMapping("/numeroInscription/{numeroInscription}")
-	public int deleteByNumeroInscription(@PathVariable int numeroInscription) {
-		return inscriptionService.deleteByNumeroInscription(numeroInscription);
-	}
+	
 	
 
 	@GetMapping("/numeroInscription/{numeroInscription}")
@@ -47,9 +45,14 @@ public class InscriptionRest {
 
 	
 
-	@GetMapping("/Etudiant/ref/{ref}")
-	public Inscription findByEtudiantRef(@PathVariable String ref) {
-		return inscriptionService.findByEtudiantRef(ref);
+	
+	 @PostMapping("/delete-multiple-by-id")
+    public int deleteInscriptionById(@RequestBody List<Inscription> inscription) {
+		return inscriptionService.deleteInscriptionById(inscription);
+	}
+	@DeleteMapping("/id/{id}")
+	public int deleteInscriptionById(@PathVariable Long id) {
+		return inscriptionService.deleteInscriptionById(id);
 	}
 
 @PutMapping("/")

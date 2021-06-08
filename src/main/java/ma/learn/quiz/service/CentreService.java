@@ -38,7 +38,7 @@ public class CentreService {
 	@Transactional
 	public int deleteByRef(String ref) {
 		int resultatetat=   etatInscriptionService.deleteByRef(ref);
-		int resultatinscription= inscriptionService.deleteByEtudiantRef(ref);
+		int resultatinscription= inscriptionService.deleteByRef(ref);
 		int resultat1= etudiantService.deleteByParcoursCode(ref);
 		int resultatparcours= parcoursService.deleteByCentreRef(ref);
 		int resultatcentre= centredao.deleteByRef(ref);

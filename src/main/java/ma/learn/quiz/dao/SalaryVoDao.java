@@ -12,6 +12,7 @@ import ma.learn.quiz.vo.SalaryVo;
 public interface SalaryVoDao extends JpaRepository<SalaryVo, Long> {
    
 	List<SalaryVo> findSalaryVoById(Long id);
-	List<SalaryVo> findSalaryVoByProfId(Long id);
+	SalaryVo findSalaryVoByProfId(Long id);
+	SalaryVo findSalaryVoByMoisAndAnneeAndProfId(Date mois, Date annee,Long id);
 	List<SalaryVo> findByMoisAndAnnee(Date mois, Date annee);
 }

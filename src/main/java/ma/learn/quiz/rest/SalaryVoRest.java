@@ -27,8 +27,12 @@ public class SalaryVoRest {
 	}
 
 	@GetMapping("/prof/id/{id}")
-	 public List<SalaryVo> findSalaryVoByProfId(@PathVariable Long id) {
+	 public SalaryVo findSalaryVoByProfId(@PathVariable Long id) {
 		return SalaryService.findSalaryVoByProfId(id);
+	}
+	@GetMapping("/mois/{mois}/annee/{annee}/prof/id/{id}")
+	public SalaryVo findSalaryVoByMoisAndAnneeAndProfId(Date mois, Date annee, Long id) {
+		return SalaryService.findSalaryVoByMoisAndAnneeAndProfId(mois, annee, id);
 	}
 	
 }

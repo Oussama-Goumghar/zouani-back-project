@@ -79,11 +79,12 @@ public class RecommendTeacher {
 		public void setPrenom(String prenom) {
 			this.prenom = prenom;
 		}
+		
 		public String getCommentaire() {
 			return commentaire;
 		}
 		public void setCommentaire(String commentaire) {
-			commentaire = commentaire;
+			this.commentaire = commentaire;
 		}
 		public BigDecimal getTelephone() {
 			return telephone;

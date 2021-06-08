@@ -9,8 +9,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ma.learn.quiz.bean.Cours;
 import ma.learn.quiz.bean.EtatInscription;
 import ma.learn.quiz.bean.Etudiant;
+import ma.learn.quiz.bean.Inscription;
 import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.bean.Prof;
 import ma.learn.quiz.dao.EtudiantDao;
@@ -39,7 +41,19 @@ public class EtudiantService {
 		return etudiantDao.findByParcoursCode(code);
 	}
 	
-	
+	 public Etudiant update(Etudiant etudiant) {
+		 Etudiant loadedEtudiant = findEtudiantById(etudiant.getId());
+		 Parcours parcours =parcoursService.findParcoursById(etudiant.getParcours().getId());
+		 loadedEtudiant.setParcours(parcours);
+		 loadedEtudiant.setNom(etudiant.getNom());
+		 loadedEtudiant.setPrenom(etudiant.getPrenom());
+		 loadedEtudiant.setLogin(etudiant.getLogin());
+		 return etudiantDao.save(loadedEtudiant);
+	 }
+
+	public Etudiant findEtudiantById(Long id) {
+		return etudiantDao.findEtudiantById(id);
+	}
 
 	public List<Etudiant> findEtudiantByProfId(Long id) {
 		return etudiantDao.findEtudiantByProfId(id);
@@ -87,60 +101,44 @@ public class EtudiantService {
 	
 
 
-/*
-	public int valider(Inscription inscription){	
-		Optional<Inscription> Inscription = findInscriptionById(inscription.getId());
-		Inscription loadedInscription= Inscription.get();
-		EtatInscription etatInscription=etatInscriptionService.findByRef(etudiant.getEtatInscription().getRef());
-		loadedInscription.setEtatInscription(etatInscription);
-		Prof prof=profService.findProfById(inscription.getProf().getId());
-		loadedInscription.setProf(prof);
-		inscriptionDao.save(loadedInscriptiont);
-		return 1;
-	 }
-	*/
+	public void create(Etudiant  etudiant) {
+		etudiantDao.save(etudiant);
+	}
 	public int save(Etudiant  etudiant ) {
 		
 		Parcours parcours =parcoursService.findParcoursById(etudiant.getParcours().getId());
 		Prof prof = profService.findProfById(etudiant.getProf().getId());
 		EtatInscription etat = etatInscriptionService.findEtatInscriptionById((long) 2);
-		if(prof == null ) {
-			Prof proftest = profService.findProfById((long) 15);
-			etudiant.setParcours(parcours);
-			etudiant.setCentre(parcours.getCentre());
-		etudiant.setProf(proftest);
-		etudiant.setEtatInscription(etat);
-			 etudiantDao.save(etudiant);
-			return 1;
-		}
-		if (etudiant.getEtatInscription() == null) {
-			etudiant.setEtatInscription(etat);
-			etudiant.setParcours(parcours);
-			etudiant.setCentre(parcours.getCentre());
-		etudiant.setProf(prof);
-			 etudiantDao.save(etudiant);
-			return 1;
-		}
 		if(parcours==null) {
 			return -3;
-		}
-		
-		else {
-			etudiant.setEtatInscription(etudiant.getEtatInscription());
+		}else {
+			etudiant.setEtatInscription(etat);
 			etudiant.setParcours(parcours);
-			etudiant.setCentre(parcours.getCentre());
-		etudiant.setProf(prof);
+		    etudiant.setProf(prof);
 			 etudiantDao.save(etudiant);
-			return 1;}
+			return 1;
+			}
 		}
-	@Transactional
-	public int deleteByRef(String ref) {
-		return etudiantDao.deleteByRef(ref);
-	}
+	
+	
 	
 
 	public List<Etudiant> findAll() {
 		return etudiantDao.findAll();
+	}
+	@Transactional
+	public int deleteEtudiantById(List<Etudiant> etudiant) {
+		int res=0;
+        for (int i = 0; i < etudiant.size(); i++) {
+            res+=deleteEtudiantById(etudiant.get(i).getId());
+        }
+        return res;
+	}
+	
+
+@Transactional
+	public int deleteEtudiantById(Long id) {
+		return etudiantDao.deleteEtudiantById(id);
 	}
 
 
@@ -158,9 +156,7 @@ public class EtudiantService {
 		}
 	    
 
-	public Optional<Etudiant> findEtudiantById(Long id) {
-		return etudiantDao.findEtudiantById(id);
-	}
+	
 
 
 
