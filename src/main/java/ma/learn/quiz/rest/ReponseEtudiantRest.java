@@ -17,8 +17,15 @@ public class ReponseEtudiantRest {
 	@Autowired
 	private ReponseEtudiantService reponseEtudiantService;
 
+	
+
+	@GetMapping("/creteria/quizEtudiant/{refQuizEtudiant}/reponse/{refReponse}")
+	public Object findByCriteria(@PathVariable String refQuizEtudiant, @PathVariable String refReponse) {
+		return reponseEtudiantService.findByCriteria(refQuizEtudiant, refReponse);
+	}
+
 	@GetMapping("/quizEtudiant/ref/{ref}")
-	public List<ReponseEtudiant> findByQuizEtudiantRef(String ref) {
+	public List<ReponseEtudiant> findByQuizEtudiantRef(@PathVariable String ref) {
 		return reponseEtudiantService.findByQuizEtudiantRef(ref);
 	}
 
