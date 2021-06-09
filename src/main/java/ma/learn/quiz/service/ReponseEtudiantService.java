@@ -22,11 +22,12 @@ public class ReponseEtudiantService {
 
 	@Autowired
 	private ReponseEtudiantDao reponseEtudiantDao;
+
 	@Autowired
     private EntityManager entityManager;
 	
-	public Object findByCriteria(String refQuizEtudiant, String refReponse) {
-		String query = "SELECT r FROM ReponseEtudiant r WHERE r.quizEtudiant.ref= '"+refQuizEtudiant+"' and r.reponse.ref='"+refReponse+"'";
+	public Object findByCriteria(String refQuizEtudiant, Long numeroQuestion) {
+		String query = "SELECT r FROM ReponseEtudiant r WHERE r.quizEtudiant.ref= '"+refQuizEtudiant+"' and r.reponse.question.numero='"+numeroQuestion+"'";
 		return entityManager.createQuery(query).getSingleResult();
 	}
 
