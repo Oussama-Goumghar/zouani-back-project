@@ -24,7 +24,11 @@ public class ProfService {
         return profDao.deleteByNumero(ref);
     }
 
-    public Prof findProfById(Long id) {
+    public Prof findByLogin(String login) {
+		return profDao.findByLogin(login);
+	}
+
+	public Prof findProfById(Long id) {
 		return profDao.findProfById(id);
 	}
 
@@ -34,6 +38,9 @@ public class ProfService {
 	public int save(Prof prof ) {
 		if(findProfById(prof.getId())!=null) {
 			return -1;
+		}
+		if(findByLogin(prof.getLogin())!=null) {
+			return -2;
 		}
 		else {
 			System.out.println("id::: " + prof.getId());

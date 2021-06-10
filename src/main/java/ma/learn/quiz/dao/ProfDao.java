@@ -12,6 +12,7 @@ import ma.learn.quiz.bean.RecommendTeacher;
 public interface ProfDao extends JpaRepository<Prof, Long> {
     Prof findByNumero(String ref);
     Prof findByNom(String Nom);
+    Prof findByLogin(String login);
     Prof findProfById(Long id);
     int deleteByNumero(String ref);
     Prof findByRef(String ref);

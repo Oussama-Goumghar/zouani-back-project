@@ -34,7 +34,9 @@ public class Prof {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "prof")
     private List<RecommendTeacher> recommendTeacher ;
-    
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "prof")
+    private List<Etudiant> etudiantList ;
     
     
 	public Prof() {
@@ -45,9 +47,18 @@ public class Prof {
 	
 	
 
+	
+	public List<Etudiant> getEtudiantList() {
+		return etudiantList;
+	}
+
+
+
+
+
 	public Prof(long numero, String nom, String prenom, String login, String password, String email, String ref,
 			String addresse, String image, CategorieProf categorieProf, List<ClassRoom> classRooms,
-			List<RecommendTeacher> recommendTeacher) {
+			List<RecommendTeacher> recommendTeacher, List<Etudiant> etudiantList) {
 		super();
 		this.numero = numero;
 		this.nom = nom;
@@ -61,7 +72,17 @@ public class Prof {
 		this.categorieProf = categorieProf;
 		this.classRooms = classRooms;
 		this.recommendTeacher = recommendTeacher;
+		this.etudiantList = etudiantList;
 	}
+
+
+
+
+
+	public void setEtudiantList(List<Etudiant> etudiantList) {
+		this.etudiantList = etudiantList;
+	}
+
 
 
 

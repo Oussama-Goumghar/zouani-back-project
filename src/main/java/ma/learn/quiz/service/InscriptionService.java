@@ -35,17 +35,27 @@ public class InscriptionService {
 	public EtudiantService etudiantService;
 	
 	 public int save(Inscription  inscription ) {
+		 Inscription inscriptionLogin = findInscriptionByLogin(inscription.getLogin());
+		 if (inscriptionLogin != null) {
+			 return -1;
+		 }else {
 		    Parcours parcours = parcoursService.findParcoursById(inscription.getParcours().getId());
 			EtatInscription etatInscription = etatInscriptionService.findEtatInscriptionById((long) 1);
 			Prof prof=profService.findProfById((long) 15);
 			inscription.setProf(prof);
 			inscription.setEtatInscription(etatInscription);
 			inscriptionDao.save(inscription);
-				return 1;		
+				return 1;	
+				}	
 		}
 	
 	
-	 public int valider(Inscription inscription){	
+	 public Inscription findInscriptionByLogin(String login) {
+		return inscriptionDao.findInscriptionByLogin(login);
+	}
+
+
+	public int valider(Inscription inscription){	
 		    System.out.println(inscription.getEtatInscription().getId());
 			Inscription loadedInscription = findInscriptionById(inscription.getId());
 			EtatInscription etatInscription=etatInscriptionService.findEtatInscriptionById(inscription.getEtatInscription().getId());

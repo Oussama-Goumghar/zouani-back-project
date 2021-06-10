@@ -15,7 +15,11 @@ public class AdminService {
         return adminDao.findByNumero(ref);
     }
 
-    public int deleteByNumero(String ref) {
+    public Admin findByLogin(String login) {
+		return adminDao.findByLogin(login);
+	}
+
+	public int deleteByNumero(String ref) {
         return adminDao.deleteByNumero(ref);
     }
 
@@ -30,6 +34,9 @@ public class AdminService {
 	public int save(Admin admin ) {
 		if(findAdminById(admin.getId())!=null) {
 			return -1;
+		}
+		if(findByLogin(admin.getLogin())!=null) {
+			return -2;
 		}
 		else {
 			adminDao.save(admin);
