@@ -24,11 +24,22 @@ public class Quiz {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "quiz")
      private List<QuizEtudiant> quizEtudiant;
+    @OneToOne
+    private Section section;
     private Long numero;
     private Long seuilReussite;
    
 
-    public List<Question> getQuestions() {
+    
+    public Section getSection() {
+		return section;
+	}
+
+	public void setSection(Section section) {
+		this.section = section;
+	}
+
+	public List<Question> getQuestions() {
 		return questions;
 	}
 

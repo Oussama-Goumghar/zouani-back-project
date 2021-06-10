@@ -20,7 +20,14 @@ public class QuizRest {
 
     @Autowired
     private QuizService quizService;
-    @GetMapping("/ref/{ref}")
+    
+    @GetMapping("/section/code/{code}")
+    public Quiz findBySectionId(Long id) {
+		return quizService.findBySectionId(id);
+	}
+
+
+	@GetMapping("/ref/{ref}")
     public Quiz findByRef(@PathVariable String ref) {
         return quizService.findByRef(ref);
     }

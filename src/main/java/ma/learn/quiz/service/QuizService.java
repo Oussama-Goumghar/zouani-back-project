@@ -15,7 +15,11 @@ public class QuizService {
 
     @Autowired
     private QuizDao quizDao;
-    @Autowired
+    public Quiz findBySectionId(Long id) {
+		return quizDao.findBySectionId(id);
+	}
+
+	@Autowired
     private QuestionService questionService ;
 
     public void update(Quiz quiz){
