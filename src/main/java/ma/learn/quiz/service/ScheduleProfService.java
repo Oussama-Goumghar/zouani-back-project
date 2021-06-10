@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ma.learn.quiz.bean.EtatEtudiantSchedule;
 import ma.learn.quiz.bean.Etudiant;
 import ma.learn.quiz.bean.ScheduleProf;
 import ma.learn.quiz.dao.ScheduleProfDao;
@@ -26,11 +27,13 @@ public class ScheduleProfService {
 
 	public int save(ScheduleProf scheduleProf) {
 		Etudiant etudiant = etudiantService.findByRef(scheduleProf.getEtudiant().getRef());
+		EtatEtudiantSchedule etatEtudiantSchedule = etatEtudiantScheduleService.findByRef(scheduleProf.getEtudiant().getEtatEtudiantSchedule().getRef());
 		scheduleProf.setEtudiant(etudiant);
 		if (findByRef(scheduleProf.getRef()) != null) {
 			return -1;
 		} else {
-			//etudiantService.update(etudiant);
+			etudiantService.update(etudiant);
+			etatEtudiantScheduleService.update(etatEtudiantSchedule);
 			scheduleProfDao.save(scheduleProf);
 			return 1;
 		}
@@ -47,11 +50,7 @@ public class ScheduleProfService {
 			schdeduleVo.setStart(s.getDateDebut());
 			schdeduleVo.setEnd(s.getDateFin());
 			schdeduleVo.setRef(s.getRef());
-			if (s.getEtudiant().getEtatInscription().getId() == 1) {
-				schdeduleVo.setColor("green");
-			} else {
-				schdeduleVo.setColor("red");
-			}
+		    schdeduleVo.setColor(s.getEtudiant().getEtatEtudiantSchedule().getCouleur());
 			schdeduleVos.add(schdeduleVo);
 		}
 		return  schdeduleVos;
@@ -76,4 +75,6 @@ public class ScheduleProfService {
 	private ScheduleProfDao scheduleProfDao;
 	@Autowired
 	private EtudiantService etudiantService;
+	@Autowired
+	private EtatEtudiantScheduleService etatEtudiantScheduleService;
 }

@@ -30,7 +30,8 @@ public class Etudiant {
 	private EtatInscription etatInscription;
 	@ManyToOne
 	private Prof prof;
-
+	@ManyToOne
+	private EtatEtudiantSchedule etatEtudiantSchedule;
 	@ManyToOne
 	private Parcours parcours;
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -50,9 +51,8 @@ public class Etudiant {
 		this.prof = prof;
 	}
 
-	
 	public Etudiant(String ref, String nom, String prenom, int age, String login, String ville, String address,
-			String password, String image, EtatInscription etatInscription, Prof prof, Parcours parcours, 
+			String password, String image, EtatInscription etatInscription, Prof prof, Parcours parcours,
 			List<QuizEtudiant> quizEtudiant) {
 		super();
 		this.ref = ref;
@@ -85,7 +85,6 @@ public class Etudiant {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
 
 	public EtatInscription getEtatInscription() {
 		return etatInscription;
@@ -173,6 +172,14 @@ public class Etudiant {
 
 	public void setParcours(Parcours parcours) {
 		this.parcours = parcours;
+	}
+
+	public EtatEtudiantSchedule getEtatEtudiantSchedule() {
+		return etatEtudiantSchedule;
+	}
+
+	public void setEtatEtudiantSchedule(EtatEtudiantSchedule etatEtudiantSchedule) {
+		this.etatEtudiantSchedule = etatEtudiantSchedule;
 	}
 
 }

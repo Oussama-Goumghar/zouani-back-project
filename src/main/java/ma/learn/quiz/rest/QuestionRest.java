@@ -14,7 +14,6 @@ import java.util.List;
 @RequestMapping(value = "learn/question")
 public class QuestionRest {
 
-	
 
 	@GetMapping("/ref/{ref}")
 	public Question findByRef(@PathVariable String ref) {

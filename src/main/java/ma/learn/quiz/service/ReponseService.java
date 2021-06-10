@@ -56,7 +56,8 @@ public class ReponseService {
         if (findByRef(reponse.getRef()) != null) {
             return -1;
         }
-        Question question = questionService.findByRef(reponse.getQuestion().getRef());
+       Question question = questionService.findByNumero(reponse.getQuestion().getNumero());
+        // Question question = questionService.findByRef(reponse.getQuestion().getRef());
         reponse.setQuestion(question);
         if (question == null) {
             return -2;
