@@ -1,34 +1,61 @@
 package ma.learn.quiz.service;
 
-import ma.learn.quiz.bean.SessionCours;
-import ma.learn.quiz.dao.SessionCoursDao;
+import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-import java.util.List;
+import ma.learn.quiz.bean.Etudiant;
+import ma.learn.quiz.bean.Prof;
+import ma.learn.quiz.bean.SessionCours;
+import ma.learn.quiz.dao.SessionCoursDao;
 
 
 @Service
 public class SessionCoursService {
     @Autowired
     private SessionCoursDao sessionCoursDao;
+    @Autowired
+    private EtudiantService etudiantService;
+    @Autowired
+    private ProfService profService;
+   
 
 
-    public SessionCours findByReference(String reference) {
-        return sessionCoursDao.findByReference(reference);
-    }
+    public SessionCours findSessionCoursById(Long id) {
+		return sessionCoursDao.findSessionCoursById(id);
+	}
 
 
-    public SessionCours save(SessionCours sessionCours) {
-        if (findByReference(sessionCours.getReference()) == null)
-            sessionCoursDao.save(sessionCours);
-        return sessionCours;
+	public int save(SessionCours sessionCours) {
+		SessionCours session = findSessionCoursById(sessionCours.getId());
+		Etudiant etd = etudiantService.findEtudiantById(sessionCours.getEtudiant().getId());
+		Prof prof = profService.findProfById(sessionCours.getProf().getId());
+        if (session != null) {
+        	
+        return -1 ;
+        }else {
+        	sessionCours.setEtudiant(etd);
+        	sessionCours.setProf(prof);
+        sessionCoursDao.save(sessionCours);
+        return 1;
+        }
     }
 
 
     public SessionCours update(SessionCours sessionCours) {
-        return sessionCoursDao.save(sessionCours);
+    	SessionCours session = findSessionCoursById(sessionCours.getId());
+		Etudiant etd = etudiantService.findEtudiantById(sessionCours.getEtudiant().getId());
+		Prof prof = profService.findProfById(sessionCours.getProf().getId());
+		session.setEtudiant(etd);
+    	session.setProf(prof);
+    	session.setReference(sessionCours.getReference());
+    	session.setDuree(sessionCours.getDuree());
+    	session.setDateDebut(sessionCours.getDateDebut());
+    	session.setDateFin(sessionCours.getDateFin());
+        return sessionCoursDao.save(session);
     }
 
 
@@ -38,16 +65,16 @@ public class SessionCoursService {
 
 
     @Transactional
-    public int deleteByReference(String reference) {
-        return sessionCoursDao.deleteByReference(reference);
+    public int deleteSessionCoursById(Long id) {
+        return sessionCoursDao.deleteSessionCoursById(id);
     }
 
 
     @Transactional
-    public int deleteByReference(List<SessionCours> sessionCourss) {
+    public int deleteSessionCoursById(List<SessionCours> sessionCourss) {
         int res = 0;
         for (int i = 0; i < sessionCourss.size(); i++) {
-            res += deleteByReference(sessionCourss.get(i).getReference());
+            res += deleteSessionCoursById(sessionCourss.get(i).getId());
         }
         return res;
     }

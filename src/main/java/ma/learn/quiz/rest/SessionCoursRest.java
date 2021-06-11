@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("ecom-api/session")
+@RequestMapping("learn/session")
 public class SessionCoursRest {
 
-    @GetMapping("/reference/{reference}")
-    public SessionCours findByReference(String reference) {
-        return sessionCoursService.findByReference(reference);
+    @GetMapping("/id/{id}")
+    public SessionCours findSessionCoursById(Long id) {
+        return sessionCoursService.findSessionCoursById(id);
     }
 
     @PostMapping("/")
-    public SessionCours save(@RequestBody SessionCours sessionCours) {
+    public int save(@RequestBody SessionCours sessionCours) {
         return sessionCoursService.save(sessionCours);
     }
 
@@ -31,14 +31,14 @@ public class SessionCoursRest {
         return sessionCoursService.findAll();
     }
 
-    @DeleteMapping("/reference/{reference}")
-    public int deleteByReference(@PathVariable String reference) {
-        return sessionCoursService.deleteByReference(reference);
+    @DeleteMapping("/id/{id}")
+    public int deleteSessionCoursById(@PathVariable Long id) {
+        return sessionCoursService.deleteSessionCoursById(id);
     }
 
-    @PostMapping("/delete-multiple-by-reference")
-    public int deleteByReference(@RequestBody List<SessionCours> sessionCourss) {
-        return sessionCoursService.deleteByReference(sessionCourss);
+    @PostMapping("/delete-multiple-by-id")
+    public int deleteSessionCoursById(@RequestBody List<SessionCours> sessionCourss) {
+        return sessionCoursService.deleteSessionCoursById(sessionCourss);
     }
 
     @Autowired

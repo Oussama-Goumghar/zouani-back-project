@@ -34,20 +34,31 @@ public class ProfRest {
     public List<SessionCours> calcStatistique(@RequestBody SalaryVo salaryVo) {
 		return profService.calcStatistique(salaryVo);
 	}
-
-    @GetMapping("/ref/{ref}")
+    @GetMapping("/nom/{nom}")
+    public List<Prof> findByNom(@PathVariable String nom) {
+		return profService.findByNom(nom);
+	}
+	@GetMapping("/ref/{ref}")
     public Prof findByRef(@PathVariable String ref) {
         return profService.findByRef(ref);
     }
-@DeleteMapping("/ref/{ref}")
-    public int deleteByRef(@PathVariable String ref) {
-        return profService.deleteByRef(ref);
-    }
-
+    @PostMapping("/delete-multiple-by-id")
+public int deleteProfById(@RequestBody List<Prof> prof) {
+	return profService.deleteProfById(prof);
+}
+@DeleteMapping("/id/{id}")
+public int deleteProfById(@PathVariable Long id) {
+	return profService.deleteProfById(id);
+}
 @GetMapping("/login/{login}/password/{password}")
 public Object findByCritere(@PathVariable String login,@PathVariable String password) {
 	return profService.findByCritere(login,password);
 }
+    @PutMapping("/")
+	public Prof update(@RequestBody Prof prof) {
+	return profService.update(prof);
+}
+
 	@Autowired
     private ProfService profService;
 }

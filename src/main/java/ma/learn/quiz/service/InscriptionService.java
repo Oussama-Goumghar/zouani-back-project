@@ -59,14 +59,12 @@ public class InscriptionService {
 		    System.out.println(inscription.getEtatInscription().getId());
 			Inscription loadedInscription = findInscriptionById(inscription.getId());
 			EtatInscription etatInscription=etatInscriptionService.findEtatInscriptionById(inscription.getEtatInscription().getId());
-			EtatInscription etat = etatInscriptionService.findEtatInscriptionById((long) 2);
 			loadedInscription.setEtatInscription(etatInscription);	
 			loadedInscription.setProf(inscription.getProf());
 			if (etatInscription.getId() == 2) {
 				Etudiant etudiant = new Etudiant();
 				etudiant.setAddress(loadedInscription.getAddress());
 				etudiant.setAge(loadedInscription.getAge());
-				etudiant.setEtatInscription(etatInscription);
 				etudiant.setLogin(loadedInscription.getLogin());
 				etudiant.setNom(loadedInscription.getNom());
 				etudiant.setParcours(loadedInscription.getParcours());

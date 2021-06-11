@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SessionCoursDao extends JpaRepository<SessionCours, Long> {
-    SessionCours findByReference(String reference);
+    SessionCours findSessionCoursById(Long id);
 
-    int deleteByReference(String reference);
+    int deleteSessionCoursById(Long id);
 }

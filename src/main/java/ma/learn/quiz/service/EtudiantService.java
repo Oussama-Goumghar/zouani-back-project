@@ -31,8 +31,7 @@ public class EtudiantService {
 	public ParcoursService parcoursService;
 	@Autowired
 	public ProfService profService;
-	@Autowired
-	public EtatInscriptionService etatInscriptionService;
+	
 	
 	@Autowired 
 	public EntityManager entityManager;
@@ -108,11 +107,9 @@ public class EtudiantService {
 		
 		Parcours parcours =parcoursService.findParcoursById(etudiant.getParcours().getId());
 		Prof prof = profService.findProfById(etudiant.getProf().getId());
-		EtatInscription etat = etatInscriptionService.findEtatInscriptionById((long) 2);
 		if(parcours==null) {
 			return -3;
 		}else {
-			etudiant.setEtatInscription(etat);
 			etudiant.setParcours(parcours);
 		    etudiant.setProf(prof);
 			 etudiantDao.save(etudiant);

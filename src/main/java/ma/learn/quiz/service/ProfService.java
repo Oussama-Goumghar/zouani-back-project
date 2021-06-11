@@ -3,11 +3,13 @@ package ma.learn.quiz.service;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ma.learn.quiz.bean.Admin;
+import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.bean.Prof;
 import ma.learn.quiz.bean.RecommendTeacher;
 import ma.learn.quiz.bean.SessionCours;
@@ -35,6 +37,16 @@ public class ProfService {
 	public List<Prof> findAll() {
         return profDao.findAll();
     }
+	public Prof update(Prof prof ) {
+		Prof profLoaded = findProfById(prof.getId());
+		profLoaded.setNom(prof.getNom());
+		profLoaded.setPrenom(prof.getPrenom());
+		profLoaded.setAddresse(prof.getAddresse());
+		profLoaded.setLogin(prof.getLogin());
+		profLoaded.setPassword(prof.getPassword());
+		profLoaded.setEmail(prof.getEmail());
+		return profDao.save(profLoaded);
+	}
 	public int save(Prof prof ) {
 		if(findProfById(prof.getId())!=null) {
 			return -1;
@@ -66,10 +78,21 @@ public class ProfService {
     public int deleteByRef(String ref) {
         return profDao.deleteByRef(ref);
     }
-    
+    @Transactional
+	public int deleteProfById(List<Prof> prof) {
+		int res=0;
+        for (int i = 0; i < prof.size(); i++) {
+            res+=deleteProfById(prof.get(i).getId());
+        }
+        return res;
+	}
+   @Transactional
+    public int deleteProfById(Long id) {
+		return profDao.deleteProfById(id);
+	}
 
-    public Prof findByNom(String Nom) {
-		return profDao.findByNom(Nom);
+	public List<Prof> findByNom(String nom) {
+		return profDao.findByNom(nom);
 	}
 
 	public Object findByCritere(String login, String password)
