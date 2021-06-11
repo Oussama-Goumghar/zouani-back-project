@@ -31,7 +31,7 @@ public class SalaryVoRest {
 		return SalaryService.findSalaryVoByProfId(id);
 	}
 	@GetMapping("/mois/{mois}/annee/{annee}/prof/id/{id}")
-	public SalaryVo findSalaryVoByMoisAndAnneeAndProfId(Date mois, Date annee, Long id) {
+	public SalaryVo findSalaryVoByMoisAndAnneeAndProfId(String mois, String annee, Long id) {
 		return SalaryService.findSalaryVoByMoisAndAnneeAndProfId(mois, annee, id);
 	}
 	

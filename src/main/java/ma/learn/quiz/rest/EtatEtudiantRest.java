@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("ecom-api/etat")
+@RequestMapping("learn/etat")
 public class EtatEtudiantRest {
     @GetMapping("/reference/{reference}")
     public EtatEtudiant findByReference(@PathVariable String reference) {

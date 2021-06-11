@@ -13,6 +13,6 @@ public interface SalaryVoDao extends JpaRepository<SalaryVo, Long> {
    
 	List<SalaryVo> findSalaryVoById(Long id);
 	SalaryVo findSalaryVoByProfId(Long id);
-	SalaryVo findSalaryVoByMoisAndAnneeAndProfId(Date mois, Date annee,Long id);
+	SalaryVo findSalaryVoByMoisAndAnneeAndProfId(String mois, String annee,Long id);
 	List<SalaryVo> findByMoisAndAnnee(Date mois, Date annee);
 }

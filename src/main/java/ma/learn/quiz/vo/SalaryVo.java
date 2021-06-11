@@ -21,10 +21,8 @@ public class SalaryVo {
 	private Long id;
 @ManyToOne
 private Prof prof;
-@JsonFormat(pattern = "yyyy")
-private Date annee;
-@JsonFormat(pattern = "MM")
-private Date mois;
+private String annee;
+private String mois;
 private BigDecimal nbrSessionMensuel;
 private BigDecimal nbrSessionGlobale; 
 private BigDecimal montantMensuel;
@@ -43,18 +41,7 @@ public Long getId() {
 public void setId(Long id) {
 	this.id = id;
 }
-public Date getAnnee() {
-	return annee;
-}
-public void setAnnee(Date annee) {
-	this.annee = annee;
-}
-public Date getMois() {
-	return mois;
-}
-public void setMois(Date mois) {
-	this.mois = mois;
-}
+
 public BigDecimal getNbrSessionMensuel() {
 	return nbrSessionMensuel;
 }
@@ -78,6 +65,18 @@ public BigDecimal getMontantGlobale() {
 }
 public void setMontantGlobale(BigDecimal montantGlobale) {
 	this.montantGlobale = montantGlobale;
+}
+public String getAnnee() {
+	return annee;
+}
+public void setAnnee(String annee) {
+	this.annee = annee;
+}
+public String getMois() {
+	return mois;
+}
+public void setMois(String mois) {
+	this.mois = mois;
 }
 
 }

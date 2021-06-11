@@ -23,7 +23,7 @@ public List<SalaryVo> findSalaryVoById(Long id) {
 	return Salary.findSalaryVoById(id);
 }
 
-public SalaryVo findSalaryVoByMoisAndAnneeAndProfId(Date mois, Date annee, Long id) {
+public SalaryVo findSalaryVoByMoisAndAnneeAndProfId(String mois, String annee, Long id) {
 	return Salary.findSalaryVoByMoisAndAnneeAndProfId(mois, annee, id);
 }
 

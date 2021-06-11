@@ -9,10 +9,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ma.learn.quiz.bean.Cours;
-import ma.learn.quiz.bean.EtatInscription;
+import ma.learn.quiz.bean.EtatEtudiantSchedule;
 import ma.learn.quiz.bean.Etudiant;
-import ma.learn.quiz.bean.Inscription;
 import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.bean.Prof;
 import ma.learn.quiz.dao.EtudiantDao;
@@ -24,7 +22,8 @@ import ma.learn.quiz.service.vo.EtudiantVo;
 public class EtudiantService {
 	@Autowired
 	public  EtudiantDao  etudiantDao;
-	
+	@Autowired
+	public  EtatEtudiantScheduleService  etatEtudiantScheduleService;
 	@Autowired
 	public CentreService centreService;
 	@Autowired
@@ -107,11 +106,14 @@ public class EtudiantService {
 		
 		Parcours parcours =parcoursService.findParcoursById(etudiant.getParcours().getId());
 		Prof prof = profService.findProfById(etudiant.getProf().getId());
+		Optional<EtatEtudiantSchedule> etat = etatEtudiantScheduleService.findById((long) 1);
+		EtatEtudiantSchedule etatLoaded = etat.get();
 		if(parcours==null) {
 			return -3;
 		}else {
 			etudiant.setParcours(parcours);
-		    etudiant.setProf(prof);
+		    etudiant.setProf(prof); 
+		    etudiant.setEtatEtudiantSchedule(etatLoaded);
 			 etudiantDao.save(etudiant);
 			return 1;
 			}
