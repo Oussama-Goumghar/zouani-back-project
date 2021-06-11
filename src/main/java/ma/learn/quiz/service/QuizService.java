@@ -51,5 +51,15 @@ public class QuizService {
             return 1;
         }
     }
+    public int saveAll(Quiz quiz) {
+        if (findByRef(quiz.getRef()) != null) {
+            return -1;
+        } else {
+            quizDao.save(quiz);
+            questionService.saveAll(quiz, quiz.getQuestions());
+            return 1;
+        }
+    }
+
 
 }

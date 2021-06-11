@@ -69,7 +69,19 @@ public class QuestionService {
 		}
 	}
 
-
+	
+public void saveAll(Quiz quiz , List<Question> questions) {
+	for (Question question : questions) {
+		question.setQuiz(quiz);
+		TypeDeQuestion typeDeQuestion = typeDeQuestionService.findByRef(question.getTypeDeQuestion().getRef());
+		question.setTypeDeQuestion(typeDeQuestion);
+		typeDeQuestionService.update(typeDeQuestion);
+		question.setReponses(question.getReponses());
+		questionDao.save(question);
+	    reponseService.save(question , question.getReponses());
+	}
+	
+} 
 
 	public Question findByNumero(Long numero) {
 		return questionDao.findByNumero(numero);
