@@ -36,9 +36,9 @@ import javax.persistence.TemporalType;
 			
 		    private int numeroInscription;
 		    @Temporal (TemporalType.DATE)
-		   private Date date_debut_inscription;
+		   private Date datedebutinscription;
 		    @Temporal (TemporalType.DATE)
-			   private Date date_fin_inscription;
+			   private Date datefininscription;
 		    
 		  
 	
@@ -67,17 +67,18 @@ import javax.persistence.TemporalType;
 			public void setNumeroInscription(int numeroInscription) {
 				this.numeroInscription = numeroInscription;
 			}
-			public Date getDate_debut_inscription() {
-				return date_debut_inscription;
+			
+			public Date getDatedebutinscription() {
+				return datedebutinscription;
 			}
-			public void setDate_debut_inscription(Date date_debut_inscription) {
-				this.date_debut_inscription = date_debut_inscription;
+			public void setDatedebutinscription(Date datedebutinscription) {
+				this.datedebutinscription = datedebutinscription;
 			}
-			public Date getDate_fin_inscription() {
-				return date_fin_inscription;
+			public Date getDatefininscription() {
+				return datefininscription;
 			}
-			public void setDate_fin_inscription(Date date_fin_inscription) {
-				this.date_fin_inscription = date_fin_inscription;
+			public void setDatefininscription(Date datefininscription) {
+				this.datefininscription = datefininscription;
 			}
 			public EtatInscription getEtatInscription() {
 				return etatInscription;

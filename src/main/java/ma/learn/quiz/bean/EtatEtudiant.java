@@ -19,10 +19,19 @@ public class EtatEtudiant {
     private String schedule1;
     private String schedule2;
     private String lastClass;
+    private String nbr_class;
     private String etat;
     private Long etatNumber;
 
-    public Long getEtatNumber() {
+    public String getNbr_class() {
+		return nbr_class;
+	}
+
+	public void setNbr_class(String nbr_class) {
+		this.nbr_class = nbr_class;
+	}
+
+	public Long getEtatNumber() {
         return etatNumber;
     }
 
