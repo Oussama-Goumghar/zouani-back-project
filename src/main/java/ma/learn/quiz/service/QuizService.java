@@ -1,20 +1,25 @@
 package ma.learn.quiz.service;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import ma.learn.quiz.bean.Quiz;
-import ma.learn.quiz.dao.QuizDao;
+import ma.learn.quiz.bean.Section;
+
+import java.util.List;
 
 import javax.transaction.Transactional;
-import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import ma.learn.quiz.dao.QuizDao;
 
 @Service
 public class QuizService {
 
     @Autowired
     private QuizDao quizDao;
+    @Autowired
+    private SectionService sectionService; 
     public Quiz findBySectionId(Long id) {
 		return quizDao.findBySectionId(id);
 	}
@@ -52,9 +57,12 @@ public class QuizService {
         }
     }
     public int saveAll(Quiz quiz) {
+    	Section section = sectionService.findSectionById(quiz.getSection().getId());	
         if (findByRef(quiz.getRef()) != null) {
             return -1;
         } else {
+        	quiz.setLib(section.getCategorieSection().getLibelle());
+        	quiz.setSection(section);
             quizDao.save(quiz);
             questionService.saveAll(quiz, quiz.getQuestions());
             return 1;
