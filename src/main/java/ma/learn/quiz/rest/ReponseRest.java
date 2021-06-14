@@ -57,9 +57,9 @@ public class ReponseRest {
 		return reponseService.findByQuestionNumero(numero);
 	}
 	
-	@GetMapping("/criteria/numero/{numero}")
-	public List<Reponse> findByCriterial(@PathVariable Long numero) {
-		return reponseService.findByCriterial(numero);
+	@GetMapping("/criteria/ref/{ref}")
+	public List<Reponse> findByCriterial(@PathVariable String ref) {
+		return reponseService.findByCriterial(ref);
 	}
 
 }

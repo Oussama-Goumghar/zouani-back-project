@@ -8,6 +8,7 @@ import ma.learn.quiz.bean.Quiz;
 import ma.learn.quiz.bean.TypeDeQuestion;
 import ma.learn.quiz.dao.QuestionDao;
 
+import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -26,6 +27,8 @@ public class QuestionService {
 	private ReponseService reponseService;
 	@Autowired
 	private TypeDeQuestionService typeDeQuestionService;
+	@Autowired
+	private EntityManager entityManager;
 
 	public void update(Question question) {
 		questionDao.save(question);
@@ -85,6 +88,12 @@ public void saveAll(Quiz quiz , List<Question> questions) {
 
 	public Question findByNumero(Long numero) {
 		return questionDao.findByNumero(numero);
+	}
+	
+	public Object findByQuizAndNumero(String ref, Long numero)
+	{
+		String query = "SELECT q FROM Question q WHERE q.quiz.ref= '"+ref+"' and q.numero='"+numero+"'";
+		return entityManager.createQuery(query).getSingleResult();
 	}
 
 	@Transactional

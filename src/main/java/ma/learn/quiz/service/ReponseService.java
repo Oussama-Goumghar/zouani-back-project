@@ -71,9 +71,9 @@ public class ReponseService {
 
     }
 
-    public List<Reponse> findByCriterial(Long numero)
+    public List<Reponse> findByCriterial(String ref)
     {
-    	String query= "Select r FROM Reponse r WHERE r.question.numero='"+numero+"' And r.etatReponse = 'true'";
+    	String query= "Select r FROM Reponse r WHERE r.question.ref='"+ref+"' And r.etatReponse = 'true'";
     	return entityManager.createQuery(query).getResultList();
     }
     
