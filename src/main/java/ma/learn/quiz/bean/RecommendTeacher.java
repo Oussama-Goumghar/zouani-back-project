@@ -19,7 +19,7 @@ public class RecommendTeacher {
 		private String ref;
 		private String prenom;
 		private String commentaire;
-		private BigDecimal telephone;
+		private String telephone;
 		private String login;
 		@ManyToOne
 		private Prof prof;
@@ -30,7 +30,7 @@ public class RecommendTeacher {
 			// TODO Auto-generated constructor stub
 		}
 		public RecommendTeacher(int nombrevote, String nom, String ref, String prenom, String commentaire,
-				BigDecimal telephone, String login, Prof prof) {
+				String telephone, String login, Prof prof) {
 			super();
 			this.nombrevote = nombrevote;
 			this.nom = nom;
@@ -86,10 +86,10 @@ public class RecommendTeacher {
 		public void setCommentaire(String commentaire) {
 			this.commentaire = commentaire;
 		}
-		public BigDecimal getTelephone() {
+		public String getTelephone() {
 			return telephone;
 		}
-		public void setTelephone(BigDecimal telephone) {
+		public void setTelephone(String telephone) {
 			this.telephone = telephone;
 		}
 		public String getLogin() {
