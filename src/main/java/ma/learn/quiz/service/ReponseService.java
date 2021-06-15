@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ma.learn.quiz.bean.Question;
+import ma.learn.quiz.bean.Quiz;
 import ma.learn.quiz.bean.Reponse;
+import ma.learn.quiz.bean.TypeDeQuestion;
 import ma.learn.quiz.dao.ReponseDao;
 
 import javax.persistence.EntityManager;
@@ -67,9 +69,8 @@ public class ReponseService {
             return 1;
 
         }
-
-
     }
+  
 
     public List<Reponse> findByCriterial(Long numero)
     {

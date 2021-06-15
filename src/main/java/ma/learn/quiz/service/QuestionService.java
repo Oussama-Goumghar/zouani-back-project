@@ -76,7 +76,6 @@ public void saveAll(Quiz quiz , List<Question> questions) {
 		TypeDeQuestion typeDeQuestion = typeDeQuestionService.findByRef(question.getTypeDeQuestion().getRef());
 		question.setTypeDeQuestion(typeDeQuestion);
 		typeDeQuestionService.update(typeDeQuestion);
-		question.setReponses(question.getReponses());
 		questionDao.save(question);
 	    reponseService.save(question , question.getReponses());
 	}

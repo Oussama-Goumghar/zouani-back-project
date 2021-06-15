@@ -21,6 +21,11 @@ import ma.learn.quiz.vo.SchdeduleVo;
 @RequestMapping(value = "learn/scheduleProf")
 public class ScheduleProfRest {
 
+	@PostMapping("/save/")
+	public int saveAll(ScheduleProf scheduleProf) {
+		return scheduleProfService.saveAll(scheduleProf);
+	}
+
 	@GetMapping("/vo/")
 	public List<SchdeduleVo> findSchedule() {
 		return scheduleProfService.findSchedule();
