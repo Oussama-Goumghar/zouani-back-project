@@ -7,12 +7,13 @@ import org.springframework.stereotype.Repository;
 import ma.learn.quiz.bean.Reponse;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ReponseDao extends JpaRepository<Reponse, Long> {
     Reponse findByRef(String ref);
 
-    List<Reponse> findByQuestionRef(String ref);
+    List<Reponse> findByQuestionId(Long id);
     
     List<Reponse> findByQuestionNumero(Long numero);
 
@@ -23,5 +24,6 @@ public interface ReponseDao extends JpaRepository<Reponse, Long> {
 
     int deleteByRef(String ref);
     
+    Optional<Reponse> findById(Long id);
     
 }

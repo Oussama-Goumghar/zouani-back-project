@@ -59,4 +59,9 @@ public class QuestionRest {
 	@Autowired
 	private QuestionService questionService;
 
+	@GetMapping("/quiz/ref/{ref}/numero/{numero}")
+	public Object findByQuizAndNumero(@PathVariable String ref, @PathVariable Long numero) {
+		return questionService.findByQuizAndNumero(ref, numero);
+	}
+
 }

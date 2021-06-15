@@ -72,7 +72,7 @@ public class ReponseEtudiantService {
 	}
 
 	public int save(ReponseEtudiant reponseEtudiant) {
-		if(findByRef(reponseEtudiant.getRef())!=null)
+		/*if(findByRef(reponseEtudiant.getRef())!=null)
 		{
 			return -1;
 		}
@@ -90,7 +90,9 @@ public class ReponseEtudiantService {
          else {
         	 reponseEtudiantDao.save(reponseEtudiant);
         	 return 1;
-         }
+         }*/
+		reponseEtudiantDao.save(reponseEtudiant);
+   	 return 1;
 	}
 
 	public List<ReponseEtudiant> findAll() {

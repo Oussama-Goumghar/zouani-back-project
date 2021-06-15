@@ -13,16 +13,22 @@ import ma.learn.quiz.dao.ReponseDao;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReponseService {
 
-    public List<Reponse> findByQuestionRef(String ref) {
-        return reponseDao.findByQuestionRef(ref);
+    public List<Reponse> findByQuestionId(Long id) {
+        return reponseDao.findByQuestionId(id);
     }
 
     @Autowired
     private ReponseDao reponseDao;
+
+
+	public Optional<Reponse> findById(Long id) {
+		return reponseDao.findById(id);
+	}
 
 
 	public List<Reponse> findByEtatReponse(String etatReponse) {
@@ -72,9 +78,9 @@ public class ReponseService {
     }
   
 
-    public List<Reponse> findByCriterial(Long numero)
+    public List<Reponse> findByCriterial(Long id)
     {
-    	String query= "Select r FROM Reponse r WHERE r.question.numero='"+numero+"' And r.etatReponse = 'true'";
+    	String query= "Select r FROM Reponse r WHERE r.question.id='"+id+"' And r.etatReponse = 'true'";
     	return entityManager.createQuery(query).getResultList();
     }
     
