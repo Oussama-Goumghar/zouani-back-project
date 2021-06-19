@@ -1,6 +1,7 @@
 package ma.learn.quiz.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -16,32 +17,28 @@ public class FaqService {
 	@Autowired
 	private FaqDao faqDao;
 
-	public Faq findByRef(String ref) {
-		return faqDao.findByRef(ref);
+	public Optional<Faq> findById(Long id) {
+		return faqDao.findById(id);
 	}
 
 	@Transactional
-	public int deleteByRef(String ref) {
-		return faqDao.deleteByRef(ref);
+	public void deleteById(Long id) {
+		faqDao.deleteById(id);
 	}
 
-	public List<Faq> findByFaqTypeRef(String ref) {
-		return faqDao.findByFaqTypeRef(ref);
+	public List<Faq> findByFaqTypeId(Long id) {
+		return faqDao.findByFaqTypeId(id);
 	}
 
 	@Transactional
-	public int deleteByFaqTypeRef(String ref) {
-		return faqDao.deleteByFaqTypeRef(ref);
+	public int deleteByFaqTypeId(Long id) {
+		return faqDao.deleteByFaqTypeId(id);
 	}
 
 	public int save(Faq faq) {
-		if(findByRef(faq.getRef()) != null)
+		if(findByFaqTypeId(faq.getFaqType().getId()) == null)
 		{
 			return -1;
-		}
-		else if(findByFaqTypeRef(faq.getFaqType().getRef()) == null)
-		{
-			return -2;
 		}
 		else
 		{
@@ -51,7 +48,10 @@ public class FaqService {
 		
 	}
 
+
 	public List<Faq> findAll() {
 		return faqDao.findAll();
 	}
+
+	
 }

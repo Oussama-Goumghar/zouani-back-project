@@ -12,7 +12,6 @@ public class FaqProf {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-	private String ref;
 	private String libelle;
 	private String description;
 	@ManyToOne
@@ -26,12 +25,6 @@ public class FaqProf {
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public String getRef() {
-		return ref;
-	}
-	public void setRef(String ref) {
-		this.ref = ref;
 	}
 	public String getLibelle() {
 		return libelle;

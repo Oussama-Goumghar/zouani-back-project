@@ -1,6 +1,7 @@
 package ma.learn.quiz.rest;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,39 +23,39 @@ public class FaqProfRest {
 	@Autowired
 	private FaqProfService faqProfService;
 
-	@PutMapping("/")
-	public void update(@RequestBody FaqProf faqProf) {
-		faqProfService.update(faqProf);
+	@GetMapping("/")
+	public List<FaqProf> findAll() {
+		return faqProfService.findAll();
 	}
 
-	@GetMapping("/ref/{ref}")
-	public FaqProf findByRef(@PathVariable String ref) {
-		return faqProfService.findByRef(ref);
+	@GetMapping("/id/{id}")
+	public Optional<FaqProf> findById(@PathVariable Long id) {
+		return faqProfService.findById(id);
 	}
 
-	@DeleteMapping("/ref/{ref}")
-	public int deleteByRef(@PathVariable String ref) {
-		return faqProfService.deleteByRef(ref);
+	@DeleteMapping("/id/{id}")
+	public void deleteById(@PathVariable Long id) {
+		faqProfService.deleteById(id);
 	}
 
-	@GetMapping("/faqType/ref/{ref}")
-	public List<FaqProf> findByFaqTypeRef(@PathVariable String ref) {
-		return faqProfService.findByFaqTypeRef(ref);
+	@GetMapping("/faqType/id/{id}")
+	public List<FaqProf> findByFaqTypeId(@PathVariable Long id) {
+		return faqProfService.findByFaqTypeId(id);
 	}
 
-	@DeleteMapping("/faqType/ref/{ref}")
-	public int deleteByFaqTypeRef(@PathVariable String ref) {
-		return faqProfService.deleteByFaqTypeRef(ref);
+	@DeleteMapping("/faqType/id/{id}")
+	public int deleteByFaqTypeId(@PathVariable Long id) {
+		return faqProfService.deleteByFaqTypeId(id);
 	}
 
-	@GetMapping("/prof/ref/{ref}")
-	public List<FaqProf> findByProfRef(@PathVariable String ref) {
-		return faqProfService.findByProfRef(ref);
+	@GetMapping("/prof/id/{id}")
+	public List<FaqProf> findByProfId(@PathVariable Long id) {
+		return faqProfService.findByProfId(id);
 	}
 
-	@DeleteMapping("/prof/ref/{ref}")
-	public int deleteByProfRef(@PathVariable String ref) {
-		return faqProfService.deleteByProfRef(ref);
+	@DeleteMapping("/prof/id/{id}")
+	public int deleteByProfId(@PathVariable Long id) {
+		return faqProfService.deleteByProfId(id);
 	}
 
 	@PostMapping("/")
@@ -62,10 +63,6 @@ public class FaqProfRest {
 		return faqProfService.save(faqProf);
 	}
 
-	@GetMapping("/")
-	public List<FaqProf> findAll() {
-		return faqProfService.findAll();
-	}
-
+	
 	
 }
