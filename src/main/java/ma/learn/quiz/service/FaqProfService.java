@@ -3,6 +3,7 @@ package ma.learn.quiz.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ public class FaqProfService {
 
 	@Autowired
 	private FaqProfDao faqProfDao;
+	@Autowired
+	private EntityManager entityManager;
 
 	public List<FaqProf> findAll() {
 		return faqProfDao.findAll();
@@ -34,6 +37,12 @@ public class FaqProfService {
 	public List<FaqProf> findByFaqTypeId(Long id) {
 		return faqProfDao.findByFaqTypeId(id);
 	}
+	
+	 public List<FaqProf> findByCritere(Long idProf, Long idType)
+		{
+			String query = "SELECT f FROM FaqProf f WHERE f.prof.id= '"+idProf+"' and f.faqType.id='"+idType+"'";
+			return entityManager.createQuery(query).getResultList();
+		}
 
 	@Transactional
 	public int deleteByFaqTypeId(Long id) {
@@ -50,19 +59,8 @@ public class FaqProfService {
 	}
 
 	public int save(FaqProf faqProf) {
-		if(findById(faqProf.getId()) != null)
-		{
-			return -1;
-		}
-		else if(findByFaqTypeId(faqProf.getFaqType().getId()) == null)
-		{
-			return -2;
-		}
-		else
-		{
 			faqProfDao.save(faqProf);
 			return 1; 
-		}
 	}
 
 	

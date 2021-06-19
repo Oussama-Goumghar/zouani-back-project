@@ -23,6 +23,11 @@ public class FaqProfRest {
 	@Autowired
 	private FaqProfService faqProfService;
 
+	@GetMapping("/critere/prof/{idProf}/type/{idType}")
+	public List<FaqProf> findByCritere(Long idProf, Long idType) {
+		return faqProfService.findByCritere(idProf, idType);
+	}
+
 	@GetMapping("/")
 	public List<FaqProf> findAll() {
 		return faqProfService.findAll();
