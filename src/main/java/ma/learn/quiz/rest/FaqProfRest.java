@@ -23,8 +23,18 @@ public class FaqProfRest {
 	@Autowired
 	private FaqProfService faqProfService;
 
+	@PutMapping("/")
+	public void update(@RequestBody FaqProf faqProf) {
+		faqProfService.update(faqProf);
+	}
+
+	@GetMapping("/libelle/{libelle}")
+	public FaqProf findByLibelle(@PathVariable String libelle) {
+		return faqProfService.findByLibelle(libelle);
+	}
+
 	@GetMapping("/critere/prof/{idProf}/type/{idType}")
-	public List<FaqProf> findByCritere(Long idProf, Long idType) {
+	public List<FaqProf> findByCritere(@PathVariable Long idProf,@PathVariable Long idType) {
 		return faqProfService.findByCritere(idProf, idType);
 	}
 

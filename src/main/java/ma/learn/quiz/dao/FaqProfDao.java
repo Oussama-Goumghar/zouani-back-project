@@ -15,4 +15,5 @@ public interface FaqProfDao extends JpaRepository<FaqProf, Long>{
 	int deleteByFaqTypeId(Long id);
 	List<FaqProf> findByProfId(Long id);
 	int deleteByProfId(Long id);
+	FaqProf findByLibelle(String libelle);
 }

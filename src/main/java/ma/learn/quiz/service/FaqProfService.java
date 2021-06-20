@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ma.learn.quiz.bean.FaqProf;
+import ma.learn.quiz.bean.QuizEtudiant;
 import ma.learn.quiz.dao.FaqProfDao;
 
 
@@ -18,6 +19,10 @@ public class FaqProfService {
 
 	@Autowired
 	private FaqProfDao faqProfDao;
+	public FaqProf findByLibelle(String libelle) {
+		return faqProfDao.findByLibelle(libelle);
+	}
+
 	@Autowired
 	private EntityManager entityManager;
 
@@ -28,6 +33,14 @@ public class FaqProfService {
 	public Optional<FaqProf> findById(Long id) {
 		return faqProfDao.findById(id);
 	}
+	
+	public void update(FaqProf faqProf) {
+		faqProf.setAdmin(faqProf.getAdmin());
+		faqProf.setDescription(faqProf.getDescription());
+		faqProfDao.save(faqProf);
+		
+	}
+	
 
 	@Transactional
 	public void deleteById(Long id) {
