@@ -15,8 +15,12 @@ public class SessionCoursRest {
     public SessionCours findSessionCoursById(Long id) {
         return sessionCoursService.findSessionCoursById(id);
     }
+    @PostMapping("/search")
+    public List<SessionCours> findByCriteria(@RequestBody SessionCours sessionCours) {
+		return sessionCoursService.findByCriteria(sessionCours);
+	}
 
-    @PostMapping("/")
+	@PostMapping("/")
     public int save(@RequestBody SessionCours sessionCours) {
         return sessionCoursService.save(sessionCours);
     }

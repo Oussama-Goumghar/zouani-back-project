@@ -15,12 +15,18 @@ public class FaqType {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-	private String ref;
 	private String libelle;
+	private String destinataire;
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@OneToMany(mappedBy = "faqType")
 	private List<Faq> faq;
 	
+	public String getDestinataire() {
+		return destinataire;
+	}
+	public void setDestinataire(String destinataire) {
+		this.destinataire = destinataire;
+	}
 	public List<Faq> getFaq() {
 		return faq;
 	}
@@ -32,12 +38,6 @@ public class FaqType {
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public String getRef() {
-		return ref;
-	}
-	public void setRef(String ref) {
-		this.ref = ref;
 	}
 	public String getLibelle() {
 		return libelle;

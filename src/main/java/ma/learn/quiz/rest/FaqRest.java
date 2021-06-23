@@ -1,6 +1,7 @@
 package ma.learn.quiz.rest;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,24 +22,24 @@ public class FaqRest {
 	@Autowired
 	private FaqService faqService;
 
-	@GetMapping("/ref/{ref}")
-	public Faq findByRef(@PathVariable String ref) {
-		return faqService.findByRef(ref);
+	@GetMapping("/id/{id}")
+	public Optional<Faq> findById(@PathVariable Long id) {
+		return faqService.findById(id);
 	}
 
-	@DeleteMapping("/ref/{ref}")
-	public int deleteByRef(@RequestBody String ref) {
-		return faqService.deleteByRef(ref);
+	@DeleteMapping("/id/{id}")
+	public void deleteById(@PathVariable Long id) {
+		faqService.deleteById(id);
 	}
 
-	@GetMapping("/faqType/ref/{ref}")
-	public List<Faq> findByFaqTypeRef(@PathVariable String ref) {
-		return faqService.findByFaqTypeRef(ref);
+	@GetMapping("/faqType/id/{id}")
+	public List<Faq> findByFaqTypeId(@PathVariable Long id) {
+		return faqService.findByFaqTypeId(id);
 	}
 
-	@DeleteMapping("/faqType/ref/{ref}")
-	public int deleteByFaqTypeRef(@RequestBody String ref) {
-		return faqService.deleteByFaqTypeRef(ref);
+	@DeleteMapping("/faqType/id/{id}")
+	public int deleteByFaqTypeId(@PathVariable Long id) {
+		return faqService.deleteByFaqTypeId(id);
 	}
 
 	@PostMapping("/")
@@ -50,4 +51,6 @@ public class FaqRest {
 	public List<Faq> findAll() {
 		return faqService.findAll();
 	}
+
+	
 }

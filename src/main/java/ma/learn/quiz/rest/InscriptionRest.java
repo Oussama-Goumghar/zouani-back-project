@@ -34,9 +34,12 @@ public class InscriptionRest {
 	}
 
 
-	@DeleteMapping("/numeroInscription/{numeroInscription}")
 	
 	
+	@PostMapping("/search")
+	public List<Inscription> findByCriteria(@RequestBody Inscription inscrit) {
+		return inscriptionService.findByCriteria(inscrit);
+	}
 
 	@GetMapping("/numeroInscription/{numeroInscription}")
 	public Inscription findByNumeroInscription(@PathVariable int numeroInscription) {

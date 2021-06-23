@@ -1,6 +1,7 @@
 package ma.learn.quiz.rest;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,39 +28,14 @@ public class FaqProfRest {
 		faqProfService.update(faqProf);
 	}
 
-	@GetMapping("/ref/{ref}")
-	public FaqProf findByRef(@PathVariable String ref) {
-		return faqProfService.findByRef(ref);
+	@GetMapping("/libelle/{libelle}")
+	public FaqProf findByLibelle(@PathVariable String libelle) {
+		return faqProfService.findByLibelle(libelle);
 	}
 
-	@DeleteMapping("/ref/{ref}")
-	public int deleteByRef(@PathVariable String ref) {
-		return faqProfService.deleteByRef(ref);
-	}
-
-	@GetMapping("/faqType/ref/{ref}")
-	public List<FaqProf> findByFaqTypeRef(@PathVariable String ref) {
-		return faqProfService.findByFaqTypeRef(ref);
-	}
-
-	@DeleteMapping("/faqType/ref/{ref}")
-	public int deleteByFaqTypeRef(@PathVariable String ref) {
-		return faqProfService.deleteByFaqTypeRef(ref);
-	}
-
-	@GetMapping("/prof/ref/{ref}")
-	public List<FaqProf> findByProfRef(@PathVariable String ref) {
-		return faqProfService.findByProfRef(ref);
-	}
-
-	@DeleteMapping("/prof/ref/{ref}")
-	public int deleteByProfRef(@PathVariable String ref) {
-		return faqProfService.deleteByProfRef(ref);
-	}
-
-	@PostMapping("/")
-	public int save(@RequestBody FaqProf faqProf) {
-		return faqProfService.save(faqProf);
+	@GetMapping("/critere/prof/{idProf}/type/{idType}")
+	public List<FaqProf> findByCritere(@PathVariable Long idProf,@PathVariable Long idType) {
+		return faqProfService.findByCritere(idProf, idType);
 	}
 
 	@GetMapping("/")
@@ -67,5 +43,41 @@ public class FaqProfRest {
 		return faqProfService.findAll();
 	}
 
+	@GetMapping("/id/{id}")
+	public Optional<FaqProf> findById(@PathVariable Long id) {
+		return faqProfService.findById(id);
+	}
+
+	@DeleteMapping("/id/{id}")
+	public void deleteById(@PathVariable Long id) {
+		faqProfService.deleteById(id);
+	}
+
+	@GetMapping("/faqType/id/{id}")
+	public List<FaqProf> findByFaqTypeId(@PathVariable Long id) {
+		return faqProfService.findByFaqTypeId(id);
+	}
+
+	@DeleteMapping("/faqType/id/{id}")
+	public int deleteByFaqTypeId(@PathVariable Long id) {
+		return faqProfService.deleteByFaqTypeId(id);
+	}
+
+	@GetMapping("/prof/id/{id}")
+	public List<FaqProf> findByProfId(@PathVariable Long id) {
+		return faqProfService.findByProfId(id);
+	}
+
+	@DeleteMapping("/prof/id/{id}")
+	public int deleteByProfId(@PathVariable Long id) {
+		return faqProfService.deleteByProfId(id);
+	}
+
+	@PostMapping("/")
+	public int save(@RequestBody FaqProf faqProf) {
+		return faqProfService.save(faqProf);
+	}
+
+	
 	
 }

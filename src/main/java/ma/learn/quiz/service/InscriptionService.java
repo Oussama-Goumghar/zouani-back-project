@@ -3,6 +3,7 @@ package ma.learn.quiz.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import ma.learn.quiz.bean.Inscription;
 import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.bean.Prof;
 import ma.learn.quiz.dao.InscriptionDao;
+import ma.learn.quiz.service.vo.EtudiantVo;
 
 
 
@@ -33,6 +35,28 @@ public class InscriptionService {
 	public CentreService centreService;
 	@Autowired
 	public EtudiantService etudiantService;
+	@Autowired 
+	public EntityManager entityManager;
+	
+	
+	public List<Inscription> findByCriteria (Inscription inscrit ){
+		String query = "SELECT e FROM Inscription e WHERE 1=1";
+		if (inscrit.getNom() != null  )
+		{
+			query += " AND  e.nom LIKE '%" + inscrit.getNom()+"%'";
+		}
+		if (inscrit.getPrenom() != null)
+		{
+			query+= "  AND  e.prenom LIKE '%" + inscrit.getPrenom()+"'";
+		}
+		
+		if (inscrit.getLogin() != null)
+		{
+			query+= "  AND  e.login LIKE '%" + inscrit.getLogin()+"'";
+		}
+		
+		return  entityManager.createQuery(query).getResultList();	
+	}
 	
 	 public int save(Inscription  inscription ) {
 		 Inscription inscriptionLogin = findInscriptionByLogin(inscription.getLogin());

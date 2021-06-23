@@ -8,16 +8,35 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ma.learn.quiz.bean.Admin;
-import ma.learn.quiz.bean.Parcours;
+import ma.learn.quiz.bean.Inscription;
 import ma.learn.quiz.bean.Prof;
-import ma.learn.quiz.bean.RecommendTeacher;
 import ma.learn.quiz.bean.SessionCours;
 import ma.learn.quiz.dao.ProfDao;
 import ma.learn.quiz.vo.SalaryVo;
 
 @Service
 public class ProfService {
+	
+	
+	public List<Prof> findByCriteria (Prof prof ){
+		String query = "SELECT e FROM Prof e WHERE 1=1";
+		if (prof.getNom() != null  )
+		{
+			query += " AND  e.nom LIKE '%" + prof.getNom()+"%'";
+		}
+		if (prof.getPrenom() != null)
+		{
+			query+= "  AND  e.prenom LIKE '%" + prof.getPrenom()+"'";
+		}
+		
+		if (prof.getLogin() != null)
+		{
+			query+= "  AND  e.login LIKE '%" + prof.getLogin()+"'";
+		}
+		
+		return  entityManager.createQuery(query).getResultList();	
+	}
+	
     public Prof findByNumero(String ref) {
         return profDao.findByNumero(ref);
     }

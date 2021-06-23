@@ -2,6 +2,7 @@ package ma.learn.quiz.service;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +16,29 @@ import ma.learn.quiz.dao.SessionCoursDao;
 
 @Service
 public class SessionCoursService {
+	 @Autowired 
+		public EntityManager entityManager;
     @Autowired
     private SessionCoursDao sessionCoursDao;
     @Autowired
     private EtudiantService etudiantService;
     @Autowired
     private ProfService profService;
-   
+    
+    public List<SessionCours> findByCriteria (SessionCours sessionCours ){
+		String query = "SELECT e FROM SessionCours e WHERE 1=1";
+		if (sessionCours.getProf().getNom() != null  )
+		{
+			query += " AND  e.prof.nom LIKE '%" + sessionCours.getProf().getNom()+"%'";
+		}
+		if (sessionCours.getEtudiant().getNom() != null)
+		{
+			query+= "  AND  e.etudiant.nom LIKE '%" + sessionCours.getEtudiant().getNom()+"'";
+		}
+		
+		
+		return  entityManager.createQuery(query).getResultList();	
+	}
 
 
     public SessionCours findSessionCoursById(Long id) {

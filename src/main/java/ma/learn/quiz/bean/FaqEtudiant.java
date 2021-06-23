@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Faq {
+public class FaqEtudiant {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,8 +15,11 @@ public class Faq {
 	private String libelle;
 	private String description;
 	@ManyToOne
+	private Etudiant etudiant;
+	@ManyToOne
 	private FaqType faqType;
-	
+	@ManyToOne
+	private Admin admin;
 	public Long getId() {
 		return id;
 	}
@@ -29,17 +32,30 @@ public class Faq {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
+	public Etudiant getEtudiant() {
+		return etudiant;
+	}
+	public void setEtudiant(Etudiant etudiant) {
+		this.etudiant = etudiant;
+	}
 	public String getDescription() {
 		return description;
 	}
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
 	public FaqType getFaqType() {
 		return faqType;
 	}
 	public void setFaqType(FaqType faqType) {
 		this.faqType = faqType;
+	}
+	public Admin getAdmin() {
+		return admin;
+	}
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
 	}
 	
 	

@@ -58,6 +58,10 @@ public Object findByCritere(@PathVariable String login,@PathVariable String pass
 	public Prof update(@RequestBody Prof prof) {
 	return profService.update(prof);
 }
+    @PostMapping("/search")
+	public List<Prof> findByCriteria(@RequestBody Prof prof) {
+		return profService.findByCriteria(prof);
+	}
 
 	@Autowired
     private ProfService profService;

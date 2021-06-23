@@ -1,6 +1,7 @@
 package ma.learn.quiz.rest;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,14 +22,19 @@ public class FaqTypeRest {
 	@Autowired
 	private FaqTypeService faqTypeService;
 
-	@GetMapping("/ref/{ref}")
-	public FaqType findByRef(@PathVariable String ref) {
-		return faqTypeService.findByRef(ref);
+	@GetMapping("/id/{id}")
+	public Optional<FaqType> findById(@PathVariable Long id) {
+		return faqTypeService.findById(id);
 	}
 
-	@DeleteMapping("/ref/{ref}")
-	public int deleteByRef(@RequestBody String ref) {
-		return faqTypeService.deleteByRef(ref);
+	@DeleteMapping("/id/{id}")
+	public void deleteById(@PathVariable Long id) {
+		faqTypeService.deleteById(id);
+	}
+
+	@GetMapping("/destinataire/{destinataire}")
+	public List<FaqType> findByDestinataire(@PathVariable String destinataire) {
+		return faqTypeService.findByDestinataire(destinataire);
 	}
 
 	@PostMapping("/")
@@ -40,4 +46,6 @@ public class FaqTypeRest {
 	public List<FaqType> findAll() {
 		return faqTypeService.findAll();
 	}
+
+	
 }
