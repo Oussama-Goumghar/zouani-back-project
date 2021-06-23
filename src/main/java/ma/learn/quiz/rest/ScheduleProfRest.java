@@ -1,6 +1,5 @@
 package ma.learn.quiz.rest;
 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +20,21 @@ import ma.learn.quiz.vo.SchdeduleVo;
 @RestController
 @RequestMapping(value = "learn/scheduleProf")
 public class ScheduleProfRest {
+
+	/*@DeleteMapping("/id/{id}")
+	public int deleteByScheduleId(Long id) {
+		return scheduleProfService.deleteByScheduleId(id);
+	}
+
+	@PutMapping("/")
+	public ScheduleProf update(@RequestBody ScheduleProf scheduleProf) {
+		return scheduleProfService.update(scheduleProf);
+	}*/
+
+/*	@GetMapping("/id/{id}")
+	public List<ScheduleProf> findByScheduleId(Long id) {
+		return scheduleProfService.findByScheduleId(id);
+	}*/
 
 	@PostMapping("/save/")
 	public int saveAll(ScheduleProf scheduleProf) {
@@ -53,17 +68,5 @@ public class ScheduleProfRest {
 	public List<ScheduleProf> findAll() {
 		return scheduleProfService.findAll();
 	}
-	
 
-	@GetMapping("/id/{id}")
-	public Optional<ScheduleProf> findById(@PathVariable Long id) {
-		return scheduleProfService.findById(id);
-	}
-
-	@DeleteMapping("/id/{id}")
-	public void deleteById(@PathVariable Long id) {
-		scheduleProfService.deleteById(id);
-	}
 }
-
-

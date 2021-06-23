@@ -20,8 +20,8 @@ public class QuizRest {
 	@Autowired
 	private QuizService quizService;
 
-	@GetMapping("/section/code/{code}")
-	public Quiz findBySectionId(Long id) {
+	@GetMapping("/section/id/{id}")
+	public Quiz findBySectionId(@PathVariable Long id) {
 		return quizService.findBySectionId(id);
 	}
 
@@ -41,8 +41,8 @@ public class QuizRest {
 	}
 
 	@PostMapping("/")
-	public int save(@RequestBody Quiz cours) {
-		return quizService.save(cours);
+	public int save(@RequestBody Quiz quiz) {
+		return quizService.save(quiz);
 	}
 
 	@PostMapping("/save/")

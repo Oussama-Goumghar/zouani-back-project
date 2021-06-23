@@ -17,6 +17,16 @@ import ma.learn.quiz.vo.SchdeduleVo;
 
 @Service
 public class ScheduleProfService {
+	
+	/*@Transactional
+	public int deleteByScheduleId(Long id) {
+		return scheduleProfDao.deleteByScheduleId(id);
+	}
+
+	public List<ScheduleProf> findByScheduleId(Long id) {
+		return scheduleProfDao.findByScheduleId(id);
+	}*/
+
 	public ScheduleProf findByRef(String ref) {
 		return scheduleProfDao.findByRef(ref);
 	}
@@ -71,15 +81,12 @@ public class ScheduleProfService {
 	public List<ScheduleProf> findAll() {
 		return scheduleProfDao.findAll();
 	}
+	
+public ScheduleProf update(ScheduleProf scheduleProf) {
+	return scheduleProfDao.save(scheduleProf);
+}
 
-	public Optional<ScheduleProf> findById(Long id) {
-		return scheduleProfDao.findById(id);
-	}
 
-	@Transactional
-	public void deleteById(Long id) {
-		scheduleProfDao.deleteById(id);
-	}
 
 	@Autowired
 	private ScheduleProfDao scheduleProfDao;
