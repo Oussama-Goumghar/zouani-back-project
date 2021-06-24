@@ -25,6 +25,10 @@ public class DictionaryRest {
 	public Dictionary findDictionaryById(@PathVariable Long id) {
 		return dictionaryService.findDictionaryById(id);
 	}
+	@GetMapping("/word/{word}/Etudiant/id/{id}")
+	public Dictionary findByWordAndEtudiantId(@PathVariable String word,@PathVariable Long id) {
+		return dictionaryService.findByWordAndEtudiantId(word, id);
+	}
 	@GetMapping("/")
 	public List<Dictionary> findAll() {
 		return dictionaryService.findAll();
