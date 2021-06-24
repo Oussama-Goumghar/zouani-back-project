@@ -25,6 +25,11 @@ public class FaqEtudiantRest {
 	@Autowired
 	private FaqEtudiantService faqEtudiantService;
 
+	@GetMapping("/")
+	public List<FaqEtudiant> findAll() {
+		return faqEtudiantService.findAll();
+	}
+
 	@GetMapping("/id/{id}")
 	public Optional<FaqEtudiant> findById(@PathVariable Long id) {
 		return faqEtudiantService.findById(id);

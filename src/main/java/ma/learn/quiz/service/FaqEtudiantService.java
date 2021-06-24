@@ -23,6 +23,11 @@ public class FaqEtudiantService {
 	private FaqEtudiantDao faqEtudiantDao;
 	
 
+	public List<FaqEtudiant> findAll() {
+		return faqEtudiantDao.findAll();
+	}
+
+
 	public Optional<FaqEtudiant> findById(Long id) {
 		return faqEtudiantDao.findById(id);
 	}
