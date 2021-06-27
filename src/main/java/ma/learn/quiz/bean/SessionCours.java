@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -18,13 +19,25 @@ public class SessionCours implements Serializable {
     private Etudiant etudiant;
     private String dateDebut;
     private String dateFin;
-    private String duree;
+    private BigDecimal duree;
+    private String payer;
 
-    public String getDuree() {
+    
+    
+
+	public String getPayer() {
+		return payer;
+	}
+
+	public void setPayer(String payer) {
+		this.payer = payer;
+	}
+
+	public BigDecimal getDuree() {
         return duree;
     }
 
-    public void setDuree(String duree) {
+    public void setDuree(BigDecimal duree) {
         this.duree = duree;
     }
 

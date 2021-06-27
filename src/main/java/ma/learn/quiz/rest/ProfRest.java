@@ -1,5 +1,6 @@
 package ma.learn.quiz.rest;
 
+import ma.learn.quiz.bean.Paiement;
 import ma.learn.quiz.bean.Prof;
 import ma.learn.quiz.bean.SessionCours;
 import ma.learn.quiz.service.ProfService;
@@ -63,6 +64,15 @@ public Object findByCritere(@PathVariable String login,@PathVariable String pass
 		return profService.findByCriteria(prof);
 	}
 
+    @GetMapping("/paiement")
+    public List<Paiement> paiementProfs() {
+        return profService.paiementProfs();
+    }
 	@Autowired
     private ProfService profService;
+	
+	@GetMapping("/sessionNonPayer/prof/id/{idProf}")
+	public List<SessionCours> findSessionsNonPayer(@PathVariable Long idProf) {
+		return profService.findSessionsNonPayer(idProf);
+	}
 }

@@ -1,5 +1,7 @@
 package ma.learn.quiz.service;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ma.learn.quiz.bean.Inscription;
+import ma.learn.quiz.bean.Paiement;
 import ma.learn.quiz.bean.Prof;
 import ma.learn.quiz.bean.SessionCours;
 import ma.learn.quiz.dao.ProfDao;
@@ -119,9 +122,43 @@ public class ProfService {
 		String query = "SELECT p FROM Prof p WHERE p.login= '"+login+"' and p.password='"+password+"'";
 		return entityManager.createQuery(query).getSingleResult();
 	}
+	
+	public List<Paiement> paiementProfs() {
+	    List<Paiement> ps = new ArrayList<>();
+	    List<Prof> profs = this.findAll();
+	    for (i = 0; i < profs.size(); i++) {//<1profs.size()
+	        Paiement p = new Paiement();
+	        p.setProf(profs.get(i));
+	        List<SessionCours> sessionCours = sessionCoursService.findByProfId(profs.get(i).getId());//2
+	        BigDecimal total = BigDecimal.ZERO;
+	        int nonPaye = 0;
+	        for (j = 0; j < sessionCours.size(); j++) {//<2
+	            if (sessionCours.get(i).getPayer() == "false") {
+	                total = total.add(sessionCours.get(i).getDuree());
+	                nonPaye++;
+
+	            }
+	        }
+	        p.setNonPaye(nonPaye);
+	        p.setTotalHeure(total);
+	        p.setMontant(p.getTotalHeure().multiply((profs.get(i).getCategorieProf().getLessonRate())));
+	        ps.add(p);
+	    }
+	    return ps;
+	}
+	
+	public List<SessionCours> findSessionsNonPayer(Long idProf)
+	{
+		String query = "SELECT s From SessionCours s where s.payer = 'false' and s.prof.id = '"+idProf+"'";
+    	return entityManager.createQuery(query).getResultList();
+	}
+	
     @Autowired 
 	public EntityManager entityManager;
     @Autowired
     private ProfDao profDao;
-   
+    @Autowired
+    private SessionCoursService sessionCoursService;
+    private int i;
+    private int j;
 }

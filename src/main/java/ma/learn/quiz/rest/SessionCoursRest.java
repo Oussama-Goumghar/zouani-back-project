@@ -12,7 +12,7 @@ import java.util.List;
 public class SessionCoursRest {
 
     @GetMapping("/id/{id}")
-    public SessionCours findSessionCoursById(Long id) {
+    public SessionCours findSessionCoursById(@PathVariable Long id) {
         return sessionCoursService.findSessionCoursById(id);
     }
     @PostMapping("/search")
