@@ -7,10 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
-import ma.learn.quiz.bean.ScheduleProf;
-import ma.learn.quiz.service.ScheduleProfService;
 
 @Entity
 public class SchdeduleVo {
