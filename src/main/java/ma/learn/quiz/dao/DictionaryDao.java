@@ -8,5 +8,6 @@ import ma.learn.quiz.bean.Dictionary;
 public interface DictionaryDao extends JpaRepository<Dictionary, Long>  {
 	Dictionary findByWord(String word);
 	Dictionary findDictionaryById (Long id);
+	Dictionary findByWordAndEtudiantId(String word,Long id);
 
 }

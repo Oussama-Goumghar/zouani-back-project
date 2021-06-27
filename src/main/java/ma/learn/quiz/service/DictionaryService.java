@@ -18,6 +18,10 @@ public class DictionaryService {
 		return dictionaryDao.findByWord(word);
 	}
 
+	public Dictionary findByWordAndEtudiantId(String word, Long id) {
+		return dictionaryDao.findByWordAndEtudiantId(word, id);
+	}
+
 	public Dictionary findDictionaryById(Long id) {
 		return dictionaryDao.findDictionaryById(id);
 	}

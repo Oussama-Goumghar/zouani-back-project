@@ -72,9 +72,14 @@ public class SessionCoursService {
     	session.setDuree(sessionCours.getDuree());
     	session.setDateDebut(sessionCours.getDateDebut());
     	session.setDateFin(sessionCours.getDateFin());
+    	session.setPayer(sessionCours.getPayer());
         return sessionCoursDao.save(session);
     }
 
+    public List<SessionCours> findByProfId(Long id) {
+
+        return sessionCoursDao.findByProfId(id);
+    }
 
     public List<SessionCours> findAll() {
         return sessionCoursDao.findAll();

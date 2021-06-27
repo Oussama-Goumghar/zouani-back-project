@@ -21,8 +21,38 @@ public class News {
 	 private String image;
 	 private String description;
 	 @JsonFormat(pattern = "dd/MM/yyyy")
+	 private Date date;
+	 @JsonFormat(pattern = "dd/MM/yyyy")
 	 private Date dateDebut;
+	 @JsonFormat(pattern = "dd/MM/yyyy")
+	 private Date dateFin;
+	 private int numeroOrdre;
+	 private String destinataire;
 	 
+	public String getDestinataire() {
+		return destinataire;
+	}
+	public void setDestinataire(String destinataire) {
+		this.destinataire = destinataire;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public Date getDateFin() {
+		return dateFin;
+	}
+	public void setDateFin(Date dateFin) {
+		this.dateFin = dateFin;
+	}
+	public int getNumeroOrdre() {
+		return numeroOrdre;
+	}
+	public void setNumeroOrdre(int numeroOrdre) {
+		this.numeroOrdre = numeroOrdre;
+	}
 	public Date getDateDebut() {
 		return dateDebut;
 	}

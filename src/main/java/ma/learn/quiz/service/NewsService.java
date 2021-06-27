@@ -2,6 +2,7 @@ package ma.learn.quiz.service;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ public class NewsService {
 
 	@Autowired
 	private NewsDao newsDao;
+	@Autowired
+	private EntityManager entityManager;
 
 	public News findByRef(String ref) {
 		return newsDao.findByRef(ref);
@@ -41,6 +44,12 @@ public class NewsService {
 
 	public List<News> findAll() {
 		return newsDao.findAll();
+	}
+	
+	public List<News> findByCritere(String destinataire)
+	{
+		String query = "SELECT n From News n where NOW() > n.dateDebut and NOW() < n.dateFin and n.destinataire = '"+destinataire+"' ORDER BY numeroOrdre";
+    	return entityManager.createQuery(query).getResultList();
 	}
 	
 	public void update(News news) {

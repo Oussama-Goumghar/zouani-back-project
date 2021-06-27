@@ -22,6 +22,11 @@ public class NewsRest {
 	@Autowired
 	private NewsService newsService;
 
+	@GetMapping("/critere/destinataire/{destinataire}")
+	public List<News> findByCritere(@PathVariable String destinataire) {
+		return newsService.findByCritere(destinataire);
+	}
+
 	@PutMapping("/")
 	public void update(@RequestBody News news) {
 		newsService.update(news);
