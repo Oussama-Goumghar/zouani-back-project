@@ -64,7 +64,7 @@ public class QuizService {
         	quiz.setLib(section.getCategorieSection().getLibelle());
         	quiz.setSection(section);
             quizDao.save(quiz);
-            questionService.saveAll(quiz, quiz.getQuestions());
+          //  questionService.saveAll(quiz, quiz.getQuestions());
             return 1;
         }
     }
