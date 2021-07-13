@@ -83,7 +83,7 @@ public class InscriptionService {
 		    System.out.println(inscription.getEtatInscription().getId());
 			Inscription loadedInscription = findInscriptionById(inscription.getId());
 			EtatInscription etatInscription=etatInscriptionService.findEtatInscriptionById(inscription.getEtatInscription().getId());
-			loadedInscription.setEtatInscription(etatInscription);	
+			loadedInscription.setEtatInscription(inscription.getEtatInscription());	
 			loadedInscription.setProf(inscription.getProf());
 			if (etatInscription.getId() == 2) {
 				Etudiant etudiant = new Etudiant();

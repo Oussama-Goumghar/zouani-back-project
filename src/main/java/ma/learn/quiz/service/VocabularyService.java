@@ -53,11 +53,9 @@ public class VocabularyService {
 	}
 
 	public int saveAll(Vocabulary vocabulary) {
-		/* Section section =
-		 sectionService.findSectionById(vocabulary.getSection().getId());
-
+		 Section section = sectionService.findSectionById(vocabulary.getSection().getId());
 			 vocabulary.setLibelle(section.getCategorieSection().getLibelle());
-			 vocabulary.setSection(section);*/
+			 vocabulary.setSection(section);
 			vocabularyDao.save(vocabulary);
 			return 1;
 		

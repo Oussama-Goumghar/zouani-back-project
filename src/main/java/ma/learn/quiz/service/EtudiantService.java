@@ -43,7 +43,9 @@ public class EtudiantService {
 	public Etudiant update(Etudiant etudiant) {
 		Etudiant loadedEtudiant = findEtudiantById(etudiant.getId());
 		Parcours parcours = parcoursService.findParcoursById(etudiant.getParcours().getId());
+		Prof prof = profService.findProfById(etudiant.getProf().getId());
 		loadedEtudiant.setParcours(parcours);
+		loadedEtudiant.setProf(prof);
 		loadedEtudiant.setNom(etudiant.getNom());
 		loadedEtudiant.setPrenom(etudiant.getPrenom());
 		loadedEtudiant.setLogin(etudiant.getLogin());
