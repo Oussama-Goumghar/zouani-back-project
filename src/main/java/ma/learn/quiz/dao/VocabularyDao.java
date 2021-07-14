@@ -11,6 +11,7 @@ public interface VocabularyDao extends JpaRepository<Vocabulary, Long>{
 	Vocabulary findByRef(String ref);
 	int deleteByRef(String ref);
 	List<Vocabulary> findByVocabularyQuizRef(String ref);
-	Vocabulary findBySectionId(Long id);
+	List<Vocabulary> findBySectionId(Long id);
+	List<Vocabulary> findByNumeroAndSectionId(Long numero,Long id);
 	Vocabulary findByNumero(Long numero);
 }

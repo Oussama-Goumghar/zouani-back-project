@@ -21,14 +21,18 @@ import ma.learn.quiz.service.VocabularyService;
 @RequestMapping(value = "learn/vocabulary")
 public class VocabularyRest {
 	
- 
+	@GetMapping("/numero/{numero}/section/id/{id}")
+	public List<Vocabulary> findByNumeroAndSectionId(@PathVariable Long numero,@PathVariable Long id) {
+		return vocabularyService.findByNumeroAndSectionId(numero, id);
+	}
+
 	@GetMapping("/numero/{numero}")
 	public Vocabulary findByNumero(Long numero) {
 		return vocabularyService.findByNumero(numero);
 	}
 
 @GetMapping("/section/id/{id}")
-	public Vocabulary findBySectionId(Long id) {
+	public List<Vocabulary> findBySectionId(@PathVariable Long id) {
 		return vocabularyService.findBySectionId(id);
 	}
 

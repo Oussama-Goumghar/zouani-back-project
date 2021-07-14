@@ -23,8 +23,12 @@ public class VocabularyService {
 		return vocabularyDao.findByNumero(numero);
 	}
 
-	public Vocabulary findBySectionId(Long id) {
+	public List<Vocabulary> findBySectionId(Long id) {
 		return vocabularyDao.findBySectionId(id);
+	}
+
+	public List<Vocabulary> findByNumeroAndSectionId(Long numero, Long id) {
+		return vocabularyDao.findByNumeroAndSectionId(numero, id);
 	}
 
 	public List<Vocabulary> findByVocabularyQuizRef(String ref) {
