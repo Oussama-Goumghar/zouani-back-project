@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import ma.learn.quiz.bean.CategorieSection;
 import ma.learn.quiz.bean.Cours;
+import ma.learn.quiz.bean.Inscription;
 import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.bean.Section;
 import ma.learn.quiz.dao.SectionDao;
@@ -29,8 +31,16 @@ public class SectionService {
 	public CoursService coursService;
 	@Autowired
 	public CategorieSectionService categorieSectionService;
-	
+	@Autowired 
+	public EntityManager entityManager;
 	 
+
+	public Section findByCoursIdAndCategorieSectionLibelle(Long id, String libelle) {
+		return sectionDao.findByCoursIdAndCategorieSectionLibelle(id, libelle);
+	}
+
+
+
 
 	public int deleteByCours(Cours cours) {
 		return sectionDao.deleteByCours(cours);
@@ -88,12 +98,14 @@ public class SectionService {
 
 
 
-
 public List<Section> findByCoursId(Long id) {
 	return sectionDao.findByCoursId(id);
 }
 
-
+public List<Section> findByCriteria (Long id ){
+	String query = "SELECT e FROM Section e WHERE e.cours.id='"+id+"'ORDER BY e.numeroOrder ASC";
+	return  entityManager.createQuery(query).getResultList();	
+}
 
 
 public List<Section> findByCategorieSectionCode(String code) {

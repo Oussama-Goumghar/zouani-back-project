@@ -41,27 +41,25 @@ public class SectionWS {
         return sectionservice.findByCode(code);
     }
 
-    @DeleteMapping("/cours/code/{code}")
-	public int deleteByCoursCode(@PathVariable String code) {
-		return sectionservice.deleteByCoursCode(code);
-	}
+    
 
 	@PutMapping("/")
     public Section update(@RequestBody Section section) {
         return sectionservice.update(section);
     }
 
-	@GetMapping("/cours/code/{code}")
-	public List<Section> findByCoursCode(@PathVariable String code) {
-		return sectionservice.findByCoursCode(code);
-	}
+	
 	@GetMapping("/cours/id/{id}")
 	public List<Section> findByCoursId(@PathVariable Long id) {
 		return sectionservice.findByCoursId(id);
 	}
-	@GetMapping("/libelle/{libelle}")
-	public List<Section> findByLibelle(@PathVariable String libelle) {
-		return sectionservice.findByLibelle(libelle);
+	@GetMapping("/order/id/{id}")
+	public List<Section> findByCriteria(@PathVariable Long id) {
+		return sectionservice.findByCriteria(id);
+	}
+	@GetMapping("/cours/id/{id}/categorie/libelle/{libelle}")
+	public Section findByCoursIdAndCategorieSectionLibelle(@PathVariable Long id,@PathVariable String libelle) {
+		return sectionservice.findByCoursIdAndCategorieSectionLibelle(id, libelle);
 	}
 	@GetMapping("/section/id/{id}")
 	public Section findSectionById(@PathVariable Long id) {

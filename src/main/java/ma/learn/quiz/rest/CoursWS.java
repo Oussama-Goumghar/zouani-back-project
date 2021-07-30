@@ -28,8 +28,12 @@ public class CoursWS {
    
   
 
-    
-    @GetMapping("/id/{id}")
+    @GetMapping("/order/id/{id}")
+    public List<Cours> findByCriteria(@PathVariable Long id) {
+		return coursService.findByCriteria(id);
+	}
+
+	@GetMapping("/id/{id}")
     public int init(@PathVariable Long id) {
 		return coursService.init(id);
 	}

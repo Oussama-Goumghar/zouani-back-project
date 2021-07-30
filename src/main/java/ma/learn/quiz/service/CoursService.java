@@ -2,6 +2,8 @@ package ma.learn.quiz.service;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,13 +28,18 @@ public class CoursService {
 	public SectionService sectionService;
 	@Autowired
 	public ParcoursService parcoursService;
-
+	@Autowired 
+	public EntityManager entityManager;
 	public List<Cours> findByLibelle(String libelle) {
 		return coursDao.findByLibelle(libelle);
 	}
 
 	public List<Cours> findByParcoursId(Long id) {
 		return coursDao.findByParcoursId(id);
+	}
+	public List<Cours> findByCriteria (Long id ){
+		String query = "SELECT e FROM Cours e WHERE e.parcours.id='"+id+"'ORDER BY e.numeroOrder ASC";
+		return  entityManager.createQuery(query).getResultList();	
 	}
 	@Transactional
 	public int deleteCoursById(List<Cours> courss) {
