@@ -38,7 +38,9 @@ public class DictionaryService {
 			if(findDictionaryById(dictionary.getId())!=null) {
 				return -1;
 			}
-			
+			if(findByWordAndEtudiantId(dictionary.getWord(), dictionary.getEtudiant().getId()) != null) {
+				return -3;
+			}
 			else {
 				
 				 dictionary.setEtudiant(etudiant);

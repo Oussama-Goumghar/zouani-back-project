@@ -19,6 +19,7 @@ import ma.learn.quiz.bean.Inscription;
 import ma.learn.quiz.bean.Parcours;
 import ma.learn.quiz.bean.Section;
 import ma.learn.quiz.dao.SectionDao;
+import ma.learn.quiz.dao.VocabularyDao;
 
 @Service
 public class SectionService {
@@ -33,7 +34,8 @@ public class SectionService {
 	public CategorieSectionService categorieSectionService;
 	@Autowired 
 	public EntityManager entityManager;
-	 
+	@Autowired
+	private VocabularyService vocabularyService;
 
 	public Section findByCoursIdAndCategorieSectionLibelle(Long id, String libelle) {
 		return sectionDao.findByCoursIdAndCategorieSectionLibelle(id, libelle);
@@ -190,7 +192,9 @@ public int deleteByCoursId(Long id) {
 
 @Transactional
 public int deleteSectionById(Long id) {
-	return sectionDao.deleteSectionById(id);
+	int res2 = vocabularyService.deleteBySectionId(id);
+	int res = sectionDao.deleteSectionById(id);
+	return res2+ res;
 }
 
 

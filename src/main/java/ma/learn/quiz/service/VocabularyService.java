@@ -19,6 +19,11 @@ public class VocabularyService {
 	@Autowired
 	private SectionService sectionService;
 
+	@Transactional
+	public int deleteBySectionId(Long id) {
+		return vocabularyDao.deleteBySectionId(id);
+	}
+
 	public Vocabulary findByNumero(Long numero) {
 		return vocabularyDao.findByNumero(numero);
 	}
