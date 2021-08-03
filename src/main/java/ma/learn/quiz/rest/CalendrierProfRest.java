@@ -23,15 +23,19 @@ public class CalendrierProfRest {
 	public int deleteCalendrierProfById(Long id) {
 		return calendrierProfService.deleteCalendrierProfById(id);
 	}
+    @GetMapping("/prof/id/{id}")
+	public List<CalendrierProf> findByProfId(@PathVariable Long id) {
+		return calendrierProfService.findByProfId(id);
+	}
 
 	@PutMapping("/")
 	public void update(CalendrierProf calendrierProf) {
 		calendrierProfService.update(calendrierProf);
 	}
 
-	@GetMapping("/vo/")
-	public List<CalendrierVo> findSchedule() {
-		return calendrierProfService.findSchedule();
+	@GetMapping("/vo/id/{id}")
+	public List<CalendrierVo> findSchedule(@PathVariable long id) {
+		return calendrierProfService.findSchedule(id);
 	}
 
 	@GetMapping("/ref/{ref}")
