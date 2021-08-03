@@ -2,10 +2,13 @@ package ma.learn.quiz.service;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import ma.learn.quiz.bean.CalendrierProf;
+import ma.learn.quiz.bean.Prof;
 import ma.learn.quiz.dao.CalendrierProfDao;
 import ma.learn.quiz.vo.CalendrierVo;
 
@@ -15,6 +18,12 @@ public class CalendrierProfService {
 	public int deleteCalendrierProfById(Long id) {
 		return calendrierProfDao.deleteCalendrierProfById(id);
 	}
+
+	
+	public List<CalendrierProf> findByProfId(Long id) {
+		return calendrierProfDao.findByProfId(id);
+	}
+
 
 	public void update(CalendrierProf calendrierProf) {
 		calendrierProfDao.save(calendrierProf);
@@ -33,13 +42,14 @@ public class CalendrierProfService {
 		if (findByRef(calendrierProf.getRef()) != null) {
 			return -1;
 		} else {
+			calendrierProf.setProf(calendrierProf.getProf());
 			calendrierProfDao.save(calendrierProf);
 			return 1;
 		}
 	}
 
-	public List<CalendrierVo> findSchedule() {
-		List<CalendrierProf> sheduls = calendrierProfDao.findAll();
+	public List<CalendrierVo> findSchedule(long id) {
+		List<CalendrierProf> sheduls = calendrierProfDao.findByProfId(id);
 		List<CalendrierVo> calendrierVos = new ArrayList<CalendrierVo>();
 		for (CalendrierProf s : sheduls) {
 			CalendrierVo calendrierVo = new CalendrierVo();
@@ -61,5 +71,6 @@ public class CalendrierProfService {
 
 	@Autowired
 	private CalendrierProfDao calendrierProfDao;
-
+	@Autowired
+	private ProfService profService;
 }
