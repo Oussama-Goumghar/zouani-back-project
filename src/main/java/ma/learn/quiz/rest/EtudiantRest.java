@@ -24,7 +24,7 @@ public class EtudiantRest {
 	
 	
 	@GetMapping("/prof/id/{id}")
-	public List<Etudiant> findEtudiantByProfId(Long id) {
+	public List<Etudiant> findEtudiantByProfId(@PathVariable Long id) {
 		return etudiantService.findEtudiantByProfId(id);
 	}
 	@PostMapping("/search")
