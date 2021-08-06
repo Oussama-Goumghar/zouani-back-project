@@ -28,11 +28,18 @@ public class CalendrierProfRest {
 		return calendrierProfService.findByProfId(id);
 	}
 
-	@PutMapping("/")
-	public void update(CalendrierProf calendrierProf) {
-		calendrierProfService.update(calendrierProf);
+    @GetMapping("/vo/etudiant/id/{id}")
+	public List<CalendrierVo> findScheduleEtudiant(@PathVariable long id) {
+		return calendrierProfService.findScheduleEtudiant(id);
 	}
-
+	@PutMapping("/")
+	public CalendrierProf update(@RequestBody CalendrierProf calendrierProf) {
+		return calendrierProfService.update(calendrierProf);
+	}
+	@GetMapping("/vo/prof/")
+	public List<CalendrierVo> findAllSchedule() {
+		return calendrierProfService.findAllSchedule();
+	}
 	@GetMapping("/vo/id/{id}")
 	public List<CalendrierVo> findSchedule(@PathVariable long id) {
 		return calendrierProfService.findSchedule(id);

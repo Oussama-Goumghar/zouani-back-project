@@ -2,6 +2,10 @@ package ma.learn.quiz.vo;
 
 import java.util.Date;
 
+import javax.persistence.OneToOne;
+
+import ma.learn.quiz.bean.Prof;
+
 public class CalendrierVo {
 
 	public void setDaysOfWeek(int[] daysOfWeek) {
@@ -17,6 +21,16 @@ public class CalendrierVo {
 	private Date startRecur;
 	private Date endRecur;
 	private int daysOfWeek[];
+	@OneToOne
+	private Prof prof;
+	
+	public Prof getProf() {
+		return prof;
+	}
+
+	public void setProf(Prof prof) {
+		this.prof = prof;
+	}
 
 	public Long getId() {
 		return id;

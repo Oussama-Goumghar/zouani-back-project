@@ -25,8 +25,12 @@ public class CalendrierProfService {
 	}
 
 
-	public void update(CalendrierProf calendrierProf) {
-		calendrierProfDao.save(calendrierProf);
+	public CalendrierProf update(CalendrierProf calendrierProf) {
+		CalendrierProf calendrier = calendrierProfDao.findCalendrierProfById(calendrierProf.getId());
+		calendrier.setDaysOfWeek(calendrierProf.getDaysOfWeek());
+		calendrier.setStartRecur(calendrierProf.getStartRecur());
+		calendrier.setEndRecur(calendrierProf.getEndRecur());
+		return calendrierProfDao.save(calendrier);
 	}
 
 	public CalendrierProf findByRef(String ref) {
@@ -42,12 +46,28 @@ public class CalendrierProfService {
 		if (findByRef(calendrierProf.getRef()) != null) {
 			return -1;
 		} else {
-			calendrierProf.setProf(calendrierProf.getProf());
 			calendrierProfDao.save(calendrierProf);
 			return 1;
 		}
 	}
 
+	public List<CalendrierVo> findScheduleEtudiant(long id) {
+		List<CalendrierProf> sheduls = calendrierProfDao.findByEtudiantId(id);
+		List<CalendrierVo> calendrierVos = new ArrayList<CalendrierVo>();
+		for (CalendrierProf s : sheduls) {
+			CalendrierVo calendrierVo = new CalendrierVo();
+			calendrierVo.setId(s.getId());
+			calendrierVo.setTitle(s.getEtudiant().getNom());
+			calendrierVo.setStartRecur(s.getStartRecur());
+			calendrierVo.setEndRecur(s.getEndRecur());
+			calendrierVo.setStartTime(s.getStartTime());
+			calendrierVo.setEndTime(s.getEndTime());
+			calendrierVo.setProf(s.getProf());
+			calendrierVo.setColor(s.getEtudiant().getEtatEtudiantSchedule().getCouleur());
+			calendrierVos.add(calendrierVo);
+		}
+		return calendrierVos;
+	}
 	public List<CalendrierVo> findSchedule(long id) {
 		List<CalendrierProf> sheduls = calendrierProfDao.findByProfId(id);
 		List<CalendrierVo> calendrierVos = new ArrayList<CalendrierVo>();
@@ -64,9 +84,29 @@ public class CalendrierProfService {
 		}
 		return calendrierVos;
 	}
-
+	public List<CalendrierVo> findAllSchedule() {
+		List<CalendrierProf> sheduls = calendrierProfDao.findAll();
+		List<CalendrierVo> calendrierVos = new ArrayList<CalendrierVo>();
+		for (CalendrierProf s : sheduls) {
+			CalendrierVo calendrierVo = new CalendrierVo();
+			calendrierVo.setId(s.getId());
+			calendrierVo.setTitle(s.getEtudiant().getNom());
+			calendrierVo.setStartRecur(s.getStartRecur());
+			calendrierVo.setEndRecur(s.getEndRecur());
+			calendrierVo.setStartTime(s.getStartTime());
+			calendrierVo.setEndTime(s.getEndTime());
+			calendrierVo.setProf(s.getProf());
+			calendrierVo.setColor(s.getEtudiant().getEtatEtudiantSchedule().getCouleur());
+			calendrierVos.add(calendrierVo);
+		}
+		return calendrierVos;
+	}
 	public List<CalendrierProf> findAll() {
 		return calendrierProfDao.findAll();
+	}
+
+	public List<CalendrierProf> findByEtudiantId(Long id) {
+		return calendrierProfDao.findByEtudiantId(id);
 	}
 
 	@Autowired
