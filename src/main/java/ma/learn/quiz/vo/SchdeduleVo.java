@@ -6,6 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+import ma.learn.quiz.bean.Prof;
 
 
 
@@ -18,7 +21,17 @@ public class SchdeduleVo {
 	private String title;
 	private Date start;
 	private Date end;
+	@OneToOne
+	private Prof prof;
 	private String color;
+
+	public Prof getProf() {
+		return prof;
+	}
+
+	public void setProf(Prof prof) {
+		this.prof = prof;
+	}
 
 	public Long getId() {
 		return id;
