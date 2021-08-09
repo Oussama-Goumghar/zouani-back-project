@@ -31,7 +31,18 @@ public class SectionWS {
     public List<Section> findAll( ) {
         return sectionservice.findAll();
     }
-    @DeleteMapping("/id/{id}")
+
+	@GetMapping("/transform")
+	public void transformurl() {
+		sectionservice.transformurl();
+	}
+
+	@GetMapping("/transformvid")
+	public void transformurlvideo() {
+		sectionservice.transformurlvideo();
+	}
+
+	@DeleteMapping("/id/{id}")
     public int deleteSectionById(@PathVariable Long id) {
 		return sectionservice.deleteSectionById(id);
 	}
