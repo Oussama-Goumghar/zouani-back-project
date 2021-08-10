@@ -168,6 +168,10 @@ public List<Section> findAll() {
 						sectionDao.save(s);
 						sum++;
 					}
+					if (!s.getUrlImage().startsWith("https://drive.google.com/file/d/") && !s.getUrlImage().startsWith("https://drive.google.com/uc?export=view&id=")) {
+						s.setUrlImage(null);
+						sectionDao.save(s);
+					}
 				}
 			}
 		}
@@ -189,6 +193,10 @@ public List<Section> findAll() {
 						s.setUrlVideo(stringExcerpt);
 						sectionDao.save(s);
 						sum++;
+					}
+					if (!s.getUrlVideo().startsWith("https://www.youtube.com/watch") && !s.getUrlVideo().startsWith("https://www.youtube.com/embed/") ){
+						s.setUrlVideo(null);
+						sectionDao.save(s);
 					}
 				}
 			}
