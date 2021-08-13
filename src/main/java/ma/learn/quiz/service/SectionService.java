@@ -134,7 +134,7 @@ public Section findByCode(String code) {
  public int save(Section section) {	
 	 Cours cours = coursService.findCoursById(section.getCours().getId());
 	 if(cours==null) return-1;
-	 CategorieSection categorieSection = categorieSectionService.findByCode(section.getCategorieSection().getCode());
+	 CategorieSection categorieSection=categorieSectionService.findCategorieSectionById(section.getCategorieSection().getId());
 	 if(categorieSection==null) return-2;
 	 else {
 	 section.setCategorieSection(categorieSection);

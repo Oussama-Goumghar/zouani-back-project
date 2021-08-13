@@ -27,6 +27,12 @@ public class SectionWS {
     public int deleteSectionById(@RequestBody List<Section> sections) {
 	return sectionservice.deleteSectionById(sections);
 }
+ 
+    @PostMapping("/")
+	public int save(@RequestBody Section section) {
+	return sectionservice.save(section);
+}
+
 	@GetMapping("/")
     public List<Section> findAll( ) {
         return sectionservice.findAll();
