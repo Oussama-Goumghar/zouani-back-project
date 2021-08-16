@@ -8,6 +8,7 @@ import org.hibernate.annotations.FetchMode;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 
 @Entity
@@ -33,8 +34,9 @@ public class Section implements Serializable {
     private int url;
     private int content;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "section")
+    @OneToMany(mappedBy = "section" , cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "sec-tion")
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<SectionItem> sectionItems;
 
 
@@ -226,29 +228,15 @@ public class Section implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Section section = (Section) o;
+        return url == section.url && content == section.content && Objects.equals(id, section.id) && Objects.equals(code, section.code) && Objects.equals(libelle, section.libelle) && Objects.equals(urlImage, section.urlImage) && Objects.equals(urlImage2, section.urlImage2) && Objects.equals(urlImage3, section.urlImage3) && Objects.equals(urlVideo, section.urlVideo) && Objects.equals(contenu, section.contenu) && Objects.equals(questions, section.questions) && Objects.equals(indicationProf, section.indicationProf) && Objects.equals(numeroOrder, section.numeroOrder) && Objects.equals(categorieSection, section.categorieSection) && Objects.equals(cours, section.cours) && Objects.equals(sectionItems, section.sectionItems);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Section other = (Section) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(id, code, libelle, urlImage, urlImage2, urlImage3, urlVideo, contenu, questions, indicationProf, numeroOrder, categorieSection, cours, url, content, sectionItems);
     }
-
-
 }
