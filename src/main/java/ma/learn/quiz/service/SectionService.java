@@ -134,7 +134,7 @@ public Section findByCode(String code) {
  public int save(Section section) {	
 	 Cours cours = coursService.findCoursById(section.getCours().getId());
 	 if(cours==null) return-1;
-	 CategorieSection categorieSection = categorieSectionService.findByCode(section.getCategorieSection().getCode());
+	 CategorieSection categorieSection=categorieSectionService.findCategorieSectionById(section.getCategorieSection().getId());
 	 if(categorieSection==null) return-2;
 	 else {
 	 section.setCategorieSection(categorieSection);
@@ -152,7 +152,59 @@ public List<Section> findAll() {
 		return sectionDao.findAll();
 	}
 
-public Section update(Section section){
+	public void transformurl(){
+		List<Section> sections = findAll();
+		int total = 0;
+		int sum = 0;
+		for (Section s : sections) {
+			total++;
+			System.out.println(s.toString());
+			if (s.getUrlImage() != null) {
+				if (!(s.getUrlImage().equals("")) || !(s.getUrlImage().isEmpty())) {
+					if (s.getUrlImage().startsWith("https://drive.google.com/file/d/")) {
+						String initialString = s.getUrlImage();
+						String stringExcerpt = "https://drive.google.com/uc?export=view&id=" + initialString.substring(32, 65);
+						s.setUrlImage(stringExcerpt);
+						sectionDao.save(s);
+						sum++;
+					}
+					if (!s.getUrlImage().startsWith("https://drive.google.com/file/d/") && !s.getUrlImage().startsWith("https://drive.google.com/uc?export=view&id=")) {
+						s.setUrlImage(null);
+						sectionDao.save(s);
+					}
+				}
+			}
+		}
+		System.out.println("tot sections = " +total + "et sum est " +sum);
+	}
+
+	public void transformurlvideo(){
+		List<Section> sections = findAll();
+		int total = 0;
+		int sum = 0;
+		for (Section s : sections) {
+			total++;
+			System.out.println(s.toString());
+			if (s.getUrlVideo() != null) {
+				if (!(s.getUrlVideo().equals("")) || !(s.getUrlVideo().isEmpty())) {
+					if (s.getUrlVideo().startsWith("https://www.youtube.com/watch")) {
+						String initialString = s.getUrlVideo();
+						String stringExcerpt = "https://www.youtube.com/embed/" + initialString.substring(32, 43);
+						s.setUrlVideo(stringExcerpt);
+						sectionDao.save(s);
+						sum++;
+					}
+					if (!s.getUrlVideo().startsWith("https://www.youtube.com/watch") && !s.getUrlVideo().startsWith("https://www.youtube.com/embed/") ){
+						s.setUrlVideo(null);
+						sectionDao.save(s);
+					}
+				}
+			}
+		}
+	}
+
+
+	public Section update(Section section){
 
 	Optional<Section> sections= sectionDao.findById(section.getId());
 	Section LoadedSection=sections.get();

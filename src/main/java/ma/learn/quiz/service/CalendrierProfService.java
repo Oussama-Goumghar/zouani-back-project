@@ -62,7 +62,7 @@ public class CalendrierProfService {
 			calendrierVo.setEndRecur(s.getEndRecur());
 			calendrierVo.setStartTime(s.getStartTime());
 			calendrierVo.setEndTime(s.getEndTime());
-			calendrierVo.setProf(s.getProf());
+			calendrierVo.setTitleProf(s.getProf().getNom());
 			calendrierVo.setColor(s.getEtudiant().getEtatEtudiantSchedule().getCouleur());
 			calendrierVos.add(calendrierVo);
 		}
@@ -95,7 +95,7 @@ public class CalendrierProfService {
 			calendrierVo.setEndRecur(s.getEndRecur());
 			calendrierVo.setStartTime(s.getStartTime());
 			calendrierVo.setEndTime(s.getEndTime());
-			calendrierVo.setProf(s.getProf());
+			calendrierVo.setTitleProf(s.getProf().getNom());
 			calendrierVo.setColor(s.getEtudiant().getEtatEtudiantSchedule().getCouleur());
 			calendrierVos.add(calendrierVo);
 		}

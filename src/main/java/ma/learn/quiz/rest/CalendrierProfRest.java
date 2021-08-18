@@ -27,8 +27,11 @@ public class CalendrierProfRest {
 	public List<CalendrierProf> findByProfId(@PathVariable Long id) {
 		return calendrierProfService.findByProfId(id);
 	}
-
-    @GetMapping("/vo/etudiant/id/{id}")
+    @GetMapping("/etudiant/id/{id}")
+    public List<CalendrierProf> findByEtudiantId(@PathVariable Long id) {
+		return calendrierProfService.findByEtudiantId(id);
+	}
+	@GetMapping("/vo/etudiant/id/{id}")
 	public List<CalendrierVo> findScheduleEtudiant(@PathVariable long id) {
 		return calendrierProfService.findScheduleEtudiant(id);
 	}
@@ -36,7 +39,7 @@ public class CalendrierProfRest {
 	public CalendrierProf update(@RequestBody CalendrierProf calendrierProf) {
 		return calendrierProfService.update(calendrierProf);
 	}
-	@GetMapping("/vo/prof/")
+	@GetMapping("/vo/")
 	public List<CalendrierVo> findAllSchedule() {
 		return calendrierProfService.findAllSchedule();
 	}

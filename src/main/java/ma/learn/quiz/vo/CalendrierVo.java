@@ -14,6 +14,7 @@ public class CalendrierVo {
 
 	private Long id;
 	private String title;
+	private String titleProf;
 	private String ref;
 	private String color;
 	private String startTime;
@@ -21,15 +22,16 @@ public class CalendrierVo {
 	private Date startRecur;
 	private Date endRecur;
 	private int daysOfWeek[];
-	@OneToOne
-	private Prof prof;
 	
-	public Prof getProf() {
-		return prof;
+	
+	
+
+	public String getTitleProf() {
+		return titleProf;
 	}
 
-	public void setProf(Prof prof) {
-		this.prof = prof;
+	public void setTitleProf(String titleProf) {
+		this.titleProf = titleProf;
 	}
 
 	public Long getId() {

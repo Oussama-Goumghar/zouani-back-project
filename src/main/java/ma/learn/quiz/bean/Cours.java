@@ -30,6 +30,7 @@ public class Cours implements Serializable {
 	    private String image;
 	    private String libelle;
 	    private String code;
+	    private String etatCours;
 
 	    @ManyToOne
 	    private Parcours parcours;
@@ -44,7 +45,9 @@ public class Cours implements Serializable {
 	    private int numeroOrder;
    
 	
-	public Cours(String description, String image, String libelle, String code, Parcours parcours,
+	
+
+	public Cours(String description, String image, String libelle, String code, String etatCours, Parcours parcours,
 				List<Section> sections, int nombreSectionFinalise, int nombreSectionEnCours, int nombreLinkEnCours,
 				int nombreLinkFinalise, int numeroOrder) {
 			super();
@@ -52,6 +55,7 @@ public class Cours implements Serializable {
 			this.image = image;
 			this.libelle = libelle;
 			this.code = code;
+			this.etatCours = etatCours;
 			this.parcours = parcours;
 			this.sections = sections;
 			this.nombreSectionFinalise = nombreSectionFinalise;
@@ -59,6 +63,14 @@ public class Cours implements Serializable {
 			this.nombreLinkEnCours = nombreLinkEnCours;
 			this.nombreLinkFinalise = nombreLinkFinalise;
 			this.numeroOrder = numeroOrder;
+		}
+
+	public String getEtatCours() {
+			return etatCours;
+		}
+
+		public void setEtatCours(String etatCours) {
+			this.etatCours = etatCours;
 		}
 
 	public Cours() {

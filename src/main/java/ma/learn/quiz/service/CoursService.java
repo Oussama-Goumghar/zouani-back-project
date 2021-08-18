@@ -151,6 +151,7 @@ int i=0;
 		cours.setNombreLinkFinalise(nbrLinkFinalise);
 		cours.setNombreSectionEnCours(nbEncours);
 		cours.setNombreSectionFinalise(nbFinalise);
+		cours.setEtatCours(cours.getEtatCours());
 		return coursDao.save(cours);
 
 	}

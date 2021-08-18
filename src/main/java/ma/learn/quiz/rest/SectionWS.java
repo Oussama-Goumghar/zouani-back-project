@@ -27,11 +27,28 @@ public class SectionWS {
     public int deleteSectionById(@RequestBody List<Section> sections) {
 	return sectionservice.deleteSectionById(sections);
 }
+ 
+    @PostMapping("/")
+	public int save(@RequestBody Section section) {
+	return sectionservice.save(section);
+}
+
 	@GetMapping("/")
     public List<Section> findAll( ) {
         return sectionservice.findAll();
     }
-    @DeleteMapping("/id/{id}")
+
+	@GetMapping("/transform")
+	public void transformurl() {
+		sectionservice.transformurl();
+	}
+
+	@GetMapping("/transformvid")
+	public void transformurlvideo() {
+		sectionservice.transformurlvideo();
+	}
+
+	@DeleteMapping("/id/{id}")
     public int deleteSectionById(@PathVariable Long id) {
 		return sectionservice.deleteSectionById(id);
 	}
