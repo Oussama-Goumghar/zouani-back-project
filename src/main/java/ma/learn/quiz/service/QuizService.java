@@ -19,7 +19,9 @@ public class QuizService {
     @Autowired
     private QuizDao quizDao;
     @Autowired
-    private SectionService sectionService; 
+    private SectionService sectionService;
+    @Autowired
+    private ReponseService reponseService;
     public Quiz findBySectionId(Long id) {
 		return quizDao.findBySectionId(id);
 	}
@@ -38,9 +40,10 @@ public class QuizService {
 
     @Transactional
     public int deleteByRef(String ref) {
-       int a= questionService.deleteByQuizRef(ref);
-        int b =quizDao.deleteByRef(ref);
-        return a+b;
+       int a= reponseService.deleteByQuestionQuizRef(ref);
+       int b= questionService.deleteByQuizRef(ref);
+        int c =quizDao.deleteByRef(ref);
+        return a+b+c;
     }
 
 
@@ -67,6 +70,18 @@ public class QuizService {
             questionService.saveAll(quiz, quiz.getQuestions());
             return 1;
         }
+    }
+
+    public int updateAll(Quiz quiz) {
+        Section section = sectionService.findSectionById(quiz.getSection().getId());
+        int a= reponseService.deleteByQuestionQuizRef(quiz.getRef());
+        int b= questionService.deleteByQuizRef(quiz.getRef());
+        int c =quizDao.deleteByRef(quiz.getRef());
+        quiz.setLib(section.getCategorieSection().getLibelle());
+        quiz.setSection(section);
+        quizDao.save(quiz);
+        questionService.saveAll(quiz, quiz.getQuestions());
+        return 1;
     }
 
 

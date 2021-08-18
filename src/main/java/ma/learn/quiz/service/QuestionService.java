@@ -11,12 +11,23 @@ import ma.learn.quiz.dao.QuestionDao;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class QuestionService {
 
 	public List<Question> findByQuizRef(String ref) {
 		return questionDao.findByQuizRef(ref);
+	}
+
+	@Transactional
+	public void deleteById(Long id) {
+		int reponse = reponseService.deleteByQuestionId(id);
+		questionDao.deleteById(id);
+	}
+
+	public Optional<Question> findById(Long id) {
+		return questionDao.findById(id);
 	}
 
 	@Autowired

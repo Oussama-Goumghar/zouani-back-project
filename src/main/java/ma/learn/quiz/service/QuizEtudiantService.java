@@ -59,10 +59,10 @@ public class QuizEtudiantService {
 
 
 	public int save(QuizEtudiant quizEtudiant) {
-		if(findByRef(quizEtudiant.getRef()) != null)
+		/*if(findByRef(quizEtudiant.getRef()) != null)
 		{
 			return -1;
-		}
+		}*/
 		Quiz quiz=quizService.findByRef(quizEtudiant.getQuiz().getRef());
         Etudiant etudiant = etudiantService.findByRef(quizEtudiant.getEtudiant().getRef());
         //ReponseEtudiant reponseEtudiant = reponseEtudiantService.findByRef(quizEtudiant.getReponseEtudiant().getRef());

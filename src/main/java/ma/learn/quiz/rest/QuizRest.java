@@ -17,6 +17,12 @@ public class QuizRest {
 		quizService.update(quiz);
 	}
 
+
+	@PostMapping("/update/")
+	public int updateAll(@RequestBody Quiz quiz) {
+		return quizService.updateAll(quiz);
+	}
+
 	@Autowired
 	private QuizService quizService;
 

@@ -22,6 +22,16 @@ public class ReponseService {
         return reponseDao.findByQuestionId(id);
     }
 
+    @Transactional
+    public int deleteByQuestionId(Long id) {
+        return reponseDao.deleteByQuestionId(id);
+    }
+
+    @Transactional
+    public void deleteById(Long id) {
+        reponseDao.deleteById(id);
+    }
+
     @Autowired
     private ReponseDao reponseDao;
 
@@ -76,7 +86,10 @@ public class ReponseService {
 
         }
     }
-  
+
+    public void saveAnswer(Reponse reponse) {
+        reponseDao.save(reponse);
+    }
 
     public List<Reponse> findByCriterial(Long id)
     {
@@ -96,4 +109,9 @@ public class ReponseService {
             reponseDao.save(reponse);
         }
 	}
+
+    @Transactional
+    public int deleteByQuestionQuizRef(String ref) {
+        return reponseDao.deleteByQuestionQuizRef(ref);
+    }
 }

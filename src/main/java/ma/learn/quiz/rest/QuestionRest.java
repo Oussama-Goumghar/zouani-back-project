@@ -9,6 +9,7 @@ import ma.learn.quiz.service.QuestionService;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "learn/question")
@@ -54,6 +55,17 @@ public class QuestionRest {
 	@GetMapping("/numero/{numero}")
 	public Question findByNumero(@PathVariable Long numero) {
 		return questionService.findByNumero(numero);
+	}
+
+	@Transactional
+	@DeleteMapping("/id/{id}")
+	public void deleteById(@PathVariable Long id) {
+		questionService.deleteById(id);
+	}
+
+	@GetMapping("/id/{id}")
+	public Optional<Question> findById(@PathVariable Long id) {
+		return questionService.findById(id);
 	}
 
 	@Autowired

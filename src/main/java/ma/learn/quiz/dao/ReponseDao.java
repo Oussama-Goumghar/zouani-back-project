@@ -22,8 +22,14 @@ public interface ReponseDao extends JpaRepository<Reponse, Long> {
     
     int deleteByQuestionRef(String ref);
 
+    int deleteByQuestionId(Long id);
+
+    int deleteByQuestionQuizRef(String ref);
+
     int deleteByRef(String ref);
-    
+
+    void deleteById(Long id);
+
     Optional<Reponse> findById(Long id);
     
 }

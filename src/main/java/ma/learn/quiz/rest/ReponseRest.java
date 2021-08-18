@@ -44,6 +44,28 @@ public class ReponseRest {
         return reponseService.deleteByQuestionRef(ref);
     }
 
+    @Transactional
+    @DeleteMapping("/question/quiz/ref/{ref}")
+    public int deleteByQuestionQuizRef(@PathVariable String ref) {
+        return reponseService.deleteByQuestionQuizRef(ref);
+    }
+
+    @DeleteMapping("/question/id/{id}")
+    public int deleteByQuestionId(@PathVariable Long id) {
+        return reponseService.deleteByQuestionId(id);
+    }
+
+    @Transactional
+    @DeleteMapping("/id/{id}")
+    public void deleteById(@PathVariable Long id) {
+        reponseService.deleteById(id);
+    }
+
+    @PostMapping("/save/")
+    public void saveAnswer(@RequestBody Reponse reponse) {
+        reponseService.saveAnswer(reponse);
+    }
+
     @Autowired
     private ReponseService reponseService;
 
