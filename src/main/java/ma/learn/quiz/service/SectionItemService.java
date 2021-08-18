@@ -65,6 +65,22 @@ public class SectionItemService {
         }
     }
 
+    public int deleteMultiple(List<Long> ids) {
+        if (ids == null || ids.isEmpty()) {
+            return -1;
+        } else {
+            for (Long id : ids) {
+                SectionItem sectionItem = sectionItemDao.findSectionItemById(id);
+                if (sectionItem != null) {
+                    sectionItemDao.delete(sectionItem);
+                }
+            }
+            return 1;
+
+        }
+
+    }
+
     public List<SectionItem> findAllSectionItemsBySection(Long sectionId) {
         if (sectionId == null) {
             return null;

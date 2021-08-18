@@ -24,8 +24,8 @@ public class SectionItem implements Serializable {
     private String explanation;
     private String example;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JsonBackReference(value = "sec-tion")
+
+    @ManyToOne()
     private Section section;
 
     @Override

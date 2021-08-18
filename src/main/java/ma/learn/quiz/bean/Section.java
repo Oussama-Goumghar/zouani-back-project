@@ -34,9 +34,8 @@ public class Section implements Serializable {
     private int url;
     private int content;
 
-    @OneToMany(mappedBy = "section" , cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "sec-tion")
-    @Fetch(value = FetchMode.SUBSELECT)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "section",cascade = CascadeType.REMOVE)
     private List<SectionItem> sectionItems;
 
 

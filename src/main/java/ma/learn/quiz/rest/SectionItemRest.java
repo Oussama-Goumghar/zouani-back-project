@@ -28,4 +28,9 @@ public class SectionItemRest {
         return sectionItemService.delete(id);
     }
 
+    @PostMapping("/deleteMultiple/")
+    public int deleteMultiple(@RequestBody List<Long> ids) {
+        return sectionItemService.deleteMultiple(ids);
+    }
+
 }
