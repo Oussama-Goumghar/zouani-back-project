@@ -26,6 +26,7 @@ public class Etudiant {
 	private String address;
 	private String password;
 	private String image;
+	private String gmail;
 	@ManyToOne
 	private Prof prof;
 	@ManyToOne
@@ -41,7 +42,15 @@ public class Etudiant {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Prof getProf() {
+    public String getGmail() {
+        return gmail;
+    }
+
+    public void setGmail(String gmail) {
+        this.gmail = gmail;
+    }
+
+    public Prof getProf() {
 		return prof;
 	}
 
@@ -49,25 +58,24 @@ public class Etudiant {
 		this.prof = prof;
 	}
 
-	public Etudiant(String ref, String nom, String prenom, int age, String login, String ville, String address,
-			String password, String image, Prof prof, Parcours parcours,
-			List<QuizEtudiant> quizEtudiant) {
-		super();
-		this.ref = ref;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.age = age;
-		this.login = login;
-		this.ville = ville;
-		this.address = address;
-		this.password = password;
-		this.image = image;
-		this.prof = prof;
-		this.parcours = parcours;
-		this.quizEtudiant = quizEtudiant;
-	}
+    public Etudiant(String ref, String nom, String prenom, int age, String login, String ville, String address, String password, String image, String gmail, Prof prof, EtatEtudiantSchedule etatEtudiantSchedule, Parcours parcours, List<QuizEtudiant> quizEtudiant) {
+        this.ref = ref;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.age = age;
+        this.login = login;
+        this.ville = ville;
+        this.address = address;
+        this.password = password;
+        this.image = image;
+        this.gmail = gmail;
+        this.prof = prof;
+        this.etatEtudiantSchedule = etatEtudiantSchedule;
+        this.parcours = parcours;
+        this.quizEtudiant = quizEtudiant;
+    }
 
-	public String getImage() {
+    public String getImage() {
 		return image;
 	}
 

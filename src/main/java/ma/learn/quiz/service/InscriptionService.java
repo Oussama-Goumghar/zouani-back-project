@@ -97,6 +97,7 @@ public class InscriptionService {
 				etudiant.setPrenom(loadedInscription.getPrenom());
 				etudiant.setRef(loadedInscription.getRef());
 				etudiant.setVille(loadedInscription.getVille());
+				etudiant.setGmail(loadedInscription.getGmail());
 				System.out.println(etudiant.getNom());
 				etudiantService.create(etudiant);
 				return 1;

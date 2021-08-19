@@ -26,6 +26,7 @@ import javax.persistence.TemporalType;
 			private String address;
 			private String password;
 			private String image;
+		    private String gmail;
 			@ManyToOne
 			private EtatInscription etatInscription;
 			@ManyToOne
@@ -57,11 +58,16 @@ import javax.persistence.TemporalType;
 			public void setId(Long id) {
 				this.id = id;
 			}
-			
-			
-			
-			
-			public int getNumeroInscription() {
+
+		public String getGmail() {
+			return gmail;
+		}
+
+		public void setGmail(String gmail) {
+			this.gmail = gmail;
+		}
+
+		public int getNumeroInscription() {
 				return numeroInscription;
 			}
 			public void setNumeroInscription(int numeroInscription) {
