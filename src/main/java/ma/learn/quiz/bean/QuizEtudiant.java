@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class QuizEtudiant {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@ManyToOne
 	private Etudiant etudiant;
