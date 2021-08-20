@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import ma.learn.quiz.bean.EtatEtudiantSchedule;
@@ -32,12 +34,17 @@ public class EtudiantService {
 	public ProfService profService;
 	@Autowired
 	public ScheduleProfDao scheduleProfDao;
-
+	@Autowired
+	public JavaMailSender mailSender;
 	@Autowired
 	public EntityManager entityManager;
 
 	public List<Etudiant> findByParcoursCode(String code) {
 		return etudiantDao.findByParcoursCode(code);
+	}
+
+	public Etudiant findByLogin(String login) {
+		return etudiantDao.findByLogin(login);
 	}
 
 	public Etudiant update(Etudiant etudiant) {
@@ -51,7 +58,19 @@ public class EtudiantService {
 		loadedEtudiant.setLogin(etudiant.getLogin());
 		return etudiantDao.save(loadedEtudiant);
 	}
+	private void prepareMessage(Etudiant etudiant) {
+		System.out.println("prepare email ");
+			SimpleMailMessage message = new SimpleMailMessage();
+			message.setFrom("elearningMarrakech@gmail.com");
+			message.setTo(etudiant.getGmail());
+			message.setSubject("accepted on the platform e-learning");
+			message.setText("you have been accepted on the e-learning platform. \n" +
+					"username:"+ etudiant.getLogin()+"\n"+
+					"passeword:"+ etudiant.getPassword());
+		mailSender.send(message);
+			System.out.println("email send");
 
+	}
 	public Etudiant findEtudiantById(Long id) {
 		return etudiantDao.findEtudiantById(id);
 	}
@@ -99,8 +118,15 @@ public class EtudiantService {
 		scheduleProfDao.save(scheduleProf);
 	}
 
-	public void create(Etudiant etudiant) {
-		etudiantDao.save(etudiant);
+	public int create(Etudiant etudiant) {
+		Etudiant etd = findByLogin(etudiant.getLogin());
+		if (etd != null){
+			return -1;
+		}else {
+			etudiantDao.save(etudiant);
+			prepareMessage(etudiant);
+			return 1;
+		}
 	}
 
 	public int save(Etudiant etudiant) {

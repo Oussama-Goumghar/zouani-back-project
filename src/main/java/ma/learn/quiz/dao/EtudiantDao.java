@@ -12,6 +12,7 @@ import ma.learn.quiz.bean.Etudiant;
 public interface EtudiantDao  extends JpaRepository<Etudiant,Long>  {
 	 Etudiant findByRef(String ref);
 	    Etudiant findByNom(String nom);
+	    Etudiant findByLogin(String login);
 	    int deleteByRef(String ref);
 	    int deleteByNom(String nom);
 	    List<Etudiant> findByParcoursCode(String code);
