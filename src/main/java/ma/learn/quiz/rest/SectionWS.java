@@ -3,6 +3,7 @@ package ma.learn.quiz.rest;
 
 import java.util.List;
 
+import ma.learn.quiz.bean.SectionItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -86,10 +87,18 @@ public class SectionWS {
 	public Section findByCoursIdAndNumeroOrder(@PathVariable Long id,@PathVariable int numeroOrder) {
 		return sectionservice.findByCoursIdAndNumeroOrder(id, numeroOrder);
 	}
-	
-	
-	
 
+
+	@GetMapping("/idsection/{id}")
+	public List<SectionItem> findSectionItemsBySection(@PathVariable Long id) {
+ 	    Section section=sectionservice.findSectionById(id);
+		return section.getSectionItems();
+	}
+
+	@PostMapping("/idSection/{id}")
+	public int setSectionItems(@PathVariable Long id, @RequestBody List<SectionItem> sectionItems) {
+		return sectionservice.setSectionItems(id, sectionItems);
+	}
     
     
 }
