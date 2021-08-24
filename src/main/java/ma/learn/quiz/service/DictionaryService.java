@@ -1,6 +1,7 @@
 package ma.learn.quiz.service;
 import java.util.List;
 
+import ma.learn.quiz.bean.SectionItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,4 +54,15 @@ public class DictionaryService {
 			}
 				
 		}
+	public int update(Dictionary dictionary) {
+		Dictionary dict = findDictionaryById(dictionary.getId());
+		if(dict == null){
+			return -1;
+		}else {
+			dict.setWord(dictionary.getWord());
+			dict.setDefinition(dictionary.getDefinition());
+			dictionaryDao.save(dict);
+			return 1;
+		}
+	}
 }
