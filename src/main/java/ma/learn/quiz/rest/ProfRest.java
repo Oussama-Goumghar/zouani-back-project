@@ -15,12 +15,17 @@ import java.util.List;
 @RequestMapping("learn/prof")
 public class ProfRest {
     @GetMapping("/numero/{numro}")
-    public Prof findByNumero(@PathVariable String ref) {
-        return profService.findByNumero(ref);
+    public Prof findByNumero(@PathVariable String numro) {
+        return profService.findByNumero(numro);
     }
-@DeleteMapping("/numero/{numero}")
-    public int deleteByNumero(@PathVariable String ref) {
-        return profService.deleteByNumero(ref);
+    @DeleteMapping("/numero/{numero}")
+    public int deleteByNumero(@PathVariable String numero) {
+        return profService.deleteByNumero(numero);
+    }
+
+    @GetMapping("/id/{id}")
+    public Prof findProfById(@PathVariable Long id) {
+        return profService.findProfById(id);
     }
 
     @GetMapping("/")
@@ -44,15 +49,15 @@ public class ProfRest {
         return profService.findByRef(ref);
     }
     @PostMapping("/delete-multiple-by-id")
-public int deleteProfById(@RequestBody List<Prof> prof) {
+    public int deleteProfById(@RequestBody List<Prof> prof) {
 	return profService.deleteProfById(prof);
 }
-@DeleteMapping("/id/{id}")
-public int deleteProfById(@PathVariable Long id) {
+    @DeleteMapping("/id/{id}")
+    public int deleteProfById(@PathVariable Long id) {
 	return profService.deleteProfById(id);
 }
-@GetMapping("/login/{login}/password/{password}")
-public Object findByCritere(@PathVariable String login,@PathVariable String password) {
+    @GetMapping("/login/{login}/password/{password}")
+    public Object findByCritere(@PathVariable String login,@PathVariable String password) {
 	return profService.findByCritere(login,password);
 }
     @PutMapping("/")
