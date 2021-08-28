@@ -39,10 +39,10 @@ public class QuizEtudiantService {
 	}
 
 	@Transactional
-	public int deleteByRef(String Ref) {
-		int quizEtudiant = quizEtudiantDao.deleteByRef(Ref);
-		int reponseEtudiant = reponseEtudiantService.deleteByRef(Ref);
-		return quizEtudiant+reponseEtudiant;
+	public int deleteById(Long id) {
+		int reponseEtudiant = reponseEtudiantService.deleteByQuizEtudiantId(id);
+		quizEtudiantDao.deleteById(id);
+		return reponseEtudiant+1;
 	}
 
 	public List<QuizEtudiant> findByQuizRef(String ref) {

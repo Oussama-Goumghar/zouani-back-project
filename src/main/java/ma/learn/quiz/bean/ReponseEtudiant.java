@@ -16,12 +16,20 @@ public class ReponseEtudiant {
 	private Long id;
 	@ManyToOne
 	private Reponse reponse;
+	private String answer;
 	private String ref; 
 	@ManyToOne
 	private QuizEtudiant quizEtudiant;
 	private Double note;
-	
-	
+
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+
 	public String getRef() {
 		return ref;
 	}

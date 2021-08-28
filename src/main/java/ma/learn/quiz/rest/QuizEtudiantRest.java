@@ -34,9 +34,9 @@ public class QuizEtudiantRest {
 		return quizEtudiantService.findByRef(ref);
 	}
 
-	@DeleteMapping("/ref/{ref}")
-	public int deleteByRef(@PathVariable String Ref) {
-		return quizEtudiantService.deleteByRef(Ref);
+	@DeleteMapping("/id/{id}")
+	public int deleteById(@PathVariable Long id) {
+		return quizEtudiantService.deleteById(id);
 	}
 
 	@GetMapping("/quiz/ref/{ref}")
