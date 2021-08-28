@@ -10,7 +10,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ma.learn.quiz.bean.Inscription;
 import ma.learn.quiz.bean.Paiement;
 import ma.learn.quiz.bean.Prof;
 import ma.learn.quiz.bean.SessionCours;

@@ -37,8 +37,7 @@ public class Prof {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "prof")
     private List<Etudiant> etudiantList ;
-    
-    
+
 	public Prof() {
 		super();
 		// TODO Auto-generated constructor stub
