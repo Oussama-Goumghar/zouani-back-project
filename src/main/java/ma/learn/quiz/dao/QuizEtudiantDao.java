@@ -12,7 +12,7 @@ import ma.learn.quiz.bean.QuizEtudiant;
 @Repository
 public interface QuizEtudiantDao extends JpaRepository<QuizEtudiant, Long> {
 	QuizEtudiant findByRef(String ref);
-	int deleteByRef(String Ref);
+	void deleteById(Long id);
 	List<QuizEtudiant> findByResultat(String resultat);
 	List<QuizEtudiant> findByQuizRef(String ref);
 	List<QuizEtudiant> findByEtudiantRef(String ref);

@@ -2,18 +2,24 @@ package ma.learn.quiz.rest;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import ma.learn.quiz.bean.ReponseEtudiant;
 import ma.learn.quiz.service.ReponseEtudiantService;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "learn/reponseEtudiant")
 public class ReponseEtudiantRest {
-	
+
+	@Transactional
+	@DeleteMapping("/quizEtudiant/id/{id}")
+	public int deleteByQuizEtudiantId(@PathVariable Long id) {
+		return reponseEtudiantService.deleteByQuizEtudiantId(id);
+	}
+
 	@Autowired
 	private ReponseEtudiantService reponseEtudiantService;
 

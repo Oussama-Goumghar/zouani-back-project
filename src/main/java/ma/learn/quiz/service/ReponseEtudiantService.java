@@ -20,6 +20,11 @@ import ma.learn.quiz.dao.ReponseEtudiantDao;
 @Service
 public class ReponseEtudiantService {
 
+	@Transactional
+	public int deleteByQuizEtudiantId(Long id) {
+		return reponseEtudiantDao.deleteByQuizEtudiantId(id);
+	}
+
 	@Autowired
 	private ReponseEtudiantDao reponseEtudiantDao;
 
