@@ -28,6 +28,10 @@ public class DictionaryRest {
 	public List<Dictionary> findByEtudiantId(@PathVariable Long id) {
 		return dictionaryService.findByEtudiantId(id);
 	}
+    @DeleteMapping("/words/{word}/Etudiant/id/{id}")
+	public int deleteByWordAndEtudiantId(@PathVariable String word,@PathVariable Long id) {
+		return dictionaryService.deleteByWordAndEtudiantId(word, id);
+	}
 
 	@PutMapping("/")
 	public int update(@RequestBody Dictionary dictionary) {

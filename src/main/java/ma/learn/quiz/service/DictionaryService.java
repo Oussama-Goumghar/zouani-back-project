@@ -9,6 +9,8 @@ import ma.learn.quiz.bean.Dictionary;
 import ma.learn.quiz.bean.Etudiant;
 import ma.learn.quiz.dao.DictionaryDao;
 
+import javax.transaction.Transactional;
+
 @Service
 public class DictionaryService {
 	 @Autowired
@@ -54,6 +56,13 @@ public class DictionaryService {
 			}
 				
 		}
+
+		@Transactional
+	public int deleteByWordAndEtudiantId(String word, Long id) {
+		int wordDelete = dictionaryDao.deleteByWordAndEtudiantId(word, id);
+		return wordDelete;
+	}
+
 	public int update(Dictionary dictionary) {
 		Dictionary dict = findDictionaryById(dictionary.getId());
 		if(dict == null){
