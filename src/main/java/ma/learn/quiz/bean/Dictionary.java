@@ -1,10 +1,21 @@
 package ma.learn.quiz.bean;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Dictionary {
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,7 +24,9 @@ public class Dictionary {
 	 private String definition;
 	 @ManyToOne
 	 private Etudiant etudiant;
-	public Long getId() {
+
+
+	/*public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
@@ -37,7 +50,7 @@ public class Dictionary {
 	public void setEtudiant(Etudiant etudiant) {
 		this.etudiant = etudiant;
 	}
-	 
+	 */
 
 }
 

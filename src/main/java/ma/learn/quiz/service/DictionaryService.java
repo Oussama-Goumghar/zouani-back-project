@@ -52,6 +52,7 @@ public class DictionaryService {
 				
 				 dictionary.setEtudiant(etudiant);
 				dictionaryDao.save(dictionary);
+				System.out.println("haddii hya"+dictionary);
 				return 1;
 			}
 				
