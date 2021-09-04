@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "learn/TranslateEnAr")
@@ -18,5 +19,10 @@ public class TranslationEnArRest {
     @GetMapping("/text/{texttotranslate}")
     public String TranslationResult(@PathVariable String texttotranslate) throws IOException {
         return translationEnAr.TranslationResult(texttotranslate);
+    }
+
+    @GetMapping("/text/synonymes/{text}")
+    public List<String> synonyme(@PathVariable String text) throws IOException {
+        return translationEnAr.synonyme(text);
     }
 }

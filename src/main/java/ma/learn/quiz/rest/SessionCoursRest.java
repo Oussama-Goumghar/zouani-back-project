@@ -29,6 +29,10 @@ public class SessionCoursRest {
     public SessionCours update(@RequestBody SessionCours sessionCours) {
         return sessionCoursService.update(sessionCours);
     }
+    @GetMapping("/prof/id/{id}")
+    public List<SessionCours> findByProfId(@PathVariable Long id) {
+        return sessionCoursService.findByProfId(id);
+    }
 
     @GetMapping("/")
     public List<SessionCours> findAll() {
