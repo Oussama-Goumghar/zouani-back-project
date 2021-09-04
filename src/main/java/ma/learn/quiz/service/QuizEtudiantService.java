@@ -92,7 +92,6 @@ public class QuizEtudiantService {
 
 	public void update(QuizEtudiant quizEtudiant) {
 		quizEtudiant.setNote(quizEtudiant.getNote());
-		quizEtudiant.setDateFin(quizEtudiant.getDateFin());
 		quizEtudiant.setResultat(quizEtudiant.getResultat());
 		quizEtudiantDao.save(quizEtudiant);
 		

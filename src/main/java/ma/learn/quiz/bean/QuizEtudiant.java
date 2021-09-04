@@ -27,15 +27,19 @@ public class QuizEtudiant {
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@OneToMany(mappedBy = "quizEtudiant")
 	private List<ReponseEtudiant> reponseEtudiant;
-	@JsonFormat(pattern = "MM/dd/yyyy hh:mm:ss")
-	private Date dateDebut;
-	@JsonFormat(pattern = "MM/dd/yyyy hh:mm:ss")
-	private Date dateFin;
 	private Double note;
 	private String  resultat;
 	private String ref;
-	
-	
+	private Long questionCurrent;
+
+	public Long getQuestionCurrent() {
+		return questionCurrent;
+	}
+
+	public void setQuestionCurrent(Long questionCurrent) {
+		this.questionCurrent = questionCurrent;
+	}
+
 	public List<ReponseEtudiant> getReponseEtudiant() {
 		return reponseEtudiant;
 	}
@@ -71,18 +75,6 @@ public class QuizEtudiant {
 	}
 	public void setQuiz(Quiz quiz) {
 		this.quiz = quiz;
-	}
-	public Date getDateDebut() {
-		return dateDebut;
-	}
-	public void setDateDebut(Date dateDebut) {
-		this.dateDebut = dateDebut;
-	}
-	public Date getDateFin() {
-		return dateFin;
-	}
-	public void setDateFin(Date dateFin) {
-		this.dateFin = dateFin;
 	}
 	public Double getNote() {
 		return note;
