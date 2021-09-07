@@ -20,6 +20,7 @@ import javax.persistence.TemporalType;
 			private String ref;
 			private String nom;
 			private String prenom;
+			private String numero;
 			private int age;
 			private String login;
 			private String ville;
@@ -58,6 +59,14 @@ import javax.persistence.TemporalType;
 			public void setId(Long id) {
 				this.id = id;
 			}
+
+		public String getNumero() {
+			return numero;
+		}
+
+		public void setNumero(String numero) {
+			this.numero = numero;
+		}
 
 		public String getGmail() {
 			return gmail;

@@ -17,7 +17,7 @@ public class Prof {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private long numero;
+    private String numero;
     private String nom;
     private String prenom;
     private String login;
@@ -55,7 +55,7 @@ public class Prof {
 
 
 
-	public Prof(long numero, String nom, String prenom, String login, String password, String email, String ref,
+	public Prof(String numero, String nom, String prenom, String login, String password, String email, String ref,
 			String addresse, String image, CategorieProf categorieProf, List<ClassRoom> classRooms,
 			List<RecommendTeacher> recommendTeacher, List<Etudiant> etudiantList) {
 		super();
@@ -158,15 +158,14 @@ public class Prof {
 		this.classRooms = classRooms;
 	}
 
-	public long getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(long numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 
-	
 	public Long getId() {
         return id;
     }

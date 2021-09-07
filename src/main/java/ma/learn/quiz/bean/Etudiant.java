@@ -22,6 +22,7 @@ public class Etudiant {
 	private String prenom;
 	private int age;
 	private String login;
+	private String numero;
 	private String ville;
 	private String address;
 	private String password;
@@ -42,7 +43,15 @@ public class Etudiant {
 		// TODO Auto-generated constructor stub
 	}
 
-    public String getGmail() {
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public String getGmail() {
         return gmail;
     }
 

@@ -10,7 +10,7 @@ public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private long numero;
+    private String numero;
     private String nom;
     private String prenom;
     private String login;
@@ -57,11 +57,11 @@ public class Admin {
         this.prenom = prenom;
     }
 
-	public long getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(long numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 
