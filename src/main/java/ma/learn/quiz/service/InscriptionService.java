@@ -60,12 +60,13 @@ public class InscriptionService {
 	
 	 public int save(Inscription  inscription ) {
 		 Inscription inscriptionLogin = findInscriptionByLogin(inscription.getLogin());
+		 List<Prof> profs=profService.findAll();
+		 Prof prof = profs.get(1);
 		 if (inscriptionLogin != null) {
 			 return -1;
 		 }else {
 		    Parcours parcours = parcoursService.findParcoursById(inscription.getParcours().getId());
 			EtatInscription etatInscription = etatInscriptionService.findEtatInscriptionById((long) 1);
-			Prof prof=profService.findProfById((long) 15);
 			inscription.setProf(prof);
 			inscription.setEtatInscription(etatInscription);
 			inscriptionDao.save(inscription);
