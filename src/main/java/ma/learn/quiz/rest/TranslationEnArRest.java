@@ -25,4 +25,9 @@ public class TranslationEnArRest {
     public List<String> synonyme(@PathVariable String text) throws IOException {
         return translationEnAr.synonyme(text);
     }
+
+    @GetMapping("/text/example/{text}")
+    public String example(@PathVariable String text) throws IOException {
+        return translationEnAr.example(text);
+    }
 }
